@@ -1,8 +1,8 @@
 ### About me
 
-- I am a freelance software engineer and consultant.
-  I teach the Go programming language to developers at companies
-  and researchers at universities. I have made a number of contributions to the language.
+- I am a senior software engineer and techlead at [Alibaba Travels](https://www.alibaba.ir/).
+  I also teach the Go programming language to developers at companies
+  and researchers at universities and contribute to open-source projects.
 
 ### Experience
 
