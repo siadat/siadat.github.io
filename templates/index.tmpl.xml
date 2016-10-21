@@ -13,8 +13,8 @@
       <title>{{.Title}}</title>
       <link>{{.Link}}</link>
       {{with .Date}}<pubDate>{{.Format "Mon, 02 Jan 2006 15:04:05 -0700"}}</pubDate>{{end}}
-      <guid>{{.GUID}}</guid>
-      <description></description>
+      <guid>{{.Link}}</guid>
+      <description>{{.XMLDesc}}</description>
     </item>
     {{end}}
   </channel>

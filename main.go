@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"encoding/xml"
 	"flag"
 	"fmt"
 	"io/ioutil"
@@ -65,11 +66,14 @@ func parseFrontmatter(body *[]byte) (frontmatter map[interface{}]interface{}) {
 }
 
 type Post struct {
-	Title string
-	Date  time.Time
-	Body  string
-	Link  string
-	GUID  string
+	Body        string
+	Date        time.Time
+	Description string
+	GUID        string
+	Link        string
+	Title       string
+	XMLDesc     string
+	XMLTitle    string
 }
 
 type Index struct {
@@ -133,11 +137,16 @@ func main() {
 			log.Fatalln("os.Create:", err)
 		}
 
+		var descBuf, titleBuf bytes.Buffer
+		xml.EscapeText(&descBuf, bytes.Trim(body[:200], " \n\r"))
+		xml.EscapeText(&titleBuf, []byte(title))
 		index.Posts[i] = Post{
-			Title: title,
-			Body:  string(blackfriday.MarkdownCommon(body)),
-			Date:  date,
-			Link:  index.URL + outputFilename(mdFilename),
+			Body:     string(blackfriday.MarkdownCommon(body)),
+			Date:     date,
+			Link:     index.URL + outputFilename(mdFilename),
+			Title:    title,
+			XMLDesc:  descBuf.String(),
+			XMLTitle: titleBuf.String(),
 		}
 
 		err = tmpl.ExecuteTemplate(outfile, "post.tmpl.html", index.Posts[i])
