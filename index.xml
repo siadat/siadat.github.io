@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sina Siadat</title>
+    <link>https://siadat.github.io/</link>
+    <description>Recent content on Sina Siadat</description>
+    <generator>Blogo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Oct 2016 17:47:51 +0330</lastBuildDate>
+    <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Raspberry Pi as a router</title>
+      <link>https://siadat.github.io/post/raspberrypi-router.html</link>
+      <pubDate>Tue, 29 Mar 2016 00:00:00 +0000</pubDate>
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tmux session_last_attached</title>
+      <link>https://siadat.github.io/post/tmux-last-attached.html</link>
+      <pubDate>Wed, 23 Sep 2015 00:00:00 +0000</pubDate>
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rails in_batches API</title>
+      <link>https://siadat.github.io/post/in_batches.html</link>
+      <pubDate>Sun, 20 Sep 2015 00:00:00 +0000</pubDate>
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Colorful Tmux panes</title>
+      <link>https://siadat.github.io/post/tmux-pane-style.html</link>
+      <pubDate>Wed, 16 Sep 2015 00:00:00 +0000</pubDate>
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tmux session management</title>
+      <link>https://siadat.github.io/post/tmux-session-management.html</link>
+      <pubDate>Mon, 14 Sep 2015 00:00:00 +0000</pubDate>
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>My experience with Gogs</title>
+      <link>https://siadat.github.io/post/gogs.html</link>
+      <pubDate>Mon, 07 Sep 2015 00:00:00 +0000</pubDate>
+      <guid></guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

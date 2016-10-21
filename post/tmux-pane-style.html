@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Blogo" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" inline href="/assets/normalize.css">
+	<link rel="stylesheet" inline href="/assets/main.css">
+	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+	<title>Colorful Tmux panes</title>
+</head>
+<body>
+	<header role="banner">
+		<b><a href="/">back</a></b>
+	</header>
+
+	<hr>
+
+	<main role="main">
+		<article itemscope itemtype="http://schema.org/BlogPosting">
+			<h1 class="entry-title" itemprop="headline">Colorful Tmux panes</h1>
+      <section itemprop="entry-text">
+        <style>
+  img.fullwidth { border-radius:5px; width:100%; }
+</style>
+
+<p>Thanks to <a href="https://github.com/tmux/tmux/commit/ee123c24">this commit</a>, we are able to style an individual pane in Tmux.
+You will have to build Tmux from source to do that. Try:</p>
+
+<pre><code>tmux select-pane -P 'bg=green'
+</code></pre>
+
+<p>And you will get something like:</p>
+
+<p><img class="fullwidth" src="/assets/tmux/select-pane.png"></p>
+
+<p>We could use that to highlight an important pane.
+I have set key-bindings <code>M-1</code> to <code>M-4</code> to different background colours, and <code>M-0</code> to the default colour:</p>
+
+<pre><code>bind-key -n 'M-0' select-pane -P 'bg=default'
+bind-key -n 'M-1' select-pane -P 'bg=black'
+bind-key -n 'M-2' select-pane -P 'bg=green'
+bind-key -n 'M-3' select-pane -P 'bg=blue'
+bind-key -n 'M-4' select-pane -P 'bg=red'
+</code></pre>
+
+<p>Thanks to @thomas_adam for mentioning this feature in the #tmux channel.</p>
+
+      </section>
+			<hr>
+      
+			<span class="entry-meta"><time itemprop="datePublished" datetime="September 16, 2015">September 16, 2015</time></span>
+      
+		</article>
+	</main>
+
+	<hr>
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
+		</div>
+		<div class="copyright"></div>
+	</footer>
+
+</body>
+</html>

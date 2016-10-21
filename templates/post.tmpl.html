@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Blogo" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" inline href="/assets/normalize.css">
+	<link rel="stylesheet" inline href="/assets/main.css">
+	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+	<title>{{.Title}}</title>
+</head>
+<body>
+	<header role="banner">
+		<b><a href="/">back</a></b>
+	</header>
+
+	<hr>
+
+	<main role="main">
+		<article itemscope itemtype="http://schema.org/BlogPosting">
+			<h1 class="entry-title" itemprop="headline">{{.Title}}</h1>
+      <section itemprop="entry-text">
+        {{.Body}}
+      </section>
+			<hr>
+      {{with .Date}}
+			<span class="entry-meta"><time itemprop="datePublished" datetime="{{.Format "January 02, 2006"}}">{{.Format "January 02, 2006"}}</time></span>
+      {{end}}
+		</article>
+	</main>
+
+	<hr>
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
+		</div>
+		<div class="copyright"></div>
+	</footer>
+
+</body>
+</html>

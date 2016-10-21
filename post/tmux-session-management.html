@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Blogo" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" inline href="/assets/normalize.css">
+	<link rel="stylesheet" inline href="/assets/main.css">
+	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+	<title>Tmux session management</title>
+</head>
+<body>
+	<header role="banner">
+		<b><a href="/">back</a></b>
+	</header>
+
+	<hr>
+
+	<main role="main">
+		<article itemscope itemtype="http://schema.org/BlogPosting">
+			<h1 class="entry-title" itemprop="headline">Tmux session management</h1>
+      <section itemprop="entry-text">
+        <style>
+  .after-before div:last-child { display:none; }
+  .after-before:hover div:first-child { display:none; }
+  .after-before:hover div:last-child { display:block; }
+  .after-before img { border-radius:5px; width:100%; }
+</style>
+
+<p>When using Tmux, I try to follow these rules:</p>
+
+<ul>
+<li>create a named session for each project and long running process.</li>
+<li>create a window for each task in the session.</li>
+<li>create a pane for closely related actions of each task.</li>
+<li>each window should not include more than 2 panes.</li>
+</ul>
+
+<p>I have written a <a href="https://github.com/siadat/session-finder/blob/master/session-finder.bash">session-finder</a>
+Bash script that utilises <a href="https://github.com/junegunn/fzf">fzf</a> to quickly
+find and create new sessions and switch between them by typing only a few
+characters of their name.  A new session is created if no matching session is found.
+Example sessions are irc clients, ssh, vpn, and proxy connections.</p>
+
+<p>A problem I encountered when writing session-finder was that fzf returned exit status <code>0</code> even when no match was found.
+I came up with a simple workaround. I passed <code>--print-query</code> to fzf and counted the printed lines.
+When there is a match fzf prints:</p>
+
+<pre><code>&lt;query&gt;
+&lt;selected line&gt;
+</code></pre>
+
+<p>And when there is no match:</p>
+
+<pre><code>&lt;query&gt;
+</code></pre>
+
+<p>It would have been simpler if fzf returned a non-zero exit status when no match is found.</p>
+
+<p><strong>Update:</strong> I opened an <a href="https://github.com/junegunn/fzf/issues/345">issue</a> and requested for non-zero exit status, and @junegunn implemented it very quickly. It will be available from 0.10.6.</p>
+
+<p>Back to the session-finder.
+Here is an example of how my session-finder looks like:</p>
+
+<div class="after-before">
+  <div> <img src="/assets/tmux/1.png"> <br> <i>11 named sessions, 2 windows in the current session.</i> </div>
+  <div> <img src="/assets/tmux/2.png"> <br> <i>fuzzy session finder and creator.</i> </div>
+</div>
+
+<p>In this screenshot, there are 11 sessions, &ldquo;tmux&rdquo;, &ldquo;appa&rdquo;, &ldquo;crystal&rdquo; etc.
+The hover image shows what happens when finder is started is called.
+I typed <code>l</code> to filter sessions whose name contains this letter.
+Below is a list of all available sub-commands.</p>
+
+<p>Print a pretty list of session names to be used by <code>status-left</code>:</p>
+
+<pre><code>bash session-finder.bash status
+</code></pre>
+
+<p>Start fzf and find or create sessions:</p>
+
+<pre><code>bash session-finder.bash finder
+</code></pre>
+
+<p>Switch to the last session:</p>
+
+<pre><code>bash session-finder.bash last
+</code></pre>
+
+<p>Switch to the next session:</p>
+
+<pre><code>bash session-finder.bash next
+</code></pre>
+
+<p>Switch to the previous session:</p>
+
+<pre><code>bash session-finder.bash prev
+</code></pre>
+
+      </section>
+			<hr>
+      
+			<span class="entry-meta"><time itemprop="datePublished" datetime="September 14, 2015">September 14, 2015</time></span>
+      
+		</article>
+	</main>
+
+	<hr>
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
+		</div>
+		<div class="copyright"></div>
+	</footer>
+
+</body>
+</html>

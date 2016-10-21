@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<meta name="generator" content="Blogo" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" inline href="/assets/normalize.css">
+	<link rel="stylesheet" inline href="/assets/main.css">
+	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+	<title>Raspberry Pi as a router</title>
+</head>
+<body>
+	<header role="banner">
+		<b><a href="/">back</a></b>
+	</header>
+
+	<hr>
+
+	<main role="main">
+		<article itemscope itemtype="http://schema.org/BlogPosting">
+			<h1 class="entry-title" itemprop="headline">Raspberry Pi as a router</h1>
+      <section itemprop="entry-text">
+        <p>One possible way to setup a Raspberry Pi as a router is to flash <a href="https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi">OpenWRT</a> on a SD card.
+I will try that when I have an extra SD card.
+But for now I wanted to have it work as a router and keep using Raspbian at the same time.</p>
+
+<p>This method is quite simple. It invloves adding iptable rules and optionally using sshuttle to make it work as a proxy.
+All devices connected to this wifi network will have their traffic proxied through the Pi.
+Here is the overall setup of my LAN
+(the powerline extender is optional indeed - I have to use it due to the topology of our house):</p>
+
+<p>ISP modem &hArr; Raspberry Pi &hArr; Powerline extender &hArr; Powerline Wifi</p>
+
+<p>I connected eth0 to the ISP modem, and eth1 (via a USB-Ethernet adapter) to the powerline extender.
+Here is a script to setup traffic forwarding in Raspberry Pi:</p>
+
+<pre><code># eth0 is connected to ISP modem
+# eth1 is connected to LAN extender
+
+# This should work, otherwise try editing /etc/sysctl.conf
+echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+sysctl -p
+
+# Always accept loopback traffic
+iptables -A INPUT -i lo -j ACCEPT
+
+# We allow traffic from the LAN side
+iptables -A INPUT -i eth0 -j ACCEPT
+
+# Allow established connections
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Masquerade.
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+# fowarding
+iptables -A FORWARD -i eth0 -o eth1 \
+         -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+# Allow outgoing connections from the LAN side.
+iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
+</code></pre>
+
+<p>Optionally, start sshuttle like this:</p>
+
+<pre><code># 192.168.0.0/16  = Home LAN
+# xxx.xxx.xxx.xxx = Office VPN IP
+sshuttle --dns -vr mylinode \
+    -l 0.0.0.0              \
+    -x 192.168.0.0/16       \
+    -x xxx.xxx.xxx.xxx      \
+    0/0
+</code></pre>
+
+<p>I exclude <code>192.168.0.0/16</code>, so I could still SSH into Pi without sshuttle proxying my connection to the Linode server.</p>
+
+<p>It is very difficult to find a Raspberry Pi where I live.
+I would like to thank my friends
+<a href="https://twitter.com/gluegadget">@gluegadget</a>,
+<a href="https://twitter.com/cubny">@cubny</a> and
+<a href="https://twitter.com/artlesshand">@artlesshand</a>
+who got me this Raspberry Pi.</p>
+
+      </section>
+			<hr>
+      
+			<span class="entry-meta"><time itemprop="datePublished" datetime="March 29, 2016">March 29, 2016</time></span>
+      
+		</article>
+	</main>
+
+	<hr>
+
+	<footer role="contentinfo">
+		<div class="hr"></div>
+		<div class="footer-link">
+			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
+		</div>
+		<div class="copyright"></div>
+	</footer>
+
+</body>
+</html>
