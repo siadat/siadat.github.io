@@ -24,6 +24,29 @@ const (
 	longTimeFormat  = "January 02, 2006"
 )
 
+type Post struct {
+	Body        string
+	Date        time.Time
+	Description string
+	GUID        string
+	Link        string
+	Title       string
+	XMLDesc     string
+	XMLTitle    string
+}
+
+type Index struct {
+	Title     string
+	Posts     []Post
+	URL       string
+	XMLURL    string
+	UpdatedAt time.Time
+}
+
+func (index Index) Len() int           { return len(index.Posts) }
+func (index Index) Swap(i, j int)      { index.Posts[i], index.Posts[j] = index.Posts[j], index.Posts[i] }
+func (index Index) Less(i, j int) bool { return index.Posts[i].Date.Before(index.Posts[j].Date) }
+
 func outputFilename(filename string) string {
 	filename = strings.TrimSuffix(filepath.Base(filename), ".md") + ".html"
 	return filepath.Join("post", filename)
@@ -64,29 +87,6 @@ func parseFrontmatter(body *[]byte) (frontmatter map[interface{}]interface{}) {
 	*body = buf.Bytes()
 	return frontmatter
 }
-
-type Post struct {
-	Body        string
-	Date        time.Time
-	Description string
-	GUID        string
-	Link        string
-	Title       string
-	XMLDesc     string
-	XMLTitle    string
-}
-
-type Index struct {
-	Title     string
-	Posts     []Post
-	URL       string
-	XMLURL    string
-	UpdatedAt time.Time
-}
-
-func (index Index) Len() int           { return len(index.Posts) }
-func (index Index) Swap(i, j int)      { index.Posts[i], index.Posts[j] = index.Posts[j], index.Posts[i] }
-func (index Index) Less(i, j int) bool { return index.Posts[i].Date.Before(index.Posts[j].Date) }
 
 func main() {
 	flag.Parse()
