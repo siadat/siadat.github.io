@@ -29,4 +29,4 @@ I have set key-bindings `M-1` to `M-4` to different background colours, and `M-0
     bind-key -n 'M-4' select-pane -P 'bg=red'
 
 
-Thanks to @thomas_adam for mentioning this feature in the #tmux channel.
+Thanks @thomas_adam for mentioning this feature in the #tmux channel.
