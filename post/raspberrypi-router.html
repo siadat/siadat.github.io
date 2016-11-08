@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta charset="utf-8">
-	<meta name="generator" content="Blogo" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" inline href="/assets/normalize.css">
-	<link rel="stylesheet" inline href="/assets/main.css">
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-	<title>Raspberry Pi as a router</title>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Raspberry Pi as a router</title>
 </head>
 <body>
-	<header role="banner">
-		<b><a href="/">back</a></b>
-	</header>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
 
-	<hr>
+  <hr>
 
-	<main role="main">
-		<article itemscope itemtype="http://schema.org/BlogPosting">
-			<h1 class="entry-title" itemprop="headline">Raspberry Pi as a router</h1>
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Raspberry Pi as a router</h1>
       <section itemprop="entry-text">
-        <p>One possible way to setup a Raspberry Pi as a router is to flash <a href="https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi">OpenWRT</a> on a SD card.
+        <p>One possible way to setup a Raspberry Pi as a router is to flash <a href="https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi" target="_blank">OpenWRT</a> on an SD card.
 I will try that when I have an extra SD card.
 But for now I wanted to have it work as a router and keep using Raspbian at the same time.</p>
 
@@ -62,42 +63,57 @@ iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
 </code></pre>
 
 <p>Optionally, start sshuttle like this:</p>
-
-<pre><code># 192.168.0.0/16  = Home LAN
-# xxx.xxx.xxx.xxx = Office VPN IP
-sshuttle --dns -vr mylinode \
-    -l 0.0.0.0              \
-    -x 192.168.0.0/16       \
-    -x xxx.xxx.xxx.xxx      \
+<div class='shell'>
+<pre><code class="language-shell">sshuttle --dns -vr host \
+    -l 0.0.0.0          \
+    -x 192.168.0.0/16   \
     0/0
 </code></pre>
-
-<p>I exclude <code>192.168.0.0/16</code>, so I could still SSH into Pi without sshuttle proxying my connection to the Linode server.</p>
+</div>
+<p>I exclude 192.168.0.0/16, so I could still SSH into Pi without sshuttle proxying my connection to the host.</p>
 
 <p>It is very difficult to find a Raspberry Pi where I live.
 I would like to thank my friends
-<a href="https://twitter.com/gluegadget">@gluegadget</a>,
-<a href="https://twitter.com/cubny">@cubny</a> and
-<a href="https://twitter.com/artlesshand">@artlesshand</a>
+<a href="https://twitter.com/gluegadget" target="_blank">@gluegadget</a>,
+<a href="https://twitter.com/cubny" target="_blank">@cubny</a> and
+<a href="https://twitter.com/artlesshand" target="_blank">@artlesshand</a>
 who got me this Raspberry Pi.</p>
 
       </section>
-			<hr>
-      
-			<span class="entry-meta"><time itemprop="datePublished" datetime="March 29, 2016">March 29, 2016</time></span>
-      
-		</article>
-	</main>
+    </article>
+  </main>
 
-	<hr>
+  <hr>
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
 
-	<footer role="contentinfo">
-		<div class="hr"></div>
-		<div class="footer-link">
-			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
-		</div>
-		<div class="copyright"></div>
-	</footer>
+  <div class="entry-meta">
+    Please share this post if you liked it. :-)
+  </div>
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="March 29, 2016">
+      March 29, 2016
+    </time>
+  </div>
+  
+
+  <footer role="contentinfo" class="entry-meta">
+    Follow me on
+    &middot; <a href="https://github.com/siadat/" target="_blank">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat" target="_blank">twitter</a>
+    &middot; <a href="https://soundcloud.com/sinasiadat" target="_blank">soundcloud</a>
+    &middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>
+    &middot; <a href="/index.xml" target="_blank">rss</a>
+  </footer>
+  </div>
+
+  <!-- calq -->
+  <script type="text/javascript">
+  (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+  calq.init("5bfaf3519521157e5b8274b63c83d728");
+  calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  </script>
 
 </body>
 </html>

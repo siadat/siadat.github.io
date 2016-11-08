@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta charset="utf-8">
-	<meta name="generator" content="Blogo" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" inline href="/assets/normalize.css">
-	<link rel="stylesheet" inline href="/assets/main.css">
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-	<title>Tmux session_last_attached</title>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Tmux session_last_attached</title>
 </head>
 <body>
-	<header role="banner">
-		<b><a href="/">back</a></b>
-	</header>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
 
-	<hr>
+  <hr>
 
-	<main role="main">
-		<article itemscope itemtype="http://schema.org/BlogPosting">
-			<h1 class="entry-title" itemprop="headline">Tmux session_last_attached</h1>
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Tmux session_last_attached</h1>
       <section itemprop="entry-text">
         <p>While working on my <a href="/tmux-session-management">session finder</a>, I tought it would be a good idea to list sessions sorted by the last time they were attached.
 Tmux has a lot of useful variables for the sessions.
 For example, there is the <code>session_created</code> variable, which is replaced by the epoch time of when this session was created.
 But there is no variable to find out the time that this session was last attached.
-I added that and submited a <a href="https://github.com/tmux/tmux/commit/cfabe30becba6f0c54035a29ee61a6a7f3d0cf60">patch</a> for it.</p>
+I added that and submited a <a href="https://github.com/tmux/tmux/commit/cfabe30becba6f0c54035a29ee61a6a7f3d0cf60" target="_blank">patch</a> for it.</p>
 
 <p>Now I can list my sessions sorted by the time when they were last attached:</p>
-
-<pre><code>$ tmux list-sessions -F '#{session_last_attached} #{session_name}' | sort -r
+<div class='shell'>
+<pre><code class="language-shell">$ tmux list-sessions -F '#{session_last_attached} #{session_name}' | sort -r
 1443039967 blog
 1443039956 tmux
 1443038611 rails
@@ -46,27 +47,45 @@ I added that and submited a <a href="https://github.com/tmux/tmux/commit/cfabe30
 1442726644 octave
 1442567980 fzf
 </code></pre>
-
-<p>I submited a couple of <a href="https://github.com/tmux/tmux/commit/16efa8483888e326aed2c05a01b63b45a2b118ef">other</a> <a href="https://github.com/tmux/tmux/commit/dc66795e353e1d84c23cb87f4120480a152b43d9">patches</a> as well.
+</div>
+<p>I submited a couple of <a href="https://github.com/tmux/tmux/commit/16efa8483888e326aed2c05a01b63b45a2b118ef" target="_blank">other</a> <a href="https://github.com/tmux/tmux/commit/dc66795e353e1d84c23cb87f4120480a152b43d9" target="_blank">patches</a> as well.
 I use Tmux all the time, I&rsquo;m glad I could contribute something back to it.</p>
 
       </section>
-			<hr>
-      
-			<span class="entry-meta"><time itemprop="datePublished" datetime="September 23, 2015">September 23, 2015</time></span>
-      
-		</article>
-	</main>
+    </article>
+  </main>
 
-	<hr>
+  <hr>
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
 
-	<footer role="contentinfo">
-		<div class="hr"></div>
-		<div class="footer-link">
-			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
-		</div>
-		<div class="copyright"></div>
-	</footer>
+  <div class="entry-meta">
+    Please share this post if you liked it. :-)
+  </div>
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="September 23, 2015">
+      September 23, 2015
+    </time>
+  </div>
+  
+
+  <footer role="contentinfo" class="entry-meta">
+    Follow me on
+    &middot; <a href="https://github.com/siadat/" target="_blank">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat" target="_blank">twitter</a>
+    &middot; <a href="https://soundcloud.com/sinasiadat" target="_blank">soundcloud</a>
+    &middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>
+    &middot; <a href="/index.xml" target="_blank">rss</a>
+  </footer>
+  </div>
+
+  <!-- calq -->
+  <script type="text/javascript">
+  (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+  calq.init("5bfaf3519521157e5b8274b63c83d728");
+  calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  </script>
 
 </body>
 </html>

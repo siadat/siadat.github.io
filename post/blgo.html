@@ -7,7 +7,7 @@
   <link rel="stylesheet" inline href="/assets/normalize.css">
   <link rel="stylesheet" inline href="/assets/main.css">
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-  <title>Colorful Tmux panes</title>
+  <title>How I blog</title>
 </head>
 <body>
   <div id="everything">
@@ -19,33 +19,35 @@
 
   <main role="main">
     <article itemscope itemtype="http://schema.org/BlogPosting">
-      <h1 class="entry-title" itemprop="headline">Colorful Tmux panes</h1>
+      <h1 class="entry-title" itemprop="headline">How I blog</h1>
       <section itemprop="entry-text">
-        <style>
-  img.fullwidth { border-radius:5px; width:100%; }
-</style>
+        <p>I wrote a small Go program called <a href="https://github.com/siadat/blgo" target="_blank">blgo</a> to renders my posts
+using <a href="https://github.com/russross/blackfriday" target="_blank">blackfriday</a> markdown processor.
+I also use <a href="https://github.com/fsnotify/fsnotify" target="_blank">fsnotify</a> to watch templates and posts for changes.</p>
 
-<p>Thanks to <a href="https://github.com/tmux/tmux/commit/ee123c24" target="_blank">this commit</a>, we are able to style an individual pane in Tmux.
-You will have to build Tmux from source to do that. Try:</p>
+<p>I don&rsquo;t like Javascript syntax highlighters.
+I customized the blackfriday.BlockCode func to use GoDoc&rsquo;s code renderer.
+It makes my Go code blocks look similar to GoDoc, which is pleasing to my eyes.
+Here is an example:</p>
+<pre><span id="L1" class="ln">     1</span>	<span class="comment">// Print hello</span>
+<span id="L2" class="ln">     2</span>	fmt.Println(&#34;Hello&#34;)
+</pre>
+<p>Isn&rsquo;t that beautiful?</p>
+
+<p>To render HTML files, I execute this on <a href="https://github.com/siadat/siadat.github.io/" target="_blank">my blog repository</a>:</p>
 <div class='shell'>
-<pre><code class="language-shell">$ tmux select-pane -P 'bg=green'
+<pre><code class="language-shell">$ blgo watch src/*
 </code></pre>
 </div>
-<p>And you will get something like:</p>
-
-<p><img class="fullwidth" src="/assets/tmux/select-pane.png"></p>
-
-<p>We could use that to highlight an important pane.
-I have set key-bindings <code>M-1</code> to <code>M-4</code> to different background colours, and <code>M-0</code> to the default colour:</p>
-
-<pre><code>bind-key -n 'M-0' select-pane -P 'bg=default'
-bind-key -n 'M-1' select-pane -P 'bg=black'
-bind-key -n 'M-2' select-pane -P 'bg=green'
-bind-key -n 'M-3' select-pane -P 'bg=blue'
-bind-key -n 'M-4' select-pane -P 'bg=red'
+<p>To preview the posts, I use the
+<a href="https://github.com/siadat/gofile" target="_blank">gofile</a>
+command to serve the files locally:</p>
+<div class='shell'>
+<pre><code class="language-shell">$ gofile 8080
 </code></pre>
-
-<p>Thanks @thomas_adam for mentioning this feature in the #tmux channel.</p>
+</div>
+<p>For more details on how I changed the BlockCode funct see my
+post on <a href="http://localhost:8080/post/curious-gopher-override.html" target="_blank">overriding a struct method</a>.</p>
 
       </section>
     </article>
@@ -60,8 +62,8 @@ bind-key -n 'M-4' select-pane -P 'bg=red'
   </div>
   
   <div class="entry-meta">
-    <time itemprop="datePublished" datetime="September 16, 2015">
-      September 16, 2015
+    <time itemprop="datePublished" datetime="November 10, 2016">
+      November 10, 2016
     </time>
   </div>
   

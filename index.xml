@@ -6,15 +6,31 @@
     <description>Recent content on Sina Siadat</description>
     <generator>Blogo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Oct 2016 18:14:48 +0330</lastBuildDate>
+    <lastBuildDate>Tue, 15 Nov 2016 09:50:00 +0330</lastBuildDate>
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How I blog</title>
+      <link>https://siadat.github.io/post/blgo.html</link>
+      <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/blgo.html</guid>
+      <description>I wrote a small Go program called [blgo](https://github.com/siadat/blgo) to renders my posts&#xA;using [blackfriday](https://github.com/russross/blackfriday) markdown processor.&#xA;I also use [fsnotify](htt</description>
+    </item>
+    
+    <item>
+      <title>Curious Gopher: override a struct method</title>
+      <link>https://siadat.github.io/post/curious-gopher-override.html</link>
+      <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/curious-gopher-override.html</guid>
+      <description>```notebox&#xA;**NOTE** There is no object-oriented Java-like overriding in Go.&#xA;In this post I explain what I call overriding struct methods in Go.&#xA;```&#xA;&#xA;There are times when we want to make a small modif</description>
+    </item>
     
     <item>
       <title>Raspberry Pi as a router</title>
       <link>https://siadat.github.io/post/raspberrypi-router.html</link>
       <pubDate>Tue, 29 Mar 2016 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/raspberrypi-router.html</guid>
-      <description>One possible way to setup a Raspberry Pi as a router is to flash [OpenWRT](https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi) on a SD card.&#xA;I will try that when I have an extra SD car</description>
+      <description>One possible way to setup a Raspberry Pi as a router is to flash [OpenWRT](https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi) on an SD card.&#xA;I will try that when I have an extra SD ca</description>
     </item>
     
     <item>

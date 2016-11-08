@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Curious Gopher: override a struct method</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
+
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Curious Gopher: override a struct method</h1>
+      <section itemprop="entry-text">
+        <div class='notebox'><p><strong>NOTE</strong> There is no object-oriented Java-like overriding in Go.
+In this post I explain what I call overriding struct methods in Go.</p>
+</div>
+<p>There are times when we want to make a small modification to a complex struct.
+Instead of changing the original struct, we could create a new struct and embed the existing implementation inside it.</p>
+
+<p>Let&rsquo;s look at an example. Let&rsquo;s say we are using the Person struct in a package defined like this:</p>
+<pre><span id="L1" class="ln">     1</span>	package person
+<span id="L2" class="ln">     2</span>	
+<span id="L3" class="ln">     3</span>	type Person struct{}
+<span id="L4" class="ln">     4</span>	
+<span id="L5" class="ln">     5</span>	func (Person) Greet() string {
+<span id="L6" class="ln">     6</span>		return &#34;hello&#34;
+<span id="L7" class="ln">     7</span>	}
+<span id="L8" class="ln">     8</span>	
+<span id="L9" class="ln">     9</span>	func (Person) Bye() string {
+<span id="L10" class="ln">    10</span>		return &#34;bye&#34;
+<span id="L11" class="ln">    11</span>	}
+</pre>
+<p>This is how we use this package:</p>
+<pre><span id="L1" class="ln">     1</span>	func main() {
+<span id="L2" class="ln">     2</span>		p := person.Person{}
+<span id="L3" class="ln">     3</span>		fmt.Println(p.Greet(), p.Bye())
+<span id="L4" class="ln">     4</span>	}
+</pre><div class='output'>
+<pre><code class="language-output">hello bye
+</code></pre>
+</div>
+<p>Okay. What if we need the Greet func to return something else?
+We don&rsquo;t want to modify the struct directly because it is in another package we don&rsquo;t maintain.
+And we don&rsquo;t want to have to rewrite all the other methods.</p>
+
+<p>To do that, we create a new struct like this:</p>
+<pre><span id="L1" class="ln">     1</span>	<span class="comment">// FrenchPerson embeds person.Person</span>
+<span id="L2" class="ln">     2</span>	type FrenchPerson struct{
+<span id="L3" class="ln">     3</span>		person.Person
+<span id="L4" class="ln">     4</span>	}
+<span id="L5" class="ln">     5</span>	
+<span id="L6" class="ln">     6</span>	<span class="comment">// Greet returns &#34;bonjour&#34;</span>
+<span id="L7" class="ln">     7</span>	func (FrenchPerson) Greet() string {
+<span id="L8" class="ln">     8</span>		return &#34;bonjour&#34;
+<span id="L9" class="ln">     9</span>	}
+</pre>
+<p>Finally, let&rsquo;s test this new method:</p>
+<pre><span id="L1" class="ln">     1</span>	func main() {
+<span id="L2" class="ln">     2</span>		p1 := Person{}
+<span id="L3" class="ln">     3</span>		fmt.Println(p1.Greet(), p1.Bye())
+<span id="L4" class="ln">     4</span>	
+<span id="L5" class="ln">     5</span>		p2 := FrenchPerson{}
+<span id="L6" class="ln">     6</span>		fmt.Println(p2.Greet(), p2.Bye())
+<span id="L7" class="ln">     7</span>	}
+</pre><div class='output'>
+<pre><code class="language-output">hello bye
+bonjour bye
+</code></pre>
+</div>
+<p>We are calling Greet and Bye as before.
+However, this time the overriden Greet func is called.</p>
+
+<h2>Real world example</h2>
+
+<p>I find this particularly useful for overriding methods in an external dependency.</p>
+
+<p>Take for example the <a href="https://github.com/russross/blackfriday" target="_blank">blackfriday</a> markdown rendering package.
+It defines a Renderer interface with 31 functions:</p>
+<pre><span id="L1" class="ln">     1</span>	type Renderer interface {
+<span id="L2" class="ln">     2</span>		<span class="comment">// block-level callbacks</span>
+<span id="L3" class="ln">     3</span>		BlockCode(out *bytes.Buffer, text []byte, lang string)
+<span id="L4" class="ln">     4</span>		BlockQuote(out *bytes.Buffer, text []byte)
+<span id="L5" class="ln">     5</span>		BlockHtml(out *bytes.Buffer, text []byte)
+<span id="L6" class="ln">     6</span>		Header(out *bytes.Buffer, text func() bool, level int, id string)
+<span id="L7" class="ln">     7</span>		HRule(out *bytes.Buffer)
+<span id="L8" class="ln">     8</span>		List(out *bytes.Buffer, text func() bool, flags int)
+<span id="L9" class="ln">     9</span>		ListItem(out *bytes.Buffer, text []byte, flags int)
+<span id="L10" class="ln">    10</span>		Paragraph(out *bytes.Buffer, text func() bool)
+<span id="L11" class="ln">    11</span>		Table(out *bytes.Buffer, header []byte, body []byte, columnData []int)
+<span id="L12" class="ln">    12</span>		TableRow(out *bytes.Buffer, text []byte)
+<span id="L13" class="ln">    13</span>		TableHeaderCell(out *bytes.Buffer, text []byte, flags int)
+<span id="L14" class="ln">    14</span>		TableCell(out *bytes.Buffer, text []byte, flags int)
+<span id="L15" class="ln">    15</span>		Footnotes(out *bytes.Buffer, text func() bool)
+<span id="L16" class="ln">    16</span>		FootnoteItem(out *bytes.Buffer, name, text []byte, flags int)
+<span id="L17" class="ln">    17</span>		TitleBlock(out *bytes.Buffer, text []byte)
+<span id="L18" class="ln">    18</span>	
+<span id="L19" class="ln">    19</span>		<span class="comment">// Span-level callbacks</span>
+<span id="L20" class="ln">    20</span>		AutoLink(out *bytes.Buffer, link []byte, kind int)
+<span id="L21" class="ln">    21</span>		CodeSpan(out *bytes.Buffer, text []byte)
+<span id="L22" class="ln">    22</span>		DoubleEmphasis(out *bytes.Buffer, text []byte)
+<span id="L23" class="ln">    23</span>		Emphasis(out *bytes.Buffer, text []byte)
+<span id="L24" class="ln">    24</span>		Image(out *bytes.Buffer, link []byte, title []byte, alt []byte)
+<span id="L25" class="ln">    25</span>		LineBreak(out *bytes.Buffer)
+<span id="L26" class="ln">    26</span>		Link(out *bytes.Buffer, link []byte, title []byte, content []byte)
+<span id="L27" class="ln">    27</span>		RawHtmlTag(out *bytes.Buffer, tag []byte)
+<span id="L28" class="ln">    28</span>		TripleEmphasis(out *bytes.Buffer, text []byte)
+<span id="L29" class="ln">    29</span>		StrikeThrough(out *bytes.Buffer, text []byte)
+<span id="L30" class="ln">    30</span>		FootnoteRef(out *bytes.Buffer, ref []byte, id int)
+<span id="L31" class="ln">    31</span>	
+<span id="L32" class="ln">    32</span>		<span class="comment">// Low-level callbacks</span>
+<span id="L33" class="ln">    33</span>		Entity(out *bytes.Buffer, entity []byte)
+<span id="L34" class="ln">    34</span>		NormalText(out *bytes.Buffer, text []byte)
+<span id="L35" class="ln">    35</span>	
+<span id="L36" class="ln">    36</span>		<span class="comment">// Header and footer</span>
+<span id="L37" class="ln">    37</span>		DocumentHeader(out *bytes.Buffer)
+<span id="L38" class="ln">    38</span>		DocumentFooter(out *bytes.Buffer)
+<span id="L39" class="ln">    39</span>	
+<span id="L40" class="ln">    40</span>		GetFlags() int
+<span id="L41" class="ln">    41</span>	}
+</pre>
+<p>For this blog, all I want to do is to override the BlockCode func and keep everything else unchanged.
+I used the same technique as the above example. This is what I did:</p>
+<pre><span id="L1" class="ln">     1</span>	type Renderer struct {
+<span id="L2" class="ln">     2</span>		*blackfriday.Html
+<span id="L3" class="ln">     3</span>	}
+<span id="L4" class="ln">     4</span>	
+<span id="L5" class="ln">     5</span>	func (options *Renderer) BlockCode(out *bytes.Buffer,
+<span id="L6" class="ln">     6</span>		text []byte, lang string) {
+<span id="L7" class="ln">     7</span>		<span class="comment">// ... new implementation ...</span>
+<span id="L8" class="ln">     8</span>	}
+</pre>
+<p>The code for my blog engine is <a href="https://github.com/siadat/blgo" target="_blank">here</a>.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
+
+  <div class="entry-meta">
+    Please share this post if you liked it. :-)
+  </div>
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="November 01, 2016">
+      November 01, 2016
+    </time>
+  </div>
+  
+
+  <footer role="contentinfo" class="entry-meta">
+    Follow me on
+    &middot; <a href="https://github.com/siadat/" target="_blank">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat" target="_blank">twitter</a>
+    &middot; <a href="https://soundcloud.com/sinasiadat" target="_blank">soundcloud</a>
+    &middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>
+    &middot; <a href="/index.xml" target="_blank">rss</a>
+  </footer>
+  </div>
+
+  <!-- calq -->
+  <script type="text/javascript">
+  (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+  calq.init("5bfaf3519521157e5b8274b63c83d728");
+  calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  </script>
+
+</body>
+</html>

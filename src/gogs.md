@@ -17,19 +17,23 @@ Gogs did not expect migrated repositories to be empty.
 There are many ways to find out if a repository is empty. Using either the `log` command:
 
 
-    $ git log -1
-    fatal: bad default revision 'HEAD'
-    $ echo $?
-    128
+```shell
+$ git log -1
+fatal: bad default revision 'HEAD'
+$ echo $?
+128
+```
 
 
 or the `rev-parse` command:
 
 
-    $ git rev-parse --verify HEAD
-    fatal: Needed a single revision
-    $ echo $?
-    128
+```shell
+$ git rev-parse --verify HEAD
+fatal: Needed a single revision
+$ echo $?
+128
+```
 
 
 I fixed the error with the help of @Unknown and the [patch](https://github.com/gogits/gogs/pull/1589) is now merged on the develop branch of Gogs.

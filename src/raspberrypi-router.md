@@ -3,7 +3,7 @@ title: Raspberry Pi as a router
 date: 2016-03-29
 ---
 
-One possible way to setup a Raspberry Pi as a router is to flash [OpenWRT](https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi) on a SD card.
+One possible way to setup a Raspberry Pi as a router is to flash [OpenWRT](https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi) on an SD card.
 I will try that when I have an extra SD card.
 But for now I wanted to have it work as a router and keep using Raspbian at the same time.
 
@@ -47,17 +47,15 @@ Here is a script to setup traffic forwarding in Raspberry Pi:
 
 Optionally, start sshuttle like this:
 
-
-    # 192.168.0.0/16  = Home LAN
-    # xxx.xxx.xxx.xxx = Office VPN IP
-    sshuttle --dns -vr mylinode \
-        -l 0.0.0.0              \
-        -x 192.168.0.0/16       \
-        -x xxx.xxx.xxx.xxx      \
-        0/0
+```shell
+sshuttle --dns -vr host \
+    -l 0.0.0.0          \
+    -x 192.168.0.0/16   \
+    0/0
+```
 
 
-I exclude `192.168.0.0/16`, so I could still SSH into Pi without sshuttle proxying my connection to the Linode server.
+I exclude 192.168.0.0/16, so I could still SSH into Pi without sshuttle proxying my connection to the host.
 
 It is very difficult to find a Raspberry Pi where I live.
 I would like to thank my friends

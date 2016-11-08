@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta charset="utf-8">
-	<meta name="generator" content="Blogo" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" inline href="/assets/normalize.css">
-	<link rel="stylesheet" inline href="/assets/main.css">
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-	<title>My experience with Gogs</title>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>My experience with Gogs</title>
 </head>
 <body>
-	<header role="banner">
-		<b><a href="/">back</a></b>
-	</header>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
 
-	<hr>
+  <hr>
 
-	<main role="main">
-		<article itemscope itemtype="http://schema.org/BlogPosting">
-			<h1 class="entry-title" itemprop="headline">My experience with Gogs</h1>
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">My experience with Gogs</h1>
       <section itemprop="entry-text">
         <p>Until yesterday, we used GitLab at work. GitLab is a great project and it has tones of features. But our GitLab server is a small virtual machine with only 2GB of RAM. We had constant issues with high RAM usage, so much that it would reject some pushes and fetches.</p>
 
-<p>Last night we installed Gogs as a replacement for GitLab. <a href="http://gogs.io">Gogs</a> is a GitHub-like self-hosted git service written in Go.</p>
+<p>Last night we installed Gogs as a replacement for GitLab. <a href="http://gogs.io" target="_blank">Gogs</a> is a GitHub-like self-hosted git service written in Go.</p>
 
 <p>The installation was very painless.  We decided to use the existing domain, url and ports, so the team members wouldn&rsquo;t have to update their remote urls.  The most time consuming step was the migration of existing GitLab repositories. I placed the bare repositories created by GitLab and used the migration tool built in Gogs.</p>
 
@@ -32,44 +33,62 @@
 There was an error in the <code>GetBranch</code> function.
 Gogs did not expect migrated repositories to be empty.
 There are many ways to find out if a repository is empty. Using either the <code>log</code> command:</p>
-
-<pre><code>$ git log -1
+<div class='shell'>
+<pre><code class="language-shell">$ git log -1
 fatal: bad default revision 'HEAD'
 $ echo $?
 128
 </code></pre>
-
+</div>
 <p>or the <code>rev-parse</code> command:</p>
-
-<pre><code>$ git rev-parse --verify HEAD
+<div class='shell'>
+<pre><code class="language-shell">$ git rev-parse --verify HEAD
 fatal: Needed a single revision
 $ echo $?
 128
 </code></pre>
-
-<p>I fixed the error with the help of @Unknown and the <a href="https://github.com/gogits/gogs/pull/1589">patch</a> is now merged on the develop branch of Gogs.</p>
+</div>
+<p>I fixed the error with the help of @Unknown and the <a href="https://github.com/gogits/gogs/pull/1589" target="_blank">patch</a> is now merged on the develop branch of Gogs.</p>
 
 <hr />
 
 <p>The overall experience was very positive. The project maintainer is very welcoming and supportive. I highly recommend using Gogs and making contributions to it.</p>
 
       </section>
-			<hr>
-      
-			<span class="entry-meta"><time itemprop="datePublished" datetime="September 07, 2015">September 07, 2015</time></span>
-      
-		</article>
-	</main>
+    </article>
+  </main>
 
-	<hr>
+  <hr>
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
 
-	<footer role="contentinfo">
-		<div class="hr"></div>
-		<div class="footer-link">
-			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
-		</div>
-		<div class="copyright"></div>
-	</footer>
+  <div class="entry-meta">
+    Please share this post if you liked it. :-)
+  </div>
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="September 07, 2015">
+      September 07, 2015
+    </time>
+  </div>
+  
+
+  <footer role="contentinfo" class="entry-meta">
+    Follow me on
+    &middot; <a href="https://github.com/siadat/" target="_blank">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat" target="_blank">twitter</a>
+    &middot; <a href="https://soundcloud.com/sinasiadat" target="_blank">soundcloud</a>
+    &middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>
+    &middot; <a href="/index.xml" target="_blank">rss</a>
+  </footer>
+  </div>
+
+  <!-- calq -->
+  <script type="text/javascript">
+  (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+  calq.init("5bfaf3519521157e5b8274b63c83d728");
+  calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  </script>
 
 </body>
 </html>

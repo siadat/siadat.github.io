@@ -10,9 +10,9 @@ date: 2015-09-16
 Thanks to [this commit](https://github.com/tmux/tmux/commit/ee123c24), we are able to style an individual pane in Tmux.
 You will have to build Tmux from source to do that. Try:
 
-
-    tmux select-pane -P 'bg=green'
-
+```shell
+$ tmux select-pane -P 'bg=green'
+```
 
 And you will get something like:
 

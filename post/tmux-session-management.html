@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<meta charset="utf-8">
-	<meta name="generator" content="Blogo" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" inline href="/assets/normalize.css">
-	<link rel="stylesheet" inline href="/assets/main.css">
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-	<title>Tmux session management</title>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Tmux session management</title>
 </head>
 <body>
-	<header role="banner">
-		<b><a href="/">back</a></b>
-	</header>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
 
-	<hr>
+  <hr>
 
-	<main role="main">
-		<article itemscope itemtype="http://schema.org/BlogPosting">
-			<h1 class="entry-title" itemprop="headline">Tmux session management</h1>
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Tmux session management</h1>
       <section itemprop="entry-text">
         <style>
   .after-before div:last-child { display:none; }
@@ -36,8 +37,8 @@
 <li>each window should not include more than 2 panes.</li>
 </ul>
 
-<p>I have written a <a href="https://github.com/siadat/session-finder/blob/master/session-finder.bash">session-finder</a>
-Bash script that utilises <a href="https://github.com/junegunn/fzf">fzf</a> to quickly
+<p>I have written a <a href="https://github.com/siadat/session-finder/blob/master/session-finder.bash" target="_blank">session-finder</a>
+Bash script that utilises <a href="https://github.com/junegunn/fzf" target="_blank">fzf</a> to quickly
 find and create new sessions and switch between them by typing only a few
 characters of their name.  A new session is created if no matching session is found.
 Example sessions are irc clients, ssh, vpn, and proxy connections.</p>
@@ -57,7 +58,7 @@ When there is a match fzf prints:</p>
 
 <p>It would have been simpler if fzf returned a non-zero exit status when no match is found.</p>
 
-<p><strong>Update:</strong> I opened an <a href="https://github.com/junegunn/fzf/issues/345">issue</a> and requested for non-zero exit status, and @junegunn implemented it very quickly. It will be available from 0.10.6.</p>
+<p><strong>Update:</strong> I opened an <a href="https://github.com/junegunn/fzf/issues/345" target="_blank">issue</a> and requested for non-zero exit status, and @junegunn implemented it very quickly. It will be available from 0.10.6.</p>
 
 <p>Back to the session-finder.
 Here is an example of how my session-finder looks like:</p>
@@ -98,22 +99,40 @@ Below is a list of all available sub-commands.</p>
 </code></pre>
 
       </section>
-			<hr>
-      
-			<span class="entry-meta"><time itemprop="datePublished" datetime="September 14, 2015">September 14, 2015</time></span>
-      
-		</article>
-	</main>
+    </article>
+  </main>
 
-	<hr>
+  <hr>
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
 
-	<footer role="contentinfo">
-		<div class="hr"></div>
-		<div class="footer-link">
-			<a href="https://siadat.slack.com/messages" target="_blank">comments</a>
-		</div>
-		<div class="copyright"></div>
-	</footer>
+  <div class="entry-meta">
+    Please share this post if you liked it. :-)
+  </div>
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="September 14, 2015">
+      September 14, 2015
+    </time>
+  </div>
+  
+
+  <footer role="contentinfo" class="entry-meta">
+    Follow me on
+    &middot; <a href="https://github.com/siadat/" target="_blank">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat" target="_blank">twitter</a>
+    &middot; <a href="https://soundcloud.com/sinasiadat" target="_blank">soundcloud</a>
+    &middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>
+    &middot; <a href="/index.xml" target="_blank">rss</a>
+  </footer>
+  </div>
+
+  <!-- calq -->
+  <script type="text/javascript">
+  (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+  calq.init("5bfaf3519521157e5b8274b63c83d728");
+  calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  </script>
 
 </body>
 </html>
