@@ -1,5 +1,5 @@
 ---
-title: "Curious Gopher: override a struct method"
+title: "override a struct method"
 date: 2016-11-01
 tags: go
 ---

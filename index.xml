@@ -6,70 +6,70 @@
     <description>Recent content on Sina Siadat</description>
     <generator>Blogo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2016 09:50:00 +0330</lastBuildDate>
+    <lastBuildDate>Fri, 16 Dec 2016 16:09:59 +0330</lastBuildDate>
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How I blog</title>
-      <link>https://siadat.github.io/post/blgo.html</link>
+      <link>https://siadat.github.io/post/blgo</link>
       <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/blgo.html</guid>
+      <guid>https://siadat.github.io/post/blgo</guid>
       <description>I wrote a small Go program called [blgo](https://github.com/siadat/blgo) to renders my posts&#xA;using [blackfriday](https://github.com/russross/blackfriday) markdown processor.&#xA;I also use [fsnotify](htt</description>
     </item>
     
     <item>
-      <title>Curious Gopher: override a struct method</title>
-      <link>https://siadat.github.io/post/curious-gopher-override.html</link>
+      <title>override a struct method</title>
+      <link>https://siadat.github.io/post/curious-gopher-override</link>
       <pubDate>Tue, 01 Nov 2016 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/curious-gopher-override.html</guid>
+      <guid>https://siadat.github.io/post/curious-gopher-override</guid>
       <description>```notebox&#xA;**NOTE** There is no object-oriented Java-like overriding in Go.&#xA;In this post I explain what I call overriding struct methods in Go.&#xA;```&#xA;&#xA;There are times when we want to make a small modif</description>
     </item>
     
     <item>
       <title>Raspberry Pi as a router</title>
-      <link>https://siadat.github.io/post/raspberrypi-router.html</link>
+      <link>https://siadat.github.io/post/raspberrypi-router</link>
       <pubDate>Tue, 29 Mar 2016 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/raspberrypi-router.html</guid>
+      <guid>https://siadat.github.io/post/raspberrypi-router</guid>
       <description>One possible way to setup a Raspberry Pi as a router is to flash [OpenWRT](https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi) on an SD card.&#xA;I will try that when I have an extra SD ca</description>
     </item>
     
     <item>
       <title>Tmux session_last_attached</title>
-      <link>https://siadat.github.io/post/tmux-last-attached.html</link>
+      <link>https://siadat.github.io/post/tmux-last-attached</link>
       <pubDate>Wed, 23 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/tmux-last-attached.html</guid>
+      <guid>https://siadat.github.io/post/tmux-last-attached</guid>
       <description>While working on my [session finder](/tmux-session-management), I tought it would be a good idea to list sessions sorted by the last time they were attached.&#xA;Tmux has a lot of useful variables for th</description>
     </item>
     
     <item>
       <title>Rails in_batches API</title>
-      <link>https://siadat.github.io/post/in_batches.html</link>
+      <link>https://siadat.github.io/post/in_batches</link>
       <pubDate>Sun, 20 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/in_batches.html</guid>
+      <guid>https://siadat.github.io/post/in_batches</guid>
       <description>At Sariina, we have a daily update job that affects millions of rows.&#xA;On this table, we also have an `ON UPDATE` trigger.&#xA;The update takes a long time and a lot of disk IO.&#xA;It makes the database virt</description>
     </item>
     
     <item>
       <title>Colorful Tmux panes</title>
-      <link>https://siadat.github.io/post/tmux-pane-style.html</link>
+      <link>https://siadat.github.io/post/tmux-pane-style</link>
       <pubDate>Wed, 16 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/tmux-pane-style.html</guid>
+      <guid>https://siadat.github.io/post/tmux-pane-style</guid>
       <description>&lt;style&gt;&#xA;  img.fullwidth { border-radius:5px; width:100%; }&#xA;&lt;/style&gt;&#xA;&#xA;Thanks to [this commit](https://github.com/tmux/tmux/commit/ee123c24), we are able to style an individual pane in Tmux.&#xA;You will h</description>
     </item>
     
     <item>
       <title>Tmux session management</title>
-      <link>https://siadat.github.io/post/tmux-session-management.html</link>
+      <link>https://siadat.github.io/post/tmux-session-management</link>
       <pubDate>Mon, 14 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/tmux-session-management.html</guid>
+      <guid>https://siadat.github.io/post/tmux-session-management</guid>
       <description>&lt;style&gt;&#xA;  .after-before div:last-child { display:none; }&#xA;  .after-before:hover div:first-child { display:none; }&#xA;  .after-before:hover div:last-child { display:block; }&#xA;  .after-before img { border-r</description>
     </item>
     
     <item>
       <title>My experience with Gogs</title>
-      <link>https://siadat.github.io/post/gogs.html</link>
+      <link>https://siadat.github.io/post/gogs</link>
       <pubDate>Mon, 07 Sep 2015 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/gogs.html</guid>
+      <guid>https://siadat.github.io/post/gogs</guid>
       <description>Until yesterday, we used GitLab at work. GitLab is a great project and it has tones of features. But our GitLab server is a small virtual machine with only 2GB of RAM. We had constant issues with hig</description>
     </item>
     

@@ -25,18 +25,21 @@
 using <a href="https://github.com/russross/blackfriday" target="_blank">blackfriday</a> markdown processor.
 I also use <a href="https://github.com/fsnotify/fsnotify" target="_blank">fsnotify</a> to watch templates and posts for changes.</p>
 
-<p>I don&rsquo;t like Javascript syntax highlighters.
-I customized the blackfriday.BlockCode func to use GoDoc&rsquo;s code renderer.
+<p>There are many Javascript syntax highlighters.
+I prefer not to use them.
+They add a new dependency, increase page size, are slow, and cause the style to flick with a delay.</p>
+
+<p>I customized the blackfriday.BlockCode func to use GoDoc&rsquo;s code renderer.
 It makes my Go code blocks look similar to GoDoc, which is pleasing to my eyes.
 Here is an example:</p>
-<pre><span id="L1" class="ln">     1</span>	<span class="comment">// Print hello</span>
-<span id="L2" class="ln">     2</span>	fmt.Println(&#34;Hello&#34;)
+<pre><span class="comment">// Print hello</span>
+fmt.Println(&#34;Hello&#34;)
 </pre>
 <p>Isn&rsquo;t that beautiful?</p>
 
 <p>To render HTML files, I execute this on <a href="https://github.com/siadat/siadat.github.io/" target="_blank">my blog repository</a>:</p>
 <div class='shell'>
-<pre><code class="language-shell">$ blgo watch src/*
+<pre><code class="language-shell">$ blgo watch src/*.md
 </code></pre>
 </div>
 <p>To preview the posts, I use the
@@ -54,12 +57,16 @@ post on <a href="http://localhost:8080/post/curious-gopher-override.html" target
   </main>
 
   <hr>
+  <!--
   <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
   <hr>
+  -->
 
+  <!--
   <div class="entry-meta">
-    Please share this post if you liked it. :-)
+    Please share this post if you liked it.
   </div>
+  -->
   
   <div class="entry-meta">
     <time itemprop="datePublished" datetime="November 10, 2016">
@@ -80,9 +87,11 @@ post on <a href="http://localhost:8080/post/curious-gopher-override.html" target
 
   <!-- calq -->
   <script type="text/javascript">
-  (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
-  calq.init("5bfaf3519521157e5b8274b63c83d728");
-  calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  if (window.location.hostname != "localhost") {
+    (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+    calq.init("5bfaf3519521157e5b8274b63c83d728");
+    calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  }
   </script>
 
 </body>

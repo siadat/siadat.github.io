@@ -7,7 +7,10 @@ I wrote a small Go program called [blgo](https://github.com/siadat/blgo) to rend
 using [blackfriday](https://github.com/russross/blackfriday) markdown processor.
 I also use [fsnotify](https://github.com/fsnotify/fsnotify) to watch templates and posts for changes.
 
-I don't like Javascript syntax highlighters.
+There are many Javascript syntax highlighters.
+I prefer not to use them.
+They add a new dependency, increase page size, are slow, and cause the style to flick with a delay.
+
 I customized the blackfriday.BlockCode func to use GoDoc's code renderer.
 It makes my Go code blocks look similar to GoDoc, which is pleasing to my eyes.
 Here is an example:
@@ -23,7 +26,7 @@ Isn't that beautiful?
 To render HTML files, I execute this on [my blog repository](https://github.com/siadat/siadat.github.io/):
 
 ```shell
-$ blgo watch src/*
+$ blgo watch src/*.md
 ```
 
 To preview the posts, I use the
