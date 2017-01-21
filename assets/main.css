@@ -7,25 +7,23 @@ body {
         max-width: 630px;
 }
 h1, h2, h3, h4, h5, h6 {
-  /*color: #37ab37;*/
-  color:#ca00de;
+  color:#010101;
   line-height:1.5em;
 }
 a {
-  color:#31579c;
+  color:#020202;
+  font-weight:bold;
   text-decoration:none;
 }
 a:hover {
   text-decoration:underline;
 }
 article a {
-  /*color:#37ab37;*/
-  color:#ca00de;
+  color:#010101;
   text-decoration:none;
 }
 .list a:visited {
-  /*color:#90bb90;*/
-  color:#e385ec;
+  color:#030303;
 }
 body {
   padding:50px 50px 150px 50px;
@@ -36,7 +34,7 @@ article {
 }
 hr {
   border:0;
-  border-top:1px solid #ca00de;
+  border-top:1px solid #010101;
 }
 .entry-meta {
   color:#555;
@@ -52,6 +50,9 @@ hr {
   }
 }
 
+code {
+  font-weight:bold;
+}
 pre,
 code {
   font-family: Menlo, monospace;

@@ -6,8 +6,16 @@
     <description>Recent content on Sina Siadat</description>
     <generator>Blogo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Dec 2016 16:09:59 +0330</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jan 2017 03:57:42 +0330</lastBuildDate>
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Context API explained</title>
+      <link>https://siadat.github.io/post/context</link>
+      <pubDate>Sat, 21 Jan 2017 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/context</guid>
+      <description>### Introduction&#xA;&#xA;Let&#39;s start with a simple problem.&#xA;We have this program that performs an action every second.&#xA;&#xA;```go&#xA;func Perform() {&#xA;    for {&#xA;        SomeFunction()&#xA;        time.Sleep(time.Second</description>
+    </item>
     
     <item>
       <title>How I blog</title>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Context API explained</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
+
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Context API explained</h1>
+      <section itemprop="entry-text">
+        <h3>Introduction</h3>
+
+<p>Let&rsquo;s start with a simple problem.
+We have this program that performs an action every second.</p>
+<pre>func Perform() {
+    for {
+        SomeFunction()
+        time.Sleep(time.Second)
+    }
+}
+</pre>
+<p>And we call it like this</p>
+<pre>go Perform()
+</pre>
+<p>The goal is to cancel the Perform function either explicitly or when a deadline is exceeded.
+Context package was initially designed to implement exactly what we need; request cancelation and deadline.
+Take a look at the context.Context interface:</p>
+<pre>type Context interface {
+    Done() &lt;-chan struct{}
+    Err() error
+    Deadline() (deadline time.Time, ok bool)
+    Value(key interface{}) interface{}
+}
+</pre>
+<p>Notice that all the methods perform a query and get information:</p>
+
+<ul>
+<li><code>ctx.Done()</code> return cancelation channel, which is used to check if context is canceled.</li>
+<li><code>ctx.Err()</code> return cancelation reason (DeadlineExceeded or Canceled).</li>
+<li><code>ctx.Deadline()</code> return deadline, if set.</li>
+<li><code>ctx.Value(key)</code> return value for key.</li>
+</ul>
+
+<p>This API raises a few questions.
+Why does ctx.Done() return a channel? Why not a bool value?
+Why is there no cancel method? How do we set a deadline?
+What is ctx.Value(key) doing here?
+To understand this API,
+it is useful to know that it is designed to satisfy the following two requirements:</p>
+
+<h4>1. Cancelation should be advisory</h4>
+
+<!--
+Starting a goroutine is easy. Simply insert "go" before a function call.
+However, stopping a running goroutine is not as easy.
+-->
+
+<p>A caller is not aware of the internals of the function it is invoking.
+It should not interrupt or panic the callee.
+It is the responsibility of every function to return on its own.</p>
+
+<p>Instead of forcing a function to stop, the caller should <em>inform</em> it that its work is no longer needed.
+Caller sends the information about cancelation and let the function decide how to deal with it.
+For example, a function could clean up and return early
+when it is informed that its work is no longer needed.</p>
+
+<h4>2. Cancelation should be transitive</h4>
+
+<p>When canceling a function,
+we need to also cancel all functions that are running on its behalf.
+This means that the cancelation information
+should be broadcast from caller down to all of its child functions.</p>
+
+<h3>Create a context</h3>
+
+<p>The simplest way to create a context is using context.Background():</p>
+<pre>ctx := context.Background()
+</pre>
+<p>context.Background() returns an empty context.
+For cancelation to be advisory and transitive,
+we should give each function the cancelation information as its first argument.
+We change our program from</p>
+<pre>go Perform()
+</pre>
+<p>to</p>
+<pre>ctx := context.Background()
+go Perform(ctx)
+</pre>
+<h3>Set a deadline</h3>
+
+<p>An empty context is useless.
+We need to set a deadline or be able to cancel it.
+However, the context.Context interface only defines query methods.
+We are not able to modify its deadline.</p>
+
+<p>The reason we cannot modify a context is that we want to prevent the Perform function to be able to modify or cancel the request.
+The direction of the flow of information in context is strictly from parent to child.
+For example, when a user closes a tab in their browser (parent), all the functions running behalf of that tab (child) should be canceled.</p>
+
+<p>Therefore, we derive a new context with its deadline updated:</p>
+<pre>ctx, cancel := context.WithDeadline(parentContext, time)
+<span class="comment">// or</span>
+ctx, cancel := context.WithTimeout(parentContext, duration)
+</pre>
+<p>Notice that cancel is returned as a separate value.
+If ctx had a cancel method, child functions would have been able to cancel it.
+Again, the API stricts the direction of the cancelation to only go down from parent to child.
+In the special case where we need the child function to cancel the request, we will have to pass the cancel function as a separate argument explicitly.</p>
+
+<p>Continuing with our example we will have</p>
+<pre>ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+go Perform(ctx)
+defer cancel()
+</pre>
+<h3>Check if context is canceled</h3>
+
+<p>The cancelation event should be broadcast down to all called functions.
+Go channels have a property that make them suitable for this purpose;
+receiving from a closed channel returns a zero value immediately.
+This means that multiple functions could watch a channel until it is closed.
+When it is closed they know that it was canceled.</p>
+
+<p>The Done method returns a read-only channel that is closed on cancelation.
+Here&rsquo;s a simple example for checking if the context is canceled.</p>
+<pre>func Perform(ctx context.Context) {
+    for {
+        SomeFunction()
+
+        select {
+        case &lt;-ctx.Done():
+            <span class="comment">// ctx is canceled</span>
+            return
+        default:
+            <span class="comment">// ctx is not canceled, continue immediately</span>
+        }
+    }
+}
+</pre>
+<p>Notice that the select statement does not block.
+It is because it has a default statement.
+This causes the for loop to execute SomeFunction immediately.
+We need to sleep for 1 second between each iteration.</p>
+<pre>func Perform(ctx context.Context) {
+    for {
+        SomeFunction()
+
+        select {
+        case &lt;-ctx.Done():
+            <span class="comment">// ctx is canceled</span>
+            return
+        case &lt;-time.After(time.Second):
+            <span class="comment">// wait for 1 second</span>
+        }
+    }
+}
+</pre>
+<p>When context is canceled, we find out the cause by calling ctx.Err().</p>
+<pre>func Perform(ctx context.Context) error {
+    for {
+        SomeFunction()
+
+        select {
+        case &lt;-ctx.Done():
+            return ctx.Err()
+        case &lt;-time.After(time.Second):
+            <span class="comment">// wait for 1 second</span>
+        }
+    }
+}
+</pre>
+<p>This function has only two possible values:
+context.DeadlineExceeded and context.Canceled.
+ctx.Err() is expected to be called only <em>after</em> ctx.Done() is closed.
+The result of ctx.Err() before ctx is canceled is not defined by the API.</p>
+
+<p>If SomeFunction takes a long time, we could let it know about the cancelation as well.</p>
+<pre>func Perform(ctx context.Context) error {
+    for {
+        SomeFunction(ctx)
+
+        select {
+        case &lt;-ctx.Done():
+            return ctx.Err()
+        case &lt;-time.After(time.Second):
+            <span class="comment">// wait for 1 second</span>
+        }
+    }
+}
+</pre>
+<h3>What is context.TODO()?</h3>
+
+<p>Similar to context.Background, another way of creating a context is</p>
+<pre>ctx := context.TODO()
+</pre>
+<p>TODO function returns an empty context as well.
+TODO is used while refactoring functions to support context.
+We use TODO when a parent context is not available in that function yet.
+All TODO contexts should eventually be replaced with another context.</p>
+
+<h3>What is ctx.WithValue()?</h3>
+
+<p>The most important usage of context is with handling cancelation in requests.
+To do that, context is usually carried out during the lifetime of a request (e.g. as the first argument to functions).
+Another useful information that should be carried out during the life of a request are values such as user session and login information.</p>
+
+<p>As an extra feature, the context package also provides a way to store values.
+These values are stored in the context instances because they usually share the same life span as the cancelation information.
+To set a value we derive a context using context.WithValue</p>
+<pre>ctx := context.WithValue(parentContext, &#34;key&#34;, &#34;value&#34;)
+</pre>
+<h3>Resources</h3>
+
+<p>I highly recommend the following two resources for anyone who wants to understand the context package.</p>
+
+<ul>
+<li><a href="https://vimeo.com/115309491" target="_blank">Cancellation, Context, and Plumbing</a> (video) by Sameer Ajmani</li>
+<li><a href="https://blog.golang.org/pipelines" target="_blank">Pipelines and cancellation</a> (blog post) by Sameer Ajmani</li>
+</ul>
+
+<h3>Conclusion</h3>
+
+<p>I hope this post helped the reader understand the context API a little better.
+Post your comments on <a href="https://www.reddit.com/r/golang/comments/5p7qnb/context_api_explained/" target="_blank">reddit</a>,
+send an email (siadat at gmail),
+or <a href="https://twitter.com/sinasiadat" target="_blank">tweet me</a> your suggestions and corrections.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <!--
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
+  -->
+
+  <!--
+  <div class="entry-meta">
+    Please share this post if you liked it.
+  </div>
+  -->
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="January 21, 2017">
+      January 21, 2017
+    </time>
+  </div>
+  
+
+  <!-- calq -->
+  <script type="text/javascript">
+  if (window.location.hostname != "localhost") {
+    (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+    calq.init("5bfaf3519521157e5b8274b63c83d728");
+    calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  }
+  </script>
+
+</body>
+</html>
