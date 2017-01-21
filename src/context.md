@@ -127,8 +127,10 @@ Continuing with our example we will have
 ```go
 ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 go Perform(ctx)
-defer cancel()
 ```
+
+We can use cancel() to signal Perform that we don't need its work anymore.
+In the next section we will see how Perform handles this signal.
 
 ### Check if context is canceled
 
@@ -192,6 +194,7 @@ func Perform(ctx context.Context) error {
             // wait for 1 second
         }
     }
+    return nil
 }
 ```
 
@@ -201,6 +204,7 @@ ctx.Err() is expected to be called only *after* ctx.Done() is closed.
 The result of ctx.Err() before ctx is canceled is not defined by the API.
 
 If SomeFunction takes a long time, we could let it know about the cancelation as well.
+We do that by passing ctx to it as its first argument.
 
 ```go
 func Perform(ctx context.Context) error {
@@ -214,6 +218,7 @@ func Perform(ctx context.Context) error {
             // wait for 1 second
         }
     }
+    return nil
 }
 ```
 
@@ -224,23 +229,23 @@ ctx := context.TODO()
 ```
 TODO function returns an empty context as well.
 TODO is used while refactoring functions to support context.
-We use TODO when a parent context is not available in that function yet.
+We use it when a parent context is not available in that function yet.
 All TODO contexts should eventually be replaced with another context.
 
 ### What is ctx.WithValue?
-The most important usage of context is with handling cancelation in requests.
-To do that, context is usually carried out during the lifetime of a request (e.g. as the first argument to functions).
-Another useful information that should be carried out during the life of a request are values such as user session and login information.
+The most common usage of context is with handling cancelation in requests.
+To achieve that, context is usually carried out during the lifetime of a request (e.g. as the first argument to all functions).
 
-As an extra feature, the context package also provides a way to store values.
-These values are stored in the context instances because they usually share the same life span as the cancelation information.
+Another useful information that should be carried out during the life of a request is values such as user session and login information.
+The context package makes it easy to store those values in context instances as well.
+Because they share the same call path as the cancelation information.
 To set a value we derive a context using context.WithValue
 
 ```go
 ctx := context.WithValue(parentContext, "key", "value")
 ```
 
-We can retrieve this value from ctx or any context that is derived from it using
+To retrieve this value from ctx or any context that is derived from it use
 
 ```go
 value := ctx.Value("key")
@@ -248,7 +253,8 @@ value := ctx.Value("key")
 
 ### Other resources
 
-I highly recommend the following two resources for anyone who wants to understand the context package.
+I highly recommend the following two resources
+for anyone who wants to understand the context package.
 
 - [Cancellation, Context, and Plumbing](https://vimeo.com/115309491) (video) by Sameer Ajmani
 - [Pipelines and cancellation](https://blog.golang.org/pipelines) (blog post) by Sameer Ajmani
@@ -256,6 +262,6 @@ I highly recommend the following two resources for anyone who wants to understan
 ### Conclusion
 
 I hope this post helped the reader understand the context API a little better.
-Post your comments on [reddit](https://www.reddit.com/r/golang/comments/5p7qnb/context_api_explained/),
-send an email (siadat at gmail),
+[Comment](https://www.reddit.com/r/golang/comments/5p7qnb/context_api_explained/),
+email (siadat at gmail),
 or [tweet me](https://twitter.com/sinasiadat) your suggestions and corrections.

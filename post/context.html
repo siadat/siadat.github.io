@@ -123,8 +123,10 @@ In the special case where we need the child function to cancel the request, we w
 <p>Continuing with our example we will have</p>
 <pre>ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 go Perform(ctx)
-defer cancel()
 </pre>
+<p>We can use cancel() to signal Perform that we don&rsquo;t need its work anymore.
+In the next section we will see how Perform handles this signal.</p>
+
 <h3>Check if context is canceled</h3>
 
 <p>The cancelation event should be broadcast down to all called functions.
@@ -179,6 +181,7 @@ We need to sleep for 1 second between each iteration.</p>
             <span class="comment">// wait for 1 second</span>
         }
     }
+    return nil
 }
 </pre>
 <p>This function has only two possible values:
@@ -186,7 +189,8 @@ context.DeadlineExceeded and context.Canceled.
 ctx.Err() is expected to be called only <em>after</em> ctx.Done() is closed.
 The result of ctx.Err() before ctx is canceled is not defined by the API.</p>
 
-<p>If SomeFunction takes a long time, we could let it know about the cancelation as well.</p>
+<p>If SomeFunction takes a long time, we could let it know about the cancelation as well.
+We do that by passing ctx to it as its first argument.</p>
 <pre>func Perform(ctx context.Context) error {
     for {
         SomeFunction(ctx)
@@ -198,6 +202,7 @@ The result of ctx.Err() before ctx is canceled is not defined by the API.</p>
             <span class="comment">// wait for 1 second</span>
         }
     }
+    return nil
 }
 </pre>
 <h3>What is context.TODO()?</h3>
@@ -207,26 +212,27 @@ The result of ctx.Err() before ctx is canceled is not defined by the API.</p>
 </pre>
 <p>TODO function returns an empty context as well.
 TODO is used while refactoring functions to support context.
-We use TODO when a parent context is not available in that function yet.
+We use it when a parent context is not available in that function yet.
 All TODO contexts should eventually be replaced with another context.</p>
 
 <h3>What is ctx.WithValue?</h3>
 
-<p>The most important usage of context is with handling cancelation in requests.
-To do that, context is usually carried out during the lifetime of a request (e.g. as the first argument to functions).
-Another useful information that should be carried out during the life of a request are values such as user session and login information.</p>
+<p>The most common usage of context is with handling cancelation in requests.
+To achieve that, context is usually carried out during the lifetime of a request (e.g. as the first argument to all functions).</p>
 
-<p>As an extra feature, the context package also provides a way to store values.
-These values are stored in the context instances because they usually share the same life span as the cancelation information.
+<p>Another useful information that should be carried out during the life of a request is values such as user session and login information.
+The context package makes it easy to store those values in context instances as well.
+Because they share the same call path as the cancelation information.
 To set a value we derive a context using context.WithValue</p>
 <pre>ctx := context.WithValue(parentContext, &#34;key&#34;, &#34;value&#34;)
 </pre>
-<p>We can retrieve this value from ctx or any context that is derived from it using</p>
+<p>To retrieve this value from ctx or any context that is derived from it use</p>
 <pre>value := ctx.Value(&#34;key&#34;)
 </pre>
 <h3>Other resources</h3>
 
-<p>I highly recommend the following two resources for anyone who wants to understand the context package.</p>
+<p>I highly recommend the following two resources
+for anyone who wants to understand the context package.</p>
 
 <ul>
 <li><a href="https://vimeo.com/115309491" target="_blank">Cancellation, Context, and Plumbing</a> (video) by Sameer Ajmani</li>
@@ -236,8 +242,8 @@ To set a value we derive a context using context.WithValue</p>
 <h3>Conclusion</h3>
 
 <p>I hope this post helped the reader understand the context API a little better.
-Post your comments on <a href="https://www.reddit.com/r/golang/comments/5p7qnb/context_api_explained/" target="_blank">reddit</a>,
-send an email (siadat at gmail),
+<a href="https://www.reddit.com/r/golang/comments/5p7qnb/context_api_explained/" target="_blank">Comment</a>,
+email (siadat at gmail),
 or <a href="https://twitter.com/sinasiadat" target="_blank">tweet me</a> your suggestions and corrections.</p>
 
       </section>
