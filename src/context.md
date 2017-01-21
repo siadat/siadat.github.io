@@ -125,7 +125,7 @@ In the special case where we need the child function to cancel the request, we w
 Continuing with our example we will have
 
 ```go
-ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 go Perform(ctx)
 defer cancel()
 ```
@@ -227,7 +227,7 @@ TODO is used while refactoring functions to support context.
 We use TODO when a parent context is not available in that function yet.
 All TODO contexts should eventually be replaced with another context.
 
-### What is ctx.WithValue()?
+### What is ctx.WithValue?
 The most important usage of context is with handling cancelation in requests.
 To do that, context is usually carried out during the lifetime of a request (e.g. as the first argument to functions).
 Another useful information that should be carried out during the life of a request are values such as user session and login information.
@@ -240,7 +240,13 @@ To set a value we derive a context using context.WithValue
 ctx := context.WithValue(parentContext, "key", "value")
 ```
 
-### Resources
+We can retrieve this value from ctx or any context that is derived from it using
+
+```go
+value := ctx.Value("key")
+```
+
+### Other resources
 
 I highly recommend the following two resources for anyone who wants to understand the context package.
 

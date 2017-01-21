@@ -121,7 +121,7 @@ Again, the API stricts the direction of the cancelation to only go down from par
 In the special case where we need the child function to cancel the request, we will have to pass the cancel function as a separate argument explicitly.</p>
 
 <p>Continuing with our example we will have</p>
-<pre>ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+<pre>ctx, cancel := context.WithTimeout(context.Background(), time.Hour)
 go Perform(ctx)
 defer cancel()
 </pre>
@@ -210,7 +210,7 @@ TODO is used while refactoring functions to support context.
 We use TODO when a parent context is not available in that function yet.
 All TODO contexts should eventually be replaced with another context.</p>
 
-<h3>What is ctx.WithValue()?</h3>
+<h3>What is ctx.WithValue?</h3>
 
 <p>The most important usage of context is with handling cancelation in requests.
 To do that, context is usually carried out during the lifetime of a request (e.g. as the first argument to functions).
@@ -221,7 +221,10 @@ These values are stored in the context instances because they usually share the 
 To set a value we derive a context using context.WithValue</p>
 <pre>ctx := context.WithValue(parentContext, &#34;key&#34;, &#34;value&#34;)
 </pre>
-<h3>Resources</h3>
+<p>We can retrieve this value from ctx or any context that is derived from it using</p>
+<pre>value := ctx.Value(&#34;key&#34;)
+</pre>
+<h3>Other resources</h3>
 
 <p>I highly recommend the following two resources for anyone who wants to understand the context package.</p>
 
