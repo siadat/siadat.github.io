@@ -224,10 +224,10 @@ To achieve that, context is usually carried out during the lifetime of a request
 The context package makes it easy to store those values in context instances as well.
 Because they share the same call path as the cancelation information.
 To set a value we derive a context using context.WithValue</p>
-<pre>ctx := context.WithValue(parentContext, &#34;key&#34;, &#34;value&#34;)
+<pre>ctx := context.WithValue(parentContext, key, value)
 </pre>
 <p>To retrieve this value from ctx or any context that is derived from it use</p>
-<pre>value := ctx.Value(&#34;key&#34;)
+<pre>value := ctx.Value(key)
 </pre>
 <h3>Other resources</h3>
 

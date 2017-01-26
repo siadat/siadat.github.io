@@ -242,13 +242,13 @@ Because they share the same call path as the cancelation information.
 To set a value we derive a context using context.WithValue
 
 ```go
-ctx := context.WithValue(parentContext, "key", "value")
+ctx := context.WithValue(parentContext, key, value)
 ```
 
 To retrieve this value from ctx or any context that is derived from it use
 
 ```go
-value := ctx.Value("key")
+value := ctx.Value(key)
 ```
 
 ### Other resources
