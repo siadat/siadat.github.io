@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>go:linkname directive</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
+
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">go:linkname directive</h1>
+      <section itemprop="entry-text">
+        <h2>What</h2>
+
+<p>This is a short post about the go:linkname directive.
+The documentation <a href="https://golang.org/cmd/compile/#hdr-Compiler_Directives" target="_blank">explains</a>:</p>
+
+<blockquote>
+<p>The //go:linkname directive instructs the compiler to use “importpath.name”
+as the object file symbol name for the variable or function declared as
+“localname” in the source code.  Because this directive can subvert the type
+system and package modularity, it is only enabled in files that have
+imported &ldquo;unsafe&rdquo;.</p>
+</blockquote>
+
+<h2>Why</h2>
+
+<p>This directive is not used very often in practice.
+I advise against using it.
+As the doc says it can &ldquo;subvert the type system and package modularity&rdquo;.
+However, it is a good idea to understand what it does when reading the standard library.
+It is used in the standard library to access unexported functions of another package.
+This quote <a href="https://groups.google.com/d/msg/golang-nuts/JMA9Pk8LkDg/QJAV2vITDwAJ" target="_blank">explains</a> the motivation behind it:</p>
+
+<blockquote>
+<p>It&rsquo;s primarily a hack that lets certain functions live in the runtime
+package, and access runtime internals, but still pretend that they are
+unexported functions of some different package.</p>
+</blockquote>
+
+<h2>Example</h2>
+
+<p>Let&rsquo;s look at an example.
+The time.Now function is defined in the runtime package.</p>
+<pre>func Now() Time {
+  sec, nsec, mono := now()
+  t := unixTime(sec, nsec)
+  t.setMono(int64(mono))
+  return t
+}
+</pre>
+<p>It calls the now function. Let&rsquo;s look at its definition.</p>
+<pre><span class="comment">// Provided by package runtime.</span>
+func now() (sec int64, nsec int32, mono uint64)
+</pre>
+<p>The now function has no body.
+This is valid syntax as <a href="https://golang.org/ref/spec#Function_declarations" target="_blank">described in the spec</a>.
+It is used when a function is defined elsewhere, e.g., assembly or in another Go package using go:linkname.
+In the case of the now function, the function is defined and linked in the runtime package.</p>
+<pre><span class="comment">//go:linkname time_now time.now</span>
+func time_now() (sec int64, nsec int32, mono uint64) {
+  sec, nsec = walltime()
+  return sec, nsec, uint64(nanotime() - startNano + 1)
+}
+</pre>
+<p>Notice the directive is linking a local function (time_now) to time.now.
+The first argument is the local name, and the second argument is the import path of the linked function.
+Here is another example:</p>
+<pre><span class="comment">//go:linkname hellofunc a/b/pkg2.hola</span>
+</pre>
+<p>In our time.Now example, the logic for getting the current time is performed in the runtime package.
+But runtime.time_now is hidden in the time package.
+Without the go:linkname directive, runtime would have had to export time_now.
+The API is designed so that we should fetch the current time using time.Now, and not a function in runtime.</p>
+
+<h2>Notes</h2>
+
+<ul>
+<li>the directive comment could be in either two packages.</li>
+<li>to compile a package A with a function that is linked and defined in package B,
+we need to import package B to allow the compiler/linker find the definition.</li>
+<li>we cannot compile a program with go:linkname using go-build command,
+because go-build enables the -complete compiler flag.
+With this flag, the compiler does not allow declaration of functions without body.
+It expects all functions to be defined in the package or idiomatically exported/imported from another package.</li>
+</ul>
+
+<p>To see more examples of go:linkname see the runtime package or <a href="https://github.com/siadat/golinkname-test" target="_blank">see this example</a>.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <!--
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
+  -->
+
+  <!--
+  <div class="entry-meta">
+    Please share this post if you liked it.
+  </div>
+  -->
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="February 10, 2017">
+      February 10, 2017
+    </time>
+  </div>
+  
+
+  <!-- calq -->
+  <script type="text/javascript">
+  if (window.location.hostname != "localhost") {
+    (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+    calq.init("5bfaf3519521157e5b8274b63c83d728");
+    calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  }
+  </script>
+
+</body>
+</html>

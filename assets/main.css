@@ -99,3 +99,10 @@ pre {
   border-left:4px solid #333;
   padding:0 10px;
 }
+
+blockquote {
+  margin:0;
+  padding:0 20px;
+  border-left:10px solid #eee;
+  color:#006600;
+}
