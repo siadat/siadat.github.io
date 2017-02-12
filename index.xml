@@ -10,11 +10,11 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>go:linkname directive</title>
+      <title>go:linkname compiler directive</title>
       <link>https://siadat.github.io/post/golinkname</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/golinkname</guid>
-      <description>## What&#xA;&#xA;This is a short post about go:linkname directive.&#xA;The documentation [explains](https://golang.org/cmd/compile/#hdr-Compiler_Directives):&#xA;&#xA;&gt; The //go:linkname directive instructs the compiler</description>
+      <description>## What&#xA;&#xA;This is a short post about the go:linkname compiler directive.&#xA;The documentation [explains](https://golang.org/cmd/compile/#hdr-Compiler_Directives):&#xA;&#xA;&gt; The //go:linkname directive instructs</description>
     </item>
     
     <item>

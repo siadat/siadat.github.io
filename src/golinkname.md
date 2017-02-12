@@ -1,12 +1,12 @@
 ---
-title: "go:linkname directive"
+title: "go:linkname compiler directive"
 date: 2017-02-10
 tags: go
 ---
 
 ## What
 
-This is a short post about the go:linkname directive.
+This is a short post about the go:linkname compiler directive.
 The documentation [explains](https://golang.org/cmd/compile/#hdr-Compiler_Directives):
 
 > The //go:linkname directive instructs the compiler to use “importpath.name”
@@ -31,7 +31,7 @@ This quote [explains](https://groups.google.com/d/msg/golang-nuts/JMA9Pk8LkDg/QJ
 ## Example
 
 Let's look at an example.
-The time.Now function is defined in the runtime package.
+Here is the definition of the time.Now function.
 
 ```go
 func Now() Time {
@@ -69,9 +69,10 @@ Here is another example:
 ```
 
 In our time.Now example, the logic for getting the current time is performed in the runtime package.
-But runtime.time_now is hidden in the time package.
+<!--But runtime.time_now is hidden in the time package.-->
 Without the go:linkname directive, runtime would have had to export time_now.
-The API is designed so that we should fetch the current time using time.Now, and not a function in runtime.
+The API is designed so that users should fetch the current time using time.Now,
+and not a function in runtime.
 
 ## Notes
 

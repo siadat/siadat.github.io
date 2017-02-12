@@ -7,7 +7,7 @@
   <link rel="stylesheet" inline href="/assets/normalize.css">
   <link rel="stylesheet" inline href="/assets/main.css">
   <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
-  <title>go:linkname directive</title>
+  <title>go:linkname compiler directive</title>
 </head>
 <body>
   <div id="everything">
@@ -19,11 +19,11 @@
 
   <main role="main">
     <article itemscope itemtype="http://schema.org/BlogPosting">
-      <h1 class="entry-title" itemprop="headline">go:linkname directive</h1>
+      <h1 class="entry-title" itemprop="headline">go:linkname compiler directive</h1>
       <section itemprop="entry-text">
         <h2>What</h2>
 
-<p>This is a short post about the go:linkname directive.
+<p>This is a short post about the go:linkname compiler directive.
 The documentation <a href="https://golang.org/cmd/compile/#hdr-Compiler_Directives" target="_blank">explains</a>:</p>
 
 <blockquote>
@@ -52,7 +52,7 @@ unexported functions of some different package.</p>
 <h2>Example</h2>
 
 <p>Let&rsquo;s look at an example.
-The time.Now function is defined in the runtime package.</p>
+Here is the definition of the time.Now function.</p>
 <pre>func Now() Time {
   sec, nsec, mono := now()
   t := unixTime(sec, nsec)
@@ -80,9 +80,10 @@ Here is another example:</p>
 <pre><span class="comment">//go:linkname hellofunc a/b/pkg2.hola</span>
 </pre>
 <p>In our time.Now example, the logic for getting the current time is performed in the runtime package.
-But runtime.time_now is hidden in the time package.
+<!--But runtime.time_now is hidden in the time package.-->
 Without the go:linkname directive, runtime would have had to export time_now.
-The API is designed so that we should fetch the current time using time.Now, and not a function in runtime.</p>
+The API is designed so that users should fetch the current time using time.Now,
+and not a function in runtime.</p>
 
 <h2>Notes</h2>
 
