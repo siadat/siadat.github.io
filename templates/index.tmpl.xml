@@ -6,7 +6,6 @@
     <description>Recent content on {{.Title}}</description>
     <generator>Blogo</generator>
     <language>en-us</language>
-    {{with .UpdatedAt}}<lastBuildDate>{{.Format "Mon, 02 Jan 2006 15:04:05 -0700"}}</lastBuildDate>{{end}}
     <atom:link href="{{.XMLURL}}" rel="self" type="application/rss+xml" />
     {{range .Posts}}
     <item>
