@@ -1,7 +1,10 @@
 .PHONY: dependencies
 
 generate: dependencies
-	blgo --templates templates/ --output . ./src/
+	blgo --assets assets/ --templates templates/ --output . ./src/
+
+serve: dependencies
+	blgo --watch --serve 127.0.0.1:4040 --assets assets/ --templates templates/ --output . ./src/
 
 clean:
 	rm -rf post/*.html
