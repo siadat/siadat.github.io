@@ -1,5 +1,5 @@
 ---
-title: "override a struct method"
+title: "Override a struct method"
 date: 2016-11-01
 tags: go
 ---
