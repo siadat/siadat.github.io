@@ -976,9 +976,11 @@ class RobotFollowTheLeader extends Kilobot {
       Wait: 'Wait',
     };
     this.RADIUS = RADIUS;
+    // this.abilityAttract = new AbilityAttractAndAvoid();
   }
 
   setup() {
+    // this.abilityAttract.setup(this);
     if(this.id == 1) {
       this.amLeader = true;
       this.amTail = false;
@@ -1089,6 +1091,9 @@ class RobotFollowTheLeader extends Kilobot {
   }
 
   getCloserToFrontRobot() {
+    // this.abilityAttract.doAttract(this, this.frontRobotDist);
+    // return;
+
     switch(this.direction) {
       case 0: this.set_motors(0, this.kilo_turn_right); break;
       case 1: this.set_motors(this.kilo_turn_left, 0); break;

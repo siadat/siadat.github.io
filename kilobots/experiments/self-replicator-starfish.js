@@ -1235,10 +1235,10 @@ window['ExperimentReplicatorStarfish'] = class {
         y: gPos.y * INITIAL_DIST*0.5 * +Math.sqrt(3),
       };
 
-      // if(!PERFECT) {
-      //   pos.x += noise(0.2 * INITIAL_DIST);
-      //   pos.y += noise(0.2 * INITIAL_DIST);
-      // }
+      if(!PERFECT) {
+        pos.x += noise(0.2 * INITIAL_DIST);
+        pos.y += noise(0.2 * INITIAL_DIST);
+      }
 
       return pos;
     }
