@@ -156,7 +156,7 @@ window['ExperimentLab1.3'] = class {
 }
 
 // ---
-class RobotLab7 extends Kilobot {
+class RobotSync extends Kilobot {
   setup() {
     this.PERIOD = 60;
     this.RESET_TIME_ADJUSTMENT_DIVIDER = 120;
@@ -251,7 +251,7 @@ class RobotLab7 extends Kilobot {
 	}
 }
 
-window['ExperimentLab7'] = class {
+window['ExperimentSync'] = class {
   constructor() {
     this.runnerOptions = {
       limitSpeed: true,
@@ -299,7 +299,7 @@ window['ExperimentLab7'] = class {
           y: i * this.INITIAL_DIST + (this.gradientNoise()-0.5)*RADIUS*1,
         },
           this.MathRandom() * 2*Math.PI,
-          new RobotLab7(),
+          new RobotSync(),
         );
       }
     }

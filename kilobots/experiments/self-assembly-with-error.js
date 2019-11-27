@@ -875,7 +875,7 @@ class GradientAndAssemblyWithErrorRobot extends Kilobot {
 
 // ----
 
-window['ExperimentAssemblyWithError'] = class {
+window['ExperimentAssemblyStarfish'] = class {
   constructor() {
     this.selectedUID = null;
     this.drawLocalizationError = true;
