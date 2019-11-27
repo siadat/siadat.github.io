@@ -1,0 +1,193 @@
+[
+  {
+    "todo": "",
+    "order": "1",
+    "name": "Kilobot Simulator",
+    "image1": "https://i.imgur.com/n6hfCUO.png",
+    "image2": "https://i.imgur.com/mbQbFcT.png",
+    "image3": "https://i.imgur.com/E6SPSNU.png",
+    "kind": "Personal",
+    "description": "I implemeted an online [Kilobot](https://ssr.seas.harvard.edu/kilobots) simulator. The purpose of this project is to make Kilobot programming easily and instantly accessible to everyone on all device with a modern browser. To my knowledge, this it the only Kilobot platform for running experiments in the browser and the only reproduction of the [self-assembly algorithm](https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf)."
+  },
+  {
+    "todo": "",
+    "order": "2",
+    "name": "Evolution of Morphology and Controllers for Physically Simulated Creatures",
+    "image1": "https://i.imgur.com/qPocT9i.png",
+    "image2": "https://i.imgur.com/yk7Lb75.png",
+    "image3": "",
+    "kind": "Undergraduate project",
+    "description": "I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) (Karl Sims) as my undergraduate Final Year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society."
+  },
+  {
+    "todo": "",
+    "order": "3",
+    "name": "No Fun Football",
+    "image1": "https://i.imgur.com/uTv6fJt.png",
+    "image2": "https://i.imgur.com/aH9DNnu.png",
+    "image3": "",
+    "kind": "Personal",
+    "description": "An online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind."
+  },
+  {
+    "todo": "",
+    "order": "4",
+    "name": "World Cup and Derby Lotteries",
+    "image1": "https://i.imgur.com/xCZvnJy.png",
+    "image2": "",
+    "image3": "",
+    "kind": "while at Sariina",
+    "description": "When I was at Sariina, I worked on the lottery program of a live television show during the World Cup and the most watched derby football matches. The television program, Ninety (90), was the most popular national television show in the country."
+  },
+  {
+    "todo": "",
+    "order": "5",
+    "name": "Creative programming",
+    "image1": "https://i.imgur.com/CGryZLW.png",
+    "image2": "",
+    "image3": "",
+    "kind": "Tehran Platform",
+    "description": "I taught creative programming using Processing to students at the global summer school run by Institute for Advanced Architecture of Catalonia and Tehran Platform"
+  },
+  {
+    "todo": "",
+    "order": "5",
+    "name": "No Fun Lua Engine",
+    "image1": "https://i.imgur.com/jVyzyE9.png",
+    "image2": "",
+    "image3": "",
+    "kind": "Personal",
+    "description": "I designed and developed an engine that allows running the same code on both server and client (for online games). The underlying engine is written in C++ and the game logic is written in Lua."
+  },
+  {
+    "todo": "",
+    "order": "7",
+    "name": "Go consultancy",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "",
+    "description": "I teach programming and building services with the Go programming language. I have experience of running workshops at several institutions (companies and universities). I am available for courses and workshops."
+  },
+  {
+    "todo": "",
+    "order": "8",
+    "name": "Gradboostreg",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "Personal",
+    "description": "A gradient boosting regressor in Go (statistical learning)"
+  },
+  {
+    "todo": "",
+    "order": "9",
+    "name": "Blgo",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "Personal",
+    "description": "A static file generator blog engine I wrote for my weblog. "
+  },
+  {
+    "todo": "publish",
+    "order": "10",
+    "name": "Coor",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "Personal",
+    "description": "A concurrency-agnostic process coordinator and communication channel inspired by Hoare's Communicating Sequential Processes."
+  },
+  {
+    "todo": "publish",
+    "order": "11",
+    "name": "Distributed GA",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "Personal",
+    "description": "A genetic algorithm distributed runner"
+  },
+  {
+    "todo": "",
+    "order": "12",
+    "name": "Identity and Access Management",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "Job",
+    "description": "A flexible, performant rule-based permission mangement service for resources and users and employees at my previous job."
+  },
+  {
+    "todo": "",
+    "order": "13",
+    "name": "Messaging Service",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "Job",
+    "description": "A highly concurrent system for dispatching thousands of SMS messages per second. The system allocated the limited external bandwidth among customers fairly in accordance with their subscription. I also developed the web front-end panel for this application. Languages used: Go, JavaScript, Ruby. "
+  },
+  {
+    "todo": "",
+    "order": "14",
+    "name": "Goping",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "",
+    "description": "An implementation of ICMP pinging in Go"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "Aylien search engine / panel",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "while at Aylien"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "Bank Lottery",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "while at Sariina"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "Bender",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "while at Sariina"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "Data visualization"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "SMS message panel",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "while at Sariina"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "Tarfand Sadeh"
+  },
+  {
+    "todo": "",
+    "order": "",
+    "name": "Tracking Ball with OpenCV"
+  }
+]

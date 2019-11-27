@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="normalize.css">
+  <link rel="stylesheet" inline href="homepage.css">
+  <title>Sina Siadat</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+</head>
+<body>
+
+<div class="negative-1">
+  <div class="wrapper wrapper-top">
+    <h1>Sina Siadat</h1>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2>Projects</h2>
+</div>
+
+<div class="wrapper">
+<ul class="projects">
+	{% for p in projects if p.order %}
+  <li>
+
+    <table>
+      <tr>
+        <td class="description">
+          <b>{{p.name}}</b>
+          <hr>
+          {%if p.description %}
+            {{p.description | markdown | safe}}
+          {%endif%}
+        </td>
+        {%if p.image1 %}
+          <td class="images">
+            <a class="glightbox" href="{{p.image1.replace('.png', 'l.png')}}"><img src="{{p.image1.replace('.png', 's.png')}}"></a>
+          </td>
+        {% endif %}
+
+        {%if p.image2 %}
+          <td class="images">
+            <a class="glightbox" href="{{p.image2.replace('.png', 'l.png')}}"><img src="{{p.image2.replace('.png', 's.png')}}"></a>
+          </td>
+        {% endif %}
+
+        {%if p.image3 %}
+          <td class="images">
+            <a class="glightbox" href="{{p.image3.replace('.png', 'l.png')}}"><img src="{{p.image3.replace('.png', 's.png')}}"></a>
+          </td>
+        {% endif %}
+      </tr>
+    </table>
+
+	</li>
+	{% endfor %}
+</ul>
+<h2>Books I recommend</h2>
+<ul class="books">
+	{% for b in books %}
+  <li>
+    "{{b.name}}"
+    {%if b.date %} published in {{b.date}} {% endif %}
+    {%if b.author %} by {{b.author}} {% endif %}
+    {%if b.link %} (<a href="{{b.link}}">{{b.link_name}}</a>) {% endif %}
+    {%if b.description %} <div class="quote"> {{b.description}} </div> {% endif %}
+	</li>
+	{% endfor %}
+</ul>
+<!--
+<ul>
+<li>
+	{% for b in books %}
+    <b>{{b.name}}</b> {{b.description}} &mdash;
+	{% endfor %}
+</li>
+</ul>
+-->
+</div>
+
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+  /*
+  window.onload = () => {
+    let colorline = document.getElementById('colorline');
+
+    for(let i = 0; i < 100; i++) {
+      let node = document.createElement("span");
+      colorline.appendChild(node);
+    }
+  }
+  */
+</script>
+</body>
+</html>
