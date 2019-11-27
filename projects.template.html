@@ -2,10 +2,10 @@
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Blogo" />
+  <meta name="generator" content="Blgo" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" inline href="normalize.css">
-  <link rel="stylesheet" inline href="homepage.css">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
   <title>Sina Siadat</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
@@ -13,17 +13,13 @@
 </head>
 <body>
 
-<div class="negative-1">
-  <div class="wrapper wrapper-top">
-    <h1>Sina Siadat</h1>
-  </div>
-</div>
+<div id="everything">
+{{ header | safe }}
 
-<div class="wrapper">
-  <h2>Projects</h2>
-</div>
+<hr>
+List of projects I have been working on.
+<hr>
 
-<div class="wrapper">
 <ul class="projects">
 	{% for p in projects if p.order %}
   <li>
@@ -31,8 +27,8 @@
     <table>
       <tr>
         <td class="description">
-          <b>{{p.name}}</b>
-          <hr>
+          <h3>{{p.name}}</h3>
+          <!--<hr>-->
           {%if p.description %}
             {{p.description | markdown | safe}}
           {%endif%}
@@ -60,27 +56,6 @@
 	</li>
 	{% endfor %}
 </ul>
-<h2>Books I recommend</h2>
-<ul class="books">
-	{% for b in books %}
-  <li>
-    "{{b.name}}"
-    {%if b.date %} published in {{b.date}} {% endif %}
-    {%if b.author %} by {{b.author}} {% endif %}
-    {%if b.link %} (<a href="{{b.link}}">{{b.link_name}}</a>) {% endif %}
-    {%if b.description %} <div class="quote"> {{b.description}} </div> {% endif %}
-	</li>
-	{% endfor %}
-</ul>
-<!--
-<ul>
-<li>
-	{% for b in books %}
-    <b>{{b.name}}</b> {{b.description}} &mdash;
-	{% endfor %}
-</li>
-</ul>
--->
 </div>
 
 <script type="text/javascript">

@@ -1,16 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="Blogo" />
+  <meta name="generator" content="Blgo" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" inline href="/blog/assets/normalize.css">
   <link rel="stylesheet" inline href="/blog/assets/main.css">
-  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
-  <title>{{.Title}}</title>
+  <title>Sina Siadat</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 </head>
 <body>
-  <div id="everything">
+
+<div id="everything">
   <header role="banner">
     <a href="/index.html">Sina Siadat</a>
   </header>
@@ -22,35 +25,36 @@
     &middot; <a href="/books.html">reading</a>
     &middot; <a href="/music.html">music</a>
     <!--&middot; <a href="/photography.html">photography</a>-->
-    &middot; <a target="_blank" href="https://github.com/siadat/">github profile</a>
-    &middot; <a target="_blank" href="https://twitter.com/sinasiadat">twitter profile</a>
+    &middot; <a target="_blank" href="https://github.com/siadat/">github</a>
+    &middot; <a target="_blank" href="https://twitter.com/sinasiadat">twitter</a>
     <!--&middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>-->
     <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina" target="_blank">goodreads</a>-->
     <!--&middot; <a href="index.xml" target="_blank">rss</a>-->
   </div>
-  <hr>
-  <div>Blog post published on
-    {{with .Date}}
-      <time itemprop="datePublished" datetime="{{.Format "January 02, 2006"}}">
-        {{.Format "January 02, 2006"}}
-      </time>
-    {{end}}
-  </div>
-  <hr>
 
-  <main role="main">
-    <article itemscope itemtype="http://schema.org/BlogPosting">
-      <h1 class="entry-title" itemprop="headline">{{.Title}}</h1>
-      <section itemprop="entry-text">
-        {{.Body}}
-      </section>
-    </article>
-  </main>
 
-  <hr>
-  <div>
-    End of the post.
-  </div>
+<hr>
+Some of the photos I have taken or programmatically modified.
+<hr>
 
+<ul class="photography">
+  <li>
+	</li>
+</ul>
+</div>
+
+<script type="text/javascript">
+  const lightbox = GLightbox({});
+  /*
+  window.onload = () => {
+    let colorline = document.getElementById('colorline');
+
+    for(let i = 0; i < 100; i++) {
+      let node = document.createElement("span");
+      colorline.appendChild(node);
+    }
+  }
+  */
+</script>
 </body>
 </html>

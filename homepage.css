@@ -13,19 +13,16 @@ body {
   background-color:#253539;
   background-color:#0d1b24;
   background-color:#2a455c;
-  border-bottom:5px solid #eee;
+  background-color:#484848;
 }
 h1, h2 {
   margin:0;
   padding:30px;
+  font-weight: normal;
 }
 
 h1 {
   padding-top:100px;
-}
-
-h2 {
-  color:#a6a6a6;
 }
 
 ul {
@@ -35,17 +32,10 @@ ul {
 
 ul li {
   list-style: none;
-  background:#eee;
-  padding:20px;
-  margin:0 10px 10px 10px;
+  /*background:#eee;*/
+  padding:20px 20px 0 20px;
+  margin:0 10px 0 10px;
   border-radius:10px;
-}
-
-.quote {
-  margin:20px;
-  margin-bottom:0;
-
-  border-left:0; /*1px solid #aaa;*/
 }
 
 td.images img {

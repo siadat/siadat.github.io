@@ -1,6 +1,7 @@
 import json
 import sys
 import markdown
+import glob
 
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 env = Environment(
@@ -9,14 +10,28 @@ env = Environment(
 )
 
 env.filters['markdown'] = markdown.markdown;
-template = env.get_template("tmp.html")
 
-projectsFile = open("projects.json")
-booksFile = open("books.json")
+headerFile = open("header.html", "r")
+headerContent = headerFile.read()
 
-projects = json.load(projectsFile)
-books = json.load(booksFile)
+for templateFilename in glob.glob("*.template.html"):
+    print(templateFilename)
+    outputFilename = templateFilename.replace('.template.html', '.html')
+    template = env.get_template(templateFilename)
 
-books2 = filter(lambda b: int(b["weight"]) >= 3, books)
+    projectsFile = open("projects.json")
+    booksFile = open("books.json")
 
-print(template.render(projects=projects, books=books2))
+    projects = json.load(projectsFile)
+    books = json.load(booksFile)
+
+    projects = filter(lambda b: b["order"] != "", projects)
+    projects = sorted(projects, key = (lambda b: int(b["order"])), reverse = False)
+
+    books = filter(lambda b: int(b["weight"]) >= 3, books)
+    books = sorted(books, key = (lambda b: int(b["weight"])), reverse = True)
+
+    projectsFile = open("projects.json")
+    outputFile = open(outputFilename, "w")
+    outputFile.write(template.render(projects=projects, books=books, header=headerContent).encode('utf-8'))
+    # print()

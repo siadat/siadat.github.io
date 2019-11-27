@@ -12,20 +12,31 @@ h1, h2, h3, h4, h5, h6 {
   line-height:1.5em;
 }
 a {
+  /*
   color:#020202;
-  font-weight:bold;
+  color:#1a4e9f;
+  */
+  color:#0160d8;
   text-decoration:none;
 }
+
+/*
+a:visited {
+  color:#7301d8;
+}
+*/
+
 a:hover {
   text-decoration:underline;
 }
-article a {
-  color:#010101;
-  text-decoration:none;
+
+/*
+header a,
+.header a {
+  font-weight: normal;
 }
-.list a:visited {
-  color:#030303;
-}
+*/
+
 body {
   padding:50px 50px 150px 50px;
   line-height: 1.5em;
@@ -106,3 +117,80 @@ blockquote {
   border-left:10px solid #eee;
   color:#006600;
 }
+
+/* ---- */
+ul {
+  margin:0;
+  padding:0;
+}
+
+ul li {
+  list-style: none;
+  padding:0;
+  margin:20px 0 0 0;
+}
+ul li ul {
+  margin-left: 20px;
+}
+
+ul.about li {
+  list-style: square;
+  padding:0;
+  margin:20px 0 0 0;
+}
+
+ul.music li {
+  background:#e3e3e3;
+  min-height:20px;
+}
+
+ul.projects li {
+  padding:20px;
+  background-color:#e3e3e3;
+}
+
+td.images img {
+  margin-left:20px;
+}
+
+td {
+  vertical-align:top;
+}
+
+table {
+  width:100%;
+}
+td.description {
+  width:100%;
+}
+
+table h1, table h2, table h3, table h4, table h5, table h6 {
+  margin:0;
+}
+
+.images {
+}
+.clear {
+  clear:both;
+}
+
+.images a,
+.images a img {
+  display:block;
+}
+
+.images a img {
+  border-radius:10px;
+  /*box-shadow:0 0 0 1px rgba(0,0,0,0.4);*/
+  /*filter: grayscale(1);*/
+  width:70px;
+  height:70px;
+  background-color:#e3e3e3;
+}
+.images a img:hover {
+  /*filter: grayscale(0);*/
+  /*
+  box-shadow:0 0 0 1px rgba(0,0,0,0.75);
+  */
+}
+

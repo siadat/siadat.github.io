@@ -2,6 +2,7 @@
 title: "Go Grammar in Use"
 subtitle: "A concise guide on how to read Go code"
 date: 2018-03-04
+draft: true
 tags: go
 ---
 

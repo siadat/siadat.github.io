@@ -1,28 +1,38 @@
 [
   {
     "todo": "",
-    "order": "1",
+    "order": "0",
+    "name": "Open-source projects and contributions",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "kind": "",
+    "description": "I have contributed to several open-source projects including the [Go](https://en.wikipedia.org/wiki/Go_(programming_language)) programming language, [Tmux](https://en.wikipedia.org/wiki/Tmux) terminal multiplexer, and [Ruby on Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) web development framework. Please see my [Github page](https://github.com/siadat) for other open-source projects."
+  },
+  {
+    "todo": "",
+    "order": "2",
     "name": "Kilobot Simulator",
     "image1": "https://i.imgur.com/n6hfCUO.png",
     "image2": "https://i.imgur.com/mbQbFcT.png",
     "image3": "https://i.imgur.com/E6SPSNU.png",
     "kind": "Personal",
-    "description": "I implemeted an online [Kilobot](https://ssr.seas.harvard.edu/kilobots) simulator. The purpose of this project is to make Kilobot programming easily and instantly accessible to everyone on all device with a modern browser. To my knowledge, this it the only Kilobot platform for running experiments in the browser and the only reproduction of the [self-assembly algorithm](https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf)."
+    "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) Harvard University."
   },
   {
     "todo": "",
-    "order": "2",
+    "order": "3",
     "name": "Evolution of Morphology and Controllers for Physically Simulated Creatures",
     "image1": "https://i.imgur.com/qPocT9i.png",
     "image2": "https://i.imgur.com/yk7Lb75.png",
     "image3": "",
     "kind": "Undergraduate project",
-    "description": "I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) (Karl Sims) as my undergraduate Final Year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society."
+    "description": "I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) (Karl Sims) as my undergraduate final year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society."
   },
   {
     "todo": "",
-    "order": "3",
-    "name": "No Fun Football",
+    "order": "4",
+    "name": "NoFun Football",
     "image1": "https://i.imgur.com/uTv6fJt.png",
     "image2": "https://i.imgur.com/aH9DNnu.png",
     "image3": "",
@@ -31,28 +41,38 @@
   },
   {
     "todo": "",
-    "order": "4",
-    "name": "World Cup and Derby Lotteries",
-    "image1": "https://i.imgur.com/xCZvnJy.png",
+    "order": "1",
+    "name": "Microservice consultancy",
+    "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "while at Sariina",
-    "description": "When I was at Sariina, I worked on the lottery program of a live television show during the World Cup and the most watched derby football matches. The television program, Ninety (90), was the most popular national television show in the country."
+    "kind": "",
+    "description": "I help companies build scalable and highly-available services. I also teach the Go programming language. I have experience of running workshops at several institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology)."
   },
   {
     "todo": "",
     "order": "5",
+    "name": "World Cup and Derby Lotteries (Navad)",
+    "image1": "https://i.imgur.com/xCZvnJy.png",
+    "image2": "",
+    "image3": "",
+    "kind": "while at Sariina",
+    "description": "While I was at Sariina, I worked on the lottery program of a live television show during the World Cup and the most watched derby football matches. The television program, Navad ([Wikipedia entry](https://en.wikipedia.org/wiki/Navad)), was one of the most watched and loved national television show in the country. Farzan, our lead designer, has written a [blog post](https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery) elaborating about the graphics of the project."
+  },
+  {
+    "todo": "",
+    "order": "6",
     "name": "Creative programming",
     "image1": "https://i.imgur.com/CGryZLW.png",
     "image2": "",
     "image3": "",
     "kind": "Tehran Platform",
-    "description": "I taught creative programming using Processing to students at the global summer school run by Institute for Advanced Architecture of Catalonia and Tehran Platform"
+    "description": "I taught creative programming using [Processing](https://processing.org/) to students at the global summer school run by [Institute for Advanced Architecture of Catalonia](https://iaac.net/) and [Tehran Platform](http://www.tehranplatform.com/)."
   },
   {
     "todo": "",
-    "order": "5",
-    "name": "No Fun Lua Engine",
+    "order": "6",
+    "name": "NoFun Game Engine",
     "image1": "https://i.imgur.com/jVyzyE9.png",
     "image2": "",
     "image3": "",
@@ -62,12 +82,12 @@
   {
     "todo": "",
     "order": "7",
-    "name": "Go consultancy",
+    "name": "Glitch maker",
     "image1": "",
     "image2": "",
     "image3": "",
     "kind": "",
-    "description": "I teach programming and building services with the Go programming language. I have experience of running workshops at several institutions (companies and universities). I am available for courses and workshops."
+    "description": "I wrote a program for simulating corrupt JPEG files."
   },
   {
     "todo": "",
@@ -107,7 +127,7 @@
     "image2": "",
     "image3": "",
     "kind": "Personal",
-    "description": "A genetic algorithm distributed runner"
+    "description": "A distributed genetic algorithm runner."
   },
   {
     "todo": "",
@@ -122,7 +142,7 @@
   {
     "todo": "",
     "order": "13",
-    "name": "Messaging Service",
+    "name": "SMS Messaging Service",
     "image1": "",
     "image2": "",
     "image3": "",
