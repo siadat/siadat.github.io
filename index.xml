@@ -9,6 +9,14 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Go Grammar in Use</title>
+      <link>https://siadat.github.io/post/channel</link>
+      <pubDate>Sun, 04 Mar 2018 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/channel</guid>
+      <description># Reading&#xA;&#xA;This is a random collection of tips on how to read idiomatic Go code.&#xA;&#xA;## Channels&#xA;&#xA;ch can hold 0 ints&#xA;&#xA;    ch := make(chan int)&#xA;&#xA;ch can hold 0 ints (same as above)&#xA;&#xA;    ch := make(chan in</description>
+    </item>
+    
+    <item>
       <title>go:linkname compiler directive</title>
       <link>https://siadat.github.io/post/golinkname</link>
       <pubDate>Fri, 10 Feb 2017 00:00:00 +0000</pubDate>
