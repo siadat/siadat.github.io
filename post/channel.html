@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/assets/normalize.css">
+  <link rel="stylesheet" inline href="/assets/main.css">
+  <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Go Grammar in Use</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+             <b><a href="/">Sina Siadat</a></b>
+  </header>
+
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Go Grammar in Use</h1>
+      <section itemprop="entry-text">
+        <h1>Reading</h1>
+
+<p>This is a random collection of tips on how to read idiomatic Go code.</p>
+
+<h2>Channels</h2>
+
+<p>ch can hold 0 ints</p>
+
+<pre><code>ch := make(chan int)
+</code></pre>
+
+<p>ch can hold 0 ints (same as above)</p>
+
+<pre><code>ch := make(chan int, 0)
+</code></pre>
+
+<p>bufferedChan can hold up to n ints</p>
+
+<pre><code>bufferedChan := make(chan int, n)
+</code></pre>
+
+<p>Close ch.</p>
+<div class='notebox'><ul>
+<li>We cannot send to ch any longer<br></li>
+<li>We can receive from ch and get 0s</li>
+</ul>
+</div>
+<pre><code>close(ch)
+</code></pre>
+
+<p>Close bufferedChan</p>
+<div class='notebox'><ul>
+<li>We cannot send to bufferedChan any longer</li>
+<li>We can receive from ch and get whatever is in its buffer until the buffer is empty</li>
+</ul>
+</div>
+<pre><code>close(bufferedChan)
+</code></pre>
+
+<p>Receive value <strong>from ch</strong></p>
+
+<pre><code>value := &lt;-ch
+</code></pre>
+
+<p>Send 5 <strong>to ch</strong></p>
+
+<pre><code>ch&lt;-5
+</code></pre>
+<div class='notebox'><p>Always read expressions with the channel operator (i.e., &lt;-) relative to the channel itself.</p>
+</div>
+<p>Select a random ready case
+If there are no ready cases, select default</p>
+
+<pre><code>select {
+  case a := &lt;-ch:
+    // ...
+  case ch&lt;-1:
+    // ...
+  default:
+    // ...
+}
+</code></pre>
+
+<h2>Tests</h2>
+
+<p>A test function is named like a second-person imperative sentence (e.g., Test Func!)</p>
+
+<pre><code>func TestFunc(t *testing.T)
+</code></pre>
+
+<p>A test file is named like a noun (e.g., user test)</p>
+
+<pre><code>user_test.go
+</code></pre>
+
+<h2>Slice</h2>
+
+<p>Create a slice of length 10</p>
+
+<pre><code>slice := make([]int, 10)
+</code></pre>
+
+<p>Create a slice of length 10, whose capacity (i.e., length of its underlying array) is 20.</p>
+<div class='notebox'><p>This means that if we append 10 more values to this slice, it will use the same underlying array to store all 20 values.
+For the 21th value to be appened a new, larger underlying array will be created by the Go runtime.</p>
+</div>
+<pre><code>slice := make([]int, 10, 20)
+</code></pre>
+
+<h2>io.Copy</h2>
+
+<p>dst = src</p>
+
+<pre><code>io.Copy(dst, src)
+</code></pre>
+
+<h1>WRITING GO CODE</h1>
+
+<h2>Context</h2>
+
+<pre><code>// 
+// Create a new context with all
+// 
+//     ctx, cancel := context.WithDeadline(ctx, time.Second)
+// 
+</code></pre>
+
+<h2>misc</h2>
+
+<pre><code>// 
+// create a random integer
+// 
+//     r := rand.Intn(1000)
+</code></pre>
+
+<h2>read file</h2>
+
+<h2>write file</h2>
+
+<h2>append a line to a file</h2>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <!--
+  <script type="text/javascript" src="//www.redditstatic.com/button/button3.js"></script>
+  <hr>
+  -->
+
+  <!--
+  <div class="entry-meta">
+    Please share this post if you liked it.
+  </div>
+  -->
+  
+  <div class="entry-meta">
+    <time itemprop="datePublished" datetime="March 04, 2018">
+      March 04, 2018
+    </time>
+  </div>
+  
+
+  <!-- calq -->
+  <script type="text/javascript">
+  if (window.location.hostname != "localhost") {
+    (function (e, t) { if (!t.__SV) { window.calq = t; var n = e.createElement("script"); n.type = "text/javascript"; n.src = "http" + ("https:" === e.location.protocol ? "s" : "") + '://api.calq.io/lib/js/core-1.0.js'; n.async = !0; var r = e.getElementsByTagName("script")[0]; r.parentNode.insertBefore(n, r); t.init = function (e, o) { if (t.writeKey) return; t.writeKey = e; t._initOptions = o; t._execQueue = []; m = "action.track action.trackSale action.trackHTMLLink action.trackPageView action.setGlobalProperty user.profile user.identify user.clear".split(" "); for (var n = 0; n < m.length; n++) { var f = function () { var r = m[n]; var s = function () { t._execQueue.push({ m: r, args: arguments }) }; var i = r.split("."); if (i.length == 2) { if (!t[i[0]]) { t[i[0]] = [] } t[i[0]][i[1]] = s } else { t[r] = s } }(); } }; t.__SV = 1 } })(document, window.calq || []);
+    calq.init("5bfaf3519521157e5b8274b63c83d728");
+    calq.action.trackPageView();   // [Optional] Leave if you want to automatically create a "Page View" action
+  }
+  </script>
+
+</body>
+</html>
