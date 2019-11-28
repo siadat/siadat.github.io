@@ -681,41 +681,40 @@ class GradientAndReplicatorRobot extends Kilobot {
     }
   }
 
+  matrixTranslate (m, x, y) {
+    m.tx += x;
+    m.ty += y;
+  }
+
+  matrixRotate(m, angle) {
+    var cos = Math.cos(angle);
+    var sin = Math.sin(angle);
+
+    var a1 = m.a;
+    var c1 = m.c;
+    var tx1 = m.tx;
+
+    m.a = (a1 * cos) - (m.b * sin);
+    m.b = (a1 * sin) + (m.b * cos);
+    m.c = (c1 * cos) - (m.d * sin);
+    m.d = (c1 * sin) + (m.d * cos);
+    m.tx = (tx1 * cos) - (m.ty * sin);
+    m.ty = (tx1 * sin) + (m.ty * cos);
+  }
+
+  matrixApply(m, pos) {
+    let newPos = {x: 0, y: 0};
+
+    var x = pos.x;
+    var y = pos.y;
+
+    newPos.x = (m.a * x) + (m.c * y) + m.tx;
+    newPos.y = (m.b * x) + (m.d * y) + m.ty;
+
+    return newPos;
+  }
+
   rotatePoint(angle, origin, pos) {
-
-    const translate = function translate (m, x, y) {
-      m.tx += x;
-      m.ty += y;
-    };
-
-    const rotate = function rotate (m, angle) {
-      var cos = Math.cos(angle);
-      var sin = Math.sin(angle);
-
-      var a1 = m.a;
-      var c1 = m.c;
-      var tx1 = m.tx;
-
-      m.a = (a1 * cos) - (m.b * sin);
-      m.b = (a1 * sin) + (m.b * cos);
-      m.c = (c1 * cos) - (m.d * sin);
-      m.d = (c1 * sin) + (m.d * cos);
-      m.tx = (tx1 * cos) - (m.ty * sin);
-      m.ty = (tx1 * sin) + (m.ty * cos);
-    };
-
-    const apply = function apply (m, pos) {
-        let newPos = {x: 0, y: 0};
-
-        var x = pos.x;
-        var y = pos.y;
-
-        newPos.x = (m.a * x) + (m.c * y) + m.tx;
-        newPos.y = (m.b * x) + (m.d * y) + m.ty;
-
-        return newPos;
-    };
-
     let m = {
       a: 1,
       b: 0,
@@ -725,11 +724,11 @@ class GradientAndReplicatorRobot extends Kilobot {
       ty: 0,
     };
 
-    translate(m, -origin.x, -origin.y)
-    rotate(m, angle);
-    let newPos = apply(m, pos);
-    translate(m, +origin.x, +origin.y)
-    return apply(m, pos);
+    this.matrixTranslate(m, -origin.x, -origin.y)
+    this.matrixRotate(m, angle);
+    let newPos = this.matrixApply(m, pos);
+    this.matrixTranslate(m, +origin.x, +origin.y)
+    return this.matrixApply(m, pos);
   }
 
   isInsideShape() {
@@ -1182,9 +1181,9 @@ window['ExperimentReplicator'] = class {
       "         C #       ",
       "        # # #     # ",
       "         # # #   # #",
-      "          # # # # # # ",
-      "           # # # # # ",
-      "          # # # # #  ",
+      "        # # # # # # ",
+      "         # # # # # ",
+      "        # # # # #  ",
       "         # # #        ",
       "        # S #         ",
       "         S S          ",

@@ -17,7 +17,7 @@
     "image2": "",
     "image3": "",
     "kind": "Personal",
-    "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](http://siadat.github.io/kilobots/index.html?ExperimentDisassembly), [gradient formation](http://siadat.github.io/kilobots/index.html?ExperimentGradientFormation).",
+    "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](/kilobots/index.html?ExperimentDisassembly), [gradient formation](/kilobots/index.html?ExperimentGradientFormation).",
     "draft": "https://i.imgur.com/E6SPSNU.png"
   },
   {
