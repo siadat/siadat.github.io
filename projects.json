@@ -13,8 +13,8 @@
     "todo": "",
     "order": "2",
     "name": "Kilobot Simulator",
-    "image1": "https://i.imgur.com/n6hfCUO.png",
-    "image2": "https://i.imgur.com/mbQbFcT.png",
+    "image1": "https://i.imgur.com/mbQbFcT.png",
+    "image2": "",
     "image3": "",
     "kind": "Personal",
     "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](http://siadat.github.io/kilobots/index.html?ExperimentDisassembly), [gradient formation](http://siadat.github.io/kilobots/index.html?ExperimentGradientFormation).",
@@ -24,21 +24,23 @@
     "todo": "",
     "order": "3",
     "name": "Evolution of Morphology and Controllers for Physically Simulated Creatures",
-    "image1": "https://i.imgur.com/qPocT9i.png",
-    "image2": "https://i.imgur.com/yk7Lb75.png",
+    "image1": "https://i.imgur.com/yk7Lb75.png",
+    "image2": "",
     "image3": "",
     "kind": "Undergraduate project",
-    "description": "I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) (Karl Sims) as my undergraduate final year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society."
+    "description": "I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) (Karl Sims) as my undergraduate final year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society.",
+    "draft": "https://i.imgur.com/qPocT9i.png"
   },
   {
     "todo": "",
     "order": "4",
     "name": "NoFun Football",
     "image1": "https://i.imgur.com/uTv6fJt.png",
-    "image2": "https://i.imgur.com/aH9DNnu.png",
+    "image2": "",
     "image3": "",
     "kind": "Personal",
-    "description": "An online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind."
+    "description": "An online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.",
+    "draft": "https://i.imgur.com/aH9DNnu.png"
   },
   {
     "todo": "",

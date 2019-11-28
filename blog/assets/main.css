@@ -3,10 +3,13 @@ body {
   font-size:14.95px;
   background-color:#fff;
 }
+
 #everything {
-        margin:0 auto;
-        max-width: 630px;
+  margin:0 auto;
+  max-width: 630px;
+  padding:30px 30px 100px 30px;
 }
+
 h1, h2, h3, h4, h5, h6 {
   color:#010101;
   line-height:1.5em;
@@ -38,7 +41,6 @@ header a,
 */
 
 body {
-  padding:50px 50px 150px 50px;
   line-height: 1.5em;
 }
 article {
