@@ -15,9 +15,10 @@
     "name": "Kilobot Simulator",
     "image1": "https://i.imgur.com/n6hfCUO.png",
     "image2": "https://i.imgur.com/mbQbFcT.png",
-    "image3": "https://i.imgur.com/E6SPSNU.png",
+    "image3": "",
     "kind": "Personal",
-    "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](http://siadat.github.io/kilobots/index.html?ExperimentDisassembly), [gradient formation](http://siadat.github.io/kilobots/index.html?ExperimentGradientFormation)."
+    "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](http://siadat.github.io/kilobots/index.html?ExperimentDisassembly), [gradient formation](http://siadat.github.io/kilobots/index.html?ExperimentGradientFormation).",
+    "draft": "https://i.imgur.com/E6SPSNU.png"
   },
   {
     "todo": "",

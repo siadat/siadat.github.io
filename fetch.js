@@ -100,12 +100,13 @@ function listMajors(auth) {
 
     const headerRow = rows[0];
     const dataRows = rows.slice(1);
-    const reformattedRows = dataRows.map(row => {
+    const reformattedRows = dataRows.map((row, rowIdx) => {
       let item = {};
       for(let i = 0; i < row.length; i++) {
         let key = headerRow[i];
-        if(key.length == 0) {
-          console.error("key is empty!");
+        if(!key || key.length == 0) {
+          console.error(`key is empty, no header for row=${rowIdx} col=${i} where value is "${row[i]}"`);
+          continue;
         }
         item[key] = row[i];
       }

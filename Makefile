@@ -13,9 +13,9 @@ clean:
 	rm -rf blog/post/*.html
 	rm -rf blog/index.html
 	rm -rf blog/index.xml
-	rm books.json
-	rm projects.json
-	rm index.html
+	rm -f books.json
+	rm -f projects.json
+	rm -f index.html
 
 dependencies:
 	# go get github.com/siadat/blgo
