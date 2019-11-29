@@ -148,7 +148,11 @@ ul.music li {
 
 ul.projects li {
   padding:20px;
-  background-color:#e3e3e3;
+  background-color:#f1f1f1;
+}
+
+ul.projects li.kind-ad {
+  background-color:#fff;
 }
 
 td.images img {
@@ -182,7 +186,6 @@ table h1, table h2, table h3, table h4, table h5, table h6 {
 }
 
 .images a img {
-  border-radius:10px;
   border:1px solid #aaa;
   /*box-shadow:0 0 0 1px rgba(0,0,0,0.4);*/
   /*filter: grayscale(1);*/

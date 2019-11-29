@@ -1,33 +1,47 @@
 [
   {
     "todo": "",
-    "order": "0",
+    "order": "100",
     "name": "Open-source projects and contributions",
+    "kind": "ad",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "",
-    "description": "I have contributed to several open-source projects including the [Go](https://en.wikipedia.org/wiki/Go_(programming_language)) programming language, [Tmux](https://en.wikipedia.org/wiki/Tmux) terminal multiplexer, and [Ruby on Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) web development framework. Please see my [Github page](https://github.com/siadat) for other open-source projects."
+    "what kind": "",
+    "description": "I have contributed to several open-source projects including the [Go](https://en.wikipedia.org/wiki/Go_(programming_language)) programming language, [Tmux](https://en.wikipedia.org/wiki/Tmux) terminal multiplexer, and [Ruby on Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) web development framework. Please see my [Github page](https://github.com/siadat) for other open-source projects. Feel free to drop me a line to siadat at gmail for collaboration on your open-source project."
+  },
+  {
+    "todo": "",
+    "order": "1001",
+    "name": "Microservice consultancy",
+    "kind": "ad",
+    "image1": "",
+    "image2": "",
+    "image3": "",
+    "what kind": "",
+    "description": "I help companies build scalable and highly-available services. I also teach the Go programming language. I have experience of running workshops at several institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology). Drop me a line to siadat at gmail to discuss availability."
   },
   {
     "todo": "",
     "order": "2",
     "name": "Kilobot Simulator",
+    "kind": "",
     "image1": "https://i.imgur.com/mbQbFcT.png",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
-    "description": "I implemeted an online Kilobot simulator. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](/kilobots/index.html?ExperimentDisassembly), [gradient formation](/kilobots/index.html?ExperimentGradientFormation).",
+    "what kind": "Personal",
+    "description": "I implemeted an online Kilobot swarm simulator. I programmed a simulation platform for the robots and designed and implemented a new self-replicating algorithm. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](/kilobots/index.html?ExperimentDisassembly), [gradient formation](/kilobots/index.html?ExperimentGradientFormation).",
     "draft": "https://i.imgur.com/E6SPSNU.png"
   },
   {
     "todo": "",
     "order": "3",
     "name": "Evolution of Morphology and Controllers for Physically Simulated Creatures",
+    "kind": "",
     "image1": "https://i.imgur.com/yk7Lb75.png",
     "image2": "",
     "image3": "",
-    "kind": "Undergraduate project",
+    "what kind": "Undergraduate project",
     "description": "I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf) (Karl Sims) as my undergraduate final year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society.",
     "draft": "https://i.imgur.com/qPocT9i.png"
   },
@@ -35,159 +49,164 @@
     "todo": "",
     "order": "4",
     "name": "NoFun Football",
+    "kind": "",
     "image1": "https://i.imgur.com/uTv6fJt.png",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
+    "what kind": "Personal",
     "description": "An online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.",
     "draft": "https://i.imgur.com/aH9DNnu.png"
   },
   {
     "todo": "",
-    "order": "1",
-    "name": "Microservice consultancy",
-    "image1": "",
-    "image2": "",
-    "image3": "",
-    "kind": "",
-    "description": "I help companies build scalable and highly-available services. I also teach the Go programming language. I have experience of running workshops at several institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology)."
-  },
-  {
-    "todo": "",
     "order": "5",
     "name": "World Cup and Derby Lotteries (Navad)",
+    "kind": "",
     "image1": "https://i.imgur.com/xCZvnJy.png",
     "image2": "",
     "image3": "",
-    "kind": "while at Sariina",
+    "what kind": "while at Sariina",
     "description": "While I was at Sariina, I worked on the lottery program of a live television show during the World Cup and the most watched derby football matches. The television program, Navad ([Wikipedia entry](https://en.wikipedia.org/wiki/Navad)), was one of the most watched and loved national television show in the country. Farzan, our lead designer, has written a [blog post](https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery) elaborating about the graphics of the project."
   },
   {
     "todo": "",
     "order": "6",
     "name": "Creative programming",
+    "kind": "",
     "image1": "https://i.imgur.com/CGryZLW.png",
     "image2": "",
     "image3": "",
-    "kind": "Tehran Platform",
+    "what kind": "Tehran Platform",
     "description": "I taught creative programming using [Processing](https://processing.org/) to students at the global summer school run by [Institute for Advanced Architecture of Catalonia](https://iaac.net/) and [Tehran Platform](http://www.tehranplatform.com/)."
   },
   {
     "todo": "",
     "order": "6",
     "name": "NoFun Game Engine",
+    "kind": "",
     "image1": "https://i.imgur.com/jVyzyE9.png",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
+    "what kind": "Personal",
     "description": "I designed and developed an engine that allows running the same code on both server and client (for online games). The underlying engine is written in C++ and the game logic is written in Lua."
   },
   {
     "todo": "",
     "order": "7",
     "name": "Glitch maker",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "",
+    "what kind": "",
     "description": "I wrote a program for simulating corrupt JPEG files."
   },
   {
     "todo": "",
     "order": "8",
     "name": "Gradboostreg",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
+    "what kind": "Personal",
     "description": "A gradient boosting regressor in Go (statistical learning)"
   },
   {
     "todo": "",
     "order": "9",
     "name": "Blgo",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
+    "what kind": "Personal",
     "description": "A static file generator blog engine I wrote for my weblog. "
   },
   {
     "todo": "publish",
     "order": "10",
     "name": "Coor",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
+    "what kind": "Personal",
     "description": "A concurrency-agnostic process coordinator and communication channel inspired by Hoare's Communicating Sequential Processes."
   },
   {
     "todo": "publish",
     "order": "11",
     "name": "Distributed GA",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "Personal",
+    "what kind": "Personal",
     "description": "A distributed genetic algorithm runner."
   },
   {
     "todo": "",
     "order": "12",
     "name": "Identity and Access Management",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "Job",
+    "what kind": "Job",
     "description": "A flexible, performant rule-based permission mangement service for resources and users and employees at my previous job."
   },
   {
     "todo": "",
     "order": "13",
     "name": "SMS Messaging Service",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "Job",
+    "what kind": "Job",
     "description": "A highly concurrent system for dispatching thousands of SMS messages per second. The system allocated the limited external bandwidth among customers fairly in accordance with their subscription. I also developed the web front-end panel for this application. Languages used: Go, JavaScript, Ruby. "
   },
   {
     "todo": "",
     "order": "14",
     "name": "Goping",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "",
+    "what kind": "",
     "description": "An implementation of ICMP pinging in Go"
   },
   {
     "todo": "",
     "order": "",
     "name": "Aylien search engine / panel",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "while at Aylien"
+    "what kind": "while at Aylien"
   },
   {
     "todo": "",
     "order": "",
     "name": "Bank Lottery",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "while at Sariina"
+    "what kind": "while at Sariina"
   },
   {
     "todo": "",
     "order": "",
     "name": "Bender",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "while at Sariina"
+    "what kind": "while at Sariina"
   },
   {
     "todo": "",
@@ -198,10 +217,11 @@
     "todo": "",
     "order": "",
     "name": "SMS message panel",
+    "kind": "",
     "image1": "",
     "image2": "",
     "image3": "",
-    "kind": "while at Sariina"
+    "what kind": "while at Sariina"
   },
   {
     "todo": "",
