@@ -24,7 +24,7 @@
   {
     "todo": "",
     "order": "2",
-    "name": "Kilobot simulation and algorithm",
+    "name": "Swarm collective behavior simulation and algorithm design",
     "kind": "",
     "image1": "https://i.imgur.com/mbQbFcT.png",
     "image2": "",
@@ -48,19 +48,19 @@
   {
     "todo": "",
     "order": "4",
-    "name": "NoFun Football",
+    "name": "Multiplayer physics based football game",
     "kind": "",
     "image1": "https://i.imgur.com/uTv6fJt.png",
     "image2": "",
     "image3": "",
     "what kind": "Personal",
-    "description": "An online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.",
+    "description": "The backend servers and cross-platform frontend of an online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.",
     "draft": "https://i.imgur.com/aH9DNnu.png"
   },
   {
     "todo": "",
     "order": "5",
-    "name": "World Cup and Derby Lotteries (Navad)",
+    "name": "World Cup stats and lotteries (Navad)",
     "kind": "",
     "image1": "https://i.imgur.com/xCZvnJy.png",
     "image2": "",
@@ -82,7 +82,7 @@
   {
     "todo": "",
     "order": "6",
-    "name": "NoFun Game Engine",
+    "name": "2D game engine",
     "kind": "",
     "image1": "https://i.imgur.com/jVyzyE9.png",
     "image2": "",
