@@ -12,7 +12,7 @@
   },
   {
     "todo": "",
-    "order": "1001",
+    "order": "101",
     "name": "Microservice consultancy",
     "kind": "ad",
     "image1": "",
@@ -24,13 +24,13 @@
   {
     "todo": "",
     "order": "2",
-    "name": "Kilobot Simulator",
+    "name": "Kilobot simulation and algorithm",
     "kind": "",
     "image1": "https://i.imgur.com/mbQbFcT.png",
     "image2": "",
     "image3": "",
     "what kind": "Personal",
-    "description": "I implemeted an online Kilobot swarm simulator. I programmed a simulation platform for the robots and designed and implemented a new self-replicating algorithm. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the Self-[Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](/kilobots/index.html?ExperimentDisassembly), [gradient formation](/kilobots/index.html?ExperimentGradientFormation).",
+    "description": "I implemeted an online Kilobot swarm simulator. I programmed a simulation platform for the robots and designed and implemented a new [self-replicating algorithm](/kilobots/index.html?ExperimentReplicatorStarfish). The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard University. Here are some examples: [disassembly](/kilobots/index.html?ExperimentDisassembly), [gradient formation](/kilobots/index.html?ExperimentGradientFormation).",
     "draft": "https://i.imgur.com/E6SPSNU.png"
   },
   {

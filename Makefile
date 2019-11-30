@@ -25,3 +25,6 @@ projects.json:
 
 books.json:
 	node fetch.js books | jq . > books.json
+
+header-open:
+	vimdiff +/header +':windo normal ggnzt\<cr>' header.html blog/templates/index.tmpl.html blog/templates/post.tmpl.html

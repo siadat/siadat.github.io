@@ -17,12 +17,12 @@
   </header>
   <hr>
   <div class="header">
-             <a href="/index.html">about</a>
-    &middot; <a href="/blog/index.html">blog</a>
+             <a href="/index.html">about me</a>
     &middot; <a href="/projects.html">projects</a>
     &middot; <a href="/books.html">reading</a>
     &middot; <a href="/music.html">music</a>
     <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="/blog/index.html">blog</a>
     &middot; <a target="_blank" href="https://github.com/siadat/">github</a>
     &middot; <a target="_blank" href="https://twitter.com/sinasiadat">twitter</a>
     <!--&middot; <a href="https://instagram.com/siadat" target="_blank">instagram</a>-->
@@ -38,7 +38,7 @@
     {{ if not .Draft }}
     <article itemscope itemtype="http://schema.org/Blog">
       {{with .Date}}
-        <span class="entry-meta col">
+        <span class="entry-meta date-col">
           <time itemprop="datePublished" datetime="{{.Format "January 02, 2006"}}">
             {{.Format "Jan 2006"}}
           </time>

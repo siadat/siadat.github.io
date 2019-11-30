@@ -5,3 +5,6 @@ index.html
 music.html
 photography.html
 projects.html
+
+kilobots/
+# not working: blog/post/*.html
