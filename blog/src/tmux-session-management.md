@@ -46,8 +46,8 @@ Back to the session-finder.
 Here is an example of how my session-finder looks like:
 
 <div class="after-before">
-  <div> <img src="/assets/tmux/1.png"> <br> <i>11 named sessions, 2 windows in the current session.</i> </div>
-  <div> <img src="/assets/tmux/2.png"> <br> <i>fuzzy session finder and creator.</i> </div>
+  <div> <img src="../assets/tmux/1.png"> <br> <i>11 named sessions, 2 windows in the current session.</i> </div>
+  <div> <img src="../assets/tmux/2.png"> <br> <i>fuzzy session finder and creator.</i> </div>
 </div>
 
 In this screenshot, there are 11 sessions, &ldquo;tmux&rdquo;, &ldquo;appa&rdquo;, &ldquo;crystal&rdquo; etc.

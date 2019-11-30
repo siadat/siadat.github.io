@@ -16,7 +16,7 @@ $ tmux select-pane -P 'bg=green'
 
 And you will get something like:
 
-<img class="fullwidth" src="/assets/tmux/select-pane.png">
+<img class="fullwidth" src="../assets/tmux/select-pane.png">
 
 We could use that to highlight an important pane.
 I have set key-bindings `M-1` to `M-4` to different background colours, and `M-0` to the default colour:

@@ -33,8 +33,10 @@
   </div>
 
 
+<!--
 <hr>
 List of projects I have been working on.
+-->
 <hr>
 
 <ul class="projects">
@@ -51,37 +53,29 @@ List of projects I have been working on.
 
         
         <div class="description">
-          <h3>Swarm collective behavior simulation and algorithm design</h3>
+          <h3>Robotic swarm and collective behavior simulation and algorithm design</h3>
           <hr>
           <!--<hr>-->
           
-            <p>I implemeted an online Kilobot swarm simulator. I programmed a simulation platform for the robots and designed and implemented a new <a href="/kilobots/index.html?ExperimentReplicatorStarfish">self-replicating algorithm</a>. The Kilobot robot is developed by Professor Radhika Nagpal and Michael Rubenstein at the <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a> at Harvard University. Here are some examples: <a href="/kilobots/index.html?ExperimentDisassembly">disassembly</a>, <a href="/kilobots/index.html?ExperimentGradientFormation">gradient formation</a>.</p>
+          <p><a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">Kilobot</a> (created by Professor Radhika Nagpal and Michael Rubenstein at Harvard University) is a programmable robot developed in order to facilitate the research of <strong>decentralized, multi-hop, and asynchronous cooperative agents</strong> constituting a swarm. The challenge is to design local rules in such a way that a desired global behavior is attained.</p>
+<p>All interactions are purely local. The robots are capable of sending messages to their neighbors, measuring ambient light, and they have vibrating motors allowing them to turn and move straight. The robots have no sensor for their position or orientation. To localize, we need to program a distributed localization algorithm e.g., calculate relative positions to a few pre-localized neighbors using triangulation, preferably with robots that make a robust quadrilateral as described in <a href="http://rvsn.csail.mit.edu/netloc/sensys04.pdf">this paper</a>.</p>
+<p>I developed a Kilobot swarm simulator library to reproduce several experiments published by <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a>.</p>
+<p>Furthermore, I designed and implemented a new self-replicating algorithm. The goal of this algorithm is to construct replicas of a given shape as specified by a subset of the robots. For example, to create a starfish shape, I manually place a number of robots to form the shape of one hand and let the algorithm replicate it 4 times to get a total of 5 hands. To see it in action, you can <a href="/kilobots/index.html?ExperimentReplicatorStarfish">run</a> the algorithm on your browser.</p>
+<p>I have implemented several of the published algorithm:</p>
+<ul>
+<li><strong>Self-assembly</strong>: <a href="/kilobots/index.html?ExperimentAssembly">➤ Run (wrench shape)</a>, <a href="/kilobots/index.html?ExperimentAssemblyStarfish">➤ Run (starfish)</a>. <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">Original paper</a> published in Science.</li>
+<li><strong>Self-replicator</strong>: <a href="/kilobots/index.html?ExperimentReplicatorStarfish">➤ Run (asymmetric shape)</a>, <a href="/kilobots/index.html?ExperimentReplicator">➤ Run (starfish)</a>. Not published, yet.</li>
+<li><strong>Disassembly</strong>: <a href="/kilobots/index.html?ExperimentDisassembly">➤ Run</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">Original paper</a>.</li>
+<li><strong>Gradient formation</strong>: <a href="/kilobots/index.html?ExperimentGradientFormation">➤ Run</a>. <a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">Original paper</a>.</li>
+<li><strong>Sync</strong>: <a href="kilobots/index.html?ExperimentSync">➤ Run</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Original paper</a>.</li>
+<li><strong>Follow the leader</strong>: <a href="/kilobots/index.html?ExperimentFollowTheLeader">➤ Run</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Original paper</a>.</li>
+<li><strong>Phototaxis</strong> and <strong>antiphototaxis</strong>: <a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis">➤ Run (one light)</a>, <a href="/kilobots/index.html?ExperimentPhototaxis2">➤ Run (two lights)</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Original paper</a>.</li>
+</ul>
           
         </div>
         <div class="clear"></div>
 
-	</li>
-	
-  <li class="">
-
-        
-          <div class="images">
-            <a class="glightbox" href="https://i.imgur.com/yk7Lb75l.png"><img src="https://i.imgur.com/yk7Lb75l.png"></a>
-          </div>
-        
-
-        
-
-        
-        <div class="description">
-          <h3>Evolution of Morphology and Controllers for Physically Simulated Creatures</h3>
-          <hr>
-          <!--<hr>-->
-          
-            <p>I implemented <a href="https://www.karlsims.com/papers/siggraph94.pdf">Evolving Virtual Creatures</a> (Karl Sims) as my undergraduate final year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society.</p>
-          
-        </div>
-        <div class="clear"></div>
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -101,10 +95,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>The backend servers and cross-platform frontend of an online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.</p>
+          <p>The backend servers and cross-platform frontend of an online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -124,10 +120,37 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>While I was at Sariina, I worked on the lottery program of a live television show during the World Cup and the most watched derby football matches. The television program, Navad (<a href="https://en.wikipedia.org/wiki/Navad">Wikipedia entry</a>), was one of the most watched and loved national television show in the country. Farzan, our lead designer, has written a <a href="https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery">blog post</a> elaborating about the graphics of the project.</p>
+          <p>While I was at Sariina, I worked on the lottery program of a live television show during the World Cup and the most watched derby football matches. The television program, Navad (<a href="https://en.wikipedia.org/wiki/Navad">Wikipedia entry</a>), was one of the most watched and loved national television show in the country. Farzan, our lead designer, has written a <a href="https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery">blog post</a> elaborating about the graphics of the project.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
+
+	</li>
+	
+  <li class="">
+
+        
+          <div class="images">
+            <a class="glightbox" href="https://i.imgur.com/yk7Lb75l.png"><img src="https://i.imgur.com/yk7Lb75l.png"></a>
+          </div>
+        
+
+        
+
+        
+        <div class="description">
+          <h3>Evolution of Morphology and Controllers for Physically Simulated Creatures</h3>
+          <hr>
+          <!--<hr>-->
+          
+          <p>I implemented <a href="https://www.karlsims.com/papers/siggraph94.pdf">Evolving Virtual Creatures</a> (Karl Sims) as my undergraduate final year project. This project was selected by the Britich Computer Society among all final year projects to be presented in an event organized by the society.</p>
+          
+        </div>
+        <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -147,10 +170,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>I taught creative programming using <a href="https://processing.org/">Processing</a> to students at the global summer school run by <a href="https://iaac.net/">Institute for Advanced Architecture of Catalonia</a> and <a href="http://www.tehranplatform.com/">Tehran Platform</a>.</p>
+          <p>I taught creative programming using <a href="https://processing.org/">Processing</a> to students at the global summer school run by <a href="https://iaac.net/">Institute for Advanced Architecture of Catalonia</a> and <a href="http://www.tehranplatform.com/">Tehran Platform</a>.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -170,10 +195,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>I designed and developed an engine that allows running the same code on both server and client (for online games). The underlying engine is written in C++ and the game logic is written in Lua.</p>
+          <p>I designed and developed an engine that allows running the same code on both server and client (for online games). The underlying engine is written in C++ and the game logic is written in Lua.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -189,10 +216,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>I wrote a program for simulating corrupt JPEG files.</p>
+          <p>I wrote a program for simulating corrupt JPEG files.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -208,10 +237,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>A gradient boosting regressor in Go (statistical learning)</p>
+          <p>A gradient boosting regressor in Go (statistical learning)</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -227,10 +258,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>A static file generator blog engine I wrote for my weblog. </p>
+          <p>A static file generator blog engine I wrote for my weblog. </p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -246,10 +279,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>A concurrency-agnostic process coordinator and communication channel inspired by Hoare's Communicating Sequential Processes.</p>
+          <p>A concurrency-agnostic process coordinator and communication channel inspired by Hoare's Communicating Sequential Processes.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -265,10 +300,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>A distributed genetic algorithm runner.</p>
+          <p>A distributed genetic algorithm runner.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -284,10 +321,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>A flexible, performant rule-based permission mangement service for resources and users and employees at my previous job.</p>
+          <p>A flexible, performant rule-based permission mangement service for resources and users and employees at my previous job.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -303,10 +342,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>A highly concurrent system for dispatching thousands of SMS messages per second. The system allocated the limited external bandwidth among customers fairly in accordance with their subscription. I also developed the web front-end panel for this application. Languages used: Go, JavaScript, Ruby. </p>
+          <p>A highly concurrent system for dispatching thousands of SMS messages per second. The system allocated the limited external bandwidth among customers fairly in accordance with their subscription. I also developed the web front-end panel for this application. Languages used: Go, JavaScript, Ruby. </p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -322,10 +363,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>An implementation of ICMP pinging in Go</p>
+          <p>An implementation of ICMP pinging in Go</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -341,10 +384,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>I have contributed to several open-source projects including the <a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a> programming language, <a href="https://en.wikipedia.org/wiki/Tmux">Tmux</a> terminal multiplexer, and <a href="https://en.wikipedia.org/wiki/Ruby_on_Rails">Ruby on Rails</a> web development framework. Please see my <a href="https://github.com/siadat">Github page</a> for other open-source projects. Feel free to drop me a line to siadat at gmail for collaboration on your open-source project.</p>
+          <p>I have contributed to several open-source projects including the <a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go</a> programming language, <a href="https://en.wikipedia.org/wiki/Tmux">Tmux</a> terminal multiplexer, and <a href="https://en.wikipedia.org/wiki/Ruby_on_Rails">Ruby on Rails</a> web development framework. Please see my <a href="https://github.com/siadat">Github page</a> for other open-source projects. Feel free to drop me a line to siadat at gmail for collaboration on your open-source project.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	
@@ -360,10 +405,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-            <p>I help companies build scalable and highly-available services. I also teach the Go programming language. I have experience of running workshops at several institutions, including <a href="https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology">Amirkabir University</a>. Drop me a line to siadat at gmail to discuss availability.</p>
+          <p>I help companies build scalable and highly-available services. I also teach the Go programming language. I have experience of running workshops at several institutions, including <a href="https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology">Amirkabir University</a>. Drop me a line to siadat at gmail to discuss availability.</p>
           
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	

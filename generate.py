@@ -25,10 +25,10 @@ for templateFilename in glob.glob("*.template.html"):
     projects = json.load(projectsFile)
     books = json.load(booksFile)
 
-    projects = filter(lambda b: b["order"] != "", projects)
+    projects = filter(lambda b: "order" in b and b["order"] != "", projects)
     projects = sorted(projects, key = (lambda b: int(b["order"])), reverse = False)
 
-    books = filter(lambda b: int(b["weight"]) >= 3, books)
+    books = filter(lambda b: "weight" in b and int(b["weight"]) >= 3, books)
     books = sorted(books, key = (lambda b: int(b["weight"])), reverse = True)
 
     projectsFile = open("projects.json")

@@ -16,8 +16,10 @@
 <div id="everything">
 {{ header | safe }}
 
+<!--
 <hr>
 List of projects I have been working on.
+-->
 <hr>
 
 <ul class="projects">
@@ -46,10 +48,12 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           {%if p.description %}
-            {{p.description | markdown | safe}}
+          {{p.description | markdown | safe}}
           {%endif%}
         </div>
         <div class="clear"></div>
+
+        <div class="separator">&nbsp;</div>
 
 	</li>
 	{% endfor %}

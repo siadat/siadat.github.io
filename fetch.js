@@ -80,13 +80,42 @@ function getNewToken(oAuth2Client, callback) {
  */
 function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
-  // sheets.spreadsheets.get({
+
+  sheets.spreadsheets.get({
+    spreadsheetId: '1HaLMhRIbREBv2XeIPEFK-rGMfTQMGSlUrD0LzhoJ7kk',
+    fields: "sheets/data/rowData/values/formattedValue,sheets/data/rowData/values/note",
+    // fields: "sheets/data/rowData/values", // everything
+    ranges: [`${sheetName}!A:ZZZ`],
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    // console.log(JSON.stringify(res));
+    let rows = res.data.sheets[0].data[0].rowData.map(rowData => rowData.values.map(colData => colData.note || colData.formattedValue));
+
+    // copied:
+    const headerRow = rows[0];
+    const dataRows = rows.slice(1);
+    const reformattedRows = dataRows.map((row, rowIdx) => {
+      let item = {};
+      for(let i = 0; i < row.length; i++) {
+        let key = headerRow[i];
+        if(!key || key.length == 0) {
+          console.error(`key is empty, no header for row=${rowIdx} col=${i} where value is "${row[i]}"`);
+          continue;
+        }
+        item[key] = row[i];
+      }
+      return item;
+    });
+
+    let j = JSON.stringify(reformattedRows);
+    console.log(j);
+  });
+
+  return;
+
   sheets.spreadsheets.values.get({
-    spreadsheetId: '1HaLMhRIbREBv2XeIPEFK-rGMfTQMGSlUrD0LzhoJ7kk', // '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    // ranges: [`${sheetName}!D3`],
-    // range: `${sheetName}!D3`,
+    spreadsheetId: '1HaLMhRIbREBv2XeIPEFK-rGMfTQMGSlUrD0LzhoJ7kk',
     range: `${sheetName}!A:ZZZ`,
-    // includeGridData: true,
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
