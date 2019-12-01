@@ -141,7 +141,7 @@ ul li ul li {
   list-style: square;
 }
 
-ul.about li {
+.about ul li {
   list-style: square;
   padding:0;
   margin:20px 0 0 0;
@@ -230,6 +230,7 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
 .images a img {
   /*filter: grayscale(1);*/
   width:100%;
+  min-height:50px;
   max-height:200px;
   object-fit:cover;
   /*height:70px;*/

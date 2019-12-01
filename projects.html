@@ -57,19 +57,67 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-          <p><a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">Kilobot</a> (created by Professor Radhika Nagpal and Michael Rubenstein at Harvard University) is a programmable robot developed in order to facilitate the research of <strong>decentralized, multi-hop, and asynchronous cooperative agents</strong> constituting a swarm. The challenge is to design local rules in such a way that a desired global behavior is attained.</p>
-<p>All interactions are purely local. The robots are capable of sending messages to their neighbors, measuring ambient light, and they have vibrating motors allowing them to turn and move straight. The robots have no sensor for their position or orientation. To localize, we need to program a distributed localization algorithm e.g., calculate relative positions to a few pre-localized neighbors using triangulation, preferably with robots that make a robust quadrilateral as described in <a href="http://rvsn.csail.mit.edu/netloc/sensys04.pdf">this paper</a>.</p>
-<p>I developed a Kilobot swarm simulator library to reproduce several experiments published by <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a>.</p>
-<p>Furthermore, I designed and implemented a new self-replicating algorithm. The goal of this algorithm is to construct replicas of a given shape as specified by a subset of the robots. For example, to create a starfish shape, I manually place a number of robots to form the shape of one hand and let the algorithm replicate it 4 times to get a total of 5 hands. To see it in action, you can <a href="/kilobots/index.html?ExperimentReplicatorStarfish">run</a> the algorithm on your browser.</p>
+          <p><a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">Kilobot</a>
+(created by Professor Radhika Nagpal and Michael Rubenstein at Harvard University)
+is a programmable robot developed in order to facilitate the research of <strong>decentralized,
+multi-hop, and asynchronous cooperative agents</strong> constituting a swarm. The challenge
+is to design local rules in such a way that a desired global behavior is attained.</p>
+<p>All interactions are purely local. The robots are capable of sending messages
+to their neighbors, measuring ambient light, and they have vibrating motors
+allowing them to turn and move straight. The robots have no sensor for their
+position or orientation. To localize, we need to program a distributed localization
+algorithm e.g., calculate relative positions to a few pre-localized neighbors
+using triangulation, preferably with robots that make a robust quadrilateral
+as described in <a href="http://rvsn.csail.mit.edu/netloc/sensys04.pdf">this paper</a>.</p>
+<p>I developed a Kilobot swarm simulator library to reproduce several experiments
+published by <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a>.</p>
+<p>Furthermore, I designed and implemented a new self-replicating algorithm. The
+goal of this algorithm is to construct replicas of a given shape as specified
+by a subset of the robots. For example, to create a starfish shape, I manually
+place a number of robots to form the shape of one hand and let the algorithm
+replicate it 4 times to get a total of 5 hands. To see it in action, you can
+<a href="/kilobots/index.html?ExperimentReplicatorStarfish">➤ Run</a> the algorithm
+on your browser.</p>
 <p>I have implemented several of the published algorithm:</p>
 <ul>
-<li><strong>Self-assembly</strong>: <a href="/kilobots/index.html?ExperimentAssembly">➤ Run (wrench shape)</a>, <a href="/kilobots/index.html?ExperimentAssemblyStarfish">➤ Run (starfish)</a>. <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">Original paper</a> published in Science.</li>
-<li><strong>Self-replicator</strong>: <a href="/kilobots/index.html?ExperimentReplicatorStarfish">➤ Run (asymmetric shape)</a>, <a href="/kilobots/index.html?ExperimentReplicator">➤ Run (starfish)</a>. Not published, yet.</li>
-<li><strong>Disassembly</strong>: <a href="/kilobots/index.html?ExperimentDisassembly">➤ Run</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">Original paper</a>.</li>
-<li><strong>Gradient formation</strong>: <a href="/kilobots/index.html?ExperimentGradientFormation">➤ Run</a>. <a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">Original paper</a>.</li>
-<li><strong>Sync</strong>: <a href="kilobots/index.html?ExperimentSync">➤ Run</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Original paper</a>.</li>
-<li><strong>Follow the leader</strong>: <a href="/kilobots/index.html?ExperimentFollowTheLeader">➤ Run</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Original paper</a>.</li>
-<li><strong>Phototaxis</strong> and <strong>antiphototaxis</strong>: <a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis">➤ Run (one light)</a>, <a href="/kilobots/index.html?ExperimentPhototaxis2">➤ Run (two lights)</a>. <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Original paper</a>.</li>
+<li>
+<p><strong>Self-assembly</strong>:
+  <a href="/kilobots/index.html?ExperimentAssembly">➤ Run</a> (wrench),
+  <a href="/kilobots/index.html?ExperimentAssemblyStarfish">➤ Run</a> (starfish).
+  Original <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">paper</a> published in Science.</p>
+</li>
+<li>
+<p><strong>Self-replicator</strong>:
+  <a href="/kilobots/index.html?ExperimentReplicatorStarfish">➤ Run</a> (starfish),
+  <a href="/kilobots/index.html?ExperimentReplicator">➤ Run</a> (asymmetric shape).
+  Not published, yet.</p>
+</li>
+<li>
+<p><strong>Disassembly</strong>:
+  <a href="/kilobots/index.html?ExperimentDisassembly">➤ Run</a>.
+  Original <a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">paper</a>.</p>
+</li>
+<li>
+<p><strong>Gradient formation</strong>:
+  <a href="/kilobots/index.html?ExperimentGradientFormation">➤ Run</a>.
+  Original <a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">paper</a>.</p>
+</li>
+<li>
+<p><strong>Sync</strong>:
+  <a href="/kilobots/index.html?ExperimentSync">➤ Run</a>.
+  Original <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
+</li>
+<li>
+<p><strong>Follow the leader</strong>:
+  <a href="/kilobots/index.html?ExperimentFollowTheLeader">➤ Run</a>.
+  Original <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
+</li>
+<li>
+<p><strong>Phototaxis</strong> and <strong>antiphototaxis</strong>:
+  <a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis">➤ Run</a> (one light),
+  <a href="/kilobots/index.html?ExperimentPhototaxis2)">➤ Run</a> (two lights).
+  Original <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
+</li>
 </ul>
           
         </div>
@@ -91,11 +139,18 @@ List of projects I have been working on.
 
         
         <div class="description">
-          <h3>Multiplayer physics based football game</h3>
+          <h3>Multiplayer physics-based game</h3>
           <hr>
           <!--<hr>-->
           
-          <p>The backend servers and cross-platform frontend of an online multiplayer turn-based game that is composed of several stateless microservices, making it highly available. It is designed with scalability in mind.</p>
+          <p>The backend servers and cross-platform frontend of an online multiplayer
+turn-based game that is composed of several microservices, making it
+highly available. It is designed with scalability in mind from the start.</p>
+<p>I built a service that ran the game logic (including deterministic physics simulation) to make sure clients do not cheat.
+Another essential service was the match-maker, which initiated games for users who requested to start a game.</p>
+<p>All these services were <strong>stateless</strong> allowing them to be replicated on several servers for higher availability.
+These components communicated via a <strong>message queue</strong>,
+which made sure that no game state was corrupted or lost even if the game services are temporarily down, treating them as cattle rather than pets.</p>
           
         </div>
         <div class="clear"></div>
@@ -419,16 +474,6 @@ List of projects I have been working on.
 
 <script type="text/javascript">
   const lightbox = GLightbox({});
-  /*
-  window.onload = () => {
-    let colorline = document.getElementById('colorline');
-
-    for(let i = 0; i < 100; i++) {
-      let node = document.createElement("span");
-      colorline.appendChild(node);
-    }
-  }
-  */
 </script>
 </body>
 </html>

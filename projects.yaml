@@ -1,0 +1,199 @@
+- description: I have contributed to several open-source projects including the [Go](https://en.wikipedia.org/wiki/Go_(programming_language))
+    programming language, [Tmux](https://en.wikipedia.org/wiki/Tmux) terminal multiplexer,
+    and [Ruby on Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) web development
+    framework. Please see my [Github page](https://github.com/siadat) for other open-source
+    projects. Feel free to drop me a line to siadat at gmail for collaboration on
+    your open-source project.
+  kind: ad
+  name: Open-source projects and contributions
+  order: '100'
+- description: I help companies build scalable and highly-available services. I also
+    teach the Go programming language. I have experience of running workshops at several
+    institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology).
+    Drop me a line to siadat at gmail to discuss availability.
+  kind: ad
+  name: Microservice consultancy
+  order: '101'
+
+- description: |
+    [Kilobot](http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf)
+    (created by Professor Radhika Nagpal and Michael Rubenstein at Harvard University)
+    is a programmable robot developed in order to facilitate the research of **decentralized,
+    multi-hop, and asynchronous cooperative agents** constituting a swarm. The challenge
+    is to design local rules in such a way that a desired global behavior is attained.
+    
+    All interactions are purely local. The robots are capable of sending messages
+    to their neighbors, measuring ambient light, and they have vibrating motors
+    allowing them to turn and move straight. The robots have no sensor for their
+    position or orientation. To localize, we need to program a distributed localization
+    algorithm e.g., calculate relative positions to a few pre-localized neighbors
+    using triangulation, preferably with robots that make a robust quadrilateral
+    as described in [this paper](http://rvsn.csail.mit.edu/netloc/sensys04.pdf).
+    
+    I developed a Kilobot swarm simulator library to reproduce several experiments
+    published by [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots).
+    
+    Furthermore, I designed and implemented a new self-replicating algorithm. The
+    goal of this algorithm is to construct replicas of a given shape as specified
+    by a subset of the robots. For example, to create a starfish shape, I manually
+    place a number of robots to form the shape of one hand and let the algorithm
+    replicate it 4 times to get a total of 5 hands. To see it in action, you can
+    [➤ Run](/kilobots/index.html?ExperimentReplicatorStarfish) the algorithm
+    on your browser.
+    
+    I have implemented several of the published algorithm:
+    
+    - **Self-assembly**:
+      [➤ Run][exp_assembly_wrench] (wrench),
+      [➤ Run][exp_assembly_starfish] (starfish).
+      Original [paper][paper_assembly] published in Science.
+
+    - **Self-replicator**:
+      [➤ Run][exp_replicator_starfish] (starfish),
+      [➤ Run][exp_replicator_asymmetric] (asymmetric shape).
+      Not published, yet.
+
+    - **Disassembly**:
+      [➤ Run][exp_disassembly].
+      Original [paper][paper_disassembly].
+    
+    - **Gradient formation**:
+      [➤ Run][exp_gradient].
+      Original [paper][paper_gradient].
+    
+    - **Sync**:
+      [➤ Run][exp_sync].
+      Original [paper][paper_kilobot].
+    
+    - **Follow the leader**:
+      [➤ Run][exp_follow_the_leader].
+      Original [paper][paper_kilobot].
+    
+    - **Phototaxis** and **antiphototaxis**:
+      [➤ Run][exp_phototaxis] (one light),
+      [➤ Run][exp_phototaxis2] (two lights).
+      Original [paper][paper_kilobot].
+
+    [paper_assembly]:    https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
+    [paper_disassembly]: http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
+    [paper_gradient]:    https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf
+    [paper_kilobot]:     http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf
+
+    [exp_assembly_wrench]:       /kilobots/index.html?ExperimentAssembly
+    [exp_assembly_starfish]:     /kilobots/index.html?ExperimentAssemblyStarfish
+    [exp_replicator_starfish]:   /kilobots/index.html?ExperimentReplicatorStarfish
+    [exp_replicator_asymmetric]: /kilobots/index.html?ExperimentReplicator
+    [exp_disassembly]:           /kilobots/index.html?ExperimentDisassembly
+    [exp_sync]:                  /kilobots/index.html?ExperimentSync
+    [exp_gradient]:              /kilobots/index.html?ExperimentGradientFormation
+    [exp_follow_the_leader]:     /kilobots/index.html?ExperimentFollowTheLeader
+    [exp_phototaxis]:            /kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis
+    [exp_phototaxis2]:           /kilobots/index.html?ExperimentPhototaxis2)
+
+  draft: https://i.imgur.com/E6SPSNU.png
+  image1: https://i.imgur.com/mbQbFcT.png
+  name: Robotic swarm and collective behavior simulation and algorithm design
+  order: '2'
+  what kind: Personal
+
+- description: I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf)
+    (Karl Sims) as my undergraduate final year project. This project was selected
+    by the Britich Computer Society among all final year projects to be presented
+    in an event organized by the society.
+  draft: https://i.imgur.com/qPocT9i.png
+  image1: https://i.imgur.com/yk7Lb75.png
+  name: Evolution of Morphology and Controllers for Physically Simulated Creatures
+  order: '6'
+  what kind: Undergraduate project
+
+- description: |
+    The backend servers and cross-platform frontend of an online multiplayer
+    turn-based game that is composed of several microservices, making it
+    highly available. It is designed with scalability in mind from the start.
+
+    I built a service that ran the game logic (including deterministic physics simulation) to make sure clients do not cheat.
+    Another essential service was the match-maker, which initiated games for users who requested to start a game.
+
+    All these services were **stateless** allowing them to be replicated on several servers for higher availability.
+    These components communicated via a **message queue**,
+    which made sure that no game state was corrupted or lost even if the game services are temporarily down, treating them as cattle rather than pets.
+
+  draft: https://i.imgur.com/aH9DNnu.png
+  image1: https://i.imgur.com/uTv6fJt.png
+  name: Multiplayer physics-based game
+  order: '4'
+  what kind: Personal
+
+- description: While I was at Sariina, I worked on the lottery program of a live television
+    show during the World Cup and the most watched derby football matches. The television
+    program, Navad ([Wikipedia entry](https://en.wikipedia.org/wiki/Navad)), was one
+    of the most watched and loved national television show in the country. Farzan,
+    our lead designer, has written a [blog post](https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery)
+    elaborating about the graphics of the project.
+  image1: https://i.imgur.com/xCZvnJy.png
+  name: World Cup stats and lotteries (Navad)
+  order: '5'
+  what kind: while at Sariina
+- description: I taught creative programming using [Processing](https://processing.org/)
+    to students at the global summer school run by [Institute for Advanced Architecture
+    of Catalonia](https://iaac.net/) and [Tehran Platform](http://www.tehranplatform.com/).
+  image1: https://i.imgur.com/CGryZLW.png
+  name: Creative programming
+  order: '6'
+  what kind: Tehran Platform
+- description: I designed and developed an engine that allows running the same code
+    on both server and client (for online games). The underlying engine is written
+    in C++ and the game logic is written in Lua.
+  image1: https://i.imgur.com/jVyzyE9.png
+  name: 2D game engine
+  order: '6'
+  what kind: Personal
+- description: I wrote a program for simulating corrupt JPEG files.
+  name: Glitch maker
+  order: '7'
+- description: A gradient boosting regressor in Go (statistical learning)
+  name: Gradboostreg
+  order: '8'
+  what kind: Personal
+- description: 'A static file generator blog engine I wrote for my weblog. '
+  name: Blgo
+  order: '9'
+  what kind: Personal
+- description: A concurrency-agnostic process coordinator and communication channel
+    inspired by Hoare's Communicating Sequential Processes.
+  name: Coor
+  order: '10'
+  todo: publish
+  what kind: Personal
+- description: A distributed genetic algorithm runner.
+  name: Distributed GA
+  order: '11'
+  todo: publish
+  what kind: Personal
+- description: A flexible, performant rule-based permission mangement service for
+    resources and users and employees at my previous job.
+  name: Identity and Access Management
+  order: '12'
+  what kind: Job
+- description: 'A highly concurrent system for dispatching thousands of SMS messages
+    per second. The system allocated the limited external bandwidth among customers
+    fairly in accordance with their subscription. I also developed the web front-end
+    panel for this application. Languages used: Go, JavaScript, Ruby. '
+  name: SMS Messaging Service
+  order: '13'
+  what kind: Job
+- description: An implementation of ICMP pinging in Go
+  name: Goping
+  order: '14'
+- name: Aylien search engine / panel
+  what kind: while at Aylien
+- name: Bank Lottery
+  what kind: while at Sariina
+- name: Bender
+  what kind: while at Sariina
+- name: Data visualization
+- name: SMS message panel
+  what kind: while at Sariina
+- name: Tarfand Sadeh
+- name: Tracking Ball with OpenCV
+

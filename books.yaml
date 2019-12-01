@@ -1,0 +1,314 @@
+- author: Justin Zobel
+  date: '2015'
+  description: I learned about the process of research, from reading to write-up,
+    the advisor-student relationship, managing research like an agile (as opposed
+    to waterfall) project to produce results, and much more.
+  link: https://people.eng.unimelb.edu.au/jzobel/
+  link_name: website
+  name: Writing for Computer Science
+  todo: reading
+  weight: '10'
+- author: Philip J. Guo
+  date: '2015'
+  description: I got a better idea of what challenges to expect as a PhD student and
+    as a professional working in academia.
+  link: http://pgbovine.net/PhD-memoir.htm
+  link_name: read
+  name: 'The Ph.D. Grind: A Ph.D. Student Memoir'
+  weight: '100'
+- author: James Gleick
+  description: Science and history are two of my favorite topics. This book includes
+    both. It is about the history of science. I learned about the evolution of ideas
+    and inventions such as the telegraph and the Difference Machine, etc.
+  name: 'The Information: A History, A Theory, A Flood'
+  weight: '10'
+- author: Tony Hoare
+  description: Hoare defines a beautiful concise mathematical language for describing
+    complex concurrent processes.
+  link: http://www.usingcsp.com/
+  link_name: read
+  name: Communicating Sequential Processes
+  weight: '10'
+- author: David Bayles, Ted Orland
+  name: 'Art & Fear: Observations On the Perils (and Rewards) of Artmaking'
+  weight: '9'
+- author: Jill Lepore
+  description: Beautiful prose, beautiful history.
+  link: https://www.nytimes.com/2018/09/14/books/review/jill-lepore-these-truths.html
+  link_name: NYT review
+  name: 'These Truths: A History of the United States'
+  weight: '9'
+- author: Judea Pearl
+  name: 'The Book of Why: The New Science of Cause and Effect'
+  todo: reading
+  weight: '2'
+- author: Martin Kleppmann
+  name: Designing Data-Intensive Applications
+  weight: '11'
+- author: Patrick Lencioni
+  name: 'The Five Dysfunctions of a Team: A Leadership Fable'
+  weight: '9'
+- author: Wayne C. Booth
+  description: I learned about the importance of writing and how important it is to
+    start writing on day one.
+  name: The Craft of Research
+  weight: '9'
+- author: Daniel C. Dennett
+  name: Freedom Evolves
+  weight: '8'
+- author: Douglas Smith and Jon Katzenbach
+  description: This book taught me that in companies teams are a better performance
+    measure than individuals. And that a team is more than a few people who sit next
+    to each other and work on the same project.
+  name: 'The Wisdom of Teams: Creating the High-Performance Organization'
+  weight: '8'
+- author: H. L. A. Hart
+  date: '1961'
+  description: I enjoyed the prose and the challenge of formulating a unifying concept
+    and the analysis of the previous attempts was entertaining to read.
+  name: The Concept of Law
+  weight: '8'
+- author: Nassim Taleb
+  description: A lot of behavioral economics experiments and stories. On a side note,
+    I believe everything outside your control and knowledge appears random to you.
+  name: Fooled by Randomness
+  weight: '8'
+- author: Nassim Taleb
+  name: The Black Swan
+  weight: '8'
+- author: Richard Dawkins
+  description: One of the first books that made me interested in evolution and biologically
+    inspired algorithms.
+  name: The Blind Watchmaker
+  weight: '8'
+- author: Sam Newman
+  description: 'I read this with a good friend of mine. We would read for 30 minutes
+    and discuss what we had just learned over lunch. '
+  name: Building Microservices
+  weight: '11'
+- author: Edward de Bono
+  date: '1985'
+  name: Six Thinking Hats
+  weight: '7'
+- author: Sandro Mancuso
+  description: Professionalism for software engineers.
+  name: 'The Software Craftsman: Professionalism, Pragmatism, Pride'
+  todo: please review
+  weight: '11'
+- author: Collins-Sussman and Brian Fitzpatrick
+  name: Team Geek
+  todo: please review
+  weight: '6'
+- author: Lee Atchison
+  name: Architecting for Scale
+  todo: x
+  weight: '6'
+- author: Niall Richard Murphy et al.
+  link: https://landing.google.com/sre/book/index.html
+  link_name: read
+  name: Site Reliability Engineering
+  weight: '6'
+- author: Robert C. Martin
+  date: '2017'
+  name: Clean Architecture
+  todo: x
+  weight: '6'
+- author: Robert C. Martin
+  name: 'Extreme Programming Explained: Embrace Change'
+  weight: '11'
+- author: Simon Horobin
+  description: Where did English come from? And how has it evolved into the language
+    used today?
+  name: 'The English Language: A Very Short Introduction'
+  weight: '6'
+- author: Bjarne Stroustrup
+  link: http://www.stroustrup.com/Tour.html
+  link_name: website
+  name: A Tour of C++
+  weight: '5'
+- author: D&K
+  name: The Go Programming Language
+  weight: '5'
+- author: Don Norman
+  name: The Design of Everyday Things
+  weight: '5'
+- author: Douglas Adams
+  description: One of the funniest books I have read.
+  name: The Hitchhiker's Guide to the Galaxy
+  weight: '5'
+- author: James Gleick
+  description: The evolution of his ideas, the history of scientific publication and
+    the Royal Society.
+  name: Isaac Newton
+  weight: '5'
+- author: Joe Kutner
+  name: 'The Healthy Programmer: Get Fit, Feel Better, and Keep Coding'
+  weight: '5'
+- author: Alex Ferguson
+  name: Leading
+  weight: '4'
+- author: Bernard Suits
+  description: Philosophizing about games.
+  name: 'The Grasshopper: Games, Life and Utopia'
+  weight: '4'
+- author: Bertrand Russell
+  description: Russell is one of my favorite thinkers.
+  name: The Problems of Philosophy
+  weight: '4'
+- author: Daniel Kahneman
+  name: Thinking Fast & Slow
+  weight: '4'
+- author: David Chisnall
+  name: The Go Programming Language Phrasebook
+  weight: '4'
+- author: Eldar Shafir and Sendhil Mullainathan
+  description: Subjective scarcity influences decision making.
+  name: 'Scarcity: Why Having Too Little Means So Much'
+  weight: '4'
+- author: Elisabeth Hendrickson
+  name: Explore It! Reduce Risk and Increase Confidence with Exploratory Testing
+  weight: '4'
+- author: Harari
+  name: 'Sapiens: A Brief History of Humankind'
+  weight: '4'
+- author: John Koza
+  name: Genetic Programming
+  weight: '4'
+- author: Mihaly Csikszentmihalyi
+  name: 'Finding Flow: The Psychology Of Engagement With Everyday Life'
+  weight: '4'
+- author: Raph Koster. Ratey
+  name: Theory of Fun for Game Design
+  weight: '4'
+- author: Seth Godin
+  description: The crux of marketing explained.
+  name: This is Marketing
+  weight: '4'
+- author: Simon Blackburn
+  description: Very readable introduction to important philosophical ideas explained
+    in their historical context.
+  name: 'Think: A Compelling Introduction to Philosophy'
+  weight: '4'
+- author: Steven Pinker
+  name: 'The Sense of Style: The Thinking Person''s Guide to Writing in the 21st Century'
+  weight: '4'
+- author: Thomas Kuhn
+  date: '1962'
+  description: I love history of science. This book provides a cogent model for how
+    scientific progress is made.
+  name: The Structure of Scientific Revolutions
+  todo: reading
+  weight: '3'
+- author: Alain de Botton
+  description: A novel about love and marriage as it could happen in the real world
+  name: The Course of Love
+  weight: '3'
+- author: Benjamin Constant
+  date: '1816'
+  description: French novel.
+  name: Adolphe
+  weight: '3'
+- author: Bertrand Russell
+  description: I love the Russell's optimism and his reasoning.
+  name: Conquest of Happiness
+  weight: '3'
+- author: Carlos Fuentes
+  date: '1962'
+  description: Unique writing with second-person voice.
+  name: Aura
+  weight: '3'
+- author: David Epstein
+  name: 'Range: Why Generalists Triumph in a Specialized World'
+  weight: '3'
+- author: Ed Catmull
+  description: Lessons learned about running Pixar its founder.
+  name: Creativity, Inc.
+  weight: '3'
+- author: Erik Saint Martin et al.
+  name: Go in Action
+  weight: '3'
+- author: Irvin Yalom
+  date: '2005'
+  name: The Schopenhauer Cure
+  weight: '3'
+- author: Irvin Yalom
+  date: '1992'
+  description: 'A novel about Nietzsche, Breuer, Freud and psychoanalysis. '
+  name: When Nietzsche Wept
+  weight: '3'
+- author: Kazuo Ishiguro
+  description: I felt like Mr. Stevens when I was organizing a hackathon, specially
+    during the meals while I was making sure we had enough food and everyone was happy
+    :)
+  name: The Remains of the Day
+  weight: '3'
+- author: Mario Castro Contreras
+  name: Go Design Patterns
+  weight: '3'
+- author: Paul Kalanithi
+  name: When Breath Becomes Air
+  weight: '3'
+- author: Woody Allan
+  date: '1975'
+  name: Without Feathers
+  weight: '3'
+- author: Daniel Goleman
+  name: Emotional Intelligence
+  weight: '2'
+- author: Edward de Bono
+  date: '1967'
+  name: Lateral Thinking
+  weight: '2'
+- author: Seth Godin
+  name: The Dip
+  weight: '2'
+- author: Sun Tzu
+  name: The Art of War
+  weight: '2'
+- author: Tara Westover
+  name: Educated
+  weight: '2'
+- author: Walter Isaacson
+  name: Einstein
+  todo: x
+  weight: '2'
+- author: Alan Lakein
+  date: '1973'
+  name: How to Get Control of Your Time and Your Life
+  weight: '1'
+- author: Bernard Roth
+  name: Achievement Habit
+  weight: '1'
+- author: David Allen
+  name: Getting Things Done
+  weight: '1'
+- author: Eric Hagerman, John J. Ratey
+  name: Spark! How excercise will improve the performance of your brain
+  weight: '1'
+- author: James Clear
+  name: Atomic Habits
+  weight: '1'
+- author: Staffan Noteberg
+  name: 'Pomodoro Technique Illustrated: The Easy Way to Do More in Less Time'
+  weight: '1'
+- author: Tom Heany
+  name: First, Learn to Practice
+  weight: '1'
+- author: Brian P. Moran and Michael Lennington
+  name: The 12 Week Year
+  todo: x
+  weight: '0'
+- author: Louis Cozolino
+  date: '2015'
+  name: Why Therapy Works
+  todo: x
+  weight: '0'
+- author: Mark A. McDaniel and Peter C Brown
+  name: Make it stick
+  todo: x
+  weight: '0'
+- author: Philippa Perry
+  name: How To Stay Sane
+  todo: x
+  weight: '0'
+
