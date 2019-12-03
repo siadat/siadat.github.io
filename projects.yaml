@@ -93,7 +93,7 @@
     [exp_gradient]:              /kilobots/index.html?ExperimentGradientFormation
     [exp_follow_the_leader]:     /kilobots/index.html?ExperimentFollowTheLeader
     [exp_phototaxis]:            /kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis
-    [exp_phototaxis2]:           /kilobots/index.html?ExperimentPhototaxis2)
+    [exp_phototaxis2]:           /kilobots/index.html?ExperimentPhototaxis2
 
   draft: https://i.imgur.com/E6SPSNU.png
   image1: https://i.imgur.com/mbQbFcT.png
@@ -132,7 +132,7 @@
 
 - description: |
     While I was at Sariina, I worked on the lottery program of a **live television
-    show** during the World Cup and the most watched derby football matches. The television
+    show** during all the World Cup and the derby football matches. The television
     program, Navad ([Wikipedia entry](https://en.wikipedia.org/wiki/Navad)), was one
     of the most watched and loved national television show in the country.
     Our lead designer, has written a [blog post][farzan_post] elaborating
@@ -195,7 +195,7 @@
     A highly concurrent system for dispatching thousands of SMS messages
     per second. The system allocated the limited external bandwidth among customers
     fairly in accordance with their subscription. I also developed the web front-end
-    panel for this application. Languages used: Go, JavaScript, Ruby.
+    panel for this application. Languages used: Go, Javascript, Ruby.
   name: SMS Messaging Service
   order: '13'
   what kind: Job
