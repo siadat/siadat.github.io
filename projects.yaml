@@ -14,7 +14,8 @@
     institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology).
     Drop me a line to siadat at gmail to discuss availability.
   kind: pinned
-  name: Microservice consultancy
+  name: Software engineering consultancy
+  order: '1'
 
 - description: |
     [Kilobot][paper_kilobot]
@@ -125,7 +126,7 @@
 
   draft: https://i.imgur.com/aH9DNnu.png
   image1: https://i.imgur.com/uTv6fJt.png
-  name: Multiplayer physics-based game
+  name: Online multiplayer physics-based game
   order: '4'
   what kind: Personal
 

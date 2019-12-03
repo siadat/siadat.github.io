@@ -153,12 +153,6 @@ ul.music li {
 }
 
 ul.projects li.kind-pinned {
-  background-color:#eee;
-  padding:20px;
-}
-
-h3 svg {
-  width:10px;
 }
 
 @media (min-width: 600px) {
@@ -204,8 +198,8 @@ h3 svg {
 ul.projects .separator {
   /*margin-left:-19px;*/ /* -20px */
   /*margin-right:-19px;*/ /* -20px */
-  /*border-bottom:1px solid #bbb;*/
-  margin:25px 160px;
+  border-bottom:1px solid #bbb;
+  margin:25px 0;
 }
 
 ul.projects .description hr {

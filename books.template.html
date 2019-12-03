@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="Blgo" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
   <link rel="stylesheet" inline href="/blog/assets/normalize.css">
   <link rel="stylesheet" inline href="/blog/assets/main.css">
   <title>Sina Siadat</title>
@@ -23,7 +24,8 @@ List of books I have enjoyed reading and I would recommend to others.
 <ul class="books">
 	{% for b in books %}
   <li>
-    📖 <i>"{{b.name}}"</i>
+    <i class="fas fa-book-open"></i>
+    <i>"{{b.name}}"</i>
     {%if false and b.date %} published in {{b.date}} {% endif %}
     {%if b.author %} by {{b.author}} {% endif %}
     {%if b.link %} (<a href="{{b.link}}">{{b.link_name}}</a>) {% endif %}
