@@ -5,17 +5,16 @@
     framework. Please see my [Github page](https://github.com/siadat) for other open-source
     projects. Feel free to drop me a line to siadat at gmail for collaboration on
     your open-source project.
-  kind: ad
+  kind: pinned
   name: Open-source projects and contributions
-  order: '100'
+  order: '0'
 - description: |
     I help companies build scalable and highly-available services. I also
     teach the Go programming language. I have experience of running workshops at several
     institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology).
     Drop me a line to siadat at gmail to discuss availability.
-  kind: ad
+  kind: pinned
   name: Microservice consultancy
-  order: '101'
 
 - description: |
     [Kilobot][paper_kilobot]
@@ -131,12 +130,13 @@
   what kind: Personal
 
 - description: |
-    While I was at Sariina, I worked on the lottery program of a **live television
-    show** during all the World Cup and the derby football matches. The television
-    program, Navad ([Wikipedia entry](https://en.wikipedia.org/wiki/Navad)), was one
-    of the most watched and loved national television show in the country.
-    Our lead designer, has written a [blog post][farzan_post] elaborating
-    about the graphics of the project.
+    While I was at Sariina, I worked on the statistics and lottery program of a
+    **live television show** that was broadcast during all the World Cup and
+    derby football matches.  The television program, Navad
+    ([Wikipedia](https://en.wikipedia.org/wiki/Navad)), was one of the most
+    watched and loved national television show in the country.  Our lead
+    designer, has written a [blog post][farzan_post] elaborating about the
+    graphics of the project.
     [farzan_post]: (https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery)
   image1: https://i.imgur.com/xCZvnJy.png
   name: World Cup stats and lotteries (Navad)

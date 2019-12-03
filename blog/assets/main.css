@@ -152,8 +152,13 @@ ul.music li {
   min-height:20px;
 }
 
-ul.projects li.kind-ad {
-  background-color:#fff;
+ul.projects li.kind-pinned {
+  background-color:#eee;
+  padding:20px;
+}
+
+h3 svg {
+  width:10px;
 }
 
 @media (min-width: 600px) {
