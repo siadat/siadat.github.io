@@ -1,4 +1,5 @@
-- description: I have contributed to several open-source projects including the [Go](https://en.wikipedia.org/wiki/Go_(programming_language))
+- description: |
+    I have contributed to several open-source projects including the [Go](https://en.wikipedia.org/wiki/Go_(programming_language))
     programming language, [Tmux](https://en.wikipedia.org/wiki/Tmux) terminal multiplexer,
     and [Ruby on Rails](https://en.wikipedia.org/wiki/Ruby_on_Rails) web development
     framework. Please see my [Github page](https://github.com/siadat) for other open-source
@@ -7,7 +8,8 @@
   kind: ad
   name: Open-source projects and contributions
   order: '100'
-- description: I help companies build scalable and highly-available services. I also
+- description: |
+    I help companies build scalable and highly-available services. I also
     teach the Go programming language. I have experience of running workshops at several
     institutions, including [Amirkabir University](https://en.wikipedia.org/wiki/Amirkabir_University_of_Technology).
     Drop me a line to siadat at gmail to discuss availability.
@@ -17,9 +19,9 @@
 
 - description: |
     [Kilobot](http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf)
-    (created by Professor Radhika Nagpal and Michael Rubenstein at Harvard University)
+    (created by Prof. Radhika Nagpal and Prof. Michael Rubenstein)
     is a programmable robot developed in order to facilitate the research of **decentralized,
-    multi-hop, and asynchronous cooperative agents** constituting a swarm. The challenge
+    multi-hop, and asynchronous cooperative** agents constituting a swarm. The challenge
     is to design local rules in such a way that a desired global behavior is attained.
     
     All interactions are purely local. The robots are capable of sending messages
@@ -40,8 +42,11 @@
     replicate it 4 times to get a total of 5 hands. To see it in action, you can
     [➤ Run](/kilobots/index.html?ExperimentReplicatorStarfish) the algorithm
     on your browser.
+
+    I took a combination of Object-Oriented and Data-Oriented design approaches
+    for better performance.
     
-    I have implemented several of the published algorithm:
+    Here's a list of the algorithms I have implemented:
     
     - **Self-assembly**:
       [➤ Run][exp_assembly_wrench] (wrench),
@@ -96,7 +101,8 @@
   order: '2'
   what kind: Personal
 
-- description: I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf)
+- description: |
+    I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf)
     (Karl Sims) as my undergraduate final year project. This project was selected
     by the Britich Computer Society among all final year projects to be presented
     in an event organized by the society.
@@ -124,65 +130,77 @@
   order: '4'
   what kind: Personal
 
-- description: While I was at Sariina, I worked on the lottery program of a live television
-    show during the World Cup and the most watched derby football matches. The television
+- description: |
+    While I was at Sariina, I worked on the lottery program of a **live television
+    show** during the World Cup and the most watched derby football matches. The television
     program, Navad ([Wikipedia entry](https://en.wikipedia.org/wiki/Navad)), was one
-    of the most watched and loved national television show in the country. Farzan,
-    our lead designer, has written a [blog post](https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery)
-    elaborating about the graphics of the project.
+    of the most watched and loved national television show in the country.
+    Our lead designer, has written a [blog post][farzan_post] elaborating
+    about the graphics of the project.
+    [farzan_post]: (https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery)
   image1: https://i.imgur.com/xCZvnJy.png
   name: World Cup stats and lotteries (Navad)
   order: '5'
   what kind: while at Sariina
-- description: I taught creative programming using [Processing](https://processing.org/)
+- description: |
+    I taught creative programming using [Processing](https://processing.org/)
     to students at the global summer school run by [Institute for Advanced Architecture
     of Catalonia](https://iaac.net/) and [Tehran Platform](http://www.tehranplatform.com/).
   image1: https://i.imgur.com/CGryZLW.png
   name: Creative programming
   order: '6'
   what kind: Tehran Platform
-- description: I designed and developed an engine that allows running the same code
+- description: |
+    I designed and developed an engine that allows running the same code
     on both server and client (for online games). The underlying engine is written
     in C++ and the game logic is written in Lua.
   image1: https://i.imgur.com/jVyzyE9.png
   name: 2D game engine
   order: '6'
   what kind: Personal
-- description: I wrote a program for simulating corrupt JPEG files.
+- description: |
+    I wrote a program for simulating corrupt JPEG files.
   name: Glitch maker
   order: '7'
-- description: A gradient boosting regressor in Go (statistical learning)
+- description: |
+    A gradient boosting regressor in Go (statistical learning)
   name: Gradboostreg
   order: '8'
   what kind: Personal
-- description: 'A static file generator blog engine I wrote for my weblog. '
+- description: |
+    A static file generator blog engine I wrote for my weblog.
   name: Blgo
   order: '9'
   what kind: Personal
-- description: A concurrency-agnostic process coordinator and communication channel
+- description: |
+    A concurrency-agnostic process coordinator and communication channel
     inspired by Hoare's Communicating Sequential Processes.
   name: Coor
   order: '10'
   todo: publish
   what kind: Personal
-- description: A distributed genetic algorithm runner.
+- description: |
+    A distributed genetic algorithm runner.
   name: Distributed GA
   order: '11'
   todo: publish
   what kind: Personal
-- description: A flexible, performant rule-based permission mangement service for
+- description: |
+    A flexible, performant rule-based permission mangement service for
     resources and users and employees at my previous job.
   name: Identity and Access Management
   order: '12'
   what kind: Job
-- description: 'A highly concurrent system for dispatching thousands of SMS messages
+- description: |
+    A highly concurrent system for dispatching thousands of SMS messages
     per second. The system allocated the limited external bandwidth among customers
     fairly in accordance with their subscription. I also developed the web front-end
-    panel for this application. Languages used: Go, JavaScript, Ruby. '
+    panel for this application. Languages used: Go, JavaScript, Ruby.
   name: SMS Messaging Service
   order: '13'
   what kind: Job
-- description: An implementation of ICMP pinging in Go
+- description: |
+    An implementation of ICMP pinging in Go
   name: Goping
   order: '14'
 - name: Aylien search engine / panel
