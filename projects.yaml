@@ -18,7 +18,7 @@
   order: '101'
 
 - description: |
-    [Kilobot](http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf)
+    [Kilobot][paper_kilobot]
     (created by Prof. Radhika Nagpal and Prof. Michael Rubenstein)
     is a programmable robot developed in order to facilitate the research of **decentralized,
     multi-hop, and asynchronous cooperative** agents constituting a swarm. The challenge
