@@ -281,4 +281,26 @@ class AbilityFuncs {
       (2 * p12 * p13)
     );
   }
+
+  static gradientNoise(randomFunc) {
+    if(this.perlinNoiseValue == null) {
+      this.perlinNoiseValue = 0.5;
+    }
+
+    this.perlinNoiseValue += (randomFunc()-0.5)/2;
+    if(this.perlinNoiseValue > 1) this.perlinNoiseValue = 1;
+    if(this.perlinNoiseValue < 0) this.perlinNoiseValue = 0;
+    return this.perlinNoiseValue;
+  }
+
+  static toHexaGrid(gridPos, INITIAL_DIST) {
+    let pos = {
+      x: INITIAL_DIST/2,
+      y: Math.sqrt(3) * INITIAL_DIST/2 + 2*INITIAL_DIST/2,
+    };
+
+    pos.x += gridPos.x * INITIAL_DIST + (gridPos.y%2==0 ? -INITIAL_DIST/2 : 0);
+    pos.y += gridPos.y * INITIAL_DIST * Math.sqrt(3)/2;
+    return pos;
+  }
 }

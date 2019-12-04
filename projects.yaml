@@ -46,7 +46,7 @@
     I took a combination of Object-Oriented and Data-Oriented design approaches
     for better performance.
     
-    Here's a list of the algorithms I have implemented:
+    Here's a list of the algorithms I have implemented or designed:
     
     - **Self-assembly**:
       [➤ Run][exp_assembly_wrench] (wrench),
@@ -56,7 +56,7 @@
     - **Self-replicator**:
       [➤ Run][exp_replicator_starfish] (starfish),
       [➤ Run][exp_replicator_asymmetric] (asymmetric shape).
-      Not published, yet.
+      Original experiment, not published yet.
 
     - **Disassembly**:
       [➤ Run][exp_disassembly].
@@ -79,6 +79,10 @@
       [➤ Run][exp_phototaxis2] (two lights).
       Original [paper][paper_kilobot].
 
+    - **Bellman-Ford distributed shortest path routing protocol**:
+      [➤ Run][exp_bellmanford].
+      This is an original experiment, not published yet.
+
     [paper_assembly]:    https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
     [paper_disassembly]: http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
     [paper_gradient]:    https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf
@@ -94,6 +98,7 @@
     [exp_follow_the_leader]:     /kilobots/index.html?ExperimentFollowTheLeader
     [exp_phototaxis]:            /kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis
     [exp_phototaxis2]:           /kilobots/index.html?ExperimentPhototaxis2
+    [exp_bellmanford]:           /kilobots/index.html?ExperimentBellmanFord
 
   draft: https://i.imgur.com/E6SPSNU.png
   image1: https://i.imgur.com/mbQbFcT.png
