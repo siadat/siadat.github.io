@@ -137,10 +137,9 @@ I took a combination of Object-Oriented and Data-Oriented design approaches for 
 <p>Here's a list of the algorithms I have implemented or designed:</p>
 <ul>
 <li>
-<p><strong>Self-replicating</strong>
+<p><strong>Self-replicating</strong> (new experiment)
   <a href="/kilobots/index.html?ExperimentReplicatorStarfish"><i class="fas fa-play-circle"></i> Run</a> (starfish),
-  <a href="/kilobots/index.html?ExperimentReplicator"><i class="fas fa-play-circle"></i> Run</a> (asymmetric shape).
-  This is an <strong>original</strong> experiment, not published yet (November, 2019) .</p>
+  <a href="/kilobots/index.html?ExperimentReplicator"><i class="fas fa-play-circle"></i> Run</a> (asymmetric shape).</p>
 <p>The goal of this algorithm is to construct replicas of a given shape as
 specified by a subset of the robots. For example, to create a starfish
 shape, I manually place a number of robots to form the shape of one hand
@@ -148,9 +147,8 @@ and let the algorithm replicate it 4 times to get a total of 5 hands.
 To see it in action, <a href="/kilobots/index.html?ExperimentReplicatorStarfish"><i class="fas fa-play-circle"></i> Run</a> the algorithm on your browser.</p>
 </li>
 <li>
-<p><strong>Network routing</strong>
-  <a href="/kilobots/index.html?ExperimentBellmanFord"><i class="fas fa-play-circle"></i> Run</a>,
-  This is an <strong>original</strong> experiment, not published yet (November, 2019) .</p>
+<p><strong>Network routing</strong> (new experiment)
+  <a href="/kilobots/index.html?ExperimentBellmanFord"><i class="fas fa-play-circle"></i> Run</a>.</p>
 <p>Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
 In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
 The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">distributed distance-vector protocol routing</a> algorithm.
@@ -162,41 +160,36 @@ Whenever a robot receives this advertisment, they store this value to their rout
 Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.</p>
 </li>
 <li>
-<p><strong>Self-assembly</strong>:
+<p><strong>Self-assembly</strong>
   <a href="/kilobots/index.html?ExperimentAssembly"><i class="fas fa-play-circle"></i> Run</a> (wrench),
-  <a href="/kilobots/index.html?ExperimentAssemblyStarfish"><i class="fas fa-play-circle"></i> Run</a> (starfish).
-  This is an implementation of the experiment described in <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">this paper</a> published in Science.</p>
+  <a href="/kilobots/index.html?ExperimentAssemblyStarfish"><i class="fas fa-play-circle"></i> Run</a> (starfish),
+  <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">paper</a> published in Science.</p>
 </li>
 <li>
-<p><strong>Disassembly</strong>:
-  <a href="/kilobots/index.html?ExperimentDisassembly"><i class="fas fa-play-circle"></i> Run</a>.
-  This is an implementation of the experiment described in <a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">this paper</a>.</p>
+<p><strong>Disassembly</strong>
+  <a href="/kilobots/index.html?ExperimentDisassembly"><i class="fas fa-play-circle"></i> Run</a>,
+  <a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">paper</a>.</p>
 </li>
 <li>
-<p><strong>Gradient formation</strong>:
-  <a href="/kilobots/index.html?ExperimentGradientFormation"><i class="fas fa-play-circle"></i> Run</a>.
-  This is an implementation of the experiment described in <a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">this paper</a>.</p>
+<p><strong>Gradient formation</strong>
+  <a href="/kilobots/index.html?ExperimentGradientFormation"><i class="fas fa-play-circle"></i> Run</a>,
+  <a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">paper</a>.</p>
 </li>
 <li>
-<p><strong>Sync</strong>:
-  <a href="/kilobots/index.html?ExperimentSync"><i class="fas fa-play-circle"></i> Run</a>.
-  This is an implementation of the experiment described in <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">this paper</a>.</p>
+<p><strong>Sync</strong>
+  <a href="/kilobots/index.html?ExperimentSync"><i class="fas fa-play-circle"></i> Run</a>,
+  <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
 </li>
 <li>
-<p><strong>Follow the leader</strong>:
-  <a href="/kilobots/index.html?ExperimentFollowTheLeader"><i class="fas fa-play-circle"></i> Run</a>.
-  This is an implementation of the experiment described in <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">this paper</a>.</p>
+<p><strong>Follow the leader</strong>
+  <a href="/kilobots/index.html?ExperimentFollowTheLeader"><i class="fas fa-play-circle"></i> Run</a>,
+  <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
 </li>
 <li>
-<p><strong>Phototaxis</strong> and <strong>antiphototaxis</strong>:
+<p><strong>Phototaxis</strong> and <strong>antiphototaxis</strong>
   <a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis"><i class="fas fa-play-circle"></i> Run</a> (one light),
-  <a href="/kilobots/index.html?ExperimentPhototaxis2"><i class="fas fa-play-circle"></i> Run</a> (two lights).
-  This is an implementation of the experiment described in <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">this paper</a>.</p>
-</li>
-<li>
-<p><strong>Distributed routing</strong>:
-  <a href="/kilobots/index.html?ExperimentBellmanFord"><i class="fas fa-play-circle"></i> Run</a>.
-  This is an <strong>original</strong> experiment, not published yet (December, 2019).</p>
+  <a href="/kilobots/index.html?ExperimentPhototaxis2"><i class="fas fa-play-circle"></i> Run</a> (two lights),
+  <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
 </li>
 </ul>
           

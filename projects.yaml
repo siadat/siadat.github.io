@@ -40,10 +40,9 @@
 
     Here's a list of the algorithms I have implemented or designed:
 
-    - **Self-replicating**
+    - **Self-replicating** (new experiment)
       [<i class="fas fa-play-circle"></i> Run][exp_replicator_starfish] (starfish),
       [<i class="fas fa-play-circle"></i> Run][exp_replicator_asymmetric] (asymmetric shape).
-      This is an **original** experiment, not published yet (November, 2019) .
 
         The goal of this algorithm is to construct replicas of a given shape as
         specified by a subset of the robots. For example, to create a starfish
@@ -51,9 +50,8 @@
         and let the algorithm replicate it 4 times to get a total of 5 hands.
         To see it in action, [<i class="fas fa-play-circle"></i> Run][exp_replicator_starfish] the algorithm on your browser.
 
-    - **Network routing**
-      [<i class="fas fa-play-circle"></i> Run][exp_bellmanford],
-      This is an **original** experiment, not published yet (November, 2019) .
+    - **Network routing** (new experiment)
+      [<i class="fas fa-play-circle"></i> Run][exp_bellmanford].
 
         Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
         In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
@@ -65,35 +63,31 @@
         Whenever a robot receives this advertisment, they store this value to their routing table.
         Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
     
-    - **Self-assembly**:
+    - **Self-assembly**
       [<i class="fas fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
-      [<i class="fas fa-play-circle"></i> Run][exp_assembly_starfish] (starfish).
-      This is an implementation of the experiment described in [this paper][paper_assembly] published in Science.
+      [<i class="fas fa-play-circle"></i> Run][exp_assembly_starfish] (starfish),
+      [paper][paper_assembly] published in Science.
 
-    - **Disassembly**:
-      [<i class="fas fa-play-circle"></i> Run][exp_disassembly].
-      This is an implementation of the experiment described in [this paper][paper_disassembly].
+    - **Disassembly**
+      [<i class="fas fa-play-circle"></i> Run][exp_disassembly],
+      [paper][paper_disassembly].
     
-    - **Gradient formation**:
-      [<i class="fas fa-play-circle"></i> Run][exp_gradient].
-      This is an implementation of the experiment described in [this paper][paper_gradient].
+    - **Gradient formation**
+      [<i class="fas fa-play-circle"></i> Run][exp_gradient],
+      [paper][paper_gradient].
     
-    - **Sync**:
-      [<i class="fas fa-play-circle"></i> Run][exp_sync].
-      This is an implementation of the experiment described in [this paper][paper_kilobot].
+    - **Sync**
+      [<i class="fas fa-play-circle"></i> Run][exp_sync],
+      [paper][paper_kilobot].
     
-    - **Follow the leader**:
-      [<i class="fas fa-play-circle"></i> Run][exp_follow_the_leader].
-      This is an implementation of the experiment described in [this paper][paper_kilobot].
+    - **Follow the leader**
+      [<i class="fas fa-play-circle"></i> Run][exp_follow_the_leader],
+      [paper][paper_kilobot].
     
-    - **Phototaxis** and **antiphototaxis**:
+    - **Phototaxis** and **antiphototaxis**
       [<i class="fas fa-play-circle"></i> Run][exp_phototaxis] (one light),
-      [<i class="fas fa-play-circle"></i> Run][exp_phototaxis2] (two lights).
-      This is an implementation of the experiment described in [this paper][paper_kilobot].
-
-    - **Distributed routing**:
-      [<i class="fas fa-play-circle"></i> Run][exp_bellmanford].
-      This is an **original** experiment, not published yet (December, 2019).
+      [<i class="fas fa-play-circle"></i> Run][exp_phototaxis2] (two lights),
+      [paper][paper_kilobot].
 
     [paper_assembly]:    https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
     [paper_disassembly]: http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
