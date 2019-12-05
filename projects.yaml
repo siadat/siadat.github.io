@@ -34,62 +34,66 @@
     
     I developed a Kilobot swarm simulator library to reproduce several experiments
     published by [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots).
+    I took a combination of Object-Oriented and Data-Oriented design approaches for better performance.
     
-    Furthermore, I designed and implemented a new self-replicating algorithm. The
-    goal of this algorithm is to construct replicas of a given shape as specified
-    by a subset of the robots. For example, to create a starfish shape, I manually
-    place a number of robots to form the shape of one hand and let the algorithm
-    replicate it 4 times to get a total of 5 hands. To see it in action, you can
-    [<i class="fas fa-play-circle"></i> Run](/kilobots/index.html?ExperimentReplicatorStarfish) the algorithm
-    on your browser.
+    Furthermore, I designed and implemented two new algorithms; a self-replicating algorithm and a routing algorithm.
 
-    I took a combination of Object-Oriented and Data-Oriented design approaches
-    for better performance.
-    
     Here's a list of the algorithms I have implemented or designed:
-    
-    - **Self-assembly**:
-      [<i class="fas fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
-      [<i class="fas fa-play-circle"></i> Run][exp_assembly_starfish] (starfish).
-      This experiment reproduces [paper][paper_assembly] published in Science.
 
-    - **Self-replicator**:
+    - **Self-replicating**
       [<i class="fas fa-play-circle"></i> Run][exp_replicator_starfish] (starfish),
       [<i class="fas fa-play-circle"></i> Run][exp_replicator_asymmetric] (asymmetric shape).
       This is an **original** experiment, not published yet (November, 2019) .
 
+        The goal of this algorithm is to construct replicas of a given shape as
+        specified by a subset of the robots. For example, to create a starfish
+        shape, I manually place a number of robots to form the shape of one hand
+        and let the algorithm replicate it 4 times to get a total of 5 hands.
+        To see it in action, [<i class="fas fa-play-circle"></i> Run][exp_replicator_starfish] the algorithm on your browser.
+
+    - **Network routing**
+      [<i class="fas fa-play-circle"></i> Run][exp_bellmanford],
+      This is an **original** experiment, not published yet (November, 2019) .
+
+        Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
+        In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
+        The robots run a [distributed distance-vector protocol routing][wikipedia_distance_vector] algorithm.
+        In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors, which act like network links.
+        The link cost is the distance between the two robots.
+        Messages are either advertised to all adjacent robots, or to a specific link (All messages are technically broadcast, however, if the message has a "link" parameter, it is discarded by all robots except the robot with the matching link identifier).
+        Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
+        Whenever a robot receives this advertisment, they store this value to their routing table.
+        Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
+    
+    - **Self-assembly**:
+      [<i class="fas fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
+      [<i class="fas fa-play-circle"></i> Run][exp_assembly_starfish] (starfish).
+      This is an implementation of the experiment described in [this paper][paper_assembly] published in Science.
+
     - **Disassembly**:
       [<i class="fas fa-play-circle"></i> Run][exp_disassembly].
-      This experiment reproduces [paper][paper_disassembly].
+      This is an implementation of the experiment described in [this paper][paper_disassembly].
     
     - **Gradient formation**:
       [<i class="fas fa-play-circle"></i> Run][exp_gradient].
-      This experiment reproduces [paper][paper_gradient].
+      This is an implementation of the experiment described in [this paper][paper_gradient].
     
     - **Sync**:
       [<i class="fas fa-play-circle"></i> Run][exp_sync].
-      This experiment reproduces [paper][paper_kilobot].
+      This is an implementation of the experiment described in [this paper][paper_kilobot].
     
     - **Follow the leader**:
       [<i class="fas fa-play-circle"></i> Run][exp_follow_the_leader].
-      This experiment reproduces [paper][paper_kilobot].
+      This is an implementation of the experiment described in [this paper][paper_kilobot].
     
     - **Phototaxis** and **antiphototaxis**:
       [<i class="fas fa-play-circle"></i> Run][exp_phototaxis] (one light),
       [<i class="fas fa-play-circle"></i> Run][exp_phototaxis2] (two lights).
-      This experiment reproduces [paper][paper_kilobot].
+      This is an implementation of the experiment described in [this paper][paper_kilobot].
 
-    - **Distributed [distance-vector routing][wikipedia_distance_vector] protocol**:
+    - **Distributed routing**:
       [<i class="fas fa-play-circle"></i> Run][exp_bellmanford].
       This is an **original** experiment, not published yet (December, 2019).
-
-      Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-      In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
-      Because the robots are placed hexagonally, each robot has a maximum of 6 adjacent robots, i.e., network links.
-      The link cost is the distance between the two robots.
-      Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
-      Whenever a robot receives this advertisment, they store this value to their routing table.
-      Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
 
     [paper_assembly]:    https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
     [paper_disassembly]: http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
@@ -217,7 +221,6 @@
 - description: |
     An implementation of ICMP pinging in Go
   name: Goping
-  order: '14'
 - name: Aylien search engine / panel
   what kind: while at Aylien
 - name: Bank Lottery
