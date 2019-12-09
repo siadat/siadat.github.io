@@ -156,11 +156,11 @@ ul.projects li.kind-pinned {
 }
 
 @media (min-width: 600px) {
-  ul.projects .images {
+  ul.projects .image-main {
     float:right;
   }
 
-  .images a img {
+  .image-main a img {
     width:220px !important;
 
     /*border-top:5px solid #fff;*/
@@ -173,7 +173,7 @@ ul.projects li.kind-pinned {
     /*box-shadow:0 0 0 1px rgba(0,0,0,0.2);*/
   }
 
-  ul.projects .images img {
+  ul.projects .image-main img {
     margin-left:20px;
     margin-bottom:0 !important;
   }
@@ -206,7 +206,7 @@ ul.projects .description hr {
   display:none;
 }
 
-ul.projects .images img {
+ul.projects .image-main img {
   margin-bottom:20px;
   /*border-radius:5px;*/
 }
@@ -215,18 +215,16 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
   margin:0;
 }
 
-.images {
-}
 .clear {
   clear:both;
 }
 
-.images a,
-.images a img {
+.image-main a,
+.image-main a img {
   display:block;
 }
 
-.images a img {
+.image-main a img {
   /*filter: grayscale(1);*/
   width:100%;
   min-height:50px;
@@ -238,7 +236,8 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
   border-bottom:3px solid #000;
   border-top:3px solid #000;
 }
-.images a img:hover {
+
+.image-main a img:hover {
   /*filter: grayscale(0);*/
   /*
   box-shadow:0 0 0 1px rgba(0,0,0,0.75);

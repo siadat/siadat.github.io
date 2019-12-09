@@ -1,9 +1,9 @@
 {
 class Robot extends Kilobot {
-  constructor(defunct, isAddressable, isSender, sendData, INITIAL_DIST) {
+  constructor(defunct, isEndpoint, isSender, sendData, INITIAL_DIST) {
     super();
     this.defunct = defunct;
-    this.isAddressable = isAddressable;
+    this.isEndpoint = isEndpoint;
     this.linkDist = INITIAL_DIST * 1.2;
     this.isSender = isSender;
     // this.sendData = sendData;
@@ -23,7 +23,7 @@ class Robot extends Kilobot {
     this.userPackets = [];
     this.offset = this.rand_soft();
 
-    if(this.isAddressable) {
+    if(this.isEndpoint) {
       // add self
       this.routingTable[this.kilo_uid] = {
         cost: 0,
@@ -34,7 +34,7 @@ class Robot extends Kilobot {
     if(this.defunct) {
       this.set_color(this.RGB(0, 0, 0));
     } else {
-      // if(this.isAddressable || this.isSender) {
+      // if(this.isEndpoint || this.isSender) {
       //   this.set_color(this.RGB(3, 0, 0));
       // } else {
       //   this.set_color(this.RGB(0, 0, 0));
@@ -70,7 +70,7 @@ class Robot extends Kilobot {
   }
 
   updateColors() {
-    if(this.isSender || this.isAddressable) {
+    if(this.isSender || this.isEndpoint) {
       this.setColor(this.COLORS[this.kilo_uid % this.COLORS.length]);
     } else if(this.userPackets.length >= 1) {
       this.setColor(this.COLORS[this.userPackets[0].dest % this.COLORS.length]);
@@ -155,8 +155,7 @@ window['ExperimentBellmanFord'] = class {
   // network topology, as it is the case in the Link-State routing protocol)
   //
   // every switch has a maximum of 6 links
-  // there are only 2 possible dest nodes
-  // every one (switches and nodes) have a routing table with maximum 2 entries (one for each dest node)
+  // all nodes keep a table of the best link-cost for all end-points
 
   constructor() {
     this.runnerOptions = {
@@ -237,15 +236,10 @@ window['ExperimentBellmanFord'] = class {
 
     for(let i = 0; i < 3; i++) {
       let idx = Math.floor(this.MathRandom() * functioningRobots.length);
-      functioningRobots[idx].isAddressable = true;
+      functioningRobots[idx].isEndpoint = true;
       functioningRobots[idx].isSender = true; // i == 0 || i == 20-1;
       // functioningRobots[idx].sendData = i;
     }
-
-    // functioningRobots[0].isAddressable = true;
-    // functioningRobots[0].isSender = true;
-    // functioningRobots[functioningRobots.length-1].isSender = true;
-    // functioningRobots[functioningRobots.length-1].isAddressable = true;
 
     robotSpecs.forEach(s => {
       if(s.defunct) return;
@@ -255,50 +249,10 @@ window['ExperimentBellmanFord'] = class {
         y: s.pos.y + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.5,
       },
         this.MathRandom() * 2*Math.PI,
-        new Robot(s.defunct, s.isAddressable, s.isSender, s.sendData, this.INITIAL_DIST),
-        // new RobotGradientFormation(s.isAddressable, this.INITIAL_DIST), // s.defunct, s.isAddressable),
+        new Robot(s.defunct, s.isEndpoint, s.isSender, s.sendData, this.INITIAL_DIST),
+        // new RobotGradientFormation(s.isEndpoint, this.INITIAL_DIST), // s.defunct, s.isEndpoint),
       );
     });
-
-    /*
-    this.MathRandom = new Math.seedrandom(1234);
-    this.INITIAL_DIST = 4.0*RADIUS;
-
-    let s = 5;
-    for(let i = -s; i < s; i++) {
-
-      let jInc = null;
-      let jCheck = null;
-
-      let j = null;
-
-      if(i % 2 == 1) {
-        j = -s;
-        jCheck = () => j < +s;
-        jInc = () => j++;
-      } else {
-        j = +s-1;
-        jCheck = () => j >= -s;
-        jInc = () => j--;
-      }
-
-      for(; jCheck(); jInc()) {
-        let defunct = false;
-
-        if(this.MathRandom() > 0.5)
-          defunct = true;
-
-        newRobotFunc({
-          x: j * this.INITIAL_DIST + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*1,
-          y: i * this.INITIAL_DIST + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*1,
-        },
-          this.MathRandom() * 2*Math.PI,
-          new Robot(defunct),
-        );
-      }
-    }
-    */
   }
 }
-
 }

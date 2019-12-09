@@ -27,23 +27,12 @@ List of projects I have been working on.
 	{% for p in projects if p.order %}
   <li class="{%if p.kind%} kind-{{p.kind}} {% endif %}">
 
-        {%if p.image1 %}
-          <div class="images">
-            <a class="glightbox" href="{{p.image1.replace('.png', 'l.png')}}"><img src="{{p.image1.replace('.png', 'l.png')}}"></a>
+        {%if p.images %}
+          <div class="image-main">
+            <a class="glightbox" href="{{p.images[0].replace('.png', 'l.png')}}"><img src="{{p.images[0].replace('.png', 'l.png')}}"></a>
           </div>
         {% endif %}
 
-        {%if p.image2 %}
-          <div class="images">
-            <a class="glightbox" href="{{p.image2.replace('.png', 'l.png')}}"><img src="{{p.image2.replace('.png', 'l.png')}}"></a>
-          </div>
-        {% endif %}
-
-        {%if p.image3 %}
-          <div class="images">
-            <a class="glightbox" href="{{p.image3.replace('.png', 'l.png')}}"><img src="{{p.image3.replace('.png', 'l.png')}}"></a>
-          </div>
-        {% endif %}
         <div class="description">
           <h3>
             {% if p.kind == "pinned" %}
@@ -55,6 +44,17 @@ List of projects I have been working on.
           {%if p.description %}
           {{p.description | markdown | safe}}
           {%endif%}
+
+          {%if false and p.images %}
+          {% for i in p.images %}
+            {% if loop.index0 != 0 %}
+            <div class="images-small">
+              <a class="glightbox" href="{{i.replace('.png', 'l.png')}}"><img width="50px" src="{{i.replace('.png', 's.png')}}"></a>
+            </div>
+            {% endif %}
+          {% endfor %}
+          {% endif %}
+
         </div>
         <div class="clear"></div>
 

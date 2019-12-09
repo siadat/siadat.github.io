@@ -41,17 +41,17 @@
     Here's a list of the algorithms I have implemented or designed:
 
     - **Self-replicating** (new experiment)
-      [<i class="fas fa-play-circle"></i> Run][exp_replicator_starfish] (starfish),
-      [<i class="fas fa-play-circle"></i> Run][exp_replicator_asymmetric] (asymmetric shape).
+      [<i class="far fa-play-circle"></i> Run][exp_replicator_starfish] (starfish),
+      [<i class="far fa-play-circle"></i> Run][exp_replicator_asymmetric] (asymmetric shape).
 
         The goal of this algorithm is to construct replicas of a given shape as
         specified by a subset of the robots. For example, to create a starfish
         shape, I manually place a number of robots to form the shape of one hand
         and let the algorithm replicate it 4 times to get a total of 5 hands.
-        To see it in action, [<i class="fas fa-play-circle"></i> Run][exp_replicator_starfish] the algorithm on your browser.
+        To see it in action, [<i class="far fa-play-circle"></i> Run][exp_replicator_starfish] the algorithm on your browser.
 
     - **Network routing** (new experiment)
-      [<i class="fas fa-play-circle"></i> Run][exp_bellmanford].
+      [<i class="far fa-play-circle"></i> Run][exp_bellmanford].
 
         Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
         In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
@@ -64,29 +64,29 @@
         Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
     
     - **Self-assembly**
-      [<i class="fas fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
-      [<i class="fas fa-play-circle"></i> Run][exp_assembly_starfish] (starfish),
+      [<i class="far fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
+      [<i class="far fa-play-circle"></i> Run][exp_assembly_starfish] (starfish),
       [paper][paper_assembly] published in Science.
 
     - **Disassembly**
-      [<i class="fas fa-play-circle"></i> Run][exp_disassembly],
+      [<i class="far fa-play-circle"></i> Run][exp_disassembly],
       [paper][paper_disassembly].
     
     - **Gradient formation**
-      [<i class="fas fa-play-circle"></i> Run][exp_gradient],
+      [<i class="far fa-play-circle"></i> Run][exp_gradient],
       [paper][paper_gradient].
     
     - **Sync**
-      [<i class="fas fa-play-circle"></i> Run][exp_sync],
+      [<i class="far fa-play-circle"></i> Run][exp_sync],
       [paper][paper_kilobot].
     
     - **Follow the leader**
-      [<i class="fas fa-play-circle"></i> Run][exp_follow_the_leader],
+      [<i class="far fa-play-circle"></i> Run][exp_follow_the_leader],
       [paper][paper_kilobot].
     
     - **Phototaxis** and **antiphototaxis**
-      [<i class="fas fa-play-circle"></i> Run][exp_phototaxis] (one light),
-      [<i class="fas fa-play-circle"></i> Run][exp_phototaxis2] (two lights),
+      [<i class="far fa-play-circle"></i> Run][exp_phototaxis] (one light),
+      [<i class="far fa-play-circle"></i> Run][exp_phototaxis2] (two lights),
       [paper][paper_kilobot].
 
     [paper_assembly]:    https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
@@ -107,8 +107,9 @@
     [exp_bellmanford]:           /kilobots/index.html?ExperimentBellmanFord
     [wikipedia_distance_vector]: https://en.wikipedia.org/wiki/Distance-vector_routing_protocol
 
-  draft: https://i.imgur.com/E6SPSNU.png
-  image1: https://i.imgur.com/mbQbFcT.png
+  images:
+    - https://i.imgur.com/mbQbFcT.png
+    - https://i.imgur.com/E6SPSNU.png
   name: Robotic swarm and collective behavior simulation and algorithm design
   order: '2'
   what kind: Personal
@@ -118,8 +119,10 @@
     (Karl Sims) as my undergraduate final year project. This project was selected
     by the Britich Computer Society among all final year projects to be presented
     in an event organized by the society.
-  draft: https://i.imgur.com/qPocT9i.png
-  image1: https://i.imgur.com/yk7Lb75.png
+  images:
+    - https://i.imgur.com/W5Sq7Zl.png
+    - https://i.imgur.com/qPocT9i.png
+    - https://i.imgur.com/yk7Lb75.png
   name: Evolution of Morphology and Controllers for Physically Simulated Creatures
   order: '6'
   what kind: Undergraduate project
@@ -136,8 +139,9 @@
     These components communicated via a **message queue**,
     which made sure that no game state was corrupted or lost even if the game services are temporarily down, treating them as cattle rather than pets.
 
-  draft: https://i.imgur.com/aH9DNnu.png
-  image1: https://i.imgur.com/uTv6fJt.png
+  images:
+    - https://i.imgur.com/uTv6fJt.png
+    - https://i.imgur.com/aH9DNnu.png
   name: Online multiplayer physics-based game
   order: '4'
   what kind: Personal
@@ -151,15 +155,18 @@
     designer, has written a [blog post][farzan_post] elaborating about the
     graphics of the project.
     [farzan_post]: (https://blog.sariina.com/878-how-did-we-design-90s-charts-and-lottery)
-  image1: https://i.imgur.com/xCZvnJy.png
   name: World Cup stats and lotteries (Navad)
   order: '5'
   what kind: while at Sariina
+  images:
+    - https://i.imgur.com/mrQT1T2.png
+    - https://i.imgur.com/xCZvnJy.png
 - description: |
     I taught creative programming using [Processing](https://processing.org/)
     to students at the global summer school run by [Institute for Advanced Architecture
     of Catalonia](https://iaac.net/) and [Tehran Platform](http://www.tehranplatform.com/).
-  image1: https://i.imgur.com/CGryZLW.png
+  images:
+    - https://i.imgur.com/CGryZLW.png
   name: Creative programming
   order: '6'
   what kind: Tehran Platform
@@ -167,7 +174,8 @@
     I designed and developed an engine that allows running the same code
     on both server and client (for online games). The underlying engine is written
     in C++ and the game logic is written in Lua.
-  image1: https://i.imgur.com/jVyzyE9.png
+  images:
+    - https://i.imgur.com/jVyzyE9.png
   name: 2D game engine
   order: '6'
   what kind: Personal
