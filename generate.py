@@ -29,6 +29,7 @@ for templateFilename in glob.glob("*.template.html"):
     projects = yaml.load(projectsFile)
     readings = yaml.load(readingsFile)
 
+    # projects = filter(lambda b: not b["hide"], projects)
     projects = filter(lambda b: "order" in b and b["order"] != "", projects)
     projects = sorted(projects, key = (lambda b: int(b["order"])), reverse = False)
 
