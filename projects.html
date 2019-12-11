@@ -70,7 +70,7 @@ algorithm e.g., calculate relative positions to a few pre-localized neighbors
 using triangulation, preferably with robots that make a robust quadrilateral
 as described in <a href="http://rvsn.csail.mit.edu/netloc/sensys04.pdf">this paper</a>.</p>
 <p>I developed a Kilobot swarm simulator library to reproduce several experiments
-published by <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a>.
+published by the <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a> at Harvard.
 I took a combination of Object-Oriented and Data-Oriented design approaches for better performance.</p>
 <p>Furthermore, I designed and implemented two new algorithms; a self-replicating algorithm and a routing algorithm.</p>
 <p>Here's a list of the algorithms I have implemented or designed:</p>
@@ -89,20 +89,20 @@ To see it in action, <a href="/kilobots/index.html?ExperimentReplicatorStarfish"
 <p><strong>Network routing</strong> (new experiment)
   <a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Run</a>.</p>
 <p>Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
+In this experiment, the swarm acts like a network in which each node is linked to its adjacent neighbors.
 The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">distributed distance-vector protocol routing</a> algorithm.
 In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors, which act like network links.
 The link cost is the distance between the two robots.
 Messages are either advertised to all adjacent robots, or to a specific link (All messages are technically broadcast, however, if the message has a "link" parameter, it is discarded by all robots except the robot with the matching link identifier).
 Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
-Whenever a robot receives this advertisment, they store this value to their routing table.
-Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.</p>
+Whenever a robot receives this advertisement, they store this value to their routing table.
+Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.</p>
 </li>
 <li>
 <p><strong>Self-assembly</strong>
   <a href="/kilobots/index.html?ExperimentAssembly"><i class="far fa-play-circle"></i> Run</a> (wrench),
   <a href="/kilobots/index.html?ExperimentAssemblyStarfish"><i class="far fa-play-circle"></i> Run</a> (starfish),
-  <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">paper</a> published in Science.</p>
+  the <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">paper</a> published in Science.</p>
 </li>
 <li>
 <p><strong>Disassembly</strong>
@@ -227,7 +227,7 @@ watched and loved national television show in the country.</p>
           
           <p>I implemented <a href="https://www.karlsims.com/papers/siggraph94.pdf">Evolving Virtual Creatures</a>
 (Karl Sims) as my undergraduate final year project. This project was selected
-by the Britich Computer Society among all final year projects to be presented
+by the British Computer Society among all final year projects to be presented
 in an event organized by the society.</p>
           
 
@@ -286,7 +286,7 @@ Along with other responsibilities, I also built a countdown clock and created an
           <!--<hr>-->
           
           <p>I taught creative programming using <a href="https://processing.org/">Processing</a>
-to students at the global summer school run by <a href="https://iaac.net/">Institute for Advanced Architecture
+to students at the global summer school run by the <a href="https://iaac.net/">Institute for Advanced Architecture
 of Catalonia</a> and <a href="http://www.tehranplatform.com/">Tehran Platform</a>.</p>
           
 

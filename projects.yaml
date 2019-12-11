@@ -33,7 +33,7 @@
     as described in [this paper](http://rvsn.csail.mit.edu/netloc/sensys04.pdf).
     
     I developed a Kilobot swarm simulator library to reproduce several experiments
-    published by [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots).
+    published by the [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard.
     I took a combination of Object-Oriented and Data-Oriented design approaches for better performance.
     
     Furthermore, I designed and implemented two new algorithms; a self-replicating algorithm and a routing algorithm.
@@ -54,19 +54,19 @@
       [<i class="far fa-play-circle"></i> Run][exp_bellmanford].
 
         Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-        In this experiment the swarm acts like a network in which each node is linked to its adjacent neighbors.
+        In this experiment, the swarm acts like a network in which each node is linked to its adjacent neighbors.
         The robots run a [distributed distance-vector protocol routing][wikipedia_distance_vector] algorithm.
         In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors, which act like network links.
         The link cost is the distance between the two robots.
         Messages are either advertised to all adjacent robots, or to a specific link (All messages are technically broadcast, however, if the message has a "link" parameter, it is discarded by all robots except the robot with the matching link identifier).
         Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
-        Whenever a robot receives this advertisment, they store this value to their routing table.
-        Finally, once a advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
+        Whenever a robot receives this advertisement, they store this value to their routing table.
+        Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
     
     - **Self-assembly**
       [<i class="far fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
       [<i class="far fa-play-circle"></i> Run][exp_assembly_starfish] (starfish),
-      [paper][paper_assembly] published in Science.
+      the [paper][paper_assembly] published in Science.
 
     - **Disassembly**
       [<i class="far fa-play-circle"></i> Run][exp_disassembly],
@@ -117,7 +117,7 @@
 - description: |
     I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf)
     (Karl Sims) as my undergraduate final year project. This project was selected
-    by the Britich Computer Society among all final year projects to be presented
+    by the British Computer Society among all final year projects to be presented
     in an event organized by the society.
   images:
     - https://i.imgur.com/W5Sq7Zl.png
@@ -171,7 +171,7 @@
     - https://i.imgur.com/ugMXEJZ.png
 - description: |
     I taught creative programming using [Processing](https://processing.org/)
-    to students at the global summer school run by [Institute for Advanced Architecture
+    to students at the global summer school run by the [Institute for Advanced Architecture
     of Catalonia](https://iaac.net/) and [Tehran Platform](http://www.tehranplatform.com/).
   images:
     - https://i.imgur.com/CGryZLW.png
