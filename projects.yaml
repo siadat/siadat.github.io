@@ -63,6 +63,10 @@
         Whenever a robot receives this advertisement, they store this value to their routing table.
         Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
     
+    - **Raft consensus** (new experiment)
+      [<i class="far fa-play-circle"></i> Run][exp_raft],
+      [paper][paper_raft].
+
     - **Self-assembly**
       [<i class="far fa-play-circle"></i> Run][exp_assembly_wrench] (wrench),
       [<i class="far fa-play-circle"></i> Run][exp_assembly_starfish] (starfish),
@@ -93,6 +97,7 @@
     [paper_disassembly]: http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
     [paper_gradient]:    https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf
     [paper_kilobot]:     http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf
+    [paper_raft]:        https://raft.github.io/raft.pdf
 
     [exp_assembly_wrench]:       /kilobots/index.html?ExperimentAssembly
     [exp_assembly_starfish]:     /kilobots/index.html?ExperimentAssemblyStarfish
@@ -105,6 +110,7 @@
     [exp_phototaxis]:            /kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis
     [exp_phototaxis2]:           /kilobots/index.html?ExperimentPhototaxis2
     [exp_bellmanford]:           /kilobots/index.html?ExperimentBellmanFord
+    [exp_raft]:                  /kilobots/index.html?ExperimentRaft
     [wikipedia_distance_vector]: https://en.wikipedia.org/wiki/Distance-vector_routing_protocol
 
   images:

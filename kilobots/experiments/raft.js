@@ -346,7 +346,7 @@ window['ExperimentRaft'] = class {
       limitSpeed: !true,
       traversedPath: true,
       // traversedPathLen: 100,
-      darkMode: false,
+      darkMode: true,
     }
   }
 
