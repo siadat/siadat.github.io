@@ -1,13 +1,12 @@
 {
 class Robot extends Kilobot {
-  constructor(defunct, isEndpoint, /*isSender,*/ sendData, INITIAL_DIST, endpointCount) {
+  constructor(defunct, isEndpoint, linkDist, endpointCount) {
     super();
+    this.abilityBellmanFordRouting = new AbilityBellmanFordRouting(this, defunct, isEndpoint, linkDist);
     this.endpointCount = endpointCount;
     this.defunct = defunct;
     this.isEndpoint = isEndpoint;
-    this.linkDist = INITIAL_DIST * 1.2;
-    // this.isSender = isSender;
-    // this.sendData = sendData;
+    this.linkDist = linkDist;
 
     this.raftStates = {
       Routing: "Routing",
@@ -52,27 +51,17 @@ class Robot extends Kilobot {
     // this.raftLeaderID = null;
     this.raftVote = null;
 
-    this.routingTable = {};
-    this.userPackets = [];
-    this.offset = this.rand_soft();
-
-    if(this.isEndpoint) {
-      // add self
-      this.routingTable[this.kilo_uid] = {
-        cost: 0,
-        link: null,
-      };
-    }
-
-    if(this.defunct) {
-      this.set_color(this.RGB(0, 0, 0));
-    } else {
-      // if(this.isEndpoint || this.isSender) {
-      //   this.set_color(this.RGB(3, 0, 0));
-      // } else {
-      //   this.set_color(this.RGB(0, 0, 0));
-      // }
-    }
+    this.abilityBellmanFordRouting.setup();
+    // this.routingTable = {};
+    // this.userPackets = [];
+    // this.offset = this.rand_soft();
+    // if(this.isEndpoint) {
+    //   // add self
+    //   this.routingTable[this.kilo_uid] = {
+    //     cost: 0,
+    //     link: null,
+    //   };
+    // }
   }
 
   setColor(c) {
@@ -81,12 +70,8 @@ class Robot extends Kilobot {
   }
 
   loop() {
-    if(this.defunct) return;
-
+    this.abilityBellmanFordRouting.loop();
     this.updateColors();
-
-    /*
-    */
 
     if(!this.isEndpoint) {
       return;
@@ -94,7 +79,7 @@ class Robot extends Kilobot {
 
     switch(this.raftState) {
       case this.raftStates.Routing:
-        if(Object.keys(this.routingTable).length == this.endpointCount || this.kilo_ticks > this.routingTimeoutAt) {
+        if(Object.keys(this.abilityBellmanFordRouting.routingTable).length > this.endpointCount * 0.5) {
           // routing table is not complete
           this.becomeFreshFollower(this.raftTerm);
           return;
@@ -130,26 +115,12 @@ class Robot extends Kilobot {
   }
 
   message_rx(message, distance) {
+    this.abilityBellmanFordRouting.message_rx(message, distance);
+
     if(this.defunct) return;
 
     if(distance > this.linkDist)
       return;
-
-    // routing
-    for(let i = 0; i < message.vector.length; i++) {
-      let destID = message.vector[i].id;
-      let destCost = message.vector[i].cost;
-
-      let currBestCost = this.routingTable[destID] && this.routingTable[destID].cost;
-
-      if(currBestCost == null || destCost + distance < currBestCost) {
-        this.routingTable[destID] = {
-          cost: destCost + distance/1.0 /* RADIUS = 1.0 */,
-          link: message.id,
-        }
-        this.routingTimeoutAt = this.kilo_ticks + 150 + this.rand_soft();
-      }
-    }
 
     let neighborPackets = message.userPackets;
     for(let j = 0; j < neighborPackets.length; j++) {
@@ -166,14 +137,16 @@ class Robot extends Kilobot {
 
         if(p.data.raftTerm > this.raftTerm) {
           this.becomeFreshFollower(p.data.raftTerm);
+          // TODO: should I become a follower of p.src???
+          // this.raftLeaderID = p.src;
         }
 
         if(
-          this.amCandidate() && this.isLeader(p)
+          (this.amCandidate() || this.amFollower()) && this.isLeader(p)
           && p.data.raftTerm >= this.raftTerm
         ) {
           this.becomeFreshFollower(p.data.raftTerm);
-          // this.raftLeaderID = p.src;
+          this.raftVote = p.src;
         }
 
         if(
@@ -181,7 +154,7 @@ class Robot extends Kilobot {
           && p.data.raftVote == this.kilo_uid
         ) {
           this.raftVotes[p.src] = true;
-          console.log(this.kilo_uid, "votes", Object.keys(this.raftVotes).length);
+          // console.log(this.kilo_uid, "votes", Object.keys(this.raftVotes).length);
         }
 
         // vote (only once in this term)
@@ -192,36 +165,27 @@ class Robot extends Kilobot {
         ) {
           this.raftVote = p.src;
 
-          this.userPackets.push({
-            data: {
-              raftSenderState: this.raftState,
-              raftTerm: this.raftTerm,
-              raftVote: this.raftVote,
-            },
-            link: this.routingTable[p.src].link, // choose link
-            dest: p.src,
-            src: this.kilo_uid,
-          });
+          if(this.abilityBellmanFordRouting.routingTable[p.src]) {
+            this.abilityBellmanFordRouting.userPackets.push({
+              data: {
+                raftSenderState: this.raftState,
+                raftTerm: this.raftTerm,
+                raftVote: this.raftVote,
+              },
+              link: this.abilityBellmanFordRouting.routingTable[p.src].link, // choose link
+              dest: p.src,
+              src: this.kilo_uid,
+            });
+          };
         }
 
         if(
           this.amFollower() && (this.isLeader(p) || this.isCandidate(p))
         ) {
-          this.resetTimeout(this.routingTable[p.src].cost);
+          let hops = this.abilityBellmanFordRouting.routingTable[p.src] && this.abilityBellmanFordRouting.routingTable[p.src].cost;
+          this.resetTimeout(hops || 10);
         }
       }
-
-      if(!this.routingTable[p.dest]) // I don't know how to send it
-        continue;
-
-      // p.history.push(this.kilo_uid);
-      this.userPackets.push({
-        data: p.data,
-        dest: p.dest, // copy dest
-        src: p.src, // copy src
-        link: this.routingTable[p.dest].link, // choose link
-        // history: p.history // copy dest
-      });
     }
 
     this.updateColors();
@@ -236,15 +200,15 @@ class Robot extends Kilobot {
   amCandidate() { return this.raftState == this.raftStates.Candidate; }
 
   sendKeepalives() {
-    let ids = Object.keys(this.routingTable).filter(id => id != this.kilo_uid);
+    let ids = Object.keys(this.abilityBellmanFordRouting.routingTable).filter(id => id != this.kilo_uid);
     for(let i = 0; i < ids.length; i++) {
       let packetDestID = ids[i];
-      this.userPackets.push({
+      this.abilityBellmanFordRouting.userPackets.push({
         data: {
           raftSenderState: this.raftState,
           raftTerm: this.raftTerm,
         },
-        link: this.routingTable[packetDestID].link, // choose link
+        link: this.abilityBellmanFordRouting.routingTable[packetDestID].link, // choose link
         dest: packetDestID, // copy dest
         src: this.kilo_uid,
       });
@@ -252,7 +216,7 @@ class Robot extends Kilobot {
   }
 
   becomeFreshLeader() {
-    console.log(this.kilo_uid, "becoming leader", this.raftTerm);
+    // console.log(this.kilo_uid, "becoming leader", this.raftTerm);
     this.raftState = this.raftStates.Leader;
     this.raftLeaderTick = 0;
     // this.raftLeaderID = null;
@@ -265,21 +229,21 @@ class Robot extends Kilobot {
     this.raftVotes[this.kilo_uid] = true; // vote for myself
     // this.raftLeaderID = null;
 
-    let maxHops = Math.max.apply(null, Object.keys(this.routingTable).map(id => this.routingTable[id].cost));
+    let maxHops = Math.max.apply(null, Object.keys(this.abilityBellmanFordRouting.routingTable).map(id => this.abilityBellmanFordRouting.routingTable[id].cost));
     this.resetTimeout(2 * maxHops);
 
-    console.log(this.kilo_uid, "becoming candidate", this.raftTerm);
+    // console.log(this.kilo_uid, "becoming candidate", this.raftTerm);
 
     {
-      let ids = Object.keys(this.routingTable).filter(id => id != this.kilo_uid);
+      let ids = Object.keys(this.abilityBellmanFordRouting.routingTable).filter(id => id != this.kilo_uid);
       for(let i = 0; i < ids.length; i++) {
         let packetDestID = ids[i];
-        this.userPackets.push({
+        this.abilityBellmanFordRouting.userPackets.push({
           data: {
             raftSenderState: this.raftState,
             raftTerm: this.raftTerm,
           },
-          link: this.routingTable[packetDestID].link, // choose link
+          link: this.abilityBellmanFordRouting.routingTable[packetDestID].link, // choose link
           dest: packetDestID, // copy dest
           src: this.kilo_uid,
         });
@@ -288,35 +252,26 @@ class Robot extends Kilobot {
   }
 
   becomeFreshFollower(term) {
-    console.log(this.kilo_uid, "becoming follower");
+    // console.log(this.kilo_uid, "becoming follower");
     this.raftTerm = term; 
     this.raftVote = null;
     this.raftState = this.raftStates.Follower; 
     // this.raftLeaderID = leaderID;
 
-    let maxHops = Math.max.apply(null, Object.keys(this.routingTable).map(id => this.routingTable[id].cost));
+    let maxHops = Math.max.apply(null, Object.keys(this.abilityBellmanFordRouting.routingTable).map(id => this.abilityBellmanFordRouting.routingTable[id].cost));
     this.resetTimeout(maxHops);
   }
 
   message_tx() {
-    if(this.defunct) return null;
-
-    let msg = {
-      id: this.kilo_uid,
-      vector: Object.keys(this.routingTable).map(id => {return {id: id, cost: this.routingTable[id].cost}}),
-      userPackets: this.userPackets,
-    };
-
-    this.userPackets = [];
-    return msg;
+    return this.abilityBellmanFordRouting.message_tx();
   }
 
   resetTimeout(hops) {
-    this.raftElectionTimeoutAt = this.kilo_ticks + 5*hops + 60 + 2*this.rand_soft();
+    this.raftElectionTimeoutAt = this.kilo_ticks + 15*hops + 60 + this.rand_soft();
   }
 
   updateColors() {
-    if(/*this.isSender ||*/ this.isEndpoint) {
+    if(this.isEndpoint) {
       if(this.amLeader()) {
         this.setColor(this.COLORS[this.kilo_uid % this.COLORS.length]);
       } else if(this.amCandidate()) {
@@ -328,11 +283,11 @@ class Robot extends Kilobot {
           this.setColor(this.COLORS_FOLLOWER[this.kilo_uid % this.COLORS_FOLLOWER.length]);
         }
       }
-    } else if(this.userPackets.length > 0) {
-      // let idx = Math.floor(this.userPackets.length * this.rand_soft()/256);
-      // this.setColor(this.COLORS[this.userPackets[idx].dest % this.COLORS.length]);
+    } else if(this.abilityBellmanFordRouting.userPackets.length > 0) {
+      // let idx = Math.floor(this.abilityBellmanFordRouting.userPackets.length * this.rand_soft()/256);
+      // this.setColor(this.COLORS[this.abilityBellmanFordRouting.userPackets[idx].dest % this.COLORS.length]);
       this.setColor(this.RGB(2, 2, 2));
-    } else if(Object.keys(this.routingTable).length > 0) {
+    } else if(Object.keys(this.abilityBellmanFordRouting.routingTable).length > 0) {
       this.set_color(this.RGB(1, 1, 1));
     } else {
       this.set_color(this.RGB(0, 0, 0));
@@ -371,7 +326,8 @@ window['ExperimentRaft'] = class {
 
         console.log({
           uid: b.robot._uid,
-          routingTable: b.robot.routingTable,
+          tick: b.robot.kilo_ticks,
+          routingTable: b.robot.abilityBellmanFordRouting.routingTable,
           robot: b.robot,
           events: b.robot.events,
         });
@@ -381,7 +337,7 @@ window['ExperimentRaft'] = class {
   }
 
   createRobots(newRobotFunc, newLightFunc, RADIUS, NEIGHBOUR_DISTANCE, TICKS_BETWEEN_MSGS) {
-    this.MathRandom = new Math.seedrandom(12345);
+    this.MathRandom = new Math.seedrandom(1234);
     this.INITIAL_DIST = 2.1*RADIUS;
     this.noise = function(magnitude) {
       return magnitude * (this.MathRandom()-0.5);
@@ -422,8 +378,6 @@ window['ExperimentRaft'] = class {
     for(let i = 0; i < endpointCount; i++) {
       let idx = Math.floor(this.MathRandom() * functioningRobots.length);
       functioningRobots[idx].isEndpoint = true;
-      // functioningRobots[idx].isSender = true; // i == 0 || i == 20-1;
-      // functioningRobots[idx].sendData = i;
     }
 
     robotSpecs.forEach(s => {
@@ -434,8 +388,7 @@ window['ExperimentRaft'] = class {
         y: s.pos.y + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.5,
       },
         this.MathRandom() * 2*Math.PI,
-        new Robot(s.defunct, s.isEndpoint, /*s.isSender,*/ s.sendData, this.INITIAL_DIST, endpointCount),
-        // new RobotGradientFormation(s.isEndpoint, this.INITIAL_DIST), // s.defunct, s.isEndpoint),
+        new Robot(s.defunct, s.isEndpoint, this.INITIAL_DIST*1.5, endpointCount),
       );
     });
   }

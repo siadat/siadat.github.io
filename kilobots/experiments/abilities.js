@@ -231,6 +231,194 @@ class AbilityAttractAndAvoid {
   }
 }
 
+class AbilityBellmanFordRouting {
+  constructor(robot, defunct, isEndpoint, linkDist) {
+
+    this.robot = robot;
+    this.defunct = defunct;
+    this.isEndpoint = isEndpoint;
+    this.linkDist = linkDist
+
+    this.COLORS = [
+      this.robot.RGB(3, 0, 0), // red
+      this.robot.RGB(3, 0, 3), // magenta
+      this.robot.RGB(0, 0, 3), // blue
+      this.robot.RGB(0, 3, 3), // cyan
+      this.robot.RGB(0, 3, 0), // green
+      this.robot.RGB(3, 3, 0), // yellow
+    ];
+  }
+
+  setup() {
+    this.routingTable = {};
+    this.userPackets = [];
+    this.offset = this.robot.rand_soft();
+
+    if(this.isEndpoint) {
+      // add self
+      this.routingTable[this.robot.kilo_uid] = {
+        cost: 0,
+        expireAt: Infinity,
+        link: null,
+      };
+    }
+
+    // if(this.defunct) {
+    //   this.robot.set_color(this.robot.RGB(0, 0, 0));
+    // } else {
+    //   // if(this.isEndpoint) {
+    //   //   this.robot.set_color(this.robot.RGB(3, 0, 0));
+    //   // } else {
+    //   //   this.robot.set_color(this.robot.RGB(0, 0, 0));
+    //   // }
+    // }
+  }
+
+  setColor(c) {
+    this.lastColorUpdatedAt = this.robot.kilo_ticks;
+    // this.lastColor2 = this.lastColor1;
+    // this.lastColor1 = c;
+    this.robot.set_color(c);
+  }
+
+  loop() {
+    this.expireRoutes();
+  }
+
+  expireRoutes() {
+    Object.keys(this.routingTable).forEach(id => {
+      if(this.robot.kilo_ticks > this.routingTable[id].expireAt) {
+        delete(this.routingTable[id]);
+      }
+    });
+  }
+
+  message_tx() {
+    if(this.defunct) return null;
+
+    let msg = {
+      id: this.robot.kilo_uid,
+      vector: Object.keys(this.routingTable).map(id => {return {id: id, cost: this.routingTable[id].cost}}),
+      userPackets: this.userPackets,
+    };
+
+
+    // if(this.lastPacketSent == null || this.robot.kilo_ticks > this.lastPacketSent + 30) {
+      this.userPackets = [];
+    // }
+    return msg;
+  }
+
+  message_rx(message, distance) {
+    if(this.defunct) return;
+
+    if(distance > this.linkDist)
+      return;
+
+    for(let i = 0; i < message.vector.length; i++) {
+      let destID = message.vector[i].id;
+      let destCost = message.vector[i].cost;
+
+      let currBestCost = this.routingTable[destID] && this.routingTable[destID].cost;
+      let currBestExpireAt = this.routingTable[destID] && this.routingTable[destID].expireAt;
+
+      if(
+        (currBestCost == null)
+        ||
+        (destCost + distance <= currBestCost)
+        ||
+        (this.robot.kilo_ticks > currBestExpireAt)
+      ) {
+        this.routingTable[destID] = {
+          cost: destCost + distance,
+          expireAt: this.robot.kilo_ticks + 60,
+          link: message.id,
+        }
+      }
+    }
+
+    let neighborPackets = message.userPackets;
+
+    for(let j = 0; j < neighborPackets.length; j++) {
+      let p = neighborPackets[j];
+      if(p.link != this.robot.kilo_uid) // not for me
+        continue;
+
+      if(p.dest == this.robot.kilo_uid) // it is me!
+        continue;
+
+      if(!this.routingTable[p.dest]) // I don't know how to send it
+        continue;
+
+      // p.history.push(this.robot.kilo_uid);
+      this.userPackets.push({
+        data: p.data,
+        dest: p.dest, // copy dest
+        src: p.src,
+        link: this.routingTable[p.dest].link, // choose link
+        // history: p.history // copy dest
+      });
+    }
+  }
+
+  sendSomething() {
+    if(!this.isEndpoint) return;
+
+    if((this.robot.kilo_ticks + this.offset) % 200 == 0) {
+      let ids = Object.keys(this.routingTable).filter(id => id != this.robot.kilo_uid);
+      let idx = Math.floor(this.robot.kilo_ticks/240) % ids.length;
+      let packetDestID = ids[idx];
+
+      if(this.routingTable[packetDestID]) {
+        this.userPackets.push({
+          data: 1,
+          dest: packetDestID,
+          src: this.robot.kilo_uid,
+          link: this.routingTable[packetDestID].link,
+          // history: [this.robot.kilo_uid],
+        });
+      }
+    }
+  }
+
+  updateColors() {
+    if(this.defunct) {
+      this.robot.set_color(this.robot.RGB(0, 0, 0));
+    } else if(this.isEndpoint) {
+      this.setColor(this.COLORS[this.robot.kilo_uid % this.COLORS.length]);
+    } else if(this.userPackets.length == 1) {
+      this.setColor(this.COLORS[this.userPackets[0].dest % this.COLORS.length]);
+    } else if(this.userPackets.length > 1) {
+      // this.setColor(this.robot.RGB(3, 3, 3));
+      // let idx = Math.floor(this.userPackets.length * this.robot.rand_soft()/256);
+      // this.setColor(this.COLORS[this.userPackets[idx].dest % this.COLORS.length]);
+      let idx = Math.floor(this.userPackets.length * this.robot.rand_soft()/256);
+      this.setColor(this.COLORS[this.userPackets[idx].dest % this.COLORS.length]);
+    } else if(Object.keys(this.routingTable).length > 0) {
+
+      if(this.lastColorUpdatedAt == null) { // || this.robot.kilo_ticks > this.lastColorUpdatedAt + 240) {
+        this.robot.set_color(this.robot.RGB(1, 1, 1));
+      } else {
+        this.robot.set_color(this.robot.RGB(1, 1, 1));
+
+        // this.robot.set_color(this.robot.RGB(0, 1, 2));
+        // if(this.robot.kilo_ticks < this.lastColorUpdatedAt + 60) {
+        //   this.robot.set_color(this.robot.RGB(0, 1, 2));
+        //   // this.robot.set_color(this.lastColor2);
+        // } else {
+        //   this.robot.set_color(this.robot.RGB(1, 1, 1));
+        // }
+      }
+
+    } else {
+      this.robot.set_color(this.robot.RGB(0, 0, 0));
+    }
+  }
+
+}
+
+
+
 // node_modules/pixi.js/dist/pixi.js: Polygon.prototype.contains
 class AbilityFuncs {
   static isPointInPolygon(polygonPoints, x, y) {

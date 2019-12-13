@@ -10,9 +10,24 @@ class Robot extends Kilobot {
   }
 
   loop() {
+    // if(!this.abilityBellmanFordRouting.defunct) {
+    //   this.set_motors(this.kilo_turn_left, 0);
+    // }
+
     this.abilityBellmanFordRouting.loop();
     this.abilityBellmanFordRouting.sendSomething();
     this.abilityBellmanFordRouting.updateColors();
+
+    if(this.abilityBellmanFordRouting.defunct) {
+      if(this.kilo_ticks % 50 == 0 && this.rand_soft() > 252) {
+        // get back to work
+        this.abilityBellmanFordRouting.defunct = false;
+      }
+    } else if (!this.abilityBellmanFordRouting.isEndpoint) {
+      if(this.kilo_ticks % (100 + this.rand_soft()) == 0 && this.rand_soft() > 250) {
+        this.abilityBellmanFordRouting.defunct = true;
+      }
+    }
   }
 
   message_rx(message, distance) {
@@ -25,7 +40,7 @@ class Robot extends Kilobot {
   }
 }
 
-window['ExperimentBellmanFord'] = class {
+window['ExperimentBellmanFord2'] = class {
   // AKA Distance Vector (DV) protocol
   // A distributed routing protocol (i.e., each node is NOT aware of the whole
   // network topology, as it is the case in the Link-State routing protocol)
@@ -36,7 +51,7 @@ window['ExperimentBellmanFord'] = class {
   constructor() {
     this.runnerOptions = {
       limitSpeed: true,
-      traversedPath: true,
+      traversedPath: false,
       // traversedPathLen: 100,
       darkMode: !false,
     }
@@ -73,7 +88,7 @@ window['ExperimentBellmanFord'] = class {
   }
 
   createRobots(newRobotFunc, newLightFunc, RADIUS, NEIGHBOUR_DISTANCE, TICKS_BETWEEN_MSGS) {
-    this.MathRandom = new Math.seedrandom(12345);
+    this.MathRandom = new Math.seedrandom(5);
     this.INITIAL_DIST = 2.1*RADIUS;
     this.noise = function(magnitude) {
       return magnitude * (this.MathRandom()-0.5);
@@ -95,7 +110,7 @@ window['ExperimentBellmanFord'] = class {
       for(let j = minJ; j < maxJ; j++) {
         let defunct = false;
 
-        if(this.MathRandom() > 0.55) defunct = true;
+        // if(this.MathRandom() > 0.55) defunct = true;
 
         // if(AbilityFuncs.gradientNoise(this.MathRandom) > 0.5)
         //   defunct = true;
@@ -122,7 +137,7 @@ window['ExperimentBellmanFord'] = class {
         y: s.pos.y + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.5,
       },
         this.MathRandom() * 2*Math.PI,
-        new Robot(s.defunct, s.isEndpoint, this.INITIAL_DIST*1.5),
+        new Robot(s.defunct, s.isEndpoint, this.INITIAL_DIST * 1.5),
         // new RobotGradientFormation(s.isEndpoint, this.INITIAL_DIST), // s.defunct, s.isEndpoint),
       );
     });
