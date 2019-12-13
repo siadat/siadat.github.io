@@ -115,6 +115,10 @@ window['ExperimentBellmanFord2'] = class {
         g.clear();
         g.endFill();
 
+        let maxCost = 1;
+        if(this.maxCost == null)
+          this.maxCost = Infinity;
+
         for(let i = 0; i < bodyIDs.length; i++) {
           let b = bodies[bodyIDs[i]];
           let pos = b.position;
@@ -134,9 +138,6 @@ window['ExperimentBellmanFord2'] = class {
             continue;
 
           let endpointIDs = Object.keys(b.robot.abilityBellmanFordRouting.routingTable);
-          let maxCost = 0;
-          if(this.maxCost == null)
-            this.maxCost = 1;
 
           for(let j = 0; j < endpointIDs.length; j++) {
 
@@ -158,14 +159,14 @@ window['ExperimentBellmanFord2'] = class {
 
             let dist = calculateDistancePerf(pos.x, pos2.x, pos.y, pos2.y);
 
+            let alpha = (this.maxCost - cost*1.0) / this.maxCost;
             let posTo = {
-              x: + (pos.x + (pos2.x - pos.x) / dist) * this.RADIUS * this.V.ZOOM,
-              y: + (pos.y + (pos2.y - pos.y) / dist) * this.RADIUS * this.V.ZOOM,
+              x: + (pos.x + (pos2.x - pos.x) / dist * 1.0 * this.RADIUS) * this.V.ZOOM,
+              y: + (pos.y + (pos2.y - pos.y) / dist * 1.0 * this.RADIUS) * this.V.ZOOM,
             }
 
             color = toHex(bodies[id].robot.led);
             let thickness = this.RADIUS*this.V.ZOOM * 0.2; // 2
-            let alpha = (this.maxCost - cost*0.9) / this.maxCost;
             g.lineStyle(thickness, color, alpha);
 
             // if(this.selectedUID && this.selectedUID != b.robot._uid) {
@@ -180,9 +181,10 @@ window['ExperimentBellmanFord2'] = class {
 
             g.moveTo(posFrom.x, posFrom.y);
             g.lineTo(posTo.x, posTo.y);
+            // g.drawCircle(posTo.x, posTo.y, this.RADIUS*0.1 * this.V.ZOOM);
           }
-          this.maxCost = maxCost;
         }
+        this.maxCost = maxCost;
       });
     }
   }
