@@ -381,19 +381,25 @@ class AbilityBellmanFordRouting {
     }
   }
 
+  getColorForID(id) {
+    return this.COLORS[id % this.COLORS.length];
+  }
+
   updateColors() {
     if(this.defunct) {
       this.robot.set_color(this.robot.RGB(0, 0, 0));
     } else if(this.isEndpoint) {
-      this.setColor(this.COLORS[this.robot.kilo_uid % this.COLORS.length]);
+      this.setColor(this.getColorForID(this.robot.kilo_uid));
     } else if(this.userPackets.length == 1) {
-      this.setColor(this.COLORS[this.userPackets[0].dest % this.COLORS.length]);
+      this.setColor(this.getColorForID(this.userPackets[0].dest));
+      // this.setColor(this.COLORS[this.userPackets[0].dest % this.COLORS.length]);
     } else if(this.userPackets.length > 1) {
       // this.setColor(this.robot.RGB(3, 3, 3));
       // let idx = Math.floor(this.userPackets.length * this.robot.rand_soft()/256);
       // this.setColor(this.COLORS[this.userPackets[idx].dest % this.COLORS.length]);
       let idx = Math.floor(this.userPackets.length * this.robot.rand_soft()/256);
-      this.setColor(this.COLORS[this.userPackets[idx].dest % this.COLORS.length]);
+      this.setColor(this.getColorForID(this.userPackets[idx].dest));
+      // this.setColor(this.COLORS[this.userPackets[idx].dest % this.COLORS.length]);
     } else if(Object.keys(this.routingTable).length > 0) {
 
       if(this.lastColorUpdatedAt == null) { // || this.robot.kilo_ticks > this.lastColorUpdatedAt + 240) {
