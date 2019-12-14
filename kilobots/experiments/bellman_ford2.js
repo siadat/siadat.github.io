@@ -221,7 +221,7 @@ window['ExperimentBellmanFord2'] = class {
   createRobots(newRobotFunc, newLightFunc, RADIUS, NEIGHBOUR_DISTANCE, TICKS_BETWEEN_MSGS) {
     this.RADIUS = RADIUS;
     this.MathRandom = new Math.seedrandom(5);
-    this.INITIAL_DIST = 2.1*RADIUS;
+    this.INITIAL_DIST = 2.5*RADIUS;
     this.noise = function(magnitude) {
       return magnitude * (this.MathRandom()-0.5);
     }

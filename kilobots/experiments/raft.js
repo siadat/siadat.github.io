@@ -4,9 +4,9 @@ class Robot extends Kilobot {
     super();
     this.abilityBellmanFordRouting = new AbilityBellmanFordRouting(this, defunct, isEndpoint, linkDist);
     this.endpointCount = endpointCount;
-    this.defunct = defunct;
-    this.isEndpoint = isEndpoint;
-    this.linkDist = linkDist;
+    // this.defunct = defunct;
+    // this.isEndpoint = isEndpoint;
+    // this.linkDist = linkDist;
 
     this.raftStates = {
       Routing: "Routing",
@@ -73,7 +73,24 @@ class Robot extends Kilobot {
     this.abilityBellmanFordRouting.loop();
     this.updateColors();
 
-    if(!this.isEndpoint) {
+    if(!this.abilityBellmanFordRouting.isEndpoint) {
+      return;
+    }
+
+    /*
+    if(this.abilityBellmanFordRouting.defunct) {
+      if(this.kilo_ticks % 50 == 0 && this.rand_soft() > 252) {
+        // get back to work
+        this.abilityBellmanFordRouting.defunct = false;
+      }
+    } else if (this.abilityBellmanFordRouting.isEndpoint) {
+      if(this.kilo_ticks % (100 + this.rand_soft()) == 0 && this.rand_soft() > 250) {
+        this.abilityBellmanFordRouting.defunct = true;
+      }
+    }
+    */
+
+    if(this.abilityBellmanFordRouting.defunct) {
       return;
     }
 
@@ -117,9 +134,9 @@ class Robot extends Kilobot {
   message_rx(message, distance) {
     this.abilityBellmanFordRouting.message_rx(message, distance);
 
-    if(this.defunct) return;
+    if(this.abilityBellmanFordRouting.defunct) return;
 
-    if(distance > this.linkDist)
+    if(distance > this.abilityBellmanFordRouting.linkDist)
       return;
 
     let neighborPackets = message.userPackets;
@@ -271,7 +288,9 @@ class Robot extends Kilobot {
   }
 
   updateColors() {
-    if(this.isEndpoint) {
+    if(this.abilityBellmanFordRouting.defunct) {
+      this.set_color(this.RGB(1, 1, 1));
+    } else if(this.abilityBellmanFordRouting.isEndpoint) {
       if(this.amLeader()) {
         this.setColor(this.COLORS[this.kilo_uid % this.COLORS.length]);
       } else if(this.amCandidate()) {
@@ -284,13 +303,21 @@ class Robot extends Kilobot {
         }
       }
     } else if(this.abilityBellmanFordRouting.userPackets.length > 0) {
-      // let idx = Math.floor(this.abilityBellmanFordRouting.userPackets.length * this.rand_soft()/256);
-      // this.setColor(this.COLORS[this.abilityBellmanFordRouting.userPackets[idx].dest % this.COLORS.length]);
-      this.setColor(this.RGB(2, 2, 2));
+      let idx = Math.floor(this.abilityBellmanFordRouting.userPackets.length * this.rand_soft()/256);
+
+      if(this.abilityBellmanFordRouting.userPackets[idx].data.raftVote) {
+        let id = this.abilityBellmanFordRouting.userPackets[idx].data.raftVote;
+        this.setColor(this.COLORS[id % this.COLORS_CANDIDATE.length]);
+      } else {
+        let id = this.abilityBellmanFordRouting.userPackets[idx].src;
+        this.setColor(this.COLORS[id % this.COLORS.length]);
+      }
+
+      // this.setColor(this.RGB(2, 2, 2));
     } else if(Object.keys(this.abilityBellmanFordRouting.routingTable).length > 0) {
-      this.set_color(this.RGB(1, 1, 1));
-    } else {
       this.set_color(this.RGB(0, 0, 0));
+    } else {
+      this.set_color(this.RGB(1, 1, 1));
     }
   }
 }
