@@ -113,7 +113,7 @@ window['ExperimentBellmanFord2'] = class {
       platformGraphics.addChild(g);
       pixiApp.ticker.add(() => {
         g.clear();
-        g.endFill();
+        // g.removeChildren();
 
         let maxCost = 1;
         if(this.maxCost == null)
@@ -126,20 +126,28 @@ window['ExperimentBellmanFord2'] = class {
             let data = b.getData();
             pos = data.pos;
           }
-          let posFrom = {
-            x: + pos.x * this.V.ZOOM,
-            y: + pos.y * this.V.ZOOM,
-          }
-
           if(!b.robot.abilityBellmanFordRouting.routingTable)
             continue;
 
-          if(b.robot.abilityBellmanFordRouting.defunct)
+          if(b.robot.abilityBellmanFordRouting.defunct) {
+            // const t = new PIXI.Text(`F`, {fontSize: 1.0 * this.RADIUS* this.V.ZOOM, align: 'center', fill: 0xaaaaaa});
+            // t.anchor.set(0.5);
+            // t.position = {
+            //   x: pos.x*this.V.ZOOM,
+            //   y: pox.y*this.V.ZOOM,
+            // }
+            // g.addChild(t);
             continue;
+          }
 
           let endpointIDs = Object.keys(b.robot.abilityBellmanFordRouting.routingTable);
 
           for(let j = 0; j < endpointIDs.length; j++) {
+
+            let posFrom = {
+              x: +pos.x * this.V.ZOOM,
+              y: +pos.y * this.V.ZOOM,
+            }
 
             let id = endpointIDs[j];
             let linkID = b.robot.abilityBellmanFordRouting.routingTable[id].link;
@@ -161,26 +169,47 @@ window['ExperimentBellmanFord2'] = class {
 
             let alpha = (this.maxCost - cost*1.0) / this.maxCost;
             let posTo = {
-              x: + (pos.x + (pos2.x - pos.x) / dist * 1.0 * this.RADIUS) * this.V.ZOOM,
-              y: + (pos.y + (pos2.y - pos.y) / dist * 1.0 * this.RADIUS) * this.V.ZOOM,
+              // x: + (pos.x + (pos2.x - pos.x) / dist * 1.0 * this.RADIUS) * this.V.ZOOM,
+              // y: + (pos.y + (pos2.y - pos.y) / dist * 1.0 * this.RADIUS) * this.V.ZOOM,
+              x: + pos2.x * this.V.ZOOM,
+              y: + pos2.y * this.V.ZOOM,
             }
 
+            let thickness = alpha*this.RADIUS*this.V.ZOOM * 0.5; // 2
             color = toHex(bodies[id].robot.led);
-            let thickness = this.RADIUS*this.V.ZOOM * 0.2; // 2
-            g.lineStyle(thickness, color, alpha);
+            g.lineStyle(thickness, color, 0.5*alpha);
 
             // if(this.selectedUID && this.selectedUID != b.robot._uid) {
             //   g.lineStyle(thickness, color, 0.3);
             // }
 
-            const MAX = 100000;
-            if(posTo.x > +MAX) posTo.x = +MAX;
-            if(posTo.x < -MAX) posTo.x = -MAX;
-            if(posTo.y > +MAX) posTo.y = +MAX;
-            if(posTo.y < -MAX) posTo.y = -MAX;
-
+            g.endFill();
             g.moveTo(posFrom.x, posFrom.y);
             g.lineTo(posTo.x, posTo.y);
+
+
+            g.lineStyle(0);
+            g.beginFill(color, alpha);
+            /*
+            let angle = AbilityFuncs.clockwiseAngle({x: pos.x + 0, y: pos.y + this.RADIUS}, pos2);
+            // if(angle < 0) angle += 2 * Math.PI;
+            g.drawPolygon([
+              [-0.5, +0],
+              [+0.0, -1],
+              [+0.5, +0],
+            ].map(p => {
+              let point = {
+                x: p[0] * this.RADIUS,
+                y: p[1] * this.RADIUS,
+              }
+              let newPos = AbilityFuncs.rotatePoint(angle, {x: 0, y: 0}, point);
+
+              return [
+                this.V.ZOOM * (pos.x + newPos.x),
+                this.V.ZOOM * (pos.y + newPos.y),
+              ]
+            }).flat());
+            */
             // g.drawCircle(posTo.x, posTo.y, this.RADIUS*0.1 * this.V.ZOOM);
           }
         }
@@ -236,8 +265,8 @@ window['ExperimentBellmanFord2'] = class {
       if(s.defunct) return;
 
       newRobotFunc({
-        x: s.pos.x + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.5,
-        y: s.pos.y + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.5,
+        x: s.pos.x + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.75,
+        y: s.pos.y + (AbilityFuncs.gradientNoise(this.MathRandom)-0.5)*RADIUS*0.75,
       },
         this.MathRandom() * 2*Math.PI,
         new Robot(s.defunct, s.isEndpoint, this.INITIAL_DIST * 1.5),

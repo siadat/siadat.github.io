@@ -242,7 +242,7 @@ class AbilityBellmanFordRouting {
     this.COLORS = [
       this.robot.RGB(3, 0, 0), // red
       this.robot.RGB(3, 0, 3), // magenta
-      this.robot.RGB(0, 0, 3), // blue
+      // this.robot.RGB(0, 0, 3), // blue
       this.robot.RGB(0, 3, 3), // cyan
       this.robot.RGB(0, 3, 0), // green
       this.robot.RGB(3, 3, 0), // yellow
@@ -387,7 +387,7 @@ class AbilityBellmanFordRouting {
 
   updateColors() {
     if(this.defunct) {
-      this.robot.set_color(this.robot.RGB(0, 0, 0));
+      this.robot.set_color(this.robot.RGB(1, 1, 1));
     } else if(this.isEndpoint) {
       this.setColor(this.getColorForID(this.robot.kilo_uid));
     } else if(this.userPackets.length == 1) {
@@ -403,9 +403,9 @@ class AbilityBellmanFordRouting {
     } else if(Object.keys(this.routingTable).length > 0) {
 
       if(this.lastColorUpdatedAt == null) { // || this.robot.kilo_ticks > this.lastColorUpdatedAt + 240) {
-        this.robot.set_color(this.robot.RGB(1, 1, 1));
+        this.robot.set_color(this.robot.RGB(0, 0, 0));
       } else {
-        this.robot.set_color(this.robot.RGB(1, 1, 1));
+        this.robot.set_color(this.robot.RGB(0, 0, 0));
 
         // this.robot.set_color(this.robot.RGB(0, 1, 2));
         // if(this.robot.kilo_ticks < this.lastColorUpdatedAt + 60) {
@@ -417,7 +417,7 @@ class AbilityBellmanFordRouting {
       }
 
     } else {
-      this.robot.set_color(this.robot.RGB(0, 0, 0));
+      this.robot.set_color(this.robot.RGB(1, 1, 1));
     }
   }
 
@@ -496,5 +496,57 @@ class AbilityFuncs {
     pos.x += gridPos.x * INITIAL_DIST + (gridPos.y%2==0 ? -INITIAL_DIST/2 : 0);
     pos.y += gridPos.y * INITIAL_DIST * Math.sqrt(3)/2;
     return pos;
+  }
+
+  // ----
+
+  static matrixTranslate (m, x, y) {
+    m.tx += x;
+    m.ty += y;
+  }
+
+  static matrixRotate(m, angle) {
+    var cos = Math.cos(angle);
+    var sin = Math.sin(angle);
+
+    var a1 = m.a;
+    var c1 = m.c;
+    var tx1 = m.tx;
+
+    m.a = (a1 * cos) - (m.b * sin);
+    m.b = (a1 * sin) + (m.b * cos);
+    m.c = (c1 * cos) - (m.d * sin);
+    m.d = (c1 * sin) + (m.d * cos);
+    m.tx = (tx1 * cos) - (m.ty * sin);
+    m.ty = (tx1 * sin) + (m.ty * cos);
+  }
+
+  static matrixApply(m, pos) {
+    let newPos = {x: 0, y: 0};
+
+    var x = pos.x;
+    var y = pos.y;
+
+    newPos.x = (m.a * x) + (m.c * y) + m.tx;
+    newPos.y = (m.b * x) + (m.d * y) + m.ty;
+
+    return newPos;
+  }
+
+  static rotatePoint(angle, origin, pos) {
+    let m = {
+      a: 1,
+      b: 0,
+      c: 0,
+      d: 1,
+      tx: 0,
+      ty: 0,
+    };
+
+    this.matrixTranslate(m, -origin.x, -origin.y)
+    this.matrixRotate(m, angle);
+    let newPos = this.matrixApply(m, pos);
+    this.matrixTranslate(m, +origin.x, +origin.y)
+    return this.matrixApply(m, pos);
   }
 }

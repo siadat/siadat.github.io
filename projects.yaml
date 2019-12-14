@@ -51,8 +51,8 @@
         To see it in action, [<i class="far fa-play-circle"></i> Run][exp_replicator_starfish] the algorithm on your browser.
 
     - **Network routing** (new experiment)
-      [<i class="far fa-play-circle"></i> Run][exp_bellmanford] (simple),
-      [<i class="far fa-play-circle"></i> Run][exp_bellmanford2] (nodes going up and down),
+      [<i class="far fa-play-circle"></i> Run][exp_bellmanford] (main),
+      [<i class="far fa-play-circle"></i> Run][exp_bellmanford2] (with random sever failures),
 
         Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
         In this experiment, the swarm acts like a network in which each node is linked to its adjacent neighbors.
