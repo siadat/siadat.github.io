@@ -30,7 +30,7 @@
     position or orientation. To localize, we need to program a distributed localization
     algorithm e.g., calculate relative positions to a few pre-localized neighbors
     using triangulation, preferably with robots that make a robust quadrilateral
-    as described in [this paper](http://rvsn.csail.mit.edu/netloc/sensys04.pdf).
+    as described in [this paper][paper_robust_quads].
     
     I developed a Kilobot swarm simulator library to reproduce several experiments
     published by the [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard.
@@ -94,11 +94,12 @@
       [<i class="far fa-play-circle"></i> Run][exp_phototaxis2] (two lights),
       [paper][paper_kilobot].
 
-    [paper_assembly]:    https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
-    [paper_disassembly]: http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
-    [paper_gradient]:    https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf
-    [paper_kilobot]:     http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf
-    [paper_raft]:        https://raft.github.io/raft.pdf
+    [paper_assembly]:     https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
+    [paper_disassembly]:  http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
+    [paper_gradient]:     https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf
+    [paper_kilobot]:      http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf
+    [paper_raft]:         https://raft.github.io/raft.pdf
+    [paper_robust_quads]: http://rvsn.csail.mit.edu/netloc/sensys04.pdf
 
     [exp_assembly_wrench]:       /kilobots/index.html?ExperimentAssembly
     [exp_assembly_starfish]:     /kilobots/index.html?ExperimentAssemblyStarfish

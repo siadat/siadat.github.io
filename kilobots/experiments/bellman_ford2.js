@@ -177,7 +177,7 @@ window['ExperimentBellmanFord2'] = class {
 
             let thickness = alpha*this.RADIUS*this.V.ZOOM * 0.5; // 2
             color = toHex(bodies[id].robot.led);
-            g.lineStyle(thickness, color, 0.5*alpha);
+            g.lineStyle(thickness, color, 0.9*alpha);
 
             // if(this.selectedUID && this.selectedUID != b.robot._uid) {
             //   g.lineStyle(thickness, color, 0.3);

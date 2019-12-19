@@ -12,11 +12,9 @@ env = Environment(
 
 env.filters['markdown'] = markdown.markdown;
 
-headerFile = open("header.html", "r")
-headerContent = headerFile.read()
-
-aboutmeFile = open("about.md", "r")
-aboutmeContent = aboutmeFile.read()
+headerContent = open("header.html", "r").read()
+aboutmeContent = open("about.md", "r").read()
+paperContent = open("self-replicators.md", "r").read()
 
 for templateFilename in glob.glob("*.template.html"):
     print(templateFilename)
@@ -37,4 +35,4 @@ for templateFilename in glob.glob("*.template.html"):
     readings = sorted(readings, key = (lambda b: int(b["weight"])), reverse = True)
 
     outputFile = open(outputFilename, "w")
-    outputFile.write(template.render(projects=projects, readings=readings, header=headerContent, aboutme=aboutmeContent).encode('utf-8'))
+    outputFile.write(template.render(projects=projects, readings=readings, header=headerContent, aboutme=aboutmeContent, paper=paperContent).encode('utf-8'))
