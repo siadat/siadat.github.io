@@ -38,11 +38,11 @@ class Robot extends Kilobot {
     if(this.abilityBellmanFordRouting.defunct) {
       if(this.kilo_ticks % 50 == 0 && this.rand_soft() > 252) {
         // get back to work
-        this.abilityBellmanFordRouting.defunct = false;
+        this.abilityBellmanFordRouting.unfail();
       }
     } else if (!this.abilityBellmanFordRouting.isEndpoint) {
       if(this.kilo_ticks % (100 + this.rand_soft()) == 0 && this.rand_soft() > 250) {
-        this.abilityBellmanFordRouting.defunct = true;
+        this.abilityBellmanFordRouting.fail();
       }
     }
   }
@@ -175,9 +175,22 @@ window['ExperimentBellmanFord2'] = class {
               y: + pos2.y * this.V.ZOOM,
             }
 
-            let thickness = alpha*this.RADIUS*this.V.ZOOM * 0.5; // 2
+            /*
+            let hasPendingPacket = false;
+            for(let k = 0; k < b.robot.abilityBellmanFordRouting.userPackets.length; k++) {
+              let packet = b.robot.abilityBellmanFordRouting.userPackets[k];
+              if(packet.link == linkID) {
+                console.log("YES");
+                alpha = 2 * alpha;
+                break;
+              }
+            }
+            */
+
+            // alpha = Math.pow(alpha, 2);
+            let thickness = Math.pow(alpha, 2)*this.RADIUS*this.V.ZOOM * 0.5; // 2
             color = toHex(bodies[id].robot.led);
-            g.lineStyle(thickness, color, 0.9*alpha);
+            g.lineStyle(thickness, color, Math.pow(alpha, 3));
 
             // if(this.selectedUID && this.selectedUID != b.robot._uid) {
             //   g.lineStyle(thickness, color, 0.3);

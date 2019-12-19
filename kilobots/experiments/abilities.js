@@ -253,15 +253,7 @@ class AbilityBellmanFordRouting {
     this.routingTable = {};
     this.userPackets = [];
     this.offset = this.robot.rand_soft();
-
-    if(this.isEndpoint) {
-      // add self
-      this.routingTable[this.robot.kilo_uid] = {
-        cost: 0,
-        expireAt: Infinity,
-        link: null,
-      };
-    }
+    this.reset();
 
     // if(this.defunct) {
     //   this.robot.set_color(this.robot.RGB(0, 0, 0));
@@ -385,9 +377,29 @@ class AbilityBellmanFordRouting {
     return this.COLORS[id % this.COLORS.length];
   }
 
+  unfail() {
+    this.defunct = false;
+  }
+
+  fail() {
+    this.defunct = true;
+    this.reset();
+  }
+
+  reset() {
+    this.routingTable = {};
+      if(this.isEndpoint) {
+      this.routingTable[this.robot.kilo_uid] = {
+        cost: 0,
+        expireAt: Infinity,
+        link: null,
+      };
+    }
+  }
+
   updateColors() {
     if(this.defunct) {
-      this.robot.set_color(this.robot.RGB(1, 1, 1));
+      this.robot.set_color(this.robot.RGB(2, 2, 2));
     } else if(this.isEndpoint) {
       this.setColor(this.getColorForID(this.robot.kilo_uid));
     } else if(this.userPackets.length == 1) {
