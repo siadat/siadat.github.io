@@ -188,7 +188,7 @@ window['ExperimentBellmanFord2'] = class {
             */
 
             // alpha = Math.pow(alpha, 2);
-            let thickness = Math.pow(alpha, 2)*this.RADIUS*this.V.ZOOM * 0.5; // 2
+            let thickness = Math.pow(alpha, 1.5)*this.RADIUS*this.V.ZOOM * 0.5; // 2
             color = toHex(bodies[id].robot.led);
             g.lineStyle(thickness, color, Math.pow(alpha, 3));
 

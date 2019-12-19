@@ -274,6 +274,7 @@ class AbilityBellmanFordRouting {
   }
 
   loop() {
+    this.counter++;
     this.expireRoutes();
   }
 
@@ -379,11 +380,13 @@ class AbilityBellmanFordRouting {
 
   unfail() {
     this.defunct = false;
+    this.counter = 0;
   }
 
   fail() {
     this.defunct = true;
     this.reset();
+    this.counter = 0;
   }
 
   reset() {
@@ -398,7 +401,9 @@ class AbilityBellmanFordRouting {
   }
 
   updateColors() {
-    if(this.defunct) {
+    if(this.counter < 8 && this.counter % 4 < 2) {
+      this.robot.set_color(this.robot.RGB(3, 3, 3));
+    } else if(this.defunct) {
       this.robot.set_color(this.robot.RGB(2, 2, 2));
     } else if(this.isEndpoint) {
       this.setColor(this.getColorForID(this.robot.kilo_uid));
