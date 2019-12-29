@@ -88,16 +88,17 @@ To see it in action, <a href="/kilobots/index.html?ExperimentReplicatorStarfish"
 <li>
 <p><strong>Network routing</strong> (new experiment)
   <a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Run</a> (main),
-  <a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Run</a> (with random sever failures),</p>
+  <a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Run</a> (handling router failures dynamically),</p>
 <p>Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-In this experiment, the swarm acts like a network in which each node is linked to its adjacent neighbors.
-The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">distributed distance-vector protocol routing</a> algorithm.
+In this experiment, the swarm acts like a network in which each node is like a router linked to its adjacent neighbors.
+The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.
 In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors, which act like network links.
 The link cost is the distance between the two robots.
 Messages are either advertised to all adjacent robots, or to a specific link (All messages are technically broadcast, however, if the message has a "link" parameter, it is discarded by all robots except the robot with the matching link identifier).
 Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
 Whenever a robot receives this advertisement, they store this value to their routing table.
-Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.</p>
+Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
+Similar routing algorithms are in use by the global Internet routers.</p>
 </li>
 <li>
 <p><strong>Raft consensus</strong> (new experiment)
