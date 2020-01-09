@@ -45,6 +45,9 @@
 - author: Martin Kleppmann
   name: Designing Data-Intensive Applications
   weight: '11'
+- author: Steve McConnell
+  name: 'Code Complete: A Practical Handbook of Software Construction (2nd Edition)'
+  weight: '11'
 - author: Patrick Lencioni
   name: 'The Five Dysfunctions of a Team: A Leadership Fable'
   weight: '9'
