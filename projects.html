@@ -57,21 +57,23 @@ List of projects I have been working on.
           <hr>
           <!--<hr>-->
           
-          <p><a href="/kilobots/index.html?ExperimentRaft"><i class="far fa-play-circle"></i> Run</a> (Raft consensus protocol),
-<a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Run</a> (DV routing algorithm),
-<a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Run</a> (DV routing and handling router failures dynamically),</p>
+          <ul>
+<li><a href="/kilobots/index.html?ExperimentRaft"><i class="far fa-play-circle"></i> Run</a> Raft consensus protocol</li>
+<li><a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Run</a> DV routing algorithm</li>
+<li><a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Run</a> DV routing (handling router failures dynamically)</li>
+</ul>
 <p>Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-In this experiment, the swarm acts like a network in which each node is like a router linked to its adjacent neighbors.
-The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.
-In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors, which act like network links.
+In this experiment, the swarm acts like a network in which each node is a router (or host) linked to its adjacent neighbors.
+The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.</p>
+<p>In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors.
 The link cost is the distance between the two robots.
 Messages are either advertised to all adjacent robots, or to a specific link
-(All messages are technically broadcast, however, if the message has a "link" parameter,
-which is analogous to a link-layer MAC address with a difference that messages are discarded by all robots except the robot with the matching link identifier).
-Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
+(all messages are technically broadcast, however, if the message has a "link" parameter,
+which is analogous to a link-layer MAC address with a difference that messages are discarded by all robots except the robot with the matching link identifier).</p>
+<p>In these experiments, all robots act as routers and 3 robots act as hosts.
+Initially, the 3 host robots advertise themselves in the network.
 Whenever a robot receives this advertisement, they store this value to their routing table.
-Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
-Similar routing algorithms are in use by the global Internet routers.</p>
+Finally, each host will send periodic messages to all the hosts they are aware of.</p>
           
 
           
