@@ -1,5 +1,5 @@
   - I am freelance software engineer and consultant.
-  - I help companies grow scalable, highly available microservices with high quality tested code.
+  - I help companies build scalable, highly available microservices with high quality tested code.
   - I teach the [Go programming language](https://en.wikipedia.org/wiki/Go_(programming_language)) to developers at companies
     and researchers at universities. I have made a number of contributions to the language.
   - As a backend engineer, I have worked on highly concurrent messaging systems, financial and payment systems,
