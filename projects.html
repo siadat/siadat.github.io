@@ -68,8 +68,8 @@ The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_
 <p>In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors.
 The link cost is the distance between the two robots.
 Messages are either advertised to all adjacent robots, or to a specific link
-(all messages are technically broadcast, however, if the message has a "link" parameter,
-which is analogous to a link-layer MAC address with a difference that messages are discarded by all robots except the robot with the matching link identifier).</p>
+(all messages are technically broadcast, unless message has a "link" parameter,
+which is analogous to a link-layer MAC address).</p>
 <p>In these experiments, all robots act as routers and 3 robots act as hosts.
 Initially, the 3 host robots advertise themselves in the network.
 Whenever a robot receives this advertisement, they store this value to their routing table.
@@ -101,7 +101,24 @@ Finally, each host will send periodic messages to all the hosts they are aware o
           <hr>
           <!--<hr>-->
           
-          <p><a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Kilobot</a>
+          <ul>
+<li><a href="/kilobots/index.html?ExperimentReplicatorStarfish"><i class="far fa-play-circle"></i> Run</a> Self-replicating starfish.  The goal of this original algorithm is to construct replicas of a given shape as specified by a subset of the robots. For example, to create a starfish shape, I manually place a number of robots to form the shape of one hand and let the algorithm replicate it 4 times to get a total of 5 hands.</li>
+<li><a href="/kilobots/index.html?ExperimentReplicator"><i class="far fa-play-circle"></i> Run</a> Self-replicating asymmetric shape</li>
+<li><a href="/kilobots/index.html?ExperimentAssembly"><i class="far fa-play-circle"></i> Run</a> Self-assembly (wrench)</li>
+<li><a href="/kilobots/index.html?ExperimentAssemblyStarfish"><i class="far fa-play-circle"></i> Run</a> Self-assembly (starfish) the <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">paper</a> published in Science.</li>
+<li><a href="/kilobots/index.html?ExperimentDisassembly"><i class="far fa-play-circle"></i> Run</a> Disassembly (<a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">paper</a>)</li>
+<li><a href="/kilobots/index.html?ExperimentGradientFormation"><i class="far fa-play-circle"></i> Run</a> Gradient formation (<a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">paper</a>)</li>
+<li><a href="/kilobots/index.html?ExperimentSync"><i class="far fa-play-circle"></i> Run</a> Sync (<a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>)</li>
+<li><a href="/kilobots/index.html?ExperimentFollowTheLeader"><i class="far fa-play-circle"></i> Run</a> Follow the leader (<a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>)</li>
+<li><a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis"><i class="far fa-play-circle"></i> Run</a> Phototaxis and antiphototaxis (one light) (<a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>)</li>
+<li><a href="/kilobots/index.html?ExperimentPhototaxis2"><i class="far fa-play-circle"></i> Run</a> Phototaxis and antiphototaxis (two lights) (<a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>)</li>
+</ul>
+<p>I developed a Kilobot swarm simulator library to reproduce several experiments
+published by the <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a> at Harvard.
+I took a combination of Object-Oriented and Data-Oriented design approaches for better performance.
+Furthermore, I designed and implemented two new algorithms; a self-replicating algorithm (see the list above).</p>
+<h3>What are Kilobots?</h3>
+<p><a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">Kilobot</a>
 (created by Prof. Radhika Nagpal and Prof. Michael Rubenstein)
 is a programmable robot developed in order to facilitate the research of <strong>decentralized,
 multi-hop, and asynchronous cooperative</strong> agents constituting a swarm. The challenge
@@ -113,55 +130,6 @@ position or orientation. To localize, we need to program a distributed localizat
 algorithm e.g., calculate relative positions to a few pre-localized neighbors
 using triangulation, preferably with robots that make a robust quadrilateral
 as described in <a href="http://rvsn.csail.mit.edu/netloc/sensys04.pdf">this paper</a>.</p>
-<p>I developed a Kilobot swarm simulator library to reproduce several experiments
-published by the <a href="https://ssr.seas.harvard.edu/kilobots">Self-Organizing Systems Research Group</a> at Harvard.
-I took a combination of Object-Oriented and Data-Oriented design approaches for better performance.</p>
-<p>Furthermore, I designed and implemented two new algorithms; a self-replicating algorithm and a routing algorithm.</p>
-<p>Here's a list of the algorithms I have implemented or designed:</p>
-<ul>
-<li>
-<p><strong>Self-replicating</strong> (new experiment)
-  <a href="/kilobots/index.html?ExperimentReplicatorStarfish"><i class="far fa-play-circle"></i> Run</a> (starfish),
-  <a href="/kilobots/index.html?ExperimentReplicator"><i class="far fa-play-circle"></i> Run</a> (asymmetric shape).</p>
-<p>The goal of this algorithm is to construct replicas of a given shape as
-specified by a subset of the robots. For example, to create a starfish
-shape, I manually place a number of robots to form the shape of one hand
-and let the algorithm replicate it 4 times to get a total of 5 hands.
-To see it in action, <a href="/kilobots/index.html?ExperimentReplicatorStarfish"><i class="far fa-play-circle"></i> Run</a> the algorithm on your browser.</p>
-</li>
-<li>
-<p><strong>Self-assembly</strong>
-  <a href="/kilobots/index.html?ExperimentAssembly"><i class="far fa-play-circle"></i> Run</a> (wrench),
-  <a href="/kilobots/index.html?ExperimentAssemblyStarfish"><i class="far fa-play-circle"></i> Run</a> (starfish),
-  the <a href="https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf">paper</a> published in Science.</p>
-</li>
-<li>
-<p><strong>Disassembly</strong>
-  <a href="/kilobots/index.html?ExperimentDisassembly"><i class="far fa-play-circle"></i> Run</a>,
-  <a href="http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf">paper</a>.</p>
-</li>
-<li>
-<p><strong>Gradient formation</strong>
-  <a href="/kilobots/index.html?ExperimentGradientFormation"><i class="far fa-play-circle"></i> Run</a>,
-  <a href="https://ssr.seas.harvard.edu/files/ssr/files/aamas2017-gauci.pdf">paper</a>.</p>
-</li>
-<li>
-<p><strong>Sync</strong>
-  <a href="/kilobots/index.html?ExperimentSync"><i class="far fa-play-circle"></i> Run</a>,
-  <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
-</li>
-<li>
-<p><strong>Follow the leader</strong>
-  <a href="/kilobots/index.html?ExperimentFollowTheLeader"><i class="far fa-play-circle"></i> Run</a>,
-  <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
-</li>
-<li>
-<p><strong>Phototaxis</strong> and <strong>antiphototaxis</strong>
-  <a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis"><i class="far fa-play-circle"></i> Run</a> (one light),
-  <a href="/kilobots/index.html?ExperimentPhototaxis2"><i class="far fa-play-circle"></i> Run</a> (two lights),
-  <a href="http://users.eecs.northwestern.edu/~mrubenst/RAS2013.pdf">paper</a>.</p>
-</li>
-</ul>
           
 
           
