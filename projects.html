@@ -65,7 +65,9 @@ In this experiment, the swarm acts like a network in which each node is like a r
 The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.
 In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors, which act like network links.
 The link cost is the distance between the two robots.
-Messages are either advertised to all adjacent robots, or to a specific link (All messages are technically broadcast, however, if the message has a "link" parameter, it is discarded by all robots except the robot with the matching link identifier).
+Messages are either advertised to all adjacent robots, or to a specific link
+(All messages are technically broadcast, however, if the message has a "link" parameter,
+which is analogous to a link-layer MAC address with a difference that messages are discarded by all robots except the robot with the matching link identifier).
 Initially, the end-point robots (i.e., the colored ones) advertise themselves as end-points.
 Whenever a robot receives this advertisement, they store this value to their routing table.
 Finally, once an advertised end-point reaches another, they start sending periodic messages to all the end-points they are aware of.
