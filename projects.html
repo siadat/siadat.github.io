@@ -62,15 +62,17 @@ List of projects I have been working on.
 <li><a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Run</a> DV routing algorithm</li>
 <li><a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Run</a> DV routing (handling router failures dynamically)</li>
 </ul>
-<p>Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-In this experiment, the swarm acts like a network in which each node is a router (or host) linked to its adjacent neighbors.
-The robots run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.</p>
+<p>Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to nodes in a computer network.
+In these experiments, the swarm acts like a network in which each node is a router (or host) linked to its adjacent neighbors.</p>
 <p>In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors.
 The link cost is the distance between the two robots.
 Messages are either advertised to all adjacent robots, or to a specific link
 (all messages are technically broadcast, unless message has a "link" parameter,
 which is analogous to a link-layer MAC address).</p>
-<p>In these experiments, all robots act as routers and 3 robots act as hosts.
+<p>In the first experiment the robots run the <a href="https://raft.github.io/">Raft concensus algorithm</a>,
+and in the other two they run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.</p>
+<p>In the Raft experiment, all robots act act as routers, and 17 of them act as hosts running Raft.</p>
+<p>In the DV routing experiments, all robots act as routers, and 3 of them act as hosts.
 Initially, the 3 host robots advertise themselves in the network.
 Whenever a robot receives this advertisement, they store this value to their routing table.
 Finally, each host will send periodic messages to all the hosts they are aware of.</p>

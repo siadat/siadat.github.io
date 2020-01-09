@@ -22,9 +22,8 @@
     - [<i class="far fa-play-circle"></i> Run][exp_bellmanford] DV routing algorithm
     - [<i class="far fa-play-circle"></i> Run][exp_bellmanford2] DV routing (handling router failures dynamically)
 
-    Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to computer networks.
-    In this experiment, the swarm acts like a network in which each node is a router (or host) linked to its adjacent neighbors.
-    The robots run a [dynamic distributed distance-vector protocol routing][wikipedia_distance_vector] algorithm.
+    Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to nodes in a computer network.
+    In these experiments, the swarm acts like a network in which each node is a router (or host) linked to its adjacent neighbors.
 
     In their hexagonal grid, each robot has a maximum of 6 adjacent neighbors.
     The link cost is the distance between the two robots.
@@ -32,11 +31,18 @@
     (all messages are technically broadcast, unless message has a "link" parameter,
     which is analogous to a link-layer MAC address).
 
-    In these experiments, all robots act as routers and 3 robots act as hosts.
+    In the first experiment the robots run the [Raft concensus algorithm][raft_homepage],
+    and in the other two they run a [dynamic distributed distance-vector protocol routing][wikipedia_distance_vector] algorithm.
+
+    In the Raft experiment, all robots act act as routers, and 17 of them act as hosts running Raft.
+
+    In the DV routing experiments, all robots act as routers, and 3 of them act as hosts.
     Initially, the 3 host robots advertise themselves in the network.
     Whenever a robot receives this advertisement, they store this value to their routing table.
     Finally, each host will send periodic messages to all the hosts they are aware of.
 
+
+    [raft_homepage]:             https://raft.github.io/
     [exp_bellmanford]:           /kilobots/index.html?ExperimentBellmanFord
     [exp_bellmanford2]:          /kilobots/index.html?ExperimentBellmanFord2
     [exp_raft]:                  /kilobots/index.html?ExperimentRaft
