@@ -71,8 +71,8 @@ Messages are either advertised to all adjacent robots, or to a specific link
 which is analogous to a link-layer MAC address).</p>
 <p>In the first experiment the robots run the <a href="https://raft.github.io/">Raft concensus algorithm</a>,
 and in the other two they run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.</p>
-<p>In the Raft experiment, all robots act act as routers, and 17 of them act as hosts running Raft.</p>
-<p>In the DV routing experiments, all robots act as routers, and 3 of them act as hosts.
+<p>In the Raft experiment, all robots act act as routers, and 17 of them run Raft.</p>
+<p>In the DV routing experiments, all robots act as routers, and 3 of them act as end-point hosts.
 Initially, the 3 host robots advertise themselves in the network.
 Whenever a robot receives this advertisement, they store this value to their routing table.
 Finally, each host will send periodic messages to all the hosts they are aware of.</p>

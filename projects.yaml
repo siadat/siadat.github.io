@@ -34,9 +34,9 @@
     In the first experiment the robots run the [Raft concensus algorithm][raft_homepage],
     and in the other two they run a [dynamic distributed distance-vector protocol routing][wikipedia_distance_vector] algorithm.
 
-    In the Raft experiment, all robots act act as routers, and 17 of them act as hosts running Raft.
+    In the Raft experiment, all robots act act as routers, and 17 of them run Raft.
 
-    In the DV routing experiments, all robots act as routers, and 3 of them act as hosts.
+    In the DV routing experiments, all robots act as routers, and 3 of them act as end-point hosts.
     Initially, the 3 host robots advertise themselves in the network.
     Whenever a robot receives this advertisement, they store this value to their routing table.
     Finally, each host will send periodic messages to all the hosts they are aware of.
