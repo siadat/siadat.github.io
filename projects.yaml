@@ -200,9 +200,9 @@
   # order: '9'
   what kind: Personal
 - description: |
-    A concurrency-agnostic process coordinator and communication channel
+    A concurrency-agnostic process synchronization and communication channel
     inspired by Hoare's Communicating Sequential Processes.
-  name: Coor
+  name: Netmatch
   order: '10'
   todo: publish
   what kind: Personal
