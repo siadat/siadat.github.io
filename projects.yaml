@@ -113,6 +113,20 @@
   what kind: Personal
 
 - description: |
+    [Netmatch][netmatch_github] is a tool for matching and synchronizing HTTP requests.
+    Synchronizing two concurrent requests means that the first one is blocked until the second one arrives as well.
+    Only matching requests are synchronized. Matching two requests means the selectors of one matches the labels of the other.
+    It could be used for matching online players in a multiplayer game server.
+
+    [netmatch_github]: https://github.com/siadat/netmatch
+  images:
+    - https://i.imgur.com/RcdPVwR.png
+  name: "Netmatch: process synchronization using HTTP requests"
+  order: '3'
+  todo: publish
+  what kind: Personal
+
+- description: |
     I implemented [Evolving Virtual Creatures](https://www.karlsims.com/papers/siggraph94.pdf)
     (Karl Sims) as my undergraduate final year project. This project was selected
     by the British Computer Society among all final year projects to be presented
@@ -198,13 +212,6 @@
     A static file generator blog engine I wrote for my weblog.
   name: Blgo
   # order: '9'
-  what kind: Personal
-- description: |
-    A concurrency-agnostic process synchronization and communication channel
-    inspired by Hoare's Communicating Sequential Processes.
-  name: Netmatch
-  order: '10'
-  todo: publish
   what kind: Personal
 - description: |
     A distributed genetic algorithm runner.
