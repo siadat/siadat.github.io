@@ -18,7 +18,7 @@
   # order: '1'
 
 - description: |
-    - [<i class="far fa-play-circle"></i> Run][exp_raft] Raft consensus protocol
+    - [<i class="far fa-play-circle"></i> Run][exp_raft] Raft consensus algorithm
     - [<i class="far fa-play-circle"></i> Run][exp_bellmanford] DV routing algorithm
     - [<i class="far fa-play-circle"></i> Run][exp_bellmanford2] DV routing (handling router failures dynamically)
 
@@ -50,7 +50,7 @@
 
   images:
     - https://i.imgur.com/Fyg3sCO.png
-  name: Raft and network routing with Kilobots
+  name: Raft consensus and network routing
   order: '1'
 
 - description: |
@@ -108,20 +108,26 @@
   images:
     - https://i.imgur.com/mbQbFcT.png
     - https://i.imgur.com/E6SPSNU.png
-  name: Robotic swarm and collective behavior simulation and algorithm design
+  name: Robotic swarm and collective behavior
   order: '2'
   what kind: Personal
 
 - description: |
-    [Netmatch][netmatch_github] is a tool for matching and synchronizing HTTP requests.
+    Netmatch ([github project][netmatch_github]) is a tool for matching and synchronizing HTTP requests.
     Synchronizing two concurrent requests means that the first one is blocked until the second one arrives as well.
     Only matching requests are synchronized. Matching two requests means the selectors of one matches the labels of the other.
     It could be used for matching online players in a multiplayer game server.
 
+    I designed and implemented Netmatch, inspired by Tony Hoare's [CSP](http://www.usingcsp.com/).
+    I was looking for a way to coordinate processes running on different nodes across a network in ways similar to how CSP "events" are synchronized.
+    After several design iterations and prototypes, I came up with a simple primitive that can act like a building block for synchronizing processes over network using on top of the ubiquitous HTTP protocol.
+
+    For more details, see the project's [README](netmatch_github) page.
+
     [netmatch_github]: https://github.com/siadat/netmatch
   images:
     - https://i.imgur.com/RcdPVwR.png
-  name: "Netmatch: process synchronization using HTTP requests"
+  name: "Netmatch: process synchronization tool"
   order: '3'
   todo: publish
   what kind: Personal
@@ -162,10 +168,10 @@
 - description: |
     I worked on the statistics and lottery program of a
     **live television show** that was broadcast during all the World Cup and
-    derby football matches.  The television program, Navad
-    ([Wikipedia](https://en.wikipedia.org/wiki/Navad)), was one of the most
-    watched and loved national television show in the country.
-  name: World Cup stats and lotteries (Navad)
+    derby football matches.  The television program, Navad, was one of the most
+    watched and loved national television show in the country
+    ([Wikipedia entry for Navad](https://en.wikipedia.org/wiki/Navad)).
+  name: World Cup stats and lotteries
   order: '5'
   what kind: while at Sariina
   images:

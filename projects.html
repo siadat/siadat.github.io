@@ -52,13 +52,13 @@ List of projects I have been working on.
 
         <div class="description">
           <h3>
-            Raft and network routing with Kilobots
+            Raft consensus and network routing
           </h3>
           <hr>
           <!--<hr>-->
           
           <ul>
-<li><a href="/kilobots/index.html?ExperimentRaft"><i class="far fa-play-circle"></i> Run</a> Raft consensus protocol</li>
+<li><a href="/kilobots/index.html?ExperimentRaft"><i class="far fa-play-circle"></i> Run</a> Raft consensus algorithm</li>
 <li><a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Run</a> DV routing algorithm</li>
 <li><a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Run</a> DV routing (handling router failures dynamically)</li>
 </ul>
@@ -98,7 +98,7 @@ Finally, each host will send periodic messages to all the hosts they are aware o
 
         <div class="description">
           <h3>
-            Robotic swarm and collective behavior simulation and algorithm design
+            Robotic swarm and collective behavior
           </h3>
           <hr>
           <!--<hr>-->
@@ -154,15 +154,19 @@ as described in <a href="http://rvsn.csail.mit.edu/netloc/sensys04.pdf">this pap
 
         <div class="description">
           <h3>
-            Netmatch: process synchronization using HTTP requests
+            Netmatch: process synchronization tool
           </h3>
           <hr>
           <!--<hr>-->
           
-          <p><a href="https://github.com/siadat/netmatch">Netmatch</a> is a tool for matching and synchronizing HTTP requests.
+          <p>Netmatch (<a href="https://github.com/siadat/netmatch">github project</a>) is a tool for matching and synchronizing HTTP requests.
 Synchronizing two concurrent requests means that the first one is blocked until the second one arrives as well.
 Only matching requests are synchronized. Matching two requests means the selectors of one matches the labels of the other.
 It could be used for matching online players in a multiplayer game server.</p>
+<p>I designed and implemented Netmatch, inspired by Tony Hoare's <a href="http://www.usingcsp.com/">CSP</a>.
+I was looking for a way to coordinate processes running on different nodes across a network in ways similar to how CSP "events" are synchronized.
+After several design iterations and prototypes, I came up with a simple primitive that can act like a building block for synchronizing processes over network using on top of the ubiquitous HTTP protocol.</p>
+<p>For more details, see the project's <a href="netmatch_github">README</a> page.</p>
           
 
           
@@ -220,16 +224,16 @@ which made sure that no game state was corrupted or lost even if the game servic
 
         <div class="description">
           <h3>
-            World Cup stats and lotteries (Navad)
+            World Cup stats and lotteries
           </h3>
           <hr>
           <!--<hr>-->
           
           <p>I worked on the statistics and lottery program of a
 <strong>live television show</strong> that was broadcast during all the World Cup and
-derby football matches.  The television program, Navad
-(<a href="https://en.wikipedia.org/wiki/Navad">Wikipedia</a>), was one of the most
-watched and loved national television show in the country.</p>
+derby football matches.  The television program, Navad, was one of the most
+watched and loved national television show in the country
+(<a href="https://en.wikipedia.org/wiki/Navad">Wikipedia entry for Navad</a>).</p>
           
 
           
