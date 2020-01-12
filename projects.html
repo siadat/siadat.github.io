@@ -68,7 +68,7 @@ In these experiments, the swarm acts like a network in which each node is a rout
 The link cost is the distance between the two robots.
 Messages are either advertised to all adjacent robots, or to a specific link
 (all messages are technically broadcast, unless message has a "link" parameter,
-which is analogous to a link-layer MAC address).</p>
+which is analogous to a MAC address).</p>
 <p>In the first experiment the robots run the <a href="https://raft.github.io/">Raft concensus algorithm</a>,
 and in the other two they run a <a href="https://en.wikipedia.org/wiki/Distance-vector_routing_protocol">dynamic distributed distance-vector protocol routing</a> algorithm.</p>
 <p>In the Raft experiment, all robots act act as routers, and 17 of them run Raft.</p>

@@ -29,7 +29,7 @@
     The link cost is the distance between the two robots.
     Messages are either advertised to all adjacent robots, or to a specific link
     (all messages are technically broadcast, unless message has a "link" parameter,
-    which is analogous to a link-layer MAC address).
+    which is analogous to a MAC address).
 
     In the first experiment the robots run the [Raft concensus algorithm][raft_homepage],
     and in the other two they run a [dynamic distributed distance-vector protocol routing][wikipedia_distance_vector] algorithm.
