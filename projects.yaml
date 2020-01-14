@@ -61,6 +61,7 @@
     - [<i class="far fa-play-circle"></i> Run][exp_disassembly] Disassembly ([paper][paper_disassembly])
     - [<i class="far fa-play-circle"></i> Run][exp_gradient] Gradient formation ([paper][paper_gradient])
     - [<i class="far fa-play-circle"></i> Run][exp_sync] Sync ([paper][paper_kilobot])
+    - [<i class="far fa-play-circle"></i> Run][exp_sync_n_move] Sync & Move (moving interferes with syncing)
     - [<i class="far fa-play-circle"></i> Run][exp_follow_the_leader] Follow the leader ([paper][paper_kilobot])
     - [<i class="far fa-play-circle"></i> Run][exp_phototaxis] Phototaxis and antiphototaxis (one light) ([paper][paper_kilobot])
     - [<i class="far fa-play-circle"></i> Run][exp_phototaxis2] Phototaxis and antiphototaxis (two lights) ([paper][paper_kilobot])
@@ -100,6 +101,7 @@
     [exp_replicator_asymmetric]: /kilobots/index.html?ExperimentReplicator
     [exp_disassembly]:           /kilobots/index.html?ExperimentDisassembly
     [exp_sync]:                  /kilobots/index.html?ExperimentSync
+    [exp_sync_n_move]:           /kilobots/index.html?ExperimentSyncAndMove
     [exp_gradient]:              /kilobots/index.html?ExperimentGradientFormation
     [exp_follow_the_leader]:     /kilobots/index.html?ExperimentFollowTheLeader
     [exp_phototaxis]:            /kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis

@@ -307,6 +307,162 @@ window['ExperimentSync'] = class {
   }
 }
 
+{
+  class Robot extends Kilobot {
+    setup() {
+      this.PERIOD = 60;
+      this.RESET_TIME_ADJUSTMENT_DIVIDER = 120;
+      this.RESET_TIME_ADJUSTMENT_MAX = 30;
+
+      let s = this.rand_soft(); // Math.floor(60 * this.rand_soft()/255);
+
+      this.message = {data: [s]};
+      this.last_reset = s;
+      this.reset_time = s;
+      this.reset_time_adjustment = 0;
+    }
+
+    loop() {
+      if(this.kilo_ticks % 5 == 0 ) {
+        this.set_motors(this.kilo_straight_left, this.kilo_straight_right);
+      }
+      // console.log(this.kilo_ticks, this.last_reset, this.kilo_ticks >= this.last_reset, this.kilo_ticks > (this.last_reset + 1));
+      if(this.kilo_ticks >= this.reset_time) {
+
+        this.reset_time_adjustment = (this.reset_time_adjustment / this.RESET_TIME_ADJUSTMENT_DIVIDER);
+
+        // Apply a cap to the absolute value of the reset time adjustment.
+        if (this.reset_time_adjustment < - this.RESET_TIME_ADJUSTMENT_MAX) {
+          this.reset_time_adjustment = - this.RESET_TIME_ADJUSTMENT_MAX;
+        } else if (this.reset_time_adjustment > this.RESET_TIME_ADJUSTMENT_MAX) {
+          this.reset_time_adjustment = this.RESET_TIME_ADJUSTMENT_MAX;
+        }
+
+        this.last_reset = this.kilo_ticks;
+        this.reset_time = this.kilo_ticks + this.PERIOD + this.reset_time_adjustment;
+
+        this.reset_time_adjustment = 0;
+
+        // Set the LED white and turn the motors on.
+        this.set_color(this.RGB(2, 2, 3));
+
+        // this.set_color(this.RGB(3, 0, 0));
+        // this.last_reset = this.kilo_ticks;
+      } else if (this.kilo_ticks > (this.last_reset + 1)) {
+          this.set_color(this.RGB(0, 0, 0));
+          this.set_motors(0, 0);
+      }
+      // else if (this.kilo_ticks) { this.set_color(this.RGB(0, 0, 0)); }
+
+      if ((this.kilo_ticks - this.last_reset) < 255) {
+        this.message.data[0] = this.kilo_ticks - this.last_reset;
+        // this.message.crc = message_crc(&this.message);
+      } else {
+        // this.message.crc = 0;
+      }
+    }
+
+    message_tx() {
+      return this.message;
+    }
+
+    message_rx(m, d) {
+      let my_timer = this.kilo_ticks - this.last_reset;
+      let rx_timer = m.data[0];
+      let timer_discrepancy = my_timer - rx_timer;
+
+      // Reset time adjustment due to this message - to be combined with the
+      // overall reset time adjustment.
+      let rx_reset_time_adjustment = 0;
+
+      if (timer_discrepancy > 0) {
+        // The neighbor is trailing behind: move the reset time forward
+        // (reset later).
+        if (timer_discrepancy < (this.PERIOD / 2))
+        {
+          rx_reset_time_adjustment = timer_discrepancy;
+        } else {
+          // The neighbor is running ahead: move the reset time backward
+          // (reset sooner).
+          rx_reset_time_adjustment = - (this.PERIOD - timer_discrepancy) % this.PERIOD;
+        }
+      } else if (timer_discrepancy < 0) {
+        // The neighbor is running ahead: move the reset time backward
+        // (reset sooner).
+        if (- timer_discrepancy < (this.PERIOD / 2)) {
+          rx_reset_time_adjustment = timer_discrepancy;
+        } else {
+          // The neighbor is trailing behind: move the reset time forward
+          // (reset later).
+          rx_reset_time_adjustment = (this.PERIOD + timer_discrepancy) % this.PERIOD;
+        }
+      }
+
+      // Combine the reset time adjustment due to this message with the overall
+      // reset time adjustment.
+      this.reset_time_adjustment = this.reset_time_adjustment + rx_reset_time_adjustment;
+      // console.log(this.reset_time_adjustment);
+    }
+  }
+  window['ExperimentSyncAndMove'] = class {
+    constructor() {
+      this.runnerOptions = {
+        limitSpeed: true,
+        traversedPath: false,
+        darkMode: true,
+      }
+    }
+
+    gradientNoise() {
+      if(this.perlinNoiseValue == null) {
+        this.perlinNoiseValue = 0.5;
+      }
+
+      this.perlinNoiseValue += (this.MathRandom()-0.5)/2;
+      if(this.perlinNoiseValue > 1) this.perlinNoiseValue = 1;
+      if(this.perlinNoiseValue < 0) this.perlinNoiseValue = 0;
+      return this.perlinNoiseValue;
+    }
+
+    createRobots(newRobotFunc, newLightFunc, RADIUS, NEIGHBOUR_DISTANCE, TICKS_BETWEEN_MSGS) {
+      this.MathRandom = new Math.seedrandom(1234);
+      this.INITIAL_DIST = 4.0*RADIUS;
+
+      let s = 5;
+      for(let i = -s; i < s; i++) {
+
+        let jInc = null;
+        let jCheck = null;
+
+        let j = null;
+
+        if(i % 2 == 1) {
+          j = -s;
+          jCheck = () => j < +s;
+          jInc = () => j++;
+        } else {
+          j = +s-1;
+          jCheck = () => j >= -s;
+          jInc = () => j--;
+        }
+
+        for(; jCheck(); jInc()) {
+          newRobotFunc({
+            x: j * this.INITIAL_DIST + (this.gradientNoise()-0.5)*RADIUS*1,
+            y: i * this.INITIAL_DIST + (this.gradientNoise()-0.5)*RADIUS*1,
+          },
+            this.MathRandom() * 2*Math.PI,
+            new Robot(),
+          );
+        }
+      }
+
+    }
+  }
+}
+
+
+
 // --
 class RobotGradientFormation extends Kilobot {
   constructor(isSeed, INITIAL_DIST) {

@@ -9,6 +9,14 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>An introduction to networks and SDN</title>
+      <link>https://siadat.github.io/post/sdn</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/sdn</guid>
+      <description>## Why SDN?&#xA;&#xA;SDN is the future of networking (since 2008 and earlier).&#xA;The goal of SDN is facilitate experimenting and configuring routers (hence networks)&#xA;via standard APIs and high-level software,</description>
+    </item>
+    
+    <item>
       <title>Go Grammar in Use</title>
       <link>https://siadat.github.io/post/channel</link>
       <pubDate>Sun, 04 Mar 2018 00:00:00 +0000</pubDate>
