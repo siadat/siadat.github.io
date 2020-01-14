@@ -1,4 +1,4 @@
-  - I am freelance software engineer and consultant.
+  - I am a freelance software engineer and consultant.
   - I help companies build scalable, highly available microservices with high quality tested code.
   - I teach the [Go programming language](https://en.wikipedia.org/wiki/Go_(programming_language)) to developers at companies
     and researchers at universities. I have made a number of contributions to the language.
