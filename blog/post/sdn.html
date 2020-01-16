@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>An introduction to SDN</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/index.html">about me</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="/blog/index.html">blog</a>
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="January 13, 2020">
+        January 13, 2020
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">An introduction to SDN</h1>
+      <section itemprop="entry-text">
+        <h2>Overview</h2>
+
+<h3>What does SDN stand for?</h3>
+
+<p>SDN stands for Software-Defined Networking.
+But it is just a name.
+Don&rsquo;t expect it to make any sense.</p>
+
+<h3>What is SDN?</h3>
+
+<p>SDN is about building networks.
+Networks are built using computers and switches/routers.
+In a network, computers are connected to each other using switches/routers.
+Switches/routers determine the routing and flow of packets between computers.
+SDN is about how we configure switches/routers to perform the routing we want.</p>
+
+<p>Without SDN, you would have to configure each switch/router in your network either manually or through a vendor specific interface.
+With SDN, the switch/router provide a standard API for configuration.
+With this standard API, you would be able to configure all your switches/routers from one central place.
+You would do that by sending commands to and receiving events from them.
+For example, if you need to update the configuration of your switches/routers,
+you would send a standard API command to all of your switches/routers, and your switche/router configurations will update.</p>
+
+<p>One such switch/router API is OpenFlow.
+OpenFlow aims to standardize the most common switches/routers commands through an API.
+One switch/router that implements OpenFlow is Open vSwitch.
+Open vSwitch is a popular virtual switch/router that is capable of talking the OpenFlow protocol.</p>
+
+<h3>Summary</h3>
+
+<p>The goal of SDN is to facilitate configuring switches/routers (hence networks)
+via standard APIs and high-level software,
+as opposed to having to handle vendor specific interfaces on each router.</p>
+
+<hr />
+
+<h2>Details</h2>
+
+<p>If you don&rsquo;t know what SDN, OpenFlow, or Open vSwitch is, begin by reading the Overview section.</p>
+
+<h3>History</h3>
+
+<p>Software-defined networking (SDN) has several traces of history explained by Nick Feamster in his <a href="https://www.cs.princeton.edu/courses/archive/fall13/cos597E/papers/sdnhistory.pdf" target="_blank">The Road to SDN</a>.
+The most famous one, and the one I am familiar with, is <a href="http://ccr.sigcomm.org/online/files/p69-v38n2n-mckeown.pdf" target="_blank">OpenFlow</a> (2008) which was a generalization of <a href="http://cs.brown.edu/courses/csci2950-u/s14/papers/Casado07Ethane.pdf" target="_blank">Ethane</a>.</p>
+
+<h3>What is SDN? (again)</h3>
+
+<p>Routers devices perform 3 types of work. They are known as &ldquo;planes&rdquo; (read KR&rsquo;s &ldquo;4.3 What is Inside a Router?&rdquo;):</p>
+
+<ul>
+<li><strong>Control plane</strong>: given a packet, decide which switch&rsquo;s port in the switch to forward the signal to.</li>
+<li><strong>Data plane</strong>: when the output port is decided, perform the actual forwarding.</li>
+<li><strong>Management plane</strong></li>
+</ul>
+
+<p>Essentially, the goal of SDN (and NFV) is to simplify the management of
+networks by having the router/switch &ldquo;control plane&rdquo; configurations centeralized and in one
+place and by doing the configuration in normal software, as opposed to hardware
+or vendor-specific crap.</p>
+
+<p>Before the SDN paradigm shift, these planes were coupled, and their API was controlled by vendors.
+The SDN philosophy is in order to facilitate innovation in networking,
+we should learn from other computer science disciplines,
+like programming languages, and define better abstractions, like <a href="https://www.youtube.com/watch?v=YHeyuD89n1Y" target="_blank">layering</a>.</p>
+
+<p>SDN folks say we want switches that let us write readable control-plane software.
+In <a href="http://ccr.sigcomm.org/online/files/p69-v38n2n-mckeown.pdf" target="_blank">OpenFlow</a> (<a href="https://www.opennetworking.org/software-defined-standards/specifications/" target="_blank">spec</a>, particularly the &ldquo;The OpenFlow
+Switch Protocol&rdquo; section and those three kinds of messages), the switch will
+ask an OpenFlow controller
+(a TCP server on port 6653 with TLS, both sides may send messages)
+what to do with this kind of packet with this source and destination (i.e., with this &ldquo;flow&rdquo;).
+So all switches in one network will ask this central controller what to do.
+In other words, we are centeralizing the control plane.
+This centeralizing makes it easier to reason about the network
+and make changes in one place for all, which is a great advantage.
+But it introduces a single point of failure.
+But fear not, because we can run a cluster of a distributed controller.
+The most famous one is <a href="onix" target="_blank">Onix</a>.
+Another one written in Go on top of Etcd is <a href="beehive" target="_blank">Beehive-netctrl</a> (<a href="http://conferences.sigcomm.org/sosr/2016/papers/sosr_paper17.pdf" target="_blank">paper1</a>, <a href="http://conferences.sigcomm.org/hotnets/2014/papers/hotnets-XIII-final17.pdf" target="_blank">paper2</a>).</p>
+
+<p>IMO, OpenFlow is too big and not well designed.
+It is a big bag of predefined <a href="https://en.wikipedia.org/wiki/Type-length-value" target="_blank">TLVs</a> (as opposed to general purpose ones).</p>
+
+<h3>What is an OpenFlow router?</h3>
+
+<p>OpenFlow is an API specification for configuring routers.
+An OpenFlow router is a router that implements this API.
+OpenFlow specifies the behavior of the router.
+For example, the OpenFlow spec might say that whenever the router receives
+a packet it should make a TCP call to a server (known as OpenFlow controller)
+to ask that server what to do about the packet it just received.</p>
+
+<h3>What is Open vSwitch?</h3>
+
+<p>Open vSwitch is a virtual switch (see NFV),
+which implements OpenFlow protocol as well
+(so you can control it using a software controller).</p>
+
+<h3>Why isn&rsquo;t this routing done using a normal PC?</h3>
+
+<p>Because normal PCs have very few input/output ports,
+and their packet handling speed is very slow compared to the required line-rate.</p>
+
+<h3>What is NFV?</h3>
+
+<p>Network function virtualization (<a href="https://portal.etsi.org/NFV/NFV_White_Paper.pdf" target="_blank">whitepaper</a>) is virtualizing a switch,
+as opposed to a hardware switch device,
+and using it to create complicated networks of VMs.
+NFV is part of &ldquo;softwarization&rdquo; of networks.</p>
+
+<h3>What is P4?</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/P4_(programming_language)" target="_blank">P4</a> is a way to make it easy to modify the data-plane behavior using software!
+Recall that data plane&rsquo;s responsibility has often been implemented in hardware.
+Because it needs to as fast as line-rate (ie giga or tera bit per second)</p>
+
+<h3>Is SDN the same as OpenFlow?</h3>
+
+<p>No. OpenFlow was one of the first famous solutions to a common problem (controlling switches using software).
+Other solutions are Cisco&rsquo;s Open Network Environment (<a href="https://www.cisco.com/c/en/us/products/collateral/switches/nexus-1000v-switch-vmware-vsphere/white_paper_c11-728045.pdf" target="_blank">whitepaper</a>).
+This document by Cisco, <a href="https://www.cisco.com/c/dam/en_us/solutions/industries/docs/gov/cis13090_sdn_sled_white_paper.pdf" target="_blank">SDN: Why We Like It and How We Are Building On It</a>, provides a great overview of SDN.</p>
+
+<h3>Why now?</h3>
+
+<p>Indeed.
+Network people, <a href="https://www.youtube.com/watch?v=YHeyuD89n1Y" target="_blank">Scott Shenken says</a>, like complexity.
+But the reason, I think, is the increase in use of virtual machines
+and the need to connect them using complex and configurable networks for them
+across multiple datacenters.
+So, in one word cloud computing is one of the motivations (although not the only one: e.g., OpenFlow
+was originally designed to control department networks at Stanford).</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    End of the post.
+  </div>
+
+</body>
+</html>

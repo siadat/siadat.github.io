@@ -8,6 +8,7 @@
     <language>en-us</language>
     <atom:link href="{{.XMLURL}}" rel="self" type="application/rss+xml" />
     {{range .Posts}}
+    {{if not .Draft}}
     <item>
       <title>{{.Title}}</title>
       <link>{{.Link}}</link>
@@ -15,6 +16,7 @@
       <guid>{{.Link}}</guid>
       <description>{{.XMLDesc}}</description>
     </item>
+    {{end}}
     {{end}}
   </channel>
 </rss>

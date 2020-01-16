@@ -8,21 +8,20 @@
     <language>en-us</language>
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    
+    
     <item>
-      <title>An introduction to networks and SDN</title>
+      <title>An introduction to SDN</title>
       <link>https://siadat.github.io/post/sdn</link>
       <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/sdn</guid>
-      <description>## Why SDN?&#xA;&#xA;SDN is the future of networking (since 2008 and earlier).&#xA;The goal of SDN is facilitate experimenting and configuring routers (hence networks)&#xA;via standard APIs and high-level software,</description>
+      <description>## Overview&#xA;&#xA;### What does SDN stand for?&#xA;&#xA;SDN stands for Software-Defined Networking.&#xA;But it is just a name.&#xA;Don&#39;t expect it to make any sense.&#xA;&#xA;### What is SDN?&#xA;&#xA;SDN is about building networks.&#xA;Net</description>
     </item>
     
-    <item>
-      <title>Go Grammar in Use</title>
-      <link>https://siadat.github.io/post/channel</link>
-      <pubDate>Sun, 04 Mar 2018 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/channel</guid>
-      <description># Reading&#xA;&#xA;This is a random collection of tips on how to read idiomatic Go code.&#xA;&#xA;## Channels&#xA;&#xA;ch can hold 0 ints&#xA;&#xA;    ch := make(chan int)&#xA;&#xA;ch can hold 0 ints (same as above)&#xA;&#xA;    ch := make(chan in</description>
-    </item>
+    
+    
+    
     
     <item>
       <title>go:linkname compiler directive</title>
@@ -32,6 +31,8 @@
       <description>## What&#xA;&#xA;This is a short post about the go:linkname compiler directive.&#xA;The documentation [explains](https://golang.org/cmd/compile/#hdr-Compiler_Directives):&#xA;&#xA;&gt; The //go:linkname directive instructs</description>
     </item>
     
+    
+    
     <item>
       <title>Context API explained</title>
       <link>https://siadat.github.io/post/context</link>
@@ -39,6 +40,8 @@
       <guid>https://siadat.github.io/post/context</guid>
       <description>### Introduction&#xA;&#xA;Let&#39;s start with a simple problem.&#xA;We have this program that performs an action every second.&#xA;&#xA;```go&#xA;func Perform() {&#xA;    for {&#xA;        SomeFunction()&#xA;        time.Sleep(time.Second</description>
     </item>
+    
+    
     
     <item>
       <title>How I blog</title>
@@ -48,6 +51,8 @@
       <description>I wrote a small Go program called [blgo](https://github.com/siadat/blgo) to renders my posts&#xA;using [blackfriday](https://github.com/russross/blackfriday) markdown processor.&#xA;I also use [fsnotify](htt</description>
     </item>
     
+    
+    
     <item>
       <title>Override a struct method</title>
       <link>https://siadat.github.io/post/curious-gopher-override</link>
@@ -55,6 +60,8 @@
       <guid>https://siadat.github.io/post/curious-gopher-override</guid>
       <description>```notebox&#xA;**NOTE** There is no object-oriented Java-like overriding in Go.&#xA;In this post I explain what I call overriding struct methods in Go.&#xA;```&#xA;&#xA;There are times when we want to make a small modif</description>
     </item>
+    
+    
     
     <item>
       <title>Raspberry Pi as a router</title>
@@ -64,6 +71,8 @@
       <description>One possible way to setup a Raspberry Pi as a router is to flash [OpenWRT](https://wiki.openwrt.org/toh/raspberry_pi_foundation/raspberry_pi) on an SD card.&#xA;I will try that when I have an extra SD ca</description>
     </item>
     
+    
+    
     <item>
       <title>Tmux session_last_attached</title>
       <link>https://siadat.github.io/post/tmux-last-attached</link>
@@ -71,6 +80,8 @@
       <guid>https://siadat.github.io/post/tmux-last-attached</guid>
       <description>While working on my [session finder](/tmux-session-management), I tought it would be a good idea to list sessions sorted by the last time they were attached.&#xA;Tmux has a lot of useful variables for th</description>
     </item>
+    
+    
     
     <item>
       <title>Rails in_batches API</title>
@@ -80,6 +91,8 @@
       <description>At Sariina, we have a daily update job that affects millions of rows.&#xA;On this table, we also have an `ON UPDATE` trigger.&#xA;The update takes a long time and a lot of disk IO.&#xA;It makes the database virt</description>
     </item>
     
+    
+    
     <item>
       <title>Colorful Tmux panes</title>
       <link>https://siadat.github.io/post/tmux-pane-style</link>
@@ -87,6 +100,8 @@
       <guid>https://siadat.github.io/post/tmux-pane-style</guid>
       <description>&lt;style&gt;&#xA;  img.fullwidth { border-radius:5px; width:100%; }&#xA;&lt;/style&gt;&#xA;&#xA;Thanks to [this commit](https://github.com/tmux/tmux/commit/ee123c24), we are able to style an individual pane in Tmux.&#xA;You will h</description>
     </item>
+    
+    
     
     <item>
       <title>Tmux session management</title>
@@ -96,6 +111,8 @@
       <description>&lt;style&gt;&#xA;  .after-before div:last-child { display:none; }&#xA;  .after-before:hover div:first-child { display:none; }&#xA;  .after-before:hover div:last-child { display:block; }&#xA;  .after-before img { border-r</description>
     </item>
     
+    
+    
     <item>
       <title>My experience with Gogs</title>
       <link>https://siadat.github.io/post/gogs</link>
@@ -103,6 +120,7 @@
       <guid>https://siadat.github.io/post/gogs</guid>
       <description>Until yesterday, we used GitLab at work. GitLab is a great project and it has tones of features. But our GitLab server is a small virtual machine with only 2GB of RAM. We had constant issues with hig</description>
     </item>
+    
     
   </channel>
 </rss>
