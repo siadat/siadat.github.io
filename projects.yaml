@@ -119,13 +119,15 @@
     Synchronizing two concurrent requests means that the first one is blocked until the second one arrives as well.
     Only matching requests are synchronized.
     Matching two requests means the selectors of one matches the labels of the other.
-    It could be used for matching online players in a multiplayer game server.
 
     I designed and implemented Netmatch inspired by Tony Hoare's [CSP](http://www.usingcsp.com/).
     I was looking for a way to coordinate processes running on different nodes across a network
     in ways similar to how CSP "events" are synchronized.
     After several design iterations and prototypes, I came up with a simple primitive
     that can act like a building block for synchronizing processes over network using the ubiquitous HTTP protocol.
+
+    Netmatch could be used for matching online players in a multiplayer game server.
+    Or it could be used to enforce the Dependency Inversion Principle, by depending on an event regardless of who has produced it.
 
     For more details, see the project's [README](netmatch_github) page.
 
