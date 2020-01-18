@@ -42,10 +42,15 @@
     <article itemscope itemtype="http://schema.org/BlogPosting">
       <h1 class="entry-title" itemprop="headline">Dependency Inversion Principle in Go</h1>
       <section itemprop="entry-text">
-        <p>In Go, the Dependency Inversion Principle (DIP) can be enforced using type aliases.
-In package main, we want to avoid using a concrete struct from package amazon.
-We just want to define an interface and use an implementation provided by package amazon.
-Pay attention to the aliases.</p>
+        <p>In Go, the Dependency Inversion Principle (DIP) can be enforced using interfaces.
+You simply define what you need in an interface and accept implementations of it.</p>
+
+<p>But what if the type returned by an interface itself should itself conform to an interface?
+In this case we can use type aliases and define anonymous interfaces.
+This approach is not perfect and the reason is stated after the example.</p>
+
+<p>Here is an example. In package main, we want to avoid using a concrete struct from package amazon.
+We just want to define an interface and use an implementation provided by an otherwise replacable package amazon.</p>
 <pre>package main
 
 import &#34;amazon&#34;
@@ -78,8 +83,8 @@ func (Store) Sell(id string) itemInterface {
 type bookStruct struct {}
 func (bookStruct) Price() uint { return 999 }
 </pre>
-<p>However, this is not an ideal approach, because the interface exists in two packages.
-Ideally, the amazon package should not be aware of the interface, it should only provide the functionality.</p>
+<p>However, this is not an ideal approach, because now the interface exists in two packages.
+Ideally, the amazon package should not be aware of the interface, it should only provide the implementation.</p>
 
       </section>
     </article>

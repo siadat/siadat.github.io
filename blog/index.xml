@@ -24,7 +24,7 @@
       <link>https://siadat.github.io/post/dependency-inversion-in-go</link>
       <pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/dependency-inversion-in-go</guid>
-      <description>In Go, the Dependency Inversion Principle (DIP) can be enforced using type aliases. &#xA;In package main, we want to avoid using a concrete struct from package amazon.&#xA;We just want to define an interface</description>
+      <description>In Go, the Dependency Inversion Principle (DIP) can be enforced using interfaces.&#xA;You simply define what you need in an interface and accept implementations of it.&#xA;&#xA;But what if the type returned by a</description>
     </item>
     
     
