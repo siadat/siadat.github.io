@@ -83,8 +83,50 @@ func (Store) Sell(id string) itemInterface {
 type bookStruct struct {}
 func (bookStruct) Price() uint { return 999 }
 </pre>
+<!-- ******** -->
+
 <p>However, this is not an ideal approach, because now the interface exists in two packages.
-Ideally, the amazon package should not be aware of the interface, it should only provide the implementation.</p>
+Ideally, the amazon package should not be aware of the interface, it should only provide the implementation.
+Just like it does not define any interface for its Store struct.</p>
+
+<p>We can address this issue by moving out our leaking interface (i.e., the item) to its own package.</p>
+<pre>package main
+
+import &#34;amazon&#34;
+import &#34;item&#34;
+
+type Store interface {
+  Sell(string) item.Item
+}
+
+func main() {
+  var st Store     = amazon.Store{}
+  var it item.Item = st.Sell()
+
+  print(it.Price())
+}
+</pre><pre>package amazon
+
+import &#34;book&#34;
+
+type Store struct {}
+func (Store) Sell(id string) item.Item {
+  return book.bookStruct{}
+}
+</pre><pre>package book
+
+type bookStruct struct {}
+func (bookStruct) Price() uint { return 999 }
+</pre><pre>package item
+
+type Item interface {
+  Price() uint
+}
+</pre>
+<p>With this change, the Store struct provided by the amazon package is freed from repeating
+the Store interface expected in its user (i.e., the main package)
+The book package is freed from defining any interface.
+The main package uses the Item interface to define its dependency interface.</p>
 
       </section>
     </article>
