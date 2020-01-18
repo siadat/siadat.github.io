@@ -83,8 +83,9 @@ After several iterations it will eventually fall on the fairness line.</p>
 
 <h2>Why does it work?</h2>
 
-<p>One thing to keep in mind is that packet loss acts as an indirect method of synchronization for the senders,
-in the sense that both senders detect congestion (by interpreting packet loss as congestion) at the same time.</p>
+<p>One thing to keep in mind is that packet loss acts as an indirect method of synchronization for the two senders,
+in the sense that both senders detect congestion (by interpreting packet loss as congestion) at the same time.
+(However, this is not true if the number of senders grow and delays are increased in which case the senders are NOT synchronized, but let&rsquo;s not go there.)</p>
 
 <p>Now, imagine instead of multiplying the value by <code>0.5</code> we were multiplying it by zero (or a number closer to zero).
 That way we would fall on the y=x line instantly when the first packet loss is detected.
