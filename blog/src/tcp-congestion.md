@@ -44,10 +44,15 @@ After several iterations it will eventually fall on the fairness line.
 
 ## Why does it work?
 
-Imagine instead of multiplying the value by `0.5` we were multiplying it by zero.
-That way we would fall on the y=x line in one iteration.
-The problem addressed by `0.5` is network is under-utilized if window size was zeroed every time a packet loss was observered.
-So, we slow the convergence by shrinking the window size a bit slower and in several iterations.
+One thing to keep in mind is that packet loss acts as an indirect method of synchronization for the senders,
+in the sense that both senders detect congestion (by interpreting packet loss as congestion) at the same time.
+
+Now, imagine instead of multiplying the value by `0.5` we were multiplying it by zero (or a number closer to zero).
+That way we would fall on the y=x line instantly when the first packet loss is detected.
+The problem addressed by `0.5` is that if we multiply by zero the network will
+be under-utilized because TCP window size would have been zeroed every time a
+packet loss was observered.
+So, we trade off convergence speed by shrinking the window size slightly slower and in several iterations.
 
 ## Why is it beautiful?
 
@@ -56,4 +61,3 @@ It requires no coordination between the senders.
 However, technically the senders *ARE* communicating, but in an indirect way, via packet loss occurances.
 This reminds me of "stigmergy" and how agents in a swarm might communicate indirectly by changing their environment,
 e.g., ants and pheromone.
-
