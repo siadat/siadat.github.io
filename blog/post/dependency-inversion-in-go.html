@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Dependency Inversion Principle in Go</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/index.html">about me</a>
+    &middot; <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="January 16, 2020">
+        January 16, 2020
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Dependency Inversion Principle in Go</h1>
+      <section itemprop="entry-text">
+        <p>In Go, the Dependency Inversion Principle (DIP) can be enforced using type aliases.
+In package main, we want to avoid using a concrete struct from package amazon.
+We just want to define an interface and use an implementation provided by package amazon.
+Pay attention to the aliases.</p>
+<pre>package main
+
+import &#34;amazon&#34;
+
+type Store interface {
+  Sell(string) Item
+}
+
+type Item = interface { <span class="comment">// &lt;-- alias</span>
+  Price() uint
+}
+
+func main() {
+  var store Store = amazon.Store{}
+  var item  Item  = store.Sell()
+
+  print(item.Price())
+}
+</pre><pre>package amazon
+
+type itemInterface = interface { <span class="comment">// &lt;-- alias</span>
+  Price() uint
+}
+
+type Store struct {}
+func (Store) Sell(id string) itemInterface {
+  return bookStruct{}
+}
+
+type bookStruct struct {}
+func (bookStruct) Price() uint { return 999 }
+</pre>
+<p>However, this is not an ideal approach, because the interface exists in two packages.
+Ideally, the amazon package should not be aware of the interface, it should only provide the functionality.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    End of the post.
+  </div>
+
+</body>
+</html>
