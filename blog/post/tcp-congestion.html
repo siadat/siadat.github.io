@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>TCP congestion control is elegant</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/index.html">about me</a>
+    &middot; <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="January 18, 2020">
+        January 18, 2020
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">TCP congestion control is elegant</h1>
+      <section itemprop="entry-text">
+        <p>The goals of TCP&rsquo;s congestion control are to achieve the following:</p>
+
+<ul>
+<li>Efficient use of network</li>
+<li>Fairness among senders</li>
+</ul>
+
+<p>The Additive Increase and Multiplicative Decrease (AIMD) algorithm
+achieves efficiency by increasing the TCP window size by a constant value (e.g., 1).
+It also achieves fairness by dividing the current window size by a value (e.g., 2).
+These two are enough to converge to efficiency and fairness.</p>
+
+<pre><code class="language-text">          y = sender 1's window size
+          ^
+          |
+          |               fairness line (x=y)
+capacity  \              /
+line      |\            /
+(x+y=c)   | \          /
+          |  \        /
+          |   \      /
+          |    \    /
+          |     \  /
+          |      \/ ideal point
+          |      /\ (efficient and fair)
+          |     /  \
+          |    /    \
+          |   /      \
+          |  /        \
+          | /          \
+          |/            \
+          +--------------\------&gt; x = sender 2's window size
+        (0,0)
+</code></pre>
+
+<p>Any point bellow the full capacity line moves up-right parallel to y=x, until it reaches the full capacity line (x+y=c line).
+At that point it goes back, by halving its distance to the origin point.
+After several iterations it will eventually fall on the fairness line.</p>
+
+<h2>Why does it work?</h2>
+
+<p>Imagine instead of multiplying the value by <code>0.5</code> we were multiplying it by zero.
+That way we would fall on the y=x line in one iteration.
+The problem addressed by <code>0.5</code> is network is under-utilized if window size was zeroed every time a packet loss was observered.
+So, we slow the convergence by shrinking the window size a bit slower and in several iterations.</p>
+
+<h2>Why is it beautiful?</h2>
+
+<p>This algorithm is beautiful because it is simple and distributed.
+It requires no coordination between the senders.
+However, technically the senders <em>ARE</em> communicating, but in an indirect way, via packet loss occurances.
+This reminds me of &ldquo;stigmergy&rdquo; and how agents in a swarm might communicate indirectly by changing their environment,
+e.g., ants and pheromone.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    End of the post.
+  </div>
+
+</body>
+</html>
