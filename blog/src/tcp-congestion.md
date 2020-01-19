@@ -21,7 +21,7 @@ These two are enough to converge to efficiency and fairness.
           ^
           |
           |               fairness line (x=y)
-capacity  \              /
+capacity  +              /
 line      |\            /
 (x+y=c)   | \          /
           |  \        /
@@ -36,7 +36,7 @@ line      |\            /
           |  /        \
           | /          \
           |/            \
-          +--------------\------> x = sender 2's window size
+          +--------------+------> x = sender 2's window size
         (0,0)
 
         x = unfair and under-utilized window sizes
