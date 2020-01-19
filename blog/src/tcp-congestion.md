@@ -58,7 +58,7 @@ So, we trade off convergence speed by shrinking the window size slightly slower 
 ## Why is it beautiful?
 
 This algorithm is beautiful because it is simple and distributed.
-It requires no coordination between the senders.
-However, technically the senders *ARE* communicating, but in an indirect way, via packet loss occurances.
+It requires no direct communication between the senders.
+Technically the senders *are* coordinating, but only in an indirect way, via packet loss occurances.
 This reminds me of "stigmergy" and how agents in a swarm might communicate indirectly by changing their environment,
 e.g., ants and pheromone.
