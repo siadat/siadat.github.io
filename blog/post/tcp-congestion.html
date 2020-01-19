@@ -49,9 +49,9 @@
 <li>Fairness among senders</li>
 </ul>
 
-<p>The Additive Increase and Multiplicative Decrease (AIMD) algorithm
+<p>The Additive Increase and Multiplicative Decrease (<a href="https://en.wikipedia.org/wiki/Additive_increase/multiplicative_decrease" target="_blank">AIMD</a>) algorithm
 achieves efficiency by increasing the TCP window size by a constant value (e.g., 1).
-It also achieves fairness by dividing the current window size by a value (e.g., 2).
+It also achieves fairness by multiplying the current window size by a value (e.g., 0.5).
 These two are enough to converge to efficiency and fairness.</p>
 
 <pre><code class="language-text">          y = sender 1's window size
@@ -63,7 +63,7 @@ line      |\            /
 (x+y=c)   | \          /
           |  \        /
           |   \      /
-          |    \    /
+          | x  \    /
           |     \  /
           |      \/ ideal point
           |      /\ (efficient and fair)
@@ -75,9 +75,11 @@ line      |\            /
           |/            \
           +--------------\------&gt; x = sender 2's window size
         (0,0)
+
+        x = unfair and under-utilized window sizes
 </code></pre>
 
-<p>Any point bellow the full capacity line moves up-right parallel to y=x, until it reaches the full capacity line (x+y=c line).
+<p>Any point bellow the capacity line (e.g. x) moves up-and-right parallel to y=x, until it reaches the full capacity line (x+y=c line).
 At that point it goes back, by halving its distance to the origin point.
 After several iterations it will eventually fall on the fairness line.</p>
 

@@ -26,7 +26,7 @@
       <link>https://siadat.github.io/post/tcp-congestion</link>
       <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/tcp-congestion</guid>
-      <description>The goals of TCP&#39;s congestion control are to achieve the following:&#xA;&#xA;- Efficient use of network&#xA;- Fairness among senders&#xA;&#xA;The Additive Increase and Multiplicative Decrease (AIMD) algorithm&#xA;achieves e</description>
+      <description>[AIMD]: https://en.wikipedia.org/wiki/Additive_increase/multiplicative_decrease&#xA;&#xA;The goals of TCP&#39;s congestion control are to achieve the following:&#xA;&#xA;- Efficient use of network&#xA;- Fairness among sende</description>
     </item>
     
     
