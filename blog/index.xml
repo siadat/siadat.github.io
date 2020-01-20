@@ -14,7 +14,7 @@
       <link>https://siadat.github.io/post/unikernel-and-isp</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/unikernel-and-isp</guid>
-      <description>I interpret the Interface Segregation Principle ([ISP][isp]) to mean the following two opinions:&#xA;&#xA;- Depending on a framework for a large project is almost always a mistake.&#xA;  Almost every teams I hav</description>
+      <description>I interpret the Interface Segregation Principle ([ISP][isp]) to mean the following two opinions:&#xA;&#xA;- Depending on a framework for a large project is almost always a mistake.&#xA;  Almost every team I have</description>
     </item>
     
     

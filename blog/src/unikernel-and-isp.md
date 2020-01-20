@@ -7,7 +7,7 @@ draft: false
 I interpret the Interface Segregation Principle ([ISP][isp]) to mean the following two opinions:
 
 - Depending on a framework for a large project is almost always a mistake.
-  Almost every teams I have talked to have had problem when the frame work
+  Almost every team I have talked to have had problems when the framework
   is updated and changes under their feet.
 - Depending on an OS distribution is not that far from depending on a framework.
   OSs and the Linux kernel are more stable than frameworks, but they contain a lot of
