@@ -42,19 +42,23 @@
     <article itemscope itemtype="http://schema.org/BlogPosting">
       <h1 class="entry-title" itemprop="headline">Unikernels and the Interface Segregation Principle</h1>
       <section itemprop="entry-text">
-        <p>I interpret the Interface Segregation Principle (<a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank">ISP</a>) to mean the following two opinions:</p>
+        <p>I wonder if we could, for a moment, strech the scope of the <a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank">Interface Segregation Principle</a>
+to components and OS architecture and interpret it to support the following two arguments:</p>
 
 <ul>
-<li>Depending on a framework for a large project is almost always a mistake.
-Almost every team I have talked to have had problems when the framework
+<li>Depending on a framework for a large project is almost always a bad idea.
+Almost every team I have talked to have had problems when a framework in their stack
 is updated and changes under their feet.</li>
-<li>Depending on an OS distribution is not that far from depending on a framework.
+<li>Depending on an OS distribution and a monolithic kernel is not that far from depending on a framework.
 OSs and the Linux kernel are more stable than frameworks, but they contain a lot of
-complexity that we do not need or are aware of.</li>
+complexity that we do not need.
+In other words, by removing the parts of the kernel that we do not need,
+we will reduce the cost of maintaining unnecessary dependencies.</li>
 </ul>
 
-<p>Unikernels (<a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf" target="_blank">1</a> and <a href="http://queue.acm.org/detail.cfm?id=2566628" target="_blank">2</a>) and other library OSs
-seem like a good solution to reduce our external dependencies to a bare minimum.</p>
+<p>From a software development perspective,
+unikernels (<a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf" target="_blank">paper 1</a>, <a href="http://queue.acm.org/detail.cfm?id=2566628" target="_blank">paper 2</a>) and other libOSs
+seem like a promising solution for reducing our external dependencies to a bare minimum.</p>
 
       </section>
     </article>

@@ -18,26 +18,26 @@ SDN is about building networks.
 Networks are built using computers, switches, and routers.
 In a network, computers are connected to each other using switches and routers.
 Switches and routers determine the routing and flow of packets between computers.
-SDN is about how we configure routers to perform the routing we want.
+SDN is about how we configure switches to perform the routing we want.
 
-SDN is a paradigm shift in how routers are configured.
-Before SDN, you would have to configure each router in your network either manually or through a vendor specific interface.
-After SDN, all routers provide a standard API for configuration.
-With this standard API, you would be able to configure all your routers from one central place.
+SDN is a paradigm shift in how switches are configured.
+Before SDN, you would have to configure each switch in your network either manually or through a vendor specific interface.
+After SDN, all switchs provide a standard API for configuration.
+With this standard API, you would be able to configure all your switchs from one central place.
 You would do that by sending commands to and receiving events from them.
-For example, if you need to update the configuration of your routers,
-you would send a standard API command to all of your routers, and your router configurations will update.
+For example, if you need to update the configuration of your switchs,
+you would send a standard API command to all of your switchs, and your switch configurations will update.
 
-One such router API is OpenFlow.
-OpenFlow aims to standardize the most common routers commands through an API.
-One router that implements OpenFlow is Open vSwitch.
-Open vSwitch is a popular virtual router that is capable of talking the OpenFlow protocol.
+One such switch API is OpenFlow.
+OpenFlow aims to standardize the most common switchs commands through an API.
+One switch that implements OpenFlow is Open vSwitch.
+Open vSwitch is a popular virtual switch that is capable of talking the OpenFlow protocol.
 
 ### Summary
 
-The goal of SDN is to facilitate configuring routers (hence networks)
+The goal of SDN is to facilitate configuring switches
 via standard APIs and high-level software,
-as opposed to having to handle vendor specific interfaces on each router.
+as opposed to having to handle vendor specific interfaces on each switch.
 
 ---
 
@@ -82,16 +82,17 @@ But it introduces a single point of failure.
 But fear not, because we can run a cluster of a distributed controller.
 The most famous one is [Onix](onix).
 Another one written in Go on top of Etcd is [Beehive-netctrl](beehive) ([paper1][beehive_paper1], [paper2][beehive_paper2]).
+Yet another exciting controller is a [unikernel image compiled with Mirage][unikernel].
 
 IMO, OpenFlow is too big and not well designed.
 It is a big bag of predefined [TLVs][tlv] (as opposed to general purpose ones).
 
-### What is an OpenFlow router?
+### What is an OpenFlow switch?
 
-OpenFlow is an API specification for configuring routers.
-An OpenFlow router is a router that implements this API.
-OpenFlow specifies the behavior of the router.
-For example, the OpenFlow spec might say that whenever the router receives
+OpenFlow is an API specification for configuring switchs.
+An OpenFlow switch is a switch that implements this API.
+OpenFlow specifies the behavior of the switch.
+For example, the OpenFlow spec might say that whenever the switch receives
 a packet it should make a TCP call to a server (known as OpenFlow controller)
 to ask that server what to do about the packet it just received.
 
@@ -148,3 +149,4 @@ was originally designed to control department networks at Stanford).
 [p4]: https://en.wikipedia.org/wiki/P4_(programming_language)
 [nfv]: https://portal.etsi.org/NFV/NFV_White_Paper.pdf
 [tlv]: https://en.wikipedia.org/wiki/Type-length-value
+[unikernel]: http://unikernel.org/files/2014-cacm-unikernels.pdf
