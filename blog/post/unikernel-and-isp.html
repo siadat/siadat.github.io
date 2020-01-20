@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Unikernels and the Interface Segregation Principle</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/index.html">about me</a>
+    &middot; <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="January 20, 2020">
+        January 20, 2020
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Unikernels and the Interface Segregation Principle</h1>
+      <section itemprop="entry-text">
+        <p>I interpret the Interface Segregation Principle (<a href="https://en.wikipedia.org/wiki/Interface_segregation_principle" target="_blank">ISP</a>) to mean the following two opinions:</p>
+
+<ul>
+<li>Depending on a framework for a large project is almost always a mistake.
+Almost every teams I have talked to have had problem when the frame work
+is updated and changes under their feet.</li>
+<li>Depending on an OS distribution is not that far from depending on a framework.
+OSs and the Linux kernel are more stable than frameworks, but they contain a lot of
+complexity that we do not need or are aware of.</li>
+</ul>
+
+<p>Unikernels (<a href="http://anil.recoil.org/papers/2013-asplos-mirage.pdf" target="_blank">1</a> and <a href="http://queue.acm.org/detail.cfm?id=2566628" target="_blank">2</a>) and other library OSs
+seem like a good solution to reduce our external dependencies to a bare minimum.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    End of the post.
+  </div>
+
+</body>
+</html>

@@ -10,6 +10,16 @@
     
     
     <item>
+      <title>Unikernels and the Interface Segregation Principle</title>
+      <link>https://siadat.github.io/post/unikernel-and-isp</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/unikernel-and-isp</guid>
+      <description>I interpret the Interface Segregation Principle ([ISP][isp]) to mean the following two opinions:&#xA;&#xA;- Depending on a framework for a large project is almost always a mistake.&#xA;  Almost every teams I hav</description>
+    </item>
+    
+    
+    
+    <item>
       <title>Concept&mdash;name mismatch</title>
       <link>https://siadat.github.io/post/bad-names</link>
       <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
