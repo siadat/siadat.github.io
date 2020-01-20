@@ -20,10 +20,10 @@
     
     
     <item>
-      <title>Concept&mdash;name mismatch</title>
-      <link>https://siadat.github.io/post/bad-names</link>
+      <title>Descriptive naming</title>
+      <link>https://siadat.github.io/post/descriptive-names</link>
       <pubDate>Sun, 19 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/bad-names</guid>
+      <guid>https://siadat.github.io/post/descriptive-names</guid>
       <description>It is surprising to see great programmers choose misleading names for concepts in their writings&#xA;while advocating descriptive names in computer programs.&#xA;&#xA;One speculation is that authors enjoy playin</description>
     </item>
     

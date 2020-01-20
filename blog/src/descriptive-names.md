@@ -1,5 +1,5 @@
 ---
-title: "Concept&mdash;name mismatch"
+title: "Descriptive naming"
 date: 2020-01-19
 draft: false
 ---
