@@ -18,6 +18,12 @@ I think it would be a good idea to have a few names to differentiate these flows
 We could think of a caller functions as logically **upstream** to the function it calls,
 and the called functions as logically **downstream** to its caller.
 
+However, it is not really a "stream".
+Maybe "bubble up" and "sink down" would be better terms.
+I am going to stick with upstream and downstream for the rest of this post,
+because it makes it easier to talk about the functions that have called us (upstream) and the functions that we call (downstream).
+
+
 <!--
 Downstream in the sense that with each recursive call we go down and get farther from the original caller, which sits on top.
 Upstream in the sense that everytime a recursive function returns we get closer to the original caller on top.
