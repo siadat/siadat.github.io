@@ -18,11 +18,13 @@ I think it would be a good idea to have a few names to differentiate these flows
 We could think of a caller functions as logically **upstream** to the function it calls,
 and the called functions as logically **downstream** to its caller.
 
-However, it is not really a "stream".
-Maybe "bubble up" and "sink down" would be better terms.
+The problem is that they are not exactly "streams".
+We are sending data down and up, but not in a continuous way.
+Perhaps "send down" and "send up", or "bubble up" and "sink down" would be better alternatives.
 I am going to stick with upstream and downstream for the rest of this post,
-because it makes it easier to talk about the functions that have called us (upstream) and the functions that we call (downstream).
-
+because it makes it sounds natural to use them as adjectives and talk about
+an upstream function (our caller)
+and a downstream function (we call).
 
 <!--
 Downstream in the sense that with each recursive call we go down and get farther from the original caller, which sits on top.

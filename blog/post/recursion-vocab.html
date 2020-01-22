@@ -56,10 +56,13 @@ Hence, data flows in 4 different ways.</p>
 We could think of a caller functions as logically <strong>upstream</strong> to the function it calls,
 and the called functions as logically <strong>downstream</strong> to its caller.</p>
 
-<p>However, it is not really a &ldquo;stream&rdquo;.
-Maybe &ldquo;bubble up&rdquo; and &ldquo;sink down&rdquo; would be better terms.
+<p>The problem is that they are not exactly &ldquo;streams&rdquo;.
+We are sending data down and up, but not in a continuous way.
+Perhaps &ldquo;send down&rdquo; and &ldquo;send up&rdquo;, or &ldquo;bubble up&rdquo; and &ldquo;sink down&rdquo; would be better alternatives.
 I am going to stick with upstream and downstream for the rest of this post,
-because it makes it easier to talk about the functions that have called us (upstream) and the functions that we call (downstream).</p>
+because it makes it sounds natural to use them as adjectives and talk about
+an upstream function (our caller)
+and a downstream function (we call).</p>
 
 <!--
 Downstream in the sense that with each recursive call we go down and get farther from the original caller, which sits on top.
