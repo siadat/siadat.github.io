@@ -10,6 +10,16 @@
     
     
     <item>
+      <title>Recursion vocabulary</title>
+      <link>https://siadat.github.io/post/recursion-vocab</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/recursion-vocab</guid>
+      <description>Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,&#xA;while sharing the same signature, return values, and variables.&#xA;In a recursive function, da</description>
+    </item>
+    
+    
+    
+    <item>
       <title>Unikernels and the Interface Segregation Principle</title>
       <link>https://siadat.github.io/post/unikernel-and-isp</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>

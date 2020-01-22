@@ -2,6 +2,14 @@
 
 all: blog homepage
 
+watch-blog:
+	# sudo python -m pip install watchdog[watchmedo]
+	watchmedo shell-command \
+	  --patterns="*.md;*.md" \
+	  --recursive \
+	  --command='make blog' \
+	  .
+
 homepage: projects.yaml readings.yaml
 	poetry run python generate.py
 

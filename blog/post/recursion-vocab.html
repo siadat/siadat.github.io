@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Recursion vocabulary</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/index.html">about me</a>
+    &middot; <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="January 22, 2020">
+        January 22, 2020
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Recursion vocabulary</h1>
+      <section itemprop="entry-text">
+        <p>Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,
+while sharing the same signature, return values, and variables.
+In a recursive function, data flows
+from the function that called it,
+back to the function that called it,
+to one or more functions it calls,
+and from those functions.
+Hence, data flows in 4 different ways.</p>
+
+<p>I think it would be a good idea to have a few names to differentiate these flows.
+<!--Similar to how stacks have top and bottom, -->
+We could think of a caller functions as logically <strong>upstream</strong> to the function it calls,
+and the called functions as logically <strong>downstream</strong> to its caller.</p>
+
+<!--
+Downstream in the sense that with each recursive call we go down and get farther from the original caller, which sits on top.
+Upstream in the sense that everytime a recursive function returns we get closer to the original caller on top.
+-->
+
+<p>As shown in the following figure for recursively calculating the factorial of a number,
+each function invocation is connected to 2 other functions with 4 arrows
+(except the original caller and the terminating invocations, having 2 arrows each):</p>
+
+<ol>
+<li>from upstream (my arguments)</li>
+<li>to downstream (sent to a downstream function as arguments)</li>
+<li>from downstream (received from the downstream function&rsquo;s return value)</li>
+<li>to upstream (my return value)</li>
+</ol>
+
+<h2>Examples</h2>
+
+<p>Here is a head recursive factorial function (arrows show the direction of the flow of data):</p>
+
+<pre><code class="language-ml">let rec factorial n =
+  match n with
+  | 1 -&gt; 1
+  | _ -&gt; n * factorial (n-1)
+
+assert (factorial 4 = 24)
+</code></pre>
+<div class='shell'>
+<pre><code class="language-shell">  upstream
+     ↑
+     |
+     |
+time +----(4)----(3)----(2)----(1)----------1---2---6---24---&gt;
+     |
+     |     4! = ..................................... = 24
+     |     ↓                                            ↑
+     |     ↓                                            ↑
+     |     ↓                                            ↑
+     |     ↓                                            ↑
+     |     ↓                                            ↑
+     |     4! = 4x3! = ........................ = 4x6 = 24
+     |            ↓                                 ↑
+     |            ↓                                 ↑
+     |            ↓                                 ↑
+     |            ↓                                 ↑
+     |            ↓                                 ↑
+     |            3! = 3x2! = ............. = 3x2 = 6
+     |                   ↓                      ↑
+     |                   ↓                      ↑
+     |                   ↓                      ↑
+     |                   ↓                      ↑
+     |                   ↓                      ↑
+     |                   2! = 2x1! = .. = 2x1 = 2
+     |                          ↓           ↑
+     |                          ↓           ↑
+     |                          ↓           ↑
+     |                          ↓           ↑
+     |                          ↓           ↑
+     |                          1!    is    1
+     |
+     ↓
+ downstream
+</code></pre>
+</div>
+<p>As another example, here is a tail recursive function for calculating the factorial
+of a number:</p>
+
+<pre><code class="language-ml">let rec factorial n accum =
+  match n with
+  | 1 -&gt; accum
+  | _ -&gt; factorial (n-1) (n*accum)
+
+assert (factorial 4 1 = 24)
+</code></pre>
+<div class='shell'>
+<pre><code class="language-shell">  upstream
+     ↑
+     |
+     |
+time +----(4,1)-(3,4)-(2,12)-(1,24)----------------------24---&gt;
+     |
+     |     4,1   = ................................... = 24
+     |           ↓                                       ↑
+     |           ↓                                       ↑
+     |           ↓                                       ↑
+     |           ↓                                       ↑
+     |           ↓                                       ↑
+     |           3,1x4 = ............................. = 24
+     |                 ↓                                 ↑
+     |                 ↓                                 ↑
+     |                 ↓                                 ↑
+     |                 ↓                                 ↑
+     |                 ↓                                 ↑
+     |                 2,1x4x3 = ..................... = 24
+     |                         ↓                         ↑
+     |                         ↓                         ↑
+     |                         ↓                         ↑
+     |                         ↓                         ↑
+     |                         ↓                         ↑
+     |                         1,1x4x3x2 = ........... = 24
+     |                                   ↓               ↑
+     |                                   ↓               ↑
+     |                                   ↓               ↑
+     |                                   ↓               ↑
+     |                                   ↓               ↑
+     |                                   0,1x4x3x2x1 = 0,24
+     |
+     ↓
+ downstream
+</code></pre>
+</div>
+<p>In this example, we could say that
+we are &ldquo;receiving (n) and (accum) from upstream&rdquo;,
+we are &ldquo;passing (n-1) and (n*accum) to downstream&rdquo;,
+and the last call to the function &ldquo;returns accum back upstream,&rdquo;
+which is in trun directly &ldquo;returned back upstream&rdquo; (tail recursion).</p>
+
+<p>In a tail recursive function, the value is calculated while going downstream.
+The final value is first known by the most downstream invocation.</p>
+
+<p>In a head recursive function, the final value is calculated while going back upstream.
+The final value is only known by the most upstream invocation.</p>
+
+<p>This post will probably be edited in the future,
+because I am not quite satisfied with it yet.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    End of the post. Let me know your opinion via <a href="https://twitter.com/sinasiadat">twitter/sinasiadat</a>.
+  </div>
+
+</body>
+</html>
