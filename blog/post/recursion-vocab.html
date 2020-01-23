@@ -42,19 +42,18 @@
     <article itemscope itemtype="http://schema.org/BlogPosting">
       <h1 class="entry-title" itemprop="headline">Recursion vocabulary</h1>
       <section itemprop="entry-text">
-        <h2>Abstract</h2>
-
-<p>In this post, I write that the existing terminology for <a href="https://en.wikipedia.org/wiki/Call_stack" target="_blank">call stacks</a>
-is not enough, and we need new words for thinking about
-recursive call stacks, and I consider a couple of possible words
-that are suited for reading and reasoning about functions,
-namely &ldquo;upstream&rdquo; (closer to initial caller) and &ldquo;downstream&rdquo; (closer to the
-top of the call stack).
-However, they are not perfect as they do not match perfectly with the call stack terminology.</p>
+        <p>In this post, I write that the existing terminology for <a href="https://en.wikipedia.org/wiki/Call_stack" target="_blank">call stacks</a>
+is not enough, and we need new terms for thinking about
+recursive call stacks. Furthermore, I consider a couple of terms
+that seem to help with reading and reasoning about recursive functions,
+namely &ldquo;upstream&rdquo; (closer to initial caller) and &ldquo;downstream&rdquo;.
+However, these terms are not perfect as they do not match perfectly with the
+call stack terminology, but they help me convey more information in fewer words
+which helps while reasoning about a recursive algorithm.</p>
 
 <h2>Problem</h2>
 
-<p>In a normal call stack, data flows
+<p>In a normal call stack, data flow
 in several directions:</p>
 
 <ul>
@@ -64,7 +63,7 @@ in several directions:</p>
 <li>from one of more functions we call</li>
 </ul>
 
-<p>Hence, data flows in 4 different channels via arguments and return values.
+<p>Hence, data flow in 4 different channels via arguments and return values.
 As a special case, recursive functions are even more complex
 because they share the same signatures and variable names
 with the functions they are communicating with.</p>
@@ -73,7 +72,7 @@ with the functions they are communicating with.</p>
 
 <p>We could refer to the function we are calling as the &ldquo;called function.&rdquo;
 But this does not distinguish that function from any other called function in the program.
-A more appropriate albeit long phrase would be &ldquo;the function we call.&rdquo;
+A more appropriate, albeit long, phrase would be &ldquo;the function we call.&rdquo;
 And we could refer to the function that called us as &ldquo;the function that called us.&rdquo;</p>
 
 <h2>Solution 2: stack &ldquo;push&rdquo; and &ldquo;pop&rdquo;</h2>
@@ -83,26 +82,28 @@ and when it returns it will be &ldquo;popped from the top of the stack.&rdquo;</
 
 <p>The vocabulary used to describe call stacks is motivated by the details of how memory is managed.
 The focus of this post is to find a way to describe the logical and algorithmic
-flow of communication, as opposed to call stacks and implementation details.</p>
+flow of communication, as opposed to call-stacks and implementation details.</p>
 
 <h2>Solution 3: &ldquo;upstream&rdquo; and &ldquo;downstream&rdquo;</h2>
 
-<p>I think it would be a good idea to have a couple of new names to differentiate the direction of flows
+<p>I think it would be a good idea to have a couple of new terms to differentiate the direction of flows
 between function calls.
-We could think of a caller functions as logically <strong>upstream</strong> to the function it calls,
+We could think of a caller function as logically <strong>upstream</strong> to the function it calls,
 and the called functions as logically <strong>downstream</strong> to its caller.
 So, when a function calls another function (or itself), we are momentarily going downstream,
 until that function returns and we are back.</p>
 
-<p>When reading a function, we are focused on teh current stack,
+<p>When reading a function, we are focused on the current stack,
 and the functions we call are hiding complexity behind an invocation.
-That&rsquo;s why I think the called functions go &ldquo;down&rdquo; or somewhere less important that the
+That&rsquo;s why I think the called functions go &ldquo;down&rdquo; or somewhere less important than the
 current function&rsquo;s scope, and that I don&rsquo;t want to think of them as coming &ldquo;up&rdquo;
 and get closer to my face (as seems to be the case in call stack terminology).</p>
 
 <p>The problem is that these flows are not exactly &ldquo;streams&rdquo;.
 We are sending data down and up, but not in a continuous way.
-Perhaps &ldquo;send down&rdquo; and &ldquo;send up&rdquo;, or &ldquo;bubble up&rdquo; and &ldquo;sink down&rdquo; would be better alternatives.
+Perhaps &ldquo;send down&rdquo; and &ldquo;send up&rdquo;, or &ldquo;bubble up&rdquo; and &ldquo;sink down&rdquo;, or &ldquo;push&rdquo;
+and &ldquo;pull&rdquo; would be better alternatives.
+But I am more concerned about the direction of the flow as opposed to individual actions.
 At least temporarily, I am going to stick with &ldquo;upstream&rdquo; and &ldquo;downstream&rdquo; for the rest of this post,
 because it sounds natural to use them as adjectives for functions, we can talk about
 an &ldquo;upstream function&rdquo; (the function that called us)
@@ -125,8 +126,8 @@ the &ldquo;downstream flow of data&rdquo;.</p>
 
 <p>In an attempt to be compatible with the stack view of call stacks,
 we can image the stack growing down with its &ldquo;top&rdquo; at the bottom.</p>
-<div class='shell'>
-<pre><code class="language-shell">    |
+<div class='output'>
+<pre><code class="language-output">    |
     |  t1  t2  t3  t4  t5  t6  t7  (time)
     |                              
     |  4!  4!  4!  4!  4!  4!  4!  (the function we are reading)
@@ -169,8 +170,8 @@ The final value is only known by the &ldquo;most upstream invocation&rdquo;.</li
 
 assert (factorial 4 = 24)
 </code></pre>
-<div class='shell'>
-<pre><code class="language-shell">  upstream
+<div class='output'>
+<pre><code class="language-output">  upstream
      ↑
      |
      |
@@ -216,8 +217,8 @@ of a number:</p>
 
 assert (factorial 4 1 = 24)
 </code></pre>
-<div class='shell'>
-<pre><code class="language-shell">  upstream
+<div class='output'>
+<pre><code class="language-output">  upstream
      ↑
      |
      |

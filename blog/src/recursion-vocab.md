@@ -6,19 +6,18 @@ draft: false
 
 [call_stack]: https://en.wikipedia.org/wiki/Call_stack
 
-## Abstract
-
 In this post, I write that the existing terminology for [call stacks][call_stack]
-is not enough, and we need new words for thinking about
-recursive call stacks, and I consider a couple of possible words
-that are suited for reading and reasoning about functions,
-namely "upstream" (closer to initial caller) and "downstream" (closer to the
-top of the call stack).
-However, they are not perfect as they do not match perfectly with the call stack terminology.
+is not enough, and we need new terms for thinking about
+recursive call stacks. Furthermore, I consider a couple of terms
+that seem to help with reading and reasoning about recursive functions,
+namely "upstream" (closer to initial caller) and "downstream".
+However, these terms are not perfect as they do not match perfectly with the
+call stack terminology, but they help me convey more information in fewer words
+which helps while reasoning about a recursive algorithm.
 
 ## Problem
 
-In a normal call stack, data flows
+In a normal call stack, data flow
 in several directions:
 
 - from the function that called us
@@ -26,7 +25,7 @@ in several directions:
 - to one or more functions we call
 - from one of more functions we call
 
-Hence, data flows in 4 different channels via arguments and return values.
+Hence, data flow in 4 different channels via arguments and return values.
 As a special case, recursive functions are even more complex
 because they share the same signatures and variable names
 with the functions they are communicating with.
@@ -35,7 +34,7 @@ with the functions they are communicating with.
 
 We could refer to the function we are calling as the "called function."
 But this does not distinguish that function from any other called function in the program.
-A more appropriate albeit long phrase would be "the function we call."
+A more appropriate, albeit long, phrase would be "the function we call."
 And we could refer to the function that called us as "the function that called us."
 
 ## Solution 2: stack "push" and "pop"
@@ -45,26 +44,28 @@ and when it returns it will be "popped from the top of the stack."
 
 The vocabulary used to describe call stacks is motivated by the details of how memory is managed.
 The focus of this post is to find a way to describe the logical and algorithmic
-flow of communication, as opposed to call stacks and implementation details.
+flow of communication, as opposed to call-stacks and implementation details.
 
 ## Solution 3: "upstream" and "downstream"
 
-I think it would be a good idea to have a couple of new names to differentiate the direction of flows
+I think it would be a good idea to have a couple of new terms to differentiate the direction of flows
 between function calls.
-We could think of a caller functions as logically **upstream** to the function it calls,
+We could think of a caller function as logically **upstream** to the function it calls,
 and the called functions as logically **downstream** to its caller.
 So, when a function calls another function (or itself), we are momentarily going downstream,
 until that function returns and we are back.
 
-When reading a function, we are focused on teh current stack,
+When reading a function, we are focused on the current stack,
 and the functions we call are hiding complexity behind an invocation.
-That's why I think the called functions go "down" or somewhere less important that the 
+That's why I think the called functions go "down" or somewhere less important than the 
 current function's scope, and that I don't want to think of them as coming "up"
 and get closer to my face (as seems to be the case in call stack terminology).
 
 The problem is that these flows are not exactly "streams".
 We are sending data down and up, but not in a continuous way.
-Perhaps "send down" and "send up", or "bubble up" and "sink down" would be better alternatives.
+Perhaps "send down" and "send up", or "bubble up" and "sink down", or "push"
+and "pull" would be better alternatives.
+But I am more concerned about the direction of the flow as opposed to individual actions.
 At least temporarily, I am going to stick with "upstream" and "downstream" for the rest of this post,
 because it sounds natural to use them as adjectives for functions, we can talk about
 an "upstream function" (the function that called us)
@@ -86,7 +87,7 @@ We are always first going downstream, then upstream.
 In an attempt to be compatible with the stack view of call stacks,
 we can image the stack growing down with its "top" at the bottom.
 
-```shell
+```output
     |
     |  t1  t2  t3  t4  t5  t6  t7  (time)
     |                              
@@ -130,7 +131,7 @@ let rec factorial n =
 assert (factorial 4 = 24)
 ```
 
-```shell
+```output
   upstream
      ↑
      |
@@ -179,7 +180,7 @@ let rec factorial n accum =
 assert (factorial 4 1 = 24)
 ```
 
-```shell
+```output
   upstream
      ↑
      |
