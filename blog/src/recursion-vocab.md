@@ -1,7 +1,7 @@
 ---
 title: Recursion vocabulary
 date: 2020-01-22
-draft: false
+draft: true
 ---
 
 [call_stack]: https://en.wikipedia.org/wiki/Call_stack

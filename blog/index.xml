@@ -9,14 +9,6 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Recursion vocabulary</title>
-      <link>https://siadat.github.io/post/recursion-vocab</link>
-      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>https://siadat.github.io/post/recursion-vocab</guid>
-      <description>[call_stack]: https://en.wikipedia.org/wiki/Call_stack&#xA;&#xA;&gt; **Note**: there is already a vocabulary for &#34;[call stacks][call_stack]&#34;.&#xA;&gt; The focus of this post is to describe a *logical* (or algorithmic)</description>
-    </item>
-    
     
     
     <item>
