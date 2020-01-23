@@ -4,6 +4,13 @@ date: 2020-01-22
 draft: false
 ---
 
+[call_stack]: https://en.wikipedia.org/wiki/Call_stack
+
+> **Note**: there is already a vocabulary for "[call stacks][call_stack]".
+> The focus of this post is to describe a *logical* (or algorithmic) description of
+> how functions communicate via arguments and return values,
+> as opposed to call stacks and implementation details.
+
 Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,
 while sharing the same signature, return values, and variables.
 In a recursive function, data flows
@@ -35,10 +42,10 @@ As shown in the following figure for recursively calculating the factorial of a 
 each function invocation is connected to 2 other functions with 4 arrows
 (except the original caller and the terminating invocations, having 2 arrows each):
 
-1. from upstream (my arguments)
-2. to downstream (sent to a downstream function as arguments)
-3. from downstream (received from the downstream function's return value)
-4. to upstream (my return value)
+1. from upstream: we receive data from upstream via our arguments.
+2. to downstream: we send data to downstream by setting the argument of the function we call.
+3. from downstream: we receive data from the functions we call via their return values.
+4. to upstream: we send data to upstream by returning values.
 
 ## Examples
 

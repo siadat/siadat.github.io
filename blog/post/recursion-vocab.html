@@ -42,7 +42,14 @@
     <article itemscope itemtype="http://schema.org/BlogPosting">
       <h1 class="entry-title" itemprop="headline">Recursion vocabulary</h1>
       <section itemprop="entry-text">
-        <p>Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,
+        <blockquote>
+<p><strong>Note</strong>: there is already a vocabulary for &ldquo;<a href="https://en.wikipedia.org/wiki/Call_stack" target="_blank">call stacks</a>&rdquo;.
+The focus of this post is to describe a <em>logical</em> (or algorithmic) description of
+how functions communicate via arguments and return values,
+as opposed to call stacks and implementation details.</p>
+</blockquote>
+
+<p>Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,
 while sharing the same signature, return values, and variables.
 In a recursive function, data flows
 from the function that called it,
@@ -74,10 +81,10 @@ each function invocation is connected to 2 other functions with 4 arrows
 (except the original caller and the terminating invocations, having 2 arrows each):</p>
 
 <ol>
-<li>from upstream (my arguments)</li>
-<li>to downstream (sent to a downstream function as arguments)</li>
-<li>from downstream (received from the downstream function&rsquo;s return value)</li>
-<li>to upstream (my return value)</li>
+<li>from upstream: we receive data from upstream via our arguments.</li>
+<li>to downstream: we send data to downstream by setting the argument of the function we call.</li>
+<li>from downstream: we receive data from the functions we call via their return values.</li>
+<li>to upstream: we send data to upstream by returning values.</li>
 </ol>
 
 <h2>Examples</h2>

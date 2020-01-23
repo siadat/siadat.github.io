@@ -14,7 +14,7 @@
       <link>https://siadat.github.io/post/recursion-vocab</link>
       <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/recursion-vocab</guid>
-      <description>Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,&#xA;while sharing the same signature, return values, and variables.&#xA;In a recursive function, da</description>
+      <description>[call_stack]: https://en.wikipedia.org/wiki/Call_stack&#xA;&#xA;&gt; **Note**: there is already a vocabulary for &#34;[call stacks][call_stack]&#34;.&#xA;&gt; The focus of this post is to describe a *logical* (or algorithmic)</description>
     </item>
     
     
