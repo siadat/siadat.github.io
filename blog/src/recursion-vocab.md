@@ -1,45 +1,59 @@
 ---
 title: Recursion vocabulary
 date: 2020-01-22
-draft: true
+draft: false
 ---
 
 [call_stack]: https://en.wikipedia.org/wiki/Call_stack
 
-> **Note**: there is already a vocabulary for "[call stacks][call_stack]".
-> The focus of this post is to describe a *logical* (or algorithmic) description of
-> how functions communicate via arguments and return values,
-> as opposed to call stacks and implementation details.
+> In this post, I write that the existing terminology for [call stacks][call_stack]
+> is not enough, and we need new words for thinking about
+> recursive call stacks, and I consider a couple of possible words
+> that are suited for reading and reasoning about functions,
+> namely "upstream" (closer to initial caller) and "downstream" (closer to the
+> top of the call stack).
+> However, they are not perfect as they do not match perfectly with the call stack terminology.
 
-Recursive functions are complex because they are connected to (at least) 2 other functions bidirectionally,
-while sharing the same signature, return values, and variables.
-In a recursive function, data flows
-from the function that called it,
-back to the function that called it,
-to one or more functions it calls,
-and from those functions.
-Hence, data flows in 4 different ways.
+The vocabulary used by call stacks is detail oriented.
+The focus of this post is to describe a logical or algorithmic
+view of how functions communicate, as opposed to call stacks and
+implementation details.
+
+In a normal call stack, data flows
+in several directions:
+
+- from the function that called us
+- back to the function that called us
+- to one or more functions we call
+- from one of more functions we call
+
+Hence, data flows in 4 different ways via arguments and return values.
+As a special case,
+recursive functions are even more complex
+because they share the same signatures and variable names
+with the functions they are communicating with.
 
 I think it would be a good idea to have a few names to differentiate these flows.
-<!--Similar to how stacks have top and bottom, -->
 We could think of a caller functions as logically **upstream** to the function it calls,
 and the called functions as logically **downstream** to its caller.
+So, when a function calls another function (or itself), we are momentarily going downstream,
+until that function returns and we are back.
 
-The problem is that they are not exactly "streams".
+When reading a function, we are focused on teh current stack,
+and the functions we call are hiding complexity behind an invocation.
+That's why I think the called functions go "down" or somewhere less important that the 
+current function's scope, and that I don't want to think of them as coming "up"
+and get closer to my face (as seems to be the case in call stack terminology).
+
+The problem is that these flows are not exactly "streams".
 We are sending data down and up, but not in a continuous way.
 Perhaps "send down" and "send up", or "bubble up" and "sink down" would be better alternatives.
-I am going to stick with upstream and downstream for the rest of this post,
-because it makes it sounds natural to use them as adjectives and talk about
-an upstream function (our caller)
-and a downstream function (we call).
+At least temporarily, I am going to stick with "upstream" and "downstream" for the rest of this post,
+because it sounds natural to use them as adjectives for functions, we can talk about
+an "upstream function" (the function that called us)
+and a "downstream function" (the function that we call).
 
-<!--
-Downstream in the sense that with each recursive call we go down and get farther from the original caller, which sits on top.
-Upstream in the sense that everytime a recursive function returns we get closer to the original caller on top.
--->
-
-As shown in the following figure for recursively calculating the factorial of a number,
-each function invocation is connected to 2 other functions with 4 arrows
+Each function invocation is connected to 2 other functions in 2 directions each
 (except the original caller and the terminating invocations, having 2 arrows each):
 
 1. from upstream: we receive data from upstream via our arguments.
@@ -47,9 +61,35 @@ each function invocation is connected to 2 other functions with 4 arrows
 3. from downstream: we receive data from the functions we call via their return values.
 4. to upstream: we send data to upstream by returning values.
 
+We are always first going downstream, then upstream.
+
+In an attempt to be compatible with the stack view of call stacks,
+we can image the stack growing down with its "top" at the bottom.
+
+```shell
+    |
+    |  t1  t2  t3  t4  t5  t6  t7  (time)
+    |                              
+    |  4!  4!  4!  4!  4!  4!  4!  (the function we are reading)
+    |  ==  --  --  --  --  --  ==
+    |      3!  3!  3!  3!  3!
+    |      ==  --  --  --  ==
+    |          2!  2!  2!
+    |          ==  --  ==
+    |              1!
+    |              ==
+    |
+    v
+  stack
+    &
+downstream
+directions
+```
+
 ## Examples
 
 Here is a head recursive factorial function (arrows show the direction of the flow of data):
+
 
 ```ml
 let rec factorial n =
@@ -160,3 +200,4 @@ The final value is only known by the most upstream invocation.
 
 This post will probably be edited in the future,
 because I am not quite satisfied with it yet.
+

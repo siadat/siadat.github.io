@@ -9,6 +9,14 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Recursion vocabulary</title>
+      <link>https://siadat.github.io/post/recursion-vocab</link>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/recursion-vocab</guid>
+      <description>[call_stack]: https://en.wikipedia.org/wiki/Call_stack&#xA;&#xA;&gt; In this post, I write that the existing terminology for [call stacks][call_stack]&#xA;&gt; is not enough, and we need new words for thinking about&#xA;&gt;</description>
+    </item>
+    
     
     
     <item>
