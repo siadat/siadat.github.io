@@ -6,18 +6,17 @@ draft: false
 
 [call_stack]: https://en.wikipedia.org/wiki/Call_stack
 
-> In this post, I write that the existing terminology for [call stacks][call_stack]
-> is not enough, and we need new words for thinking about
-> recursive call stacks, and I consider a couple of possible words
-> that are suited for reading and reasoning about functions,
-> namely "upstream" (closer to initial caller) and "downstream" (closer to the
-> top of the call stack).
-> However, they are not perfect as they do not match perfectly with the call stack terminology.
+## Abstract
 
-The vocabulary used by call stacks is detail oriented.
-The focus of this post is to describe a logical or algorithmic
-view of how functions communicate, as opposed to call stacks and
-implementation details.
+In this post, I write that the existing terminology for [call stacks][call_stack]
+is not enough, and we need new words for thinking about
+recursive call stacks, and I consider a couple of possible words
+that are suited for reading and reasoning about functions,
+namely "upstream" (closer to initial caller) and "downstream" (closer to the
+top of the call stack).
+However, they are not perfect as they do not match perfectly with the call stack terminology.
+
+## Problem
 
 In a normal call stack, data flows
 in several directions:
@@ -27,13 +26,31 @@ in several directions:
 - to one or more functions we call
 - from one of more functions we call
 
-Hence, data flows in 4 different ways via arguments and return values.
-As a special case,
-recursive functions are even more complex
+Hence, data flows in 4 different channels via arguments and return values.
+As a special case, recursive functions are even more complex
 because they share the same signatures and variable names
 with the functions they are communicating with.
 
-I think it would be a good idea to have a few names to differentiate these flows.
+## Solution 1: "caller" and "called" functions
+
+We could refer to the function we are calling as the "called function."
+But this does not distinguish that function from any other called function in the program.
+A more appropriate albeit long phrase would be "the function we call."
+And we could refer to the function that called us as "the function that called us."
+
+## Solution 2: stack "push" and "pop"
+
+We could refer to the function we are calling as being "pushed on top of the stack"
+and when it returns it will be "popped from the top of the stack."
+
+The vocabulary used to describe call stacks is motivated by the details of how memory is managed.
+The focus of this post is to find a way to describe the logical and algorithmic
+flow of communication, as opposed to call stacks and implementation details.
+
+## Solution 3: "upstream" and "downstream"
+
+I think it would be a good idea to have a couple of new names to differentiate the direction of flows
+between function calls.
 We could think of a caller functions as logically **upstream** to the function it calls,
 and the called functions as logically **downstream** to its caller.
 So, when a function calls another function (or itself), we are momentarily going downstream,
@@ -60,6 +77,9 @@ Each function invocation is connected to 2 other functions in 2 directions each
 2. to downstream: we send data to downstream by setting the argument of the function we call.
 3. from downstream: we receive data from the functions we call via their return values.
 4. to upstream: we send data to upstream by returning values.
+
+With these words, we will be able to talk about the "upstream flow of data" or
+the "downstream flow of data".
 
 We are always first going downstream, then upstream.
 
@@ -88,8 +108,18 @@ directions
 
 ## Examples
 
-Here is a head recursive factorial function (arrows show the direction of the flow of data):
+### Describing head and tail recursion
 
+We could use "upstream" and "downstream" to say the following:
+
+- In a tail recursive function, the value is calculated while "going downstream".
+  The final value is first known by the "most downstream invocation".
+- In a head recursive function, the final value is calculated while "going back upstream".
+  The final value is only known by the "most upstream invocation".
+
+### Visualizations
+
+To help the reader visualize the up and down directions, here is a head recursive factorial function (arrows show the direction of the flow of data):
 
 ```ml
 let rec factorial n =
@@ -186,18 +216,15 @@ time +----(4,1)-(3,4)-(2,12)-(1,24)----------------------24--->
  downstream
 ```
 
-In this example, we could say that
-we are "receiving (n) and (accum) from upstream",
-we are "passing (n-1) and (n\*accum) to downstream",
-and the last call to the function "returns accum back upstream,"
-which is in trun directly "returned back upstream" (tail recursion).
+For the tail recursive example, we could say:
 
-In a tail recursive function, the value is calculated while going downstream.
-The final value is first known by the most downstream invocation.
+- In the tail recursive example, we are "receiving (n) and (accum) from upstream"
+- In the tail recursive example, we are "passing (n-1) and (n\*accum) to downstream"
+- In the tail recursive example, the last invocations "returns accum back upstream"
 
-In a head recursive function, the final value is calculated while going back upstream.
-The final value is only known by the most upstream invocation.
+## Conclusion
 
-This post will probably be edited in the future,
-because I am not quite satisfied with it yet.
-
+We do not have a vocabulary for describing the logical flows of data between
+function calls. One potential candidate is to use "upstream" and "downstream"
+to describe the direction of the data, which seems to facilitate talking and
+reasoning about recursive functions.
