@@ -6,119 +6,120 @@ draft: false
 
 [call_stack]: https://en.wikipedia.org/wiki/Call_stack
 
-In this post, I write that the existing terminology for [call stacks][call_stack]
-is not enough, and we need new terms for thinking about
-recursive call stacks. Furthermore, I consider a couple of terms
-that seem to help with reading and reasoning about recursive functions,
-namely "upstream" (closer to initial caller) and "downstream".
-However, these terms are not perfect as they do not match perfectly with the
-call stack terminology, but they help me convey more information in fewer words
-which helps while reasoning about a recursive algorithm.
+If words are the building blocks of our thought, then we better have good words
+when thinking about complex concepts.
+One such complex concept is recursive functions.
+In this post, I will try to review the most common terms we use to 
+describe the logical behavior of a recursive function and propose a number of new terms
+(upstream, downstream, send up and send down) to provide a visual description for the
+communication of data between function calls.
 
 ## Problem
 
-In a normal call stack, data flow
-in several directions:
+In a normal call stack, data flow in several directions:
 
 - from the function that called us
 - back to the function that called us
 - to one or more functions we call
 - from one of more functions we call
 
-Hence, data flow in 4 different channels via arguments and return values.
-As a special case, recursive functions are even more complex
+This is complex.
+Data is flowing in 4 different directions via arguments and return values.
+Recursive functions are even more complex
 because they share the same signatures and variable names
-with the functions they are communicating with.
+with the functions they are communicating with via these 4 directions.
 
-## Solution 1: "caller" and "called" functions
+## Terms
 
-We could refer to the function we are calling as the "called function."
-But this does not distinguish that function from any other called function in the program.
-A more appropriate, albeit long, phrase would be "the function we call."
-And we could refer to the function that called us as "the function that called us."
+- **caller**, **called**, **callee**:
+  We could refer to the function we are calling as the "called function."
+  To distinguish that function from all other called function in the program,
+  we might say "the function we call" or "the function that called us."
+  This is long and I recommend using "child" and "parent" instead.
 
-## Solution 2: stack "push" and "pop"
+- **parent**, **child**:
+  We could refer to the function we are calling as a "child function"
+  and the function that called us as the "parent function".
+  We send data to a child function, and when a child function returns it
+  returns a value back to its parent.
 
-We could refer to the function we are calling as being "pushed on top of the stack"
-and when it returns it will be "popped from the top of the stack."
+- **call**, **invoke**:
+  Synonyms. For non-recursive functions, I recommend "sending" and "receiving",
+  and for recursive functions I recommend the more specific "send downstream",
+  "receive from downstream", "send upstream", and "receive from upstream."
 
-The vocabulary used to describe call stacks is motivated by the details of how memory is managed.
-The focus of this post is to find a way to describe the logical and algorithmic
-flow of communication, as opposed to call-stacks and implementation details.
+- **send up**, **send down** (this is a proposal):
+  We could say "send up" to visualize a value that we return to our parent, and
+  "send down" for passing data as arguments to a child function.
+  
+  When reading a function, we are focused on the current stack.
+  The details of the functions we call are hidden behind invocations.
+  That's why I think the child functions go "down" or somewhere less important than the 
+  current function's scope. Even though they might be pushed on top of the stack,
+  I don't want to think of them as coming "up" and get closer to my face (as
+  seems to be the case in call stack terminology).
 
-## Solution 3: "upstream" and "downstream"
+- **send**, **receive**:
+  We could say "data is sent to" or "received" from another function.
 
-I think it would be a good idea to have a couple of new terms to differentiate the direction of flows
-between function calls.
-We could think of a caller function as logically **upstream** to the function it calls,
-and the called functions as logically **downstream** to its caller.
-So, when a function calls another function (or itself), we are momentarily going downstream,
-until that function returns and we are back.
+- **push**, **pop**:
+  We could refer to the function we are calling as being "pushed on top of the stack"
+  and when it returns it will be "popped from the top of the stack."
+  These terms are motivated by the details of how the call stack memory is managed.
 
-When reading a function, we are focused on the current stack,
-and the functions we call are hiding complexity behind an invocation.
-That's why I think the called functions go "down" or somewhere less important than the 
-current function's scope, and that I don't want to think of them as coming "up"
-and get closer to my face (as seems to be the case in call stack terminology).
-
-The problem is that these flows are not exactly "streams".
-We are sending data down and up, but not in a continuous way.
-Perhaps "send down" and "send up", or "bubble up" and "sink down", or "push"
-and "pull" would be better alternatives.
-But I am more concerned about the direction of the flow as opposed to individual actions.
-At least temporarily, I am going to stick with "upstream" and "downstream" for the rest of this post,
-because it sounds natural to use them as adjectives for functions, we can talk about
-an "upstream function" (the function that called us)
-and a "downstream function" (the function that we call).
-
-Each function invocation is connected to 2 other functions in 2 directions each
-(except the original caller and the terminating invocations, having 2 arrows each):
-
-1. from upstream: we receive data from upstream via our arguments.
-2. to downstream: we send data to downstream by setting the argument of the function we call.
-3. from downstream: we receive data from the functions we call via their return values.
-4. to upstream: we send data to upstream by returning values.
-
-With these words, we will be able to talk about the "upstream flow of data" or
-the "downstream flow of data".
-
-We are always first going downstream, then upstream.
-
-In an attempt to be compatible with the stack view of call stacks,
-we can image the stack growing down with its "top" at the bottom.
-
-```output
-    |
-    |  t1  t2  t3  t4  t5  t6  t7  (time)
-    |                              
-    |  4!  4!  4!  4!  4!  4!  4!  (the function we are reading)
-    |  ==  --  --  --  --  --  ==
-    |      3!  3!  3!  3!  3!
-    |      ==  --  --  --  ==
-    |          2!  2!  2!
-    |          ==  --  ==
-    |              1!
-    |              ==
-    |
-    v
-  stack
-    &
-downstream
-directions
-```
+- **upstream**, **downstream** (this is a proposal):
+  We could think of a parent function as logically upstream to its child functions,
+  and the child functions as logically downstream to their parent.
+  So, when a function calls another function (or itself), we are momentarily going downstream,
+  until that function returns and we are back.
+  We always go downstream first, then come back upstream.
+  
+  To summarize, there are 4 data flows:
+  
+  1. from upstream: from parent to us (via our arguments)
+  2. to downstream: from us to our child (via child's arguments)
+  3. from downstream: from our child to us (via child's return values)
+  4. to upstream: from us to our parent (via our return values)
+  
+  With these words, we will be able to talk about the "upstream flow of data" or
+  the "downstream flow of data".
+  
+  A minor problem with the terms "upstream" and "downstream" is that these flows
+  are not exactly "streams".  We are sending data down and up, but not in a
+  continuous, stream-like manner.
 
 ## Examples
 
-### Describing head and tail recursion
+These terms are not mutually exclusive. We can use all of them to describe
+different aspects of data flow.
 
-We could use "upstream" and "downstream" to say the following:
+- When thinking about each individual instance of a function, we can use "parent", "child", and "children".
+- When thinking about the direction of the flow of data, we can use "upstream" and "downstream".
+- When thinking about the overall movement of data, we can use "bubble up" and "sink down".
+- When thinking about the one-hop movement of data "send up" and "send down".
+- When thinking about memory stacks, we can use "pushing" and "popping".
+
+<!--
+But I am more concerned about the direction of the flow as opposed to individual actions.
+At least temporarily, I am going to stick with "upstream", "downstream",
+"child", "children", and "parent" for the rest of this post,
+because it sounds natural to use them as adjectives for functions, we can talk about
+a "parent function" sending data "downstream" to its "children",
+and a "child function" returning data back "upstream" to its "parent function".
+-->
+
+## More examples for "upstream" and "downstream"
+
+Except "upstream" and "downstream", the other terms are probably familiar for the reader.
+So, I am going to provide some examples of how we might use "upstream" and "downstream" to
+describe the direction of the flow of data.
+
+Let's use "upstream" and "downstream" to describe head and tail recursive algorithms:
 
 - In a tail recursive function, the value is calculated while "going downstream".
   The final value is first known by the "most downstream invocation".
 - In a head recursive function, the final value is calculated while "going back upstream".
   The final value is only known by the "most upstream invocation".
-
-### Visualizations
 
 To help the reader visualize the up and down directions, here is a head recursive factorial function (arrows show the direction of the flow of data):
 
@@ -223,9 +224,34 @@ For the tail recursive example, we could say:
 - In the tail recursive example, we are "passing (n-1) and (n\*accum) to downstream"
 - In the tail recursive example, the last invocations "returns accum back upstream"
 
+In an attempt to be compatible with the stack view of call stacks,
+we can image the stack growing down with its "top" at the bottom.
+
+```output
+    |
+    |  t1  t2  t3  t4  t5  t6  t7  (time)
+    |                              
+    |  4!  4!  4!  4!  4!  4!  4!  (the function we are reading)
+    |  ==  --  --  --  --  --  ==
+    |      3!  3!  3!  3!  3!
+    |      ==  --  --  --  ==
+    |          2!  2!  2!
+    |          ==  --  ==
+    |              1!
+    |              ==
+    |
+    v
+  stack
+    &
+downstream
+directions
+```
+
+
 ## Conclusion
 
-We do not have a vocabulary for describing the logical flows of data between
-function calls. One potential candidate is to use "upstream" and "downstream"
-to describe the direction of the data, which seems to facilitate talking and
-reasoning about recursive functions.
+We considered different terms for describing different components and
+attributes of a recursive function. We introduced a number of new terms
+(upstream, downstream, send up and send down) for describing the logical
+direction of the flow of data, and we decided to use them in conjunction with
+other existing terms such as "child function".
