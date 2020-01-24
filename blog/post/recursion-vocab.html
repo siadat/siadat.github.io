@@ -61,35 +61,46 @@ communication of data between function calls.</p>
 <li>from one of more functions we call</li>
 </ul>
 
-<p>This is complex.
-Data is flowing in 4 different directions via arguments and return values.
+<p>Data is flowing in 4 different directions via arguments and return values.
 Recursive functions are even more complex
 because they share the same signatures and variable names
 with the functions they are communicating with via these 4 directions.</p>
 
+<p>Another problem is that we won&rsquo;t be able to read a recursive function linearly,
+because the returned value of a call to self depends on how you define self.</p>
+
+<p>We need a solution to manage this complexity when reading and writing recursive functions.</p>
+
 <h2>Terms</h2>
 
-<ul>
-<li><p><strong>caller</strong>, <strong>called</strong>, <strong>callee</strong>:
-We could refer to the function we are calling as the &ldquo;called function.&rdquo;
-To distinguish that function from all other called function in the program,
-we might say &ldquo;the function we call&rdquo; or &ldquo;the function that called us.&rdquo;
-This is long and I recommend using &ldquo;child&rdquo; and &ldquo;parent&rdquo; instead.</p></li>
+<!--
+- **caller**, **called**, **callee** (not recommended):
+  We could refer to the function we are calling as the "called function."
+  To distinguish that function from all other called function in the program,
+  we might say "the function we call" or "the function that called us."
+  This is long and I recommend using "child" and "parent" instead.
+-->
 
-<li><p><strong>parent</strong>, <strong>child</strong>:
+<ul>
+<li><strong>parent</strong>, <strong>child</strong> (recommended):
 We could refer to the function we are calling as a &ldquo;child function&rdquo;
 and the function that called us as the &ldquo;parent function&rdquo;.
 We send data to a child function, and when a child function returns it
-returns a value back to its parent.</p></li>
+returns a value back to its parent.</li>
+</ul>
 
-<li><p><strong>call</strong>, <strong>invoke</strong>:
-Synonyms. For non-recursive functions, I recommend &ldquo;sending&rdquo; and &ldquo;receiving&rdquo;,
-and for recursive functions I recommend the more specific &ldquo;send downstream&rdquo;,
-&ldquo;receive from downstream&rdquo;, &ldquo;send upstream&rdquo;, and &ldquo;receive from upstream.&rdquo;</p></li>
+<!--
+- **call**, **invoke** (not recommended):
+  Synonyms. For non-recursive functions, I recommend "sending" and "receiving",
+  and for recursive functions I recommend the more specific "send downstream",
+  "receive from downstream", "send upstream", and "receive from upstream."
+-->
 
-<li><p><strong>send up</strong>, <strong>send down</strong> (this is a proposal):
+<ul>
+<li><strong>send up</strong>, <strong>send down</strong> (this is a proposal):
 We could say &ldquo;send up&rdquo; to visualize a value that we return to our parent, and
-&ldquo;send down&rdquo; for passing data as arguments to a child function.</p></li>
+&ldquo;send down&rdquo; for passing data as arguments to a child function.
+<br /></li>
 </ul>
 
 <p>When reading a function, we are focused on the current stack.
@@ -132,6 +143,12 @@ We always go downstream first, then come back upstream.</p></li>
 <p>A minor problem with the terms &ldquo;upstream&rdquo; and &ldquo;downstream&rdquo; is that these flows
   are not exactly &ldquo;streams&rdquo;.  We are sending data down and up, but not in a
   continuous, stream-like manner.</p>
+
+<h2>Reading</h2>
+
+<ul>
+<li>j</li>
+</ul>
 
 <h2>Examples</h2>
 

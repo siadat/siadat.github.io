@@ -1,7 +1,7 @@
 ---
 title: Recursion vocabulary
 date: 2020-01-22
-draft: false
+draft: true
 ---
 
 [call_stack]: https://en.wikipedia.org/wiki/Call_stack
@@ -23,30 +23,38 @@ In a normal call stack, data flow in several directions:
 - to one or more functions we call
 - from one of more functions we call
 
-This is complex.
 Data is flowing in 4 different directions via arguments and return values.
 Recursive functions are even more complex
 because they share the same signatures and variable names
 with the functions they are communicating with via these 4 directions.
 
+Another problem is that we won't be able to read a recursive function linearly,
+because the returned value of a call to self depends on how you define self.
+
+We need a solution to manage this complexity when reading and writing recursive functions.
+
 ## Terms
 
-- **caller**, **called**, **callee**:
+<!--
+- **caller**, **called**, **callee** (not recommended):
   We could refer to the function we are calling as the "called function."
   To distinguish that function from all other called function in the program,
   we might say "the function we call" or "the function that called us."
   This is long and I recommend using "child" and "parent" instead.
+-->
 
-- **parent**, **child**:
+- **parent**, **child** (recommended):
   We could refer to the function we are calling as a "child function"
   and the function that called us as the "parent function".
   We send data to a child function, and when a child function returns it
   returns a value back to its parent.
 
-- **call**, **invoke**:
+<!--
+- **call**, **invoke** (not recommended):
   Synonyms. For non-recursive functions, I recommend "sending" and "receiving",
   and for recursive functions I recommend the more specific "send downstream",
   "receive from downstream", "send upstream", and "receive from upstream."
+-->
 
 - **send up**, **send down** (this is a proposal):
   We could say "send up" to visualize a value that we return to our parent, and
@@ -87,6 +95,10 @@ with the functions they are communicating with via these 4 directions.
   A minor problem with the terms "upstream" and "downstream" is that these flows
   are not exactly "streams".  We are sending data down and up, but not in a
   continuous, stream-like manner.
+
+## Reading
+
+- j
 
 ## Examples
 
