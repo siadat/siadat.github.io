@@ -1,5 +1,4 @@
   - I am a freelance software engineer and consultant.
-  - I help companies build scalable, highly available microservices.
   - I teach the [Go programming language](https://en.wikipedia.org/wiki/Go_(programming_language)) to developers at companies
     and researchers at universities. I have made a number of contributions to the language.
   - As a backend engineer, I have worked on highly concurrent messaging systems, financial and payment systems,
@@ -19,7 +18,8 @@
     Before that I worked at [Aylien](http://aylien.com), [Sariina](http://sariina.com/en), and [Nokia](http://nokia.co.uk/).
 
 <!--
-  - I am passionate about growing (as opposed to "building") software, functioning prototypes, pair programming, and data-oriented programming.
-  - I am interested in software development methodologies, designing distributed systems, concurrent systems
-    (e.g., [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes)) and bio-inspired algorithms, e.g., Genetic Programming.
+- I help companies build scalable, highly available microservices.
+- I am passionate about growing (as opposed to "building") software, functioning prototypes, pair programming, and data-oriented programming.
+- I am interested in software development methodologies, designing distributed systems, concurrent systems
+  (e.g., [CSP](https://en.wikipedia.org/wiki/Communicating_sequential_processes)) and bio-inspired algorithms, e.g., Genetic Programming.
 -->
