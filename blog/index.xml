@@ -30,7 +30,7 @@
       <link>https://siadat.github.io/post/unikernel-and-isp</link>
       <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/unikernel-and-isp</guid>
-      <description>I wonder if we could, for a moment, strech the scope of the [Interface Segregation Principle][isp]&#xA;to components and OS architecture and interpret it to support the following two arguments:&#xA;&#xA;- Depend</description>
+      <description>I wonder if we could, for a moment, strech the scope of the [Interface Segregation Principle][isp]&#xA;to support the following two arguments:&#xA;&#xA;- Depending on a framework to a large project is almost alw</description>
     </item>
     
     

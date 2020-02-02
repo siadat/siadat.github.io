@@ -3,7 +3,7 @@
   and researchers at universities. I have made a number of contributions to the language.
 - As a backend engineer, I have worked on highly concurrent messaging systems, financial and payment systems,
   lottery campaigns, authorization systems, highly responsive game servers, and other APIs.
-  I use languages such as Go, C++, Ruby, and tools like Kubernetes, Docker, Kafka, Qemu, etc.
+  I use languages such as Go, C++, OCaml, Ruby, and tools like Kubernetes, Docker, Kafka, Qemu, etc.
 - As a frontend engineer, I have developed an interactive interface for [Navad](https://en.wikipedia.org/wiki/Navad).
   The app was used and broadcast **live on national television** during all the World Cup and derby football matches.
   I have also developed several mobile games and progressive web apps.

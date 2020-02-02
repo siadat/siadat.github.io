@@ -92,7 +92,7 @@ assert (factorial 4 = 24)
 </code></pre>
 </div>
 <p>And here is a tail-recursive factorial function &ldquo;building down&rdquo; the result
-(note that resulting value of 24 known by the deepest function call):</p>
+(note that resulting value of 24 is only known by the deepest function call):</p>
 
 <pre><code class="language-ml">let rec factorial n accum =
   match n with
@@ -145,9 +145,13 @@ by which I mean the result is gradually built by the caller <em>before</em> bein
 The last invokation of the recursive function knows the final result.</p>
 
 <p>In tail-recursive functions (where the value is &ldquo;built down&rdquo;),
-I find it useful to name the value being built down to something like &ldquo;accum&rdquo;.</p>
+I find it useful to name the value being built down something like &ldquo;accum&rdquo;,
+because this value is being accumulated or made more complete on each step.</p>
 
-<p>Here is a more complex example of an int-to-natural function &ldquo;building up&rdquo; the result:</p>
+<hr />
+
+<p>For those who like challenges, here is a more complex example of an
+int-to-natural function &ldquo;building up&rdquo; the result:</p>
 
 <pre><code class="language-ocaml">type nat = Zero | Succ of nat
 
@@ -158,12 +162,12 @@ let rec int_to_nat (x:int) : (nat option) =
   | _ -&gt; let y = int_to_nat (x-1) in
     match y with
     | None -&gt; None
-    | Some z -&gt; Some (Succ z);;
+    | Some z -&gt; Some (Succ z)
 </code></pre>
 
 <p>That function will stack overflow for large values of x.
-Here is the tail-recursive version of the function above, this time &ldquo;building down&rdquo; the result
-(and fixing the stack overflow issue):</p>
+Below is the tail-recursive version of the same function, this time &ldquo;building down&rdquo; the result
+(and obviating the stack overflow issue):</p>
 
 <pre><code class="language-ocaml">type nat = Zero | Succ of nat
 
@@ -173,7 +177,7 @@ let int_to_nat (x:int) : (nat option) =
     match x with
     | 0 -&gt; Some accum
     | _ -&gt; int_to_nat' (x-1) (Succ accum)
-  in int_to_nat' x Zero;;
+  in int_to_nat' x Zero
 </code></pre>
 
       </section>

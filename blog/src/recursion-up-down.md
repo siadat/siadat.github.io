@@ -56,7 +56,7 @@ assert (factorial 4 = 24)
 ```
 
 And here is a tail-recursive factorial function "building down" the result
-(note that resulting value of 24 known by the deepest function call):
+(note that resulting value of 24 is only known by the deepest function call):
 
 ```ml
 let rec factorial n accum =
@@ -111,9 +111,13 @@ by which I mean the result is gradually built by the caller *before* being passe
 The last invokation of the recursive function knows the final result.
 
 In tail-recursive functions (where the value is "built down"),
-I find it useful to name the value being built down to something like "accum".
+I find it useful to name the value being built down something like "accum",
+because this value is being accumulated or made more complete on each step.
 
-Here is a more complex example of an int-to-natural function "building up" the result:
+---
+
+For those who like challenges, here is a more complex example of an
+int-to-natural function "building up" the result:
 
 ```ocaml
 type nat = Zero | Succ of nat
@@ -125,12 +129,12 @@ let rec int_to_nat (x:int) : (nat option) =
   | _ -> let y = int_to_nat (x-1) in
     match y with
     | None -> None
-    | Some z -> Some (Succ z);;
+    | Some z -> Some (Succ z)
 ```
 
 That function will stack overflow for large values of x.
-Here is the tail-recursive version of the function above, this time "building down" the result
-(and fixing the stack overflow issue):
+Below is the tail-recursive version of the same function, this time "building down" the result
+(and obviating the stack overflow issue):
 
 ```ocaml
 type nat = Zero | Succ of nat
@@ -141,5 +145,5 @@ let int_to_nat (x:int) : (nat option) =
     match x with
     | 0 -> Some accum
     | _ -> int_to_nat' (x-1) (Succ accum)
-  in int_to_nat' x Zero;;
+  in int_to_nat' x Zero
 ```
