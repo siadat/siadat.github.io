@@ -7,7 +7,8 @@ tags: go
 ### Introduction
 
 Let's start with a simple problem.
-We have this program that performs an action every second.
+
+We have a program that does something every second.
 
 ```go
 func Perform() {
@@ -18,14 +19,14 @@ func Perform() {
 }
 ```
 
-And we call it like this
+And we run it in a groutine like this
 
 ```go
 go Perform()
 ```
 
-The goal is to cancel the Perform function either explicitly or when a deadline is exceeded.
-Context package was initially designed to implement exactly what we need; request cancelation and deadline.
+The goal is to cancel the Perform function either explicitly, or automatically when a deadline is exceeded.
+The Context package was initially designed to implement exactly what we need; request cancelation and deadline.
 Take a look at the context.Context interface:
 
 ```go

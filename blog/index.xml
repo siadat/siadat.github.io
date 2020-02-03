@@ -102,7 +102,7 @@
       <link>https://siadat.github.io/post/context</link>
       <pubDate>Sat, 21 Jan 2017 00:00:00 +0000</pubDate>
       <guid>https://siadat.github.io/post/context</guid>
-      <description>### Introduction&#xA;&#xA;Let&#39;s start with a simple problem.&#xA;We have this program that performs an action every second.&#xA;&#xA;```go&#xA;func Perform() {&#xA;    for {&#xA;        SomeFunction()&#xA;        time.Sleep(time.Second</description>
+      <description>### Introduction&#xA;&#xA;Let&#39;s start with a simple problem.&#xA;&#xA;We have a program that does something every second.&#xA;&#xA;```go&#xA;func Perform() {&#xA;    for {&#xA;        SomeFunction()&#xA;        time.Sleep(time.Second)</description>
     </item>
     
     

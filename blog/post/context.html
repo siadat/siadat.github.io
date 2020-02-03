@@ -44,8 +44,9 @@
       <section itemprop="entry-text">
         <h3>Introduction</h3>
 
-<p>Let&rsquo;s start with a simple problem.
-We have this program that performs an action every second.</p>
+<p>Let&rsquo;s start with a simple problem.</p>
+
+<p>We have a program that does something every second.</p>
 <pre>func Perform() {
     for {
         SomeFunction()
@@ -53,11 +54,11 @@ We have this program that performs an action every second.</p>
     }
 }
 </pre>
-<p>And we call it like this</p>
+<p>And we run it in a groutine like this</p>
 <pre>go Perform()
 </pre>
-<p>The goal is to cancel the Perform function either explicitly or when a deadline is exceeded.
-Context package was initially designed to implement exactly what we need; request cancelation and deadline.
+<p>The goal is to cancel the Perform function either explicitly, or automatically when a deadline is exceeded.
+The Context package was initially designed to implement exactly what we need; request cancelation and deadline.
 Take a look at the context.Context interface:</p>
 <pre>type Context interface {
     Done() &lt;-chan struct{}
