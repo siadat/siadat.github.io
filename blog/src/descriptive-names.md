@@ -7,8 +7,8 @@ draft: false
 It is surprising to see great programmers choose misleading names for concepts in their writings
 while advocating descriptive names in computer programs.
 
-One speculation is that authors enjoy playing with analogies that makes sense to them.
-One such name makes sense to the namer, sticks in his mind, and provides a sense of ownership.
+One speculation is that authors enjoy playing with analogies that make sense to them.
+One such name makes sense to the namer, sticks in their mind, and provides a sense of ownership.
 Unfortunately, all these criteria are serving the author as opposed to the reader.
 
 Another speculation is that the namer is well aware of the mismatch (between the name and the target concept)
