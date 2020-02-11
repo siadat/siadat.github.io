@@ -197,13 +197,12 @@
   weight: '4'
 - author: Thomas Kuhn
   date: '1962'
-  description: I love history of science. This book provides a cogent model for how
-    scientific progress is made.
+  description: How scientific progress is made.
   name: The Structure of Scientific Revolutions
   todo: reading
   weight: '3'
 - author: Alain de Botton
-  description: A novel about love and marriage as it could happen in the real world
+  description: A novel about love and marriage as it could happen in the real world.
   name: The Course of Love
   weight: '3'
 - author: Benjamin Constant
@@ -212,7 +211,7 @@
   name: Adolphe
   weight: '3'
 - author: Bertrand Russell
-  description: I love the Russell's optimism and his reasoning.
+  description: I love the Russell's optimism and his analytical reasoning.
   name: Conquest of Happiness
   weight: '3'
 - author: Carlos Fuentes
@@ -224,7 +223,7 @@
   name: 'Range: Why Generalists Triumph in a Specialized World'
   weight: '3'
 - author: Ed Catmull
-  description: Lessons learned about running Pixar its founder.
+  description: Lessons learned about running Pixar by its founder.
   name: Creativity, Inc.
   weight: '3'
 - author: Erik Saint Martin et al.
@@ -241,7 +240,8 @@
   weight: '3'
 - author: Kazuo Ishiguro
   description: I felt like Mr. Stevens when I was organizing a hackathon, specially
-    during the meals while I was making sure we had enough food and everyone was happy
+    during the meals while I was making sure we had enough food and everyone
+    was happy and had everything they needed to focus on their project
     :)
   name: The Remains of the Day
   weight: '3'
@@ -250,6 +250,7 @@
   weight: '3'
 - author: Paul Kalanithi
   name: When Breath Becomes Air
+  description: Inspiring yet sad story of a hard working doctor.
   weight: '3'
 - author: Woody Allan
   date: '1975'
