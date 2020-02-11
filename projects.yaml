@@ -129,7 +129,7 @@
     Netmatch could be used for matching online players in a multiplayer game server.
     Or it could be used to enforce the Dependency Inversion Principle, by depending on an event regardless of who has produced it.
 
-    For more details, see the project's [README](netmatch_github) page.
+    For more details, see the project's [README][netmatch_github] page.
 
     [netmatch_github]: https://github.com/siadat/netmatch
   images:
