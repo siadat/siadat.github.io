@@ -118,9 +118,16 @@ blockquote {
   color:#006600;
 }
 
+article ul {
+  margin-left:20px;
+}
 article ul li {
-  list-style: square;
-  margin:0;
+  list-style-type: disc;
+  list-style-position:outside;
+}
+
+ul li {
+  list-style-position:inside;
 }
 
 /* ---- */
@@ -130,24 +137,18 @@ ul {
 }
 
 ul li {
-  list-style: none;
+  list-style-type: none;
   padding:0;
   margin:20px 0 0 0;
-}
-
-ul li ul {
-  margin-left: 20px;
 }
 
 ul li ul li {
   margin-top:0;
-  list-style: square;
+  list-style-type: disc;
 }
 
 .about ul li {
-  list-style: square;
-  padding:0;
-  margin:20px 0 0 0;
+  list-style-type: none;
 }
 
 ul.music li {
@@ -155,6 +156,9 @@ ul.music li {
   min-height:20px;
 }
 
+ul.projects li {
+  list-style-type:none;
+}
 ul.projects li.kind-pinned {
 }
 
@@ -188,21 +192,24 @@ ul.projects li.kind-pinned {
     */
   }
 
+  ul.projects .separator {
+    display:none;
+  }
+}
   ul.projects .description hr {
     border-top-width:3px;
     display:block !important;
   }
 
-  ul.projects .separator {
-    display:none;
-  }
-}
 
 ul.projects .separator {
+  display:none;
   /*margin-left:-19px;*/ /* -20px */
   /*margin-right:-19px;*/ /* -20px */
+  /*
   border-bottom:1px solid #bbb;
   margin:25px 0;
+  */
 }
 
 ul.projects .description hr {
@@ -210,7 +217,7 @@ ul.projects .description hr {
 }
 
 ul.projects .image-main img {
-  margin-bottom:20px;
+  margin-bottom:10px;
   /*border-radius:5px;*/
 }
 
