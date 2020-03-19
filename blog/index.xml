@@ -9,6 +9,20 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Cassandra in a nutshell</title>
+      <link>https://siadat.github.io/post/cassandra-nutshell</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/cassandra-nutshell</guid>
+      <description>Cassandra is a distributed system that stores data in several nodes.&#xA;There is no central config server or router as in some other databases.&#xA;So, one might wonder how Cassandra shards the data, how it</description>
+    </item>
+    
+    
+    
+    
+    
+    
+    
     
     
     

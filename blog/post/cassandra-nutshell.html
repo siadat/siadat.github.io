@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Cassandra in a nutshell</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/index.html">about</a>
+    &middot; <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="March 19, 2020">
+        March 19, 2020
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Cassandra in a nutshell</h1>
+      <section itemprop="entry-text">
+        <p>Cassandra is a distributed system that stores data in several nodes.
+There is no central config server or router as in some other databases.
+So, one might wonder how Cassandra shards the data, how it distributes the data to the nodes, and, in general, how it satisfies each query.</p>
+
+<p>When we CREATE TABLE, we specify one or more columns with which Cassandra determines the node or nodes who should store each propsective record.
+In Cassandra terminology, this ordered list of columns is called a &ldquo;partition key&rdquo;.</p>
+
+<p>When we INSERT a record in that table, Cassandra uses the value of partition key columns of that record as the input to a hash function.
+The resulting hash is a 128 bit integer. Cassandra uses this number (and the
+current topology of the cluster) to decide which node or nodes should store the new record.</p>
+
+<p>Similarly, when we execute SELECT, Cassandra calculates the hash of the partition key columns, and figures out
+which node or nodes should have (if it exists at all) the requested record.</p>
+
+<p>Each node owns a specific range or ranges of hash values between the smallest possible value
+and the largest possible value.  In Cassandra terminology, this is conceptualized as a &ldquo;ring&rdquo; that is divided by the nodes.</p>
+
+<p>The limitation imposed by this design is that all write and read requests must include the partition key columns in the order they
+were specified when we created the table. In that sense, the hash of the partition key columns acts like a key in a key-value system.
+For example, if our partition key columns is (id), all our SELECT conditions must start with WHERE id = x, and all our INSERTs must include a value for id.
+We are not able to run a SELECT statement with condition WHERE title = x.
+Without the partition key columns, Cassandra would have no idea where to find or write the data and has to do a full table scan across all the nodes,
+which Cassandra avoids by default.</p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    End of the post. Let me know your opinion via <a href="https://twitter.com/sinasiadat">twitter/sinasiadat</a>.
+  </div>
+
+</body>
+</html>
