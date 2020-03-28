@@ -23,9 +23,11 @@ for templateFilename in glob.glob("*.template.html"):
 
     projectsFile = open("projects.yaml")
     readingsFile = open("readings.yaml")
+    coursesFile = open("courses.yaml")
 
     projects = yaml.load(projectsFile)
     readings = yaml.load(readingsFile)
+    courses = yaml.load(coursesFile)
 
     # projects = filter(lambda b: not b["hide"], projects)
     projects = filter(lambda b: "order" in b and b["order"] != "", projects)
@@ -34,5 +36,13 @@ for templateFilename in glob.glob("*.template.html"):
     readings = filter(lambda b: "weight" in b and int(b["weight"]) >= 3, readings)
     readings = sorted(readings, key = (lambda b: int(b["weight"])), reverse = True)
 
+    courses = filter(lambda b: "hidden" not in b or b["hidden"] == False, courses)
+    # courses = filter(lambda b: "order" in b and b["order"] != "", courses)
+    # courses = sorted(courses, key = (lambda b: float(b["cap_done"]) / float(b["cap_total"])), reverse = False)
+
     outputFile = open(outputFilename, "w")
-    outputFile.write(template.render(projects=projects, readings=readings, header=headerContent, aboutme=aboutmeContent, paper=paperContent).encode('utf-8'))
+    outputFile.write(template.render(
+        projects=projects,
+        readings=readings,
+        courses=courses,
+        header=headerContent, aboutme=aboutmeContent, paper=paperContent).encode('utf-8'))

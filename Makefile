@@ -10,7 +10,7 @@ watch-blog:
 	  --command='make blog' \
 	  .
 
-homepage: projects.yaml readings.yaml
+homepage: projects.yaml readings.yaml courses.yaml
 	poetry run python generate.py
 
 blog: dependencies
@@ -24,6 +24,9 @@ clean:
 	rm -f index.html
 
 dependencies:
+	# curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	# python get-pip.py
+	poetry install
 	# go get github.com/siadat/blgo
 
 header-open:

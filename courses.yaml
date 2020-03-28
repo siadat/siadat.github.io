@@ -1,0 +1,40 @@
+- 
+  name: Cornell's CS3110 Data Structures and Functional Programming (with OCaml)
+- 
+  name: Princeton's COS236 Functional Programming (with OCaml)
+- 
+  name: Princeton's COS461 Computer Networks
+
+
+- 
+  name: "M121: The MongoDB Aggregation Framework"
+  certificate: http://university.mongodb.com/course_completion/1252d4ab-e9d8-4746-beb5-12c82d943725
+  cap_done: 100
+  cap_total: 100
+  result: 100%
+  completed_at: 2020-03-14
+- 
+  name: "M103: Basic Cluster Administration"
+  certificate: http://university.mongodb.com/course_completion/d682dd51-fb32-4b48-9d0e-cd002fe4dfac
+  cap_done: 100
+  cap_total: 100
+  result: 100%
+  completed_at: 2020-03-12
+-
+  name: "M001: MongoDB Basics"
+  certificate: http://university.mongodb.com/course_completion/cc691b8d-da69-42d3-b7bf-e750587226f0
+  cap_done: 100
+  cap_total: 100
+  completed_at: 2020-03-11
+  result: 100%
+
+
+-
+  name: "DS201: DataStax Enterprise 6 Foundations of Apache Cassandra"
+  cap_done: 44
+  cap_total: 100
+-
+  name: "DS101: Introduction to Apache Cassandra"
+  cap_done: 100
+  cap_total: 100
+  completed_at: 2020-03-15
