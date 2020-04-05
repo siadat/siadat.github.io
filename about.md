@@ -1,4 +1,4 @@
-### Hello :)
+### About me
 
 - I am a freelance software engineer and consultant.
   I teach the Go programming language to developers at companies
