@@ -1,7 +1,7 @@
-- 
-  name: Cornell's CS3110 Data Structures and Functional Programming (with OCaml)
-- 
-  name: Princeton's COS236 Functional Programming (with OCaml)
+# - 
+#   name: Cornell's CS3110 Data Structures and Functional Programming (with OCaml)
+# - 
+#   name: Princeton's COS236 Functional Programming (with OCaml)
 - 
   name: Princeton's COS461 Computer Networks
 
