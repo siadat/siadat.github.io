@@ -13,7 +13,7 @@ history of chat messages exchanged between a developer and a customer.
 
 Here are my guidelines for ensuring the rule of requirements in the development of software systems:
 
-- The requirement is the authorative source for the implementation of the project.
+- The requirement is the authorative source for decisions regarding the implementation of the project.
   Neither the customer nor the developer can impose their interest to the other without due process.
   The final word should be in the requirement, and anything outside the scope should either be avoided or included via negotiation.
 
