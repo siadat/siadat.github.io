@@ -10,7 +10,7 @@ negotations between a customer and a developer.
 It could be in the form of a summary of agreements, or it could be a history of
 chat messages exchanged between a developer and a customer.
 
-Here are my rules of requirements:
+Here are my guidelines for ensuring the rule of requirements in the development of software systems:
 
 - The requirement is the authorative source for the implementation of the project.
   Neither the customer nor the developer can impose their interest to the other without due process.
