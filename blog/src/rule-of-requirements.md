@@ -4,7 +4,7 @@ date: 2020-04-07
 draft: false
 ---
 
-A requirement document has the highest influence on how the project is implemented.
+A requirement document must have the highest influence on how the project is implemented.
 
 In practice, a requirement document is the communications between a customer
 and a developer usually in written form.
