@@ -5,12 +5,13 @@ draft: false
 ---
 
 A requirement document must have the highest influence on how the project is implemented.
-It correlates, I believe, with a collection of laws in a community in which the "Rule of Law" is upheld as sacrosanct.
-In a sense, writing a requirement document is akin to devising laws for a small society comprising, in the simplest case, a developer and a customer. 
+It corresponds to, I believe, a collection of laws in a community in which the "Rule of Law" is upheld as sacrosanct.
+In this sense, writing a requirement document is akin to devising a set of laws for a small society comprising, in the simplest case, a developer and a customer. 
 
-In its most basic form, a requirement document is the communications between a
-customer and a developer in written form. It should include a compacted summary of final agreements.
-Here are my guidelines for ensuring the "Rule of Requirements" in the development of a software system:
+In its most basic form, a requirement document is the communications between a customer and a developer in written form.
+It should include a compacted summary of final agreements.
+
+Here are my guidelines for maintaining the "Rule of Requirements" during the development of a software system:
 
 - The requirement is the authoritative source for decisions regarding the implementation of the project.
   Neither the customer nor the developer can impose their interest to the other without due process.
