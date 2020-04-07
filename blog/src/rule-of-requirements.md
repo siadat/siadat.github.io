@@ -21,6 +21,7 @@ Here are my guidelines for maintaining the "Rule of Requirements" during the dev
   requirement without obtaining the consensus of the other party.
 
 - All ambiguities about a feature should be resolved by the requirement, as opposed to one party's discretion.
+  The requirement document must be written, so that the scope for independent choice is narrow and restricted.
 
 - Requirements should cover all features of the system.
 
