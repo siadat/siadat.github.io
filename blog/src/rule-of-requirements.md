@@ -4,11 +4,12 @@ date: 2020-04-07
 draft: false
 ---
 
-A requirement document is a written summary of the communications and
-negotations between a customer and a developer.
+A requirement document has the highest influence on how the project is implemented.
 
-It could be in the form of a summary of agreements, or it could be a history of
-chat messages exchanged between a developer and a customer.
+In practice, a requirement document is the communications between a customer
+and a developer usually in written form.
+It could be in the form of a summary of agreements, or it could be simply a
+history of chat messages exchanged between a developer and a customer.
 
 Here are my guidelines for ensuring the rule of requirements in the development of software systems:
 
