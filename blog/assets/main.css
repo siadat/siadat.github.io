@@ -201,7 +201,7 @@ ul.projects li.kind-pinned {
   }
 }
   ul.projects .description hr {
-    border-top-width:3px;
+    border-top-width:0;
     display:block !important;
   }
 
@@ -247,8 +247,8 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
   /*height:70px;*/
   background-color:#e3e3e3;
   /*box-shadow:0 3px 0px rgba(0,0,0,0.8);*/
-  border-bottom:3px solid #000;
-  border-top:3px solid #000;
+  border-bottom:0px solid #000;
+  border-top:0px solid #000;
 }
 
 .image-main a img:hover {
@@ -258,27 +258,31 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
   */
 }
 
-
-.video-gallery {
-  margin-top:15px;
-}
 .video-gallery a {
   display:inline-block;
   width:120px;
-  height:80px;
-  border:1px solid #0160d822;
-  padding:5px 10px 10px 10px;
+  height:100px;
+  /*border:1px solid #0160d822;*/
+  padding:10px 10px 10px 10px;
   margin:0 5px 5px 0;
-  background:#0160d82b;
+  /*background:#0160d82b;*/
   font-size:80%;
   overflow:hidden;
   color:#0160d8;
   border-radius:6px;
   box-sizing:border-box;
+
+  text-align: center;
+  background: rgb(255,255,255);
+  background: linear-gradient(135deg, rgba(1,96,216,0.1) 0%, rgba(1,96,216,0.4) 100%);
+}
+.video-gallery a i.far {
+  font-size:200%;
 }
 .video-gallery a:hover {
-  color:#fff;
   background:#0160d8;
+
+  color:#fff;
   text-decoration:none;
 }
 
