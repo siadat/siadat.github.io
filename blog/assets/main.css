@@ -156,6 +156,10 @@ ul.music li {
   min-height:20px;
 }
 
+ul.projects p {
+  margin-top:0;
+}
+
 ul.projects li {
   list-style-type:none;
 }
@@ -254,3 +258,32 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
   */
 }
 
+
+.video-gallery {
+  margin-top:15px;
+}
+.video-gallery a {
+  display:inline-block;
+  width:120px;
+  height:80px;
+  border:1px solid #0160d822;
+  padding:5px 10px 10px 10px;
+  margin:0 5px 5px 0;
+  background:#0160d82b;
+  font-size:80%;
+  overflow:hidden;
+  color:#0160d8;
+  border-radius:6px;
+  box-sizing:border-box;
+}
+.video-gallery a:hover {
+  color:#fff;
+  background:#0160d8;
+  text-decoration:none;
+}
+
+@media (max-width: 600px) {
+  .video-gallery a {
+    width:30%;
+  }
+}

@@ -18,9 +18,11 @@
   # order: '1'
 
 - description: |
-    - [<i class="far fa-play-circle"></i> Run][exp_raft] Raft consensus algorithm
-    - [<i class="far fa-play-circle"></i> Run][exp_bellmanford] DV routing algorithm
-    - [<i class="far fa-play-circle"></i> Run][exp_bellmanford2] DV routing (handling router failures dynamically)
+    <div class="video-gallery">
+      <a href="/kilobots/index.html?ExperimentRaft"><i class="far fa-play-circle"></i> Play <br>Raft consensus</a>
+      <a href="/kilobots/index.html?ExperimentBellmanFord"><i class="far fa-play-circle"></i> Play <br>DV routing</a>
+      <a href="/kilobots/index.html?ExperimentBellmanFord2"><i class="far fa-play-circle"></i> Play <br>DV routing with failures</a>
+    </div>
 
     Because of the decentralized, multi-hop, and asynchronous nature of their communication, Kilobots have similarities to nodes in a computer network.
     In these experiments, the swarm acts like a network in which each node is a router (or host) linked to its adjacent neighbors.
@@ -41,6 +43,11 @@
     Whenever a robot receives this advertisement, they store this value to their routing table.
     Finally, each host will send periodic messages to all the hosts they are aware of.
 
+    <!--
+    - [<i class="far fa-play-circle"></i> Play][exp_raft] Raft consensus algorithm
+    - [<i class="far fa-play-circle"></i> Play][exp_bellmanford] DV routing algorithm
+    - [<i class="far fa-play-circle"></i> Play][exp_bellmanford2] DV routing (handling router failures dynamically)
+    -->
 
     [raft_homepage]:             https://raft.github.io/
     [exp_bellmanford]:           /kilobots/index.html?ExperimentBellmanFord
@@ -54,17 +61,20 @@
   order: '1'
 
 - description: |
-    - [<i class="far fa-play-circle"></i> Run][exp_replicator_starfish] Self-replicating starfish.  The goal of this original algorithm is to construct replicas of a given shape as specified by a subset of the robots. For example, to create a starfish shape, I manually place a number of robots to form the shape of one hand and let the algorithm replicate it 4 times to get a total of 5 hands.
-    - [<i class="far fa-play-circle"></i> Run][exp_replicator_asymmetric] Self-replicating asymmetric shape
-    - [<i class="far fa-play-circle"></i> Run][exp_assembly_wrench] Self-assembly (wrench)
-    - [<i class="far fa-play-circle"></i> Run][exp_assembly_starfish] Self-assembly (starfish) the [paper][paper_assembly] published in Science.
-    - [<i class="far fa-play-circle"></i> Run][exp_disassembly] Disassembly ([paper][paper_disassembly])
-    - [<i class="far fa-play-circle"></i> Run][exp_gradient] Gradient formation ([paper][paper_gradient])
-    - [<i class="far fa-play-circle"></i> Run][exp_sync] Sync ([paper][paper_kilobot])
-    - [<i class="far fa-play-circle"></i> Run][exp_sync_n_move] Sync & Move (moving interferes with syncing)
-    - [<i class="far fa-play-circle"></i> Run][exp_follow_the_leader] Follow the leader ([paper][paper_kilobot])
-    - [<i class="far fa-play-circle"></i> Run][exp_phototaxis] Phototaxis and antiphototaxis (one light) ([paper][paper_kilobot])
-    - [<i class="far fa-play-circle"></i> Run][exp_phototaxis2] Phototaxis and antiphototaxis (two lights) ([paper][paper_kilobot])
+
+    <div class="video-gallery">
+      <a href="/kilobots/index.html?ExperimentReplicatorStarfish"><i class="far fa-play-circle"></i> Play <br> Self-replicating starfish </a>
+      <a href="/kilobots/index.html?ExperimentReplicator"><i class="far fa-play-circle"></i> Play <br> Self-replicating asymmetric shape </a>
+      <a href="/kilobots/index.html?ExperimentAssembly"><i class="far fa-play-circle"></i> Play <br> Self-assembly (wrench)</a>
+      <a href="/kilobots/index.html?ExperimentAssemblyStarfish"><i class="far fa-play-circle"></i> Play <br> Self-assembly (starfish)</a>
+      <a href="/kilobots/index.html?ExperimentDisassembly"><i class="far fa-play-circle"></i> Play <br> Disassembly</a>
+      <a href="/kilobots/index.html?ExperimentGradientFormation"><i class="far fa-play-circle"></i> Play <br> Gradient formation </a>
+      <a href="/kilobots/index.html?ExperimentSync"><i class="far fa-play-circle"></i> Play <br> Sync</a>
+      <a href="/kilobots/index.html?ExperimentSyncAndMove"><i class="far fa-play-circle"></i> Play <br> Sync & Move</a>
+      <a href="/kilobots/index.html?ExperimentFollowTheLeader"><i class="far fa-play-circle"></i> Play <br> Follow the leader </a>
+      <a href="/kilobots/index.html?ExperimentPhototaxisAndAntiphototaxis"><i class="far fa-play-circle"></i> Play <br> Phototaxis and antiphototaxis 1 </a>
+      <a href="/kilobots/index.html?ExperimentPhototaxis2"><i class="far fa-play-circle"></i> Play <br> Phototaxis and antiphototaxis 2 </a>
+    </div>
 
     I developed a Kilobot swarm simulator library to reproduce several experiments
     published by the [Self-Organizing Systems Research Group](https://ssr.seas.harvard.edu/kilobots) at Harvard.
@@ -87,6 +97,19 @@
     using triangulation, preferably with robots that make a robust quadrilateral
     as described in [this paper][paper_robust_quads].
 
+    <!--
+    - [<i class="far fa-play-circle"></i> Play][exp_replicator_starfish] Self-replicating starfish.  The goal of this original algorithm is to construct replicas of a given shape as specified by a subset of the robots. For example, to create a starfish shape, I manually place a number of robots to form the shape of one hand and let the algorithm replicate it 4 times to get a total of 5 hands.
+    - [<i class="far fa-play-circle"></i> Play][exp_replicator_asymmetric] Self-replicating asymmetric shape
+    - [<i class="far fa-play-circle"></i> Play][exp_assembly_wrench] Self-assembly (wrench)
+    - [<i class="far fa-play-circle"></i> Play][exp_assembly_starfish] Self-assembly (starfish) the [paper][paper_assembly] published in Science.
+    - [<i class="far fa-play-circle"></i> Play][exp_disassembly] Disassembly ([paper][paper_disassembly])
+    - [<i class="far fa-play-circle"></i> Play][exp_gradient] Gradient formation ([paper][paper_gradient])
+    - [<i class="far fa-play-circle"></i> Play][exp_sync] Sync ([paper][paper_kilobot])
+    - [<i class="far fa-play-circle"></i> Play][exp_sync_n_move] Sync & Move (moving interferes with syncing)
+    - [<i class="far fa-play-circle"></i> Play][exp_follow_the_leader] Follow the leader ([paper][paper_kilobot])
+    - [<i class="far fa-play-circle"></i> Play][exp_phototaxis] Phototaxis and antiphototaxis (one light) ([paper][paper_kilobot])
+    - [<i class="far fa-play-circle"></i> Play][exp_phototaxis2] Phototaxis and antiphototaxis (two lights) ([paper][paper_kilobot])
+    -->
 
     [paper_assembly]:     https://ssr.seas.harvard.edu/files/ssr/files/science2014-rubenstein.pdf
     [paper_disassembly]:  http://users.eecs.northwestern.edu/~mrubenst/dars2016.pdf
