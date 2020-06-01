@@ -259,8 +259,8 @@ li h1, li h2, li h3, li h4, li h5, li h6 {
 }
 
 .video-gallery a {
-  display:inline-block;
-  width:120px;
+  display:inline-flex;
+  max-width:120px;
   height:100px;
   /*border:1px solid #0160d822;*/
   padding:10px 10px 10px 10px;
