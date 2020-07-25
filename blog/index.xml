@@ -19,16 +19,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <item>
       <title>Cassandra in a nutshell</title>
       <link>https://siadat.github.io/post/cassandra-nutshell</link>
@@ -36,10 +26,6 @@
       <guid>https://siadat.github.io/post/cassandra-nutshell</guid>
       <description>Cassandra is a distributed system that stores data in several nodes.&#xA;There is no central config server or router as in some other databases.&#xA;So, one might wonder how Cassandra shards the data, how it</description>
     </item>
-    
-    
-    
-    
     
     
     
