@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
   <link rel="stylesheet" inline href="/blog/assets/normalize.css">
   <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="stylesheet" inline href="/blog/assets/cssgram.min.css">
   <title>Sina Siadat</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
@@ -29,7 +30,7 @@ List of projects I have been working on.
 
         {%if p.images %}
           <div class="image-main">
-            <a class="glightbox" href="{{p.images[0].replace('.png', 'l.png')}}"><img src="{{p.images[0].replace('.png', 'l.png')}}"></a>
+            <a class="glightbox" href="{{p.images[0].replace('.png', 'l.png')}}"><img class="lark" src="{{p.images[0].replace('.png', 'l.png')}}"></a>
           </div>
         {% endif %}
 
