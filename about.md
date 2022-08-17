@@ -1,18 +1,15 @@
 ### About me
 
-- I am a senior software engineer and techlead at [Alibaba Travels](https://www.alibaba.ir/).
-  I also teach the Go programming language to developers at companies
-  and researchers at universities and contribute to open-source projects.
-
-### Experience
-
+- I am a Software Engineer at the NoSQL Database Reliability Engineer team at [Yelp](https://www.yelp.co.uk/).
+  We manage more than a hundred Cassandra clusters on Kubernetes using our custom built operator (written in Go).
+  Before that I was a techlead at [Alibaba Travels](https://www.alibaba.ir/).
 - As a backend engineer, I have worked on highly concurrent messaging systems, financial and payment systems,
   lottery campaigns, authorization systems, highly responsive game servers, and other APIs.
   I use languages such as Go, C++, OCaml, Ruby, and tools like Kubernetes, Docker, Kafka, Qemu, etc.
 - As a frontend engineer, I have developed an interactive interface for [Navad](https://en.wikipedia.org/wiki/Navad).
   The app was used and broadcast live on national television during all the World Cup and derby football matches.
   I have also developed several mobile games and progressive web apps.
-  Technologies I have used include Javascript, Flutter, Lua and my custom-built game engine.
+  Technologies I have used include Typescript, Flutter, Lua and my custom-built game engine.
 - Previously, I worked as an infrastructure engineer at [Cafe Bazaar](https://en.wikipedia.org/wiki/Cafe_Bazaar).
   I was involved in building the on-premises Kubernetes infrastructure and migrating existing services to microservices.
   We also deployed other services, e.g., a messaging service, a logging service, etc.
@@ -21,9 +18,6 @@
   Furthermore, I made contributions to the design of the billing system and designed and led the development of a central authorization and authentication system used by all internal services.
   The company is one of the most successful startups in Iran.
   Before that I worked at [Aylien](http://aylien.com), [Sariina](http://sariina.com/en), and [Nokia](http://nokia.co.uk/).
-
-### Current Status
-
 - I am exploring functional programming using OCaml and Rust.
 - Here is a list of [online courses](/courses.html) I have completed.
 
