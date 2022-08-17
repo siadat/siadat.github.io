@@ -14,7 +14,7 @@ env.filters['markdown'] = markdown.markdown;
 
 headerContent = open("header.html", "r").read()
 aboutmeContent = open("about.md", "r").read()
-paperContent = open("self-replicators.md", "r").read()
+paperContent = open("kilobots/experiments/self-replicator.js", "r").read()
 
 for templateFilename in glob.glob("*.template.html"):
     print(templateFilename)
@@ -25,9 +25,9 @@ for templateFilename in glob.glob("*.template.html"):
     readingsFile = open("readings.yaml")
     coursesFile = open("courses.yaml")
 
-    projects = yaml.load(projectsFile)
-    readings = yaml.load(readingsFile)
-    courses = yaml.load(coursesFile)
+    projects = yaml.safe_load(projectsFile)
+    readings = yaml.safe_load(readingsFile)
+    courses = yaml.safe_load(coursesFile)
 
     # projects = filter(lambda b: not b["hide"], projects)
     projects = filter(lambda b: "order" in b and b["order"] != "", projects)
@@ -40,9 +40,9 @@ for templateFilename in glob.glob("*.template.html"):
     # courses = filter(lambda b: "order" in b and b["order"] != "", courses)
     # courses = sorted(courses, key = (lambda b: float(b["cap_done"]) / float(b["cap_total"])), reverse = False)
 
-    outputFile = open(outputFilename, "w")
-    outputFile.write(template.render(
-        projects=projects,
-        readings=readings,
-        courses=courses,
-        header=headerContent, aboutme=aboutmeContent, paper=paperContent).encode('utf-8'))
+    with open(outputFilename, "wb") as outputFile:
+        outputFile.write(template.render(
+            projects=projects,
+            readings=readings,
+            courses=courses,
+            header=headerContent, aboutme=aboutmeContent, paper=paperContent).encode('utf-8'))

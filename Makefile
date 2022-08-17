@@ -1,5 +1,19 @@
 .PHONY: dependencies
 
+build:
+	docker build \
+		--build-arg UID=$(shell id -u) \
+		--build-arg GID=$(shell id -g) \
+		-f ./Dockerfile \
+		-t blog:0.1 \
+		.
+	docker run \
+	  --rm -it \
+	  -v "$(PWD)":/work/ \
+	  --workdir=/work/ \
+	  blog:0.1 \
+	  python3 generate.py
+
 all: blog homepage
 
 watch-blog:
