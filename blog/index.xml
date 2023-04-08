@@ -10,6 +10,16 @@
     
     
     <item>
+      <title>Why blog</title>
+      <link>https://siadat.github.io/post/why-blog</link>
+      <pubDate>Sat, 08 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/why-blog</guid>
+      <description>I haven&#39;t blogged here since 2020. I&#39;d like to try to blog more frequently.&#xA;&#xA;A few things I&#39;d like to keep in mind this time:&#xA;&#xA;* It doesn&#39;t matter which platform I use. I&#39;m using my existing tools be</description>
+    </item>
+    
+    
+    
+    <item>
       <title>Rule of Requirements</title>
       <link>https://siadat.github.io/post/rule-of-requirements</link>
       <pubDate>Tue, 07 Apr 2020 00:00:00 +0000</pubDate>
@@ -29,8 +39,6 @@
     
     
     
-    
-    
     <item>
       <title>Recursive "build up" and "build down"</title>
       <link>https://siadat.github.io/post/recursion-up-down</link>
@@ -38,6 +46,8 @@
       <guid>https://siadat.github.io/post/recursion-up-down</guid>
       <description>While writing a recursive function,&#xA;I find it useful to use the phrase &#34;building up&#34;&#xA;or &#34;building down&#34; the result.&#xA;&#xA;Here is the factorial function &#34;building up&#34; the result&#xA;(note that the resulting v</description>
     </item>
+    
+    
     
     
     
