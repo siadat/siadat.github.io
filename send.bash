@@ -1,5 +1,5 @@
 set -e
-git add Makefile $(rg -l -t yaml -t html -t md -t sh .)
+git add Makefile $(rg -l -t xml -t yaml -t html -t md -t sh .)
 git diff --stat -p --cached
 echo -n "Send? (Y/n)"
 read -r confirm
