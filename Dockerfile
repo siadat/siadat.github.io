@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install -y \
     git wget curl gzip pip
 RUN apt-get install -y \
-    python2.7
+    python3.11
 
 ARG UID
 ARG GID
