@@ -6,3 +6,4 @@ read -r confirm
 if [[ $confirm == 'n' ]]; then exit 0; fi
 git commit -m update
 git push origin HEAD
+git show --stat
