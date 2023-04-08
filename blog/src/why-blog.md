@@ -3,26 +3,28 @@ title: Why blog
 date: 2023-04-08
 ---
 
-I haven't blogged here since 2020. I'd like to try to blog more frequently.
+I haven't blogged here since 2020. I'd like to try to blog more frequently. I'm inspired by Simon Willison's [blog](https://simonwillison.net/2023/Apr/8/working-in-public/) and [interview on Youtube](https://youtu.be/Rnz3uJw1DNo?t=2276) about working in public. Here are my key takeaways from his insights:
 
-I'm inspired by Simon Willison's [blog](https://simonwillison.net/2023/Apr/8/working-in-public/) and [interview on Youtube](https://youtu.be/Rnz3uJw1DNo?t=2276) about working in public:
+* Set aside a 30-minute window (e.g., 9:00 to 9:30 AM) to plan the day, focusing on one major task and two smaller ones. Review progress at day's end, and assess larger goals weekly – when things are going smoothly.
+* Recognize that, while productivity is important, there will be inevitable deviations from original plans. It's a continuous challenge, even for highly productive individuals like Simon.
+* Begin by writing TILs posts about simple topics, like for-loops in Bash. This approach helps to manage expectations and prevent writer's block, as the content isn't intended to be groundbreaking.
+* Implement a rule that, for every unplanned project undertaken, a corresponding blog post must be published.
 
-> I've set myself a rule that anytime I do a project, the price for doing that project is I have to write about it. This is good for me because I'm very easily distracted: I can get to the end of the day and I had an idea for a project and I built it and that wasn't on my list but at least now I have to pay for it and the payment is I have to write it up.
+My motivation for blogging stems from personal accountability and the desire to have a record of my past projects. When I don't document a project, it feels as though it never occurred, eventually fading from my memory.
 
-I will write just for me and for holding myself accountable when I work on projects. It's also nice to be able to look back and see the projects I have worked on in one place. When I don't publish a writing about a project, it is as if it has never happened. Even I will eventually forget about it a couple of years later.
+I'm not aiming to revolutionize anyone's world with my writing; I primarily write for myself. As I dive back into blogging, I'll keep a few guiding principles in mind:
 
-A few things I'd like to keep in mind this time:
-
-* It doesn't matter which platform I use. I'm using my existing tools because it already works and it's free, even though I had to fix a few things here and there.
-* Frequency is my priority right now. It doesn't need to rock anyone's world. I will try my best to avoid falling into the quality trap.
+* It doesn't matter which platform I use. I'm using my existing tools because it already works and it's free, despite occasional issues.
+* Frequency is my priority right now. I will try my best to avoid falling into the quality trap.
 * Writing and screenshots last longer than code.
 
+---
 
 Some ideas about things that could improve about my current blogging flow are:
 
-* Build HTML files in a Github action.
+* Generate HTML files using Github actions.
 * A command for creating a new post with today's date.
 * Upload images in another repository or file hosting service.
 * I don't like the fact that I have to git-commit and think of a name for the new post.
 
-I'd like to be able create several posts each day. It should be easy to create a new post and publish it quickly.
+My goal is to streamline the process of creating and publishing multiple posts per day, making it as simple and efficient as possible.
