@@ -5,10 +5,11 @@ description = ""
 authors = ["Sina Siadat <siadat@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^2.7"
-Jinja2 = "^2.10"
-markdown = "^3.1"
-pyyaml = "^5.1"
+python = "^3.10"
+Jinja2 = "^3.1.2"
+markdown = "^3.4.3"
+pyyaml = "^6.0"
+markupsafe = "^2.1.2"
 
 [tool.poetry.dev-dependencies]
 

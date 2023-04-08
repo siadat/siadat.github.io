@@ -37,6 +37,9 @@ clean:
 	rm -rf blog/index.xml
 	rm -f index.html
 
+upgrade-dependencies:
+	poetry show -l | awk '{ print $$1 }' | xargs -i poetry add {}@latest
+
 dependencies:
 	# curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 	# python get-pip.py
