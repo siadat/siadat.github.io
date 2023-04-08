@@ -55,5 +55,8 @@ dependencies:
 	poetry install
 	# go get github.com/siadat/blgo
 
+new-post:
+	DATE="$(shell date +%Y-%m-%d)" envsubst < new-post.md.tmpl
+
 header-open:
 	nvim -d +/header +':windo normal ggnzt\<cr>' header.html blog/templates/index.tmpl.html blog/templates/post.tmpl.html
