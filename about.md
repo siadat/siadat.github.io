@@ -18,8 +18,11 @@
   Furthermore, I made contributions to the design of the billing system and designed and led the development of a central authorization and authentication system used by all internal services.
   The company is one of the most successful startups in Iran.
   Before that I worked at [Aylien](http://aylien.com), [Sariina](http://sariina.com/en), and [Nokia](http://nokia.co.uk/).
+
+<!--
 - I am exploring functional programming using OCaml and Rust.
 - Here is a list of [online courses](/courses.html) I have completed.
+-->
 
 <!--
 - Here is a link to my latest [CV](https://docs.google.com/document/d/1xpM8vQLVw26JZXA2TNRxZj8xS7aefPYg1aCGL9WJk-w/edit?usp=sharing).
