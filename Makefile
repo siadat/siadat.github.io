@@ -18,12 +18,7 @@ all:
 	  '
 
 send:
-	git add -u && \
-		git diff --cached && \
-		echo "Send? (Y)" && \
-		read -r confirm && \
-		git commit -m update && \
-		git push origin HEAD
+	bash send.bash
 watch-blog:
 	# sudo python -m pip install watchdog[watchmedo]
 	watchmedo shell-command \
