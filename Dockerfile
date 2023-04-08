@@ -9,6 +9,7 @@ RUN apt-get install -y \
 
 ARG UID
 ARG GID
+RUN addgroup --gid $GID user_in_docker
 RUN useradd --create-home \
             --uid $UID \
             --gid $GID \
