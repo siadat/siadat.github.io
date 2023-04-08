@@ -29,6 +29,8 @@
     
     
     
+    
+    
     <item>
       <title>Recursive "build up" and "build down"</title>
       <link>https://siadat.github.io/post/recursion-up-down</link>
@@ -36,8 +38,6 @@
       <guid>https://siadat.github.io/post/recursion-up-down</guid>
       <description>While writing a recursive function,&#xA;I find it useful to use the phrase &#34;building up&#34;&#xA;or &#34;building down&#34; the result.&#xA;&#xA;Here is the factorial function &#34;building up&#34; the result&#xA;(note that the resulting v</description>
     </item>
-    
-    
     
     
     

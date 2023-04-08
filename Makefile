@@ -1,6 +1,6 @@
 .PHONY: dependencies
 
-build:
+all:
 	docker build \
 		--build-arg UID=$(shell id -u) \
 		--build-arg GID=$(shell id -g) \
@@ -12,9 +12,10 @@ build:
 	  -v "$(PWD)":/work/ \
 	  --workdir=/work/ \
 	  blog:0.1 \
-	  python3 generate.py
-
-all: blog homepage
+	  bash -c ' \
+		  python3 generate.py ; \
+		  make run-local-blgo ; \
+	  '
 
 watch-blog:
 	# sudo python -m pip install watchdog[watchmedo]
@@ -27,9 +28,12 @@ watch-blog:
 homepage: projects.yaml readings.yaml courses.yaml
 	poetry run python generate.py
 
-blog: dependencies
-	cd blog && blgo --assets assets/ --templates templates/ --output . ./src/
-	# cd blog && blgo --watch --serve :4040 --assets assets/ --templates templates/ --output . ./src/
+blgo:
+	git clone git@github.com:siadat/blgo.git
+	cd blgo && go get
+
+run-local-blgo: blgo
+	cd blgo && go run . -seed ../blog -output ../blog ../blog/src
 
 clean:
 	rm -rf blog/post/*.html
@@ -47,4 +51,4 @@ dependencies:
 	# go get github.com/siadat/blgo
 
 header-open:
-	vimdiff +/header +':windo normal ggnzt\<cr>' header.html blog/templates/index.tmpl.html blog/templates/post.tmpl.html
+	nvim -d +/header +':windo normal ggnzt\<cr>' header.html blog/templates/index.tmpl.html blog/templates/post.tmpl.html

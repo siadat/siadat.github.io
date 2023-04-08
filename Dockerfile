@@ -6,6 +6,8 @@ RUN apt-get install -y \
     git wget curl gzip pip
 RUN apt-get install -y \
     python3.11
+RUN apt-get install -y \
+    golang
 
 ARG UID
 ARG GID
@@ -18,4 +20,6 @@ ARG HOME=/home/user_in_docker
 USER user_in_docker
 
 ENV PATH="${PATH}:/home/user_in_docker/.local/bin"
+ENV PATH="${PATH}:/home/user_in_docker/go/bin"
+
 RUN pip install markdown pyyaml jinja2
