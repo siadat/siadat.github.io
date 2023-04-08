@@ -5,7 +5,7 @@ date: 2023-04-08
 
 I haven't blogged here since 2020. I'd like to try to blog more frequently.
 
-I'm inspired by Simon Willison's [blog](https://simonwillison.net/2023/Apr/8/working-in-public/) and [interview](https://www.youtube.com/watch?v=Rnz3uJw1DNo&t=2296s) about working in public:
+I'm inspired by Simon Willison's [blog](https://simonwillison.net/2023/Apr/8/working-in-public/) and [interview on Youtube](https://youtu.be/Rnz3uJw1DNo?t=2276) about working in public:
 
 > I've set myself a rule that anytime I do a project, the price for doing that project is I have to write about it. This is good for me because I'm very easily distracted: I can get to the end of the day and I had an idea for a project and I built it and that wasn't on my list but at least now I have to pay for it and the payment is I have to write it up.
 
@@ -14,7 +14,7 @@ I will write just for me and for holding myself accountable when I work on proje
 A few things I'd like to keep in mind this time:
 
 * It doesn't matter which platform I use. I'm using my existing tools because it already works and it's free, even though I had to fix a few things here and there.
-* Frequency is my priority right now. I will try my best to avoid falling into the quality trap.
+* Frequency is my priority right now. It doesn't need to rock anyone's world. I will try my best to avoid falling into the quality trap.
 * Writing and screenshots last longer than code.
 
 
