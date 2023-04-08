@@ -29,10 +29,6 @@
     
     
     
-    
-    
-    
-    
     <item>
       <title>Recursive "build up" and "build down"</title>
       <link>https://siadat.github.io/post/recursion-up-down</link>
@@ -65,12 +61,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
     <item>
       <title>TCP congestion control is elegant</title>
       <link>https://siadat.github.io/post/tcp-congestion</link>
@@ -88,10 +78,6 @@
       <guid>https://siadat.github.io/post/dependency-inversion-in-go</guid>
       <description>In Go, the Dependency Inversion Principle (DIP) can be enforced using interfaces.&#xA;You simply define what you need in an interface and accept implementations of it.&#xA;&#xA;But what if the type returned by a</description>
     </item>
-    
-    
-    
-    
     
     
     
