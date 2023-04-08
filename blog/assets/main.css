@@ -139,6 +139,9 @@ ul {
 ul li {
   list-style-type: none;
   padding:0;
+  margin:0;
+}
+.reading ul li {
   margin:20px 0 0 0;
 }
 
