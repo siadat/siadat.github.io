@@ -14,7 +14,7 @@ all:
 	  blog:0.1 \
 	  bash -c ' \
 		  python3 generate.py ; \
-		  make run-local-blgo ; \
+		  make run-blgo ; \
 	  '
 
 watch-blog:
@@ -31,6 +31,9 @@ homepage: projects.yaml readings.yaml courses.yaml
 blgo:
 	git clone git@github.com:siadat/blgo.git
 	cd blgo && go get
+
+run-blgo:
+	blgo -seed ./blog -output ./blog ./blog/src
 
 run-local-blgo: blgo
 	cd blgo && go run . -seed ../blog -output ../blog ../blog/src

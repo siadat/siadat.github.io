@@ -23,3 +23,4 @@ ENV PATH="${PATH}:/home/user_in_docker/.local/bin"
 ENV PATH="${PATH}:/home/user_in_docker/go/bin"
 
 RUN pip install markdown pyyaml jinja2
+RUN go install github.com/siadat/blgo@latest
