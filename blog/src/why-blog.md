@@ -13,7 +13,8 @@ I'm inspired by Simon Willison's [blog](https://simonwillison.net/2023/Apr/8/wor
 * Implement a rule that, for every unplanned project undertaken, a corresponding blog post must be published.
 * Writing and screenshots last longer than code.
 
-My motivation for blogging originates from personal accountability and the desire to have a record of my projects. When I don't publish a writing about a project, it feels as though it never occurred, eventually fading from my own memory.
+I'd like to have a record of the projects I have worked on, and also hold myself accountable for them. When I don't publish a writing about a project, eventually it will fade away from my memory as if I never worked on them.
+
 As I dive back into blogging, I'll keep a few guiding principles in mind:
 
 * I'm not aiming to revolutionize anyone's world with my writing; I primarily write for myself.
