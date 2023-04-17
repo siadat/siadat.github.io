@@ -20,3 +20,5 @@ As I dive back into blogging, I'll keep a few guiding principles in mind:
 * I'm not aiming to revolutionize anyone's world with my writing; I primarily write for myself.
 * It doesn't matter which platform I use. I'm using my existing tools because it already works, despite occasional issues, and it's free.
 * Frequency is my priority for this blog. I will try my best to avoid falling into the quality trap.
+
+That's it for now :)
