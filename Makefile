@@ -7,7 +7,7 @@ all:
 		-t blog:0.1 \
 		build-docker-action/
 	docker run \
-	  --rm -it \
+	  --rm \
 	  -v "$(PWD)":/work/ \
 	  --workdir=/work/ \
 	  blog:0.1 \
