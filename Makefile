@@ -4,9 +4,8 @@ all:
 	docker build \
 		--build-arg UID=$(shell id -u) \
 		--build-arg GID=$(shell id -g) \
-		-f ./Dockerfile \
 		-t blog:0.1 \
-		.
+		build-docker-action/
 	docker run \
 	  --rm -it \
 	  -v "$(PWD)":/work/ \
