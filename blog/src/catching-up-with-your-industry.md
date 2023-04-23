@@ -7,7 +7,7 @@ In an interview with Yelp's blog, [Daniel says](https://blog.yelp.com/life-at-ye
 
 > I usually start the day by catching up on security news, in the form of things like **podcasts** and **news articles** and reflecting on how Yelp’s security posture stacks against the real-life events happening in the industry.
 
-Daniel is an amazing engineer and I try to learn anything I can from him. So, I take note:
+Daniel is an amazing engineer and there is a lot I'd love to learn from him. So, I take note:
 
 * News articles
 * Podcasts
