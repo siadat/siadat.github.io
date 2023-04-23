@@ -4,7 +4,7 @@ date: 2023-04-23
 short: true
 ---
 
-I started listening to French standup comedians, e.g. [Montreux Comedy](https://montreuxcomedy.com/fr/la-chaine). I don't understand 98% of what they say, but sometimes I hear some words that I know. I feel that it is useful to familiarise myself with how natives speak.
+I started listening to French standup comedians, e.g. [Montreux Comedy](https://montreuxcomedy.com/fr/la-chaine). I don't understand almost any of it, but sometimes I hear some words or phrases that I know. I feel that it is useful to familiarise myself with how natives speak.
 
 ## Why standup comedy?
 
@@ -25,7 +25,7 @@ Reading the French comments is fun as well. I first try to understand the commen
 
 I have watched a couple of videos by Doully. She has a [video](https://www.youtube.com/watch?v=U720kk2m7kw) in which she talks about *vit avec un handicap invisible*.
 
-I might explore videos by [Konbini](https://www.konbini.com/categorie/videos/) later as well, they have a [video by Doully](https://www.youtube.com/watch?v=U720kk2m7kw) which was good to listen to (saying as someone who didn't understand 98% of it lol).
+I might explore videos by [Konbini](https://www.konbini.com/categorie/videos/) later as well, they have a [video by Doully](https://www.youtube.com/watch?v=U720kk2m7kw) which was good to listen to (saying as someone who didn't understand most of it lol).
 
 <!--
 ## New words
