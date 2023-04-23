@@ -8,10 +8,10 @@ I started listening to French standup comedians, e.g. [Montreux Comedy](https://
 
 ## Why standup comedy?
 
-I was watching a video by [Tohideh French](https://www.youtube.com/@Tohideh). She is my favourite French teacher and content creator on Youtube and Instagram. She said a few points that I had already heard but never put into practice or thought about for more than a few seconds until after watching her video:
+I was watching a video by [Tohideh French](https://www.youtube.com/@Tohideh). She is my favourite French teacher and content creator on Youtube and Instagram. She made a few points, two of which resonated with me the most:
 
 * Consume content that you *enjoy*.
-* Consume content for *native speakrs*, even if you don't understand.
+* Consume *documents authentiques*, i.e., content made for native speakrs, even if you don't understand.
 
 In her video about [French resource recommendations](https://www.youtube.com/watch?v=QmvvpEyr-mE&t=908s), she recommends different kinds of resources, TV series, podcasts, etc and encourages learners to see which one they enjoy the most. I tried some of them, but I didn't see myself wanting to go back to most of them. But then she listed a few comedy Youtube channels, including Montreux Comedy! I watched a few seconds and for some reason, that hit me in the right place. I love comedy, it's my go-to genre on Netflix when I need something to watch. This is definitely something I can go back to again. I can even rewatch the same videos.
 
