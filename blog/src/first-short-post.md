@@ -12,6 +12,8 @@ and not in the generated RSS xml file.
 
 I am separating these posts from main blog posts, because I want to remove the mental resistance for writing and publishing online. I'd like to maintain a relatively high quality for the main blog posts without discouraging myself from writing whatever I want.
 
+Also, I'd rather keep the main posts about software engineering.
+
 ## Why "short" posts?
 
 I also find it useful to think of these posts as tweets.
