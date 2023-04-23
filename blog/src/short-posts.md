@@ -1,12 +1,11 @@
 ---
-title: My first short post
+title: Short posts
 date: 2023-04-23
 short: true
 ---
 
-## What is this?
+## What is a short post?
 
-I'm going to write short posts here.
 They won't appear in the main list of blog posts,
 and not in the generated RSS xml file.
 
@@ -14,7 +13,7 @@ I am separating these posts from main blog posts, because I want to remove the m
 
 Also, I'd rather keep the main posts about software engineering.
 
-## Why "short" posts?
+## Why "short"?
 
 I also find it useful to think of these posts as tweets.
 I first called it a "tweet", but then thought it might be confusing with Twitter tweets, so I renamed it to shorts.
