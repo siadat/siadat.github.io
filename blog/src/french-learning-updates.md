@@ -1,5 +1,5 @@
 ---
-title: First learning updates for April 2023
+title: French language learning update for April 2023
 date: 2023-04-23
 short: true
 ---
