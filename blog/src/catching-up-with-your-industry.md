@@ -23,6 +23,6 @@ Books take years to write. While they are super valuable for consolidating a hug
 ## Introspection
 
 * My industry is databases, I need to find and listen to more podcasts about it.
-* I use Google Podcast, but not many podcasts link to it. I might switch to Spotify. The time between pressing the play button and hearing the podcast was impressive. Other apps take many seconds, and sometimes fail to play, but Spotify started playing instantly!
+* I use Google Podcasts, but not many podcasts link to it. I might switch to Spotify. The time between pressing the play button and hearing the podcast was impressive. Other apps take many seconds, and sometimes fail to play, but Spotify started playing instantly!
 * Hacker News is great for general tech news, but for industry specific news you should probably find another source. Perhaps use Hacker News to find that source :)
 * The News page of [InfoQ](https://www.infoq.com/news/) has categories for different industries. It includes [Databases](https://www.infoq.com/database), and even a [NoSQL](https://www.infoq.com/nosql/) category.
