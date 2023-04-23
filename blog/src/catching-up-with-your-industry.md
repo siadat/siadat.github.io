@@ -16,13 +16,13 @@ I think these are the best way to keep up with the latest trends in most industr
 
 **News articles** are important because they help you discover new trends you'd otherwise miss.
 
-**Podcasts** are super useful because they often explain terminologies and challenges in an easy to understand way. Talking in a podcast interview is the easiest way an expert could generate content. It is easier than video (which requires a whole set of decisions that can be overwhelming), and it is even easier than writing a blog post for the expert. For the podcast, the expert needs to just show up to the interview. 
+**Podcasts** are super useful because they often explain terminologies and challenges in an easy to understand way. Talking in a podcast interview is the easiest way an expert could share content. It is easier than video (which requires a whole set of decisions that can be overwhelming), and it is even easier than writing a blog post for the expert. For the podcast, the expert needs to just show up to the interview. 
 
-Books take years to write. While they are valuable for consolidating a huge amount of wisdome into one coherent piece, they are a few years behind blogs, news and podcasts.
+Books take years to write. While they are valuable for consolidating a huge amount of wisedom into one coherent piece, they are a few years behind blogs, news and podcasts.
 
 ## Introspection
 
-* My industry is databaes, I need to find and listen to more podcasts about it.
+* My industry is databases, I need to find and listen to more podcasts about it.
 * I use Google Podcast, but not many podcasts link to it. I might switch to Spotify. The playback is very quick.
-* Hacker News is not really a good news source for a specific industry. It's great for learning, exploring and keeping up to date with *general* news.
-* The News page of [InfoQ](https://www.infoq.com/news/) has categories for different industries. It includes [Databases](https://www.infoq.com/database) and even a [NoSQL](https://www.infoq.com/nosql/) category.
+* Hacker News is great for general tech news, but for industry specific news you should probably find another source. Perhaps use Hacker News to find that source :)
+* The News page of [InfoQ](https://www.infoq.com/news/) has categories for different industries. It includes [Databases](https://www.infoq.com/database), and even a [NoSQL](https://www.infoq.com/nosql/) category.
