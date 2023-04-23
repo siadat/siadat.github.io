@@ -32,12 +32,30 @@
 
   <hr>
   <div>Blog posts</div>
-
   <hr>
 
   <main role="main" class="list">
     {{ range .Posts }}
-    {{ if not .Draft }}
+    {{ if and (not .Draft) (not .Short) }}
+    <article itemscope itemtype="http://schema.org/Blog">
+      {{with .Date}}
+        <span class="entry-meta date-col">
+          <time itemprop="datePublished" datetime="{{.Format "January 02, 2006"}}">
+            {{.Format "Jan 2006"}}
+          </time>
+        </span>
+      {{end}}
+      <a href="{{.RelativeLink}}">{{.Title}}</a>
+    </article>
+    {{ end }}
+    {{ end }}
+
+    <hr>
+    <div>Short posts</div>
+    <hr>
+
+    {{ range .Posts }}
+    {{ if and (not .Draft) .Short }}
     <article itemscope itemtype="http://schema.org/Blog">
       {{with .Date}}
         <span class="entry-meta date-col">
