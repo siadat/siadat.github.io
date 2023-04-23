@@ -13,6 +13,22 @@
     
     
     
+    
+    
+    <item>
+      <title>Catching up with your industry</title>
+      <link>https://siadat.github.io/post/catching-up-with-your-industry</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/catching-up-with-your-industry</guid>
+      <description>In an interview with Yelp&#39;s blog, [Daniel says](https://blog.yelp.com/life-at-yelp/a-day-in-the-life-of-a-software-engineer-at-yelp/):&#xA;&#xA;&gt; I usually start the day by catching up on security news, in t</description>
+    </item>
+    
+    
+    
+    
+    
+    
+    
     <item>
       <title>Why blog</title>
       <link>https://siadat.github.io/post/why-blog</link>
@@ -43,8 +59,6 @@
     
     
     
-    
-    
     <item>
       <title>Recursive "build up" and "build down"</title>
       <link>https://siadat.github.io/post/recursion-up-down</link>
@@ -52,6 +66,8 @@
       <guid>https://siadat.github.io/post/recursion-up-down</guid>
       <description>While writing a recursive function,&#xA;I find it useful to use the phrase &#34;building up&#34;&#xA;or &#34;building down&#34; the result.&#xA;&#xA;Here is the factorial function &#34;building up&#34; the result&#xA;(note that the resulting v</description>
     </item>
+    
+    
     
     
     

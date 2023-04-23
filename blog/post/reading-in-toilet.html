@@ -7,7 +7,7 @@
   <link rel="stylesheet" inline href="/blog/assets/normalize.css">
   <link rel="stylesheet" inline href="/blog/assets/main.css">
   <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
-  <title>Rails in_batches API</title>
+  <title>Reading in the toilet</title>
 </head>
 <body>
   <div id="everything">
@@ -31,8 +31,8 @@
   <hr>
   <div>Blog post published on
     
-      <time itemprop="datePublished" datetime="September 20, 2015">
-        September 20, 2015
+      <time itemprop="datePublished" datetime="April 23, 2023">
+        April 23, 2023
       </time>
     
   </div>
@@ -40,33 +40,16 @@
 
   <main role="main">
     <article itemscope itemtype="http://schema.org/BlogPosting">
-      <h1 class="entry-title" itemprop="headline">Rails in_batches API</h1>
+      <h1 class="entry-title" itemprop="headline">Reading in the toilet</h1>
       <section itemprop="entry-text">
-        <p>At Sariina, we have a daily update job that affects millions of rows.
-On this table, we also have an <code>ON UPDATE</code> trigger.
-The update takes a long time and a lot of disk IO.
-It makes the database virtually useless until the job is done.</p>
+        <p>Many people take their phones to the toilet with them.
+It has been about two weeks that I have stopped doing that.
+Instead, I have placed a paperback book in the toilet.
+I never take the book outside the toilet. I have an epub version of it in case I need to continue reading it elsewhere, but the paperback stays in the toilet.</p>
 
-<p>I thought it would be a good idea to try and do the update in smaller batches.
-I implemented a few solutions and the best one is now <a href="https://github.com/rails/rails/pull/20933" target="_blank">merged into Rails core</a>.
-DHH suggested we make a new API for this.
-The API looks good in my opinion.
-Here are a few examples:</p>
+<p>This has improved my reading time during weekdays.</p>
 
-<pre><code>Person.in_batches.each_record(&amp;amp;:party_all_night!)
-Person.in_batches.update_all(awesome: true)
-Person.in_batches(of: 2000).delete_all
-Person.in_batches.map do |relation|
-  relation.delete_all
-  sleep 10 # Throttles delete queries
-end
-</code></pre>
-
-<p>This solved our update problem and we are using it in production for our app.
-Using the <code>in_batches</code> API, the updates are done in smaller batches.
-The database can process other queries as well without any problem.</p>
-
-<p>To try this feature upgrade to the newest Rails commit or use this <a href="https://github.com/siadat/in_batches" target="_blank">gem</a> in your existing app.</p>
+<p>The paperback I&rsquo;m currently reading is <a href="https://www.amazon.co.uk/Grit-Vermilion-Essentials-Angela-Duckworth/dp/1785042661/ref=tmm_pap_swatch_0?_encoding=UTF8&amp;qid=&amp;sr=" target="_blank">Grit</a>. I bought it 3 weeks ago at a train station. I might publish what I think about the book later.</p>
 
       </section>
     </article>
