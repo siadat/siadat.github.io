@@ -16,9 +16,9 @@ I think these are the best way to keep up with the latest trends in most industr
 
 **News articles** are important because they help you discover new trends you'd otherwise miss.
 
-**Podcasts** are super useful because they often explain terminologies and challenges in an easy to understand way. Talking in a podcast interview is the easiest way an expert could share content. It is easier than video (which requires a whole set of decisions that can be overwhelming), and it is even easier than writing a blog post for the expert. For the podcast, the expert needs to just show up to the interview. 
+**Podcasts** are super useful because they are conversational and they often include easy-to-understand explanations. Talking in a podcast interview is the easiest way an expert could share content. It is easier it than writing a blog post for the expert. For the podcast, the expert needs to just show up to the interview. It could be audio or video.
 
-Books take years to write. While they are super valuable for consolidating a huge amount of wisdom into one coherent piece, they are a few years behind super current events as found in blogs, news and podcasts.
+Books, on the other hand, take years to write. While they are super valuable for consolidating a huge amount of wisdom into one coherent piece, they are a few years behind super current events as found in blogs, news and podcasts.
 
 ## Introspection
 
