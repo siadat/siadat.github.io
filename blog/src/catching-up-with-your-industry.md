@@ -18,7 +18,7 @@ I think these are the best way to keep up with the latest trends in most industr
 
 **Podcasts** are super useful because they often explain terminologies and challenges in an easy to understand way. Talking in a podcast interview is the easiest way an expert could share content. It is easier than video (which requires a whole set of decisions that can be overwhelming), and it is even easier than writing a blog post for the expert. For the podcast, the expert needs to just show up to the interview. 
 
-Books take years to write. While they are valuable for consolidating a huge amount of wisedom into one coherent piece, they are a few years behind blogs, news and podcasts.
+Books take years to write. While they are super valuable for consolidating a huge amount of wisdom into one coherent piece, they are a few years behind super current events as found in blogs, news and podcasts.
 
 ## Introspection
 
