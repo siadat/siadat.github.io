@@ -13,7 +13,7 @@ I guess this choice of prompt is revealing my preference and personality as well
 * Immediately available
 * Free or less expensive than a real therapist
 
-## Adding a layer to the conversation
+## Adding more depth to the conversation
 
 Just for fun, I updated the prompt to include what the therapist is thinking in parentheses:
 
