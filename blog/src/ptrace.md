@@ -3,7 +3,7 @@ title: "pcat: cat stdout and stderr of other processes"
 date: 2024-03-29
 ---
 
-While working on https://github.com/siadat/pcat, I learned a few things that I wanted to keep some where. Please keep in mind that I am not experienced in working with ptrace or this kind of low-level programming :)
+While working on https://github.com/siadat/pcat, I learned a few things that I wanted to keep somewhere. Please keep in mind that **I am not experienced in working with ptrace or this kind of low-level programming**. I still have a lot to learn. :)
 
 Here are a few things I learned:
 
