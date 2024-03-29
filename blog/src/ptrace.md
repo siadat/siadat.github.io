@@ -6,6 +6,7 @@ date: 2024-03-29
 While working on https://github.com/siadat/pcat, I learned a few things that I wanted to keep some where. Please keep in mind that I am not experienced in working with ptrace or this kind of low-level programming :)
 
 Here are a few things I learned:
+
 * Tracer is always a single threaded program, tracee can be multiple threads and forked processes. pcat follow forked processes. It is equivalent to running strace --follow
 * In general, this is the flow:
     * The tracer tells the kernel it wants to trace pid with a ptrace(ATTACH, pid)
