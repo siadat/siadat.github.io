@@ -1,0 +1,91 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>~/src/timezone-sharing/index.html.html</title>
+<meta name="Generator" content="Vim/8.1">
+<meta name="plugin-version" content="vim9.0_v1">
+<meta name="syntax" content="html">
+<meta name="colorscheme" content="nightfly">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data-10-year-range.js"></script>
+<style>
+</style>
+<script>
+	// Function to get a query parameter value
+	function getQueryParam(param) {
+	    const urlParams = new URLSearchParams(window.location.search);
+	    return urlParams.get(param);
+	}
+
+	// Function to set or update a query parameter
+	function setQueryParam(param, value) {
+	    const urlParams = new URLSearchParams(window.location.search);
+	    urlParams.set(param, value);
+	    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
+	}
+
+	const urlPositiveSign = ' ';
+	const urlNegativeSign = '-';
+	const dateFormat = 'YYYY-MM-DD';
+	const timeFormat = 'HH-mm-ss';
+	const datetimeSep = '-at-'
+	const tzFormat = 'ZZ';
+	function formatQueryTime(datetime, tz_offset_hours) {
+		let m = moment(datetime);
+		m.utcOffset(tz_offset_hours);
+		const tzNoSign = m.format(tzFormat).slice(1);
+		const tzSign = tz_offset_hours < 0 ? urlNegativeSign : urlPositiveSign;
+		return m.format(dateFormat) + datetimeSep + m.format(timeFormat) + tzSign + tzNoSign;
+	}
+	function parseQueryTime(datetime) {
+		return moment(datetime.replaceAll(' ', '+'), dateFormat + datetimeSep + timeFormat + tzFormat);
+	}
+	{
+		// test parseQueryTime and formatQueryTime
+		const tests = [
+			{url: '2024-05-05-at-13-32-55 0123', standard: '2024-05-05T13:32:55+01:23'},
+			{url: '2024-05-05-at-13-32-55-0123', standard: '2024-05-05T13:32:55-01:23'},
+		];
+		for(const test of tests) {
+			const gotParsed = +parseQueryTime(test.url);
+			const actualParsed = +new Date(test.standard);
+			if(gotParsed !== actualParsed) {
+				console.error('parseQueryTime failed:', {input: test.url, want: test.standard, gotParsed: gotParsed});
+			}
+			const m = moment(test.standard);
+			const tz_offset = m._tzm / 60.0;
+			const gotFormatted = formatQueryTime(m, tz_offset);
+			if(gotFormatted !== test.url) {
+				console.error('formatQueryTime failed:', {input: test.standard, want: test.url, gotFormatted: gotFormatted});
+			}
+		}
+	}
+
+	// We multiply by -1 because getTimezoneOffset returns the offset in minutes from UTC to local time
+	// E.g. getTimezoneOffset() returns -60 for UTC+1, but I want to store +0100 in the URL
+	const browser_tz_offset_hours = -new Date().getTimezoneOffset() / 60.0;
+	const timeParamName = 't';
+
+	function setTimeState(moment_datetime, tz_offset_hours) {
+		const got = formatQueryTime(moment_datetime, tz_offset_hours)
+		setQueryParam(timeParamName, got);
+	}
+
+	let url_datetime = getQueryParam(timeParamName);
+	let moment_datetime = parseQueryTime(url_datetime || '');
+	if(!moment_datetime.isValid()) {
+		console.log('Invalid datetime:', url_datetime, 'using current time instead');
+		moment_datetime = moment();
+		setTimeState(moment_datetime, browser_tz_offset_hours);
+	}
+	document.addEventListener('DOMContentLoaded', function(event) {
+		const t = new Date(moment_datetime.valueOf()).toString();
+		document.getElementById('main').innerHTML = '<h1>' + t + '</h1>';
+	});
+
+</script>
+</head>
+<body>
+	<pre id='main'></pre>
+</body>
+</html>
