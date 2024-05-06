@@ -9,6 +9,30 @@
     <atom:link href="https://siadat.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>ptail: cat stdout and stderr of other processes</title>
+      <link>https://siadat.github.io/post/ptrace</link>
+      <pubDate>Fri, 29 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/ptrace</guid>
+      <description>While working on https://github.com/siadat/ptail, I learned a few things that I wanted to keep somewhere. Please keep in mind that **I am not experienced in working with ptrace or this kind of low-le</description>
+    </item>
+    
+    
+    
+    
+    
+    <item>
+      <title>Printing: Build your own recommendation system</title>
+      <link>https://siadat.github.io/post/printing</link>
+      <pubDate>Sun, 25 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>https://siadat.github.io/post/printing</guid>
+      <description>This week, I started printing documents I want to review. It all started after reading Grit and Mindset in paperback.&#xA;&#xA;## Paperback&#xA;&#xA;I bought [Grit](https://en.wikipedia.org/wiki/Angela_Duckworth) in</description>
+    </item>
+    
+    
+    
+    
+    
     
     
     
@@ -22,6 +46,10 @@
       <guid>https://siadat.github.io/post/catching-up-with-your-industry</guid>
       <description>In an interview with Yelp&#39;s blog, [Daniel says](https://blog.yelp.com/life-at-yelp/a-day-in-the-life-of-a-software-engineer-at-yelp/):&#xA;&#xA;&gt; I usually start the day by catching up on security news, in t</description>
     </item>
+    
+    
+    
+    
     
     
     

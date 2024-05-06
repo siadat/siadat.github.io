@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>ptail: cat stdout and stderr of other processes</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    &middot; <a href="/index.html">about</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="March 29, 2024">
+        March 29, 2024
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">ptail: cat stdout and stderr of other processes</h1>
+      <section itemprop="entry-text">
+        <p>While working on <a href="https://github.com/siadat/ptail" target="_blank">https://github.com/siadat/ptail</a>, I learned a few things that I wanted to keep somewhere. Please keep in mind that <strong>I am not experienced in working with ptrace or this kind of low-level programming</strong>. I still have a lot to learn. :)</p>
+
+<p>Here are a few things I learned:</p>
+
+<ul>
+<li>Tracer is always a single threaded program, tracee can be multiple threads and forked processes. ptail follow forked processes. It is equivalent to running strace &ndash;follow</li>
+<li>In general, this is the flow:
+
+<ul>
+<li>The tracer tells the kernel it wants to trace pid with ptrace(ATTACH, pid)</li>
+<li>The tracee tells the kernel it wants to be traced using ptrace(TRACEME)</li>
+<li>The tracer waits for kernel to stop the tracee (or its children) using wait(-1)</li>
+<li>The tracer performs its actions (inspect the arguments passed to the syscall by tracee), and then asks kernel to resume the tracee until its next syscall using ptrace(SYSCALL, pid)</li>
+</ul></li>
+<li>This project made me read the source code for strace, which also includes an interesting description about ptrace in <a href="https://github.com/strace/strace/blob/master/doc/README-linux-ptrace" target="_blank">https://github.com/strace/strace/blob/master/doc/README-linux-ptrace</a> but it doesn&rsquo;t seem to be up-to-date, because it doesn&rsquo;t include the thing I learned in the next item.</li>
+<li>I also read a Linux kernel commit, specifically <a href="https://github.com/torvalds/linux/commit/201766a20e30f982ccfe36bebf" target="_blank">https://github.com/torvalds/linux/commit/201766a20e30f982ccfe36bebf</a> which introduced a pretty handy way to get information about syscalls in Linux 5.3. Here&rsquo;s a quick explanation: the tracee process is generally stopped at two points in time, on syscall entry (when the arguments are available), and on syscall exit (when the return value is available). In previous kernel versions, distinguishing between the entry and exit stops was not straightforward. The commit I linked made it easy.</li>
+<li>This is a fun one: you can run strace strace -f …  to understand how strace works!</li>
+<li>man 2 ptrace and man 2 wait were pretty useful</li>
+<li>perf-trace is a pretty cool tool, it can trace syscalls made by all processes</li>
+<li>Another thing I learned is that sometimes pid (process id) also include tid (thread id). I don&rsquo;t fully understand this yet, but it seems that in Linux a thread is created using clone(CLONE_THREAD).</li>
+</ul>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    <a target="_blank" href="https://twitter.com/sinasiadat">twitter.com/sinasiadat</a>
+  </div>
+
+</body>
+</html>

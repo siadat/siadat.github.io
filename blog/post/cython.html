@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Blogo" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" inline href="/blog/assets/normalize.css">
+  <link rel="stylesheet" inline href="/blog/assets/main.css">
+  <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
+  <title>Learning Cython</title>
+</head>
+<body>
+  <div id="everything">
+  <header role="banner">
+    <a href="/index.html">Sina Siadat</a>
+  </header>
+  <hr>
+  <div class="header">
+             <a href="/blog/index.html">blog</a>
+    &middot; <a href="/projects.html">projects</a>
+    &middot; <a href="/reading.html">reading</a>
+    &middot; <a href="/music.html">music</a>
+    <!--&middot; <a href="/photography.html">photography</a>-->
+    &middot; <a href="https://github.com/siadat/">github</a>
+    &middot; <a href="https://twitter.com/sinasiadat">twitter</a>
+    &middot; <a href="/index.html">about</a>
+    <!--&middot; <a href="https://instagram.com/siadat">instagram</a>-->
+    <!--&middot; <a href="https://www.goodreads.com/user/show/8642755-sina">goodreads</a>-->
+    <!--&middot; <a href="index.xml">rss</a>-->
+  </div>
+  <hr>
+  <div>Blog post published on
+    
+      <time itemprop="datePublished" datetime="April 20, 2023">
+        April 20, 2023
+      </time>
+    
+  </div>
+  <hr>
+
+  <main role="main">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+      <h1 class="entry-title" itemprop="headline">Learning Cython</h1>
+      <section itemprop="entry-text">
+        <p>TIL a bit about Cython. My learnings experiments are in <a href="https://github.com/siadat/learn-cython" target="_blank">github.com/siadat/learn-cython</a></p>
+
+<p>From <a href="https://github.com/cython/cython" target="_blank">Cython&rsquo;s README</a>:</p>
+
+<blockquote>
+<p>Cython is a Python compiler that makes writing C extensions for Python as easy as Python itself</p>
+</blockquote>
+
+<ul>
+<li>Cython is installed as a normal package, e.g. <code>poetry add cython</code></li>
+<li>Cython is a superset of Python: all Python code is valid Cython.</li>
+<li>Cython files have .pyx extensions.</li>
+<li><code>poetry run cython program.pyx</code> will generate a program.c file.</li>
+<li>You can also run <code>poetry run cython program.py</code> (note it is .py, not .pyx), but the generated .c file will be larger, and I think it will rely on Python interpreter for handling memory for those objects.</li>
+<li>The Python <code>print(&quot;hello&quot;)</code> call expression is translated to
+```
+/* &ldquo;hello.pyx&rdquo;:3
+
+<ul>
+<li>def greet():</li>
+<li>print(&ldquo;hello&rdquo;)</li>
+<li>print(&ldquo;hello&rdquo;)             # &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+*/
+if (__Pyx_PrintOne(0, __pyx_n_s_hello) &lt; 0) __PYX_ERR(0, 3, <strong>pyx_L1_error)
+``<code>
+In this example,</code></strong>pyx_n_s_hello<code>represents the</code>&ldquo;hello&rdquo;<code>string, via</code>__pyx_k_hello`.</li>
+</ul></li>
+<li>Note that the Cython program contains functions definitions only, there are no statements in the global scope.</li>
+<li>The <code>poetry run cythonize program.py</code> command combines all imported packages and generates a single .c file. On the other hand, <code>poetry run cython program.py</code> is lower level and generates a .c file per .py or .pyx file.</li>
+</ul>
+
+<h2>TODO <code>poetry run easycython</code>?</h2>
+
+<p>Resources
+* <a href="https://www.youtube.com/watch?v=NfnMJMkhDoQ&amp;t=479s" target="_blank">https://www.youtube.com/watch?v=NfnMJMkhDoQ&amp;t=479s</a></p>
+
+      </section>
+    </article>
+  </main>
+
+  <hr>
+  <div>
+    <a target="_blank" href="https://twitter.com/sinasiadat">twitter.com/sinasiadat</a>
+  </div>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
   <link rel="stylesheet" inline href="/blog/assets/normalize.css">
   <link rel="stylesheet" inline href="/blog/assets/main.css">
   <link rel="alternate" href="/blog/index.xml" type="application/rss+xml" title="Sina Siadat">
-  <title>Reading in the toilet</title>
+  <title>Learning why trying tracy</title>
 </head>
 <body>
   <div id="everything">
@@ -31,8 +31,8 @@
   <hr>
   <div>Blog post published on
     
-      <time itemprop="datePublished" datetime="April 23, 2023">
-        April 23, 2023
+      <time itemprop="datePublished" datetime="March 07, 2024">
+        March 07, 2024
       </time>
     
   </div>
@@ -40,16 +40,22 @@
 
   <main role="main">
     <article itemscope itemtype="http://schema.org/BlogPosting">
-      <h1 class="entry-title" itemprop="headline">Reading in the toilet</h1>
+      <h1 class="entry-title" itemprop="headline">Learning why trying tracy</h1>
       <section itemprop="entry-text">
-        <p>Many people take their phones to the toilet with them.
-It has been about two weeks that I have stopped doing that.
-Instead, I have placed a paperback book in the toilet.
-I never take the book outside the toilet. I have an epub version of it in case I need to continue reading it elsewhere, but the paperback stays in the toilet.</p>
+        <ul>
+<li><code>man -K zero</code> led me to <code>man 4 zero</code> and I learned it returns &lsquo;\0&rsquo;s</li>
+<li>I learned about <code>-N</code> in <code>yes | head -c 5 | nc -N localhost 8000</code>: without it, nc process does not exit after EOF is seen in stdin.</li>
+<li>I learned that the <code>head</code> command can take number of bytes in human readable units, eg <code>head -c 1G</code></li>
+<li>It is not recommended to run Tracy on a VM, which is unfortunate, because my main development machine is a VM.</li>
+</ul>
 
-<p>This has improved my reading time during weekdays.</p>
+<blockquote>
+<p>The best way to run Tracy is on bare metal. Avoid profiling applications in virtualized environments, including services provided in the cloud. Virtualization interferes with the critical facilities needed for the profiler to work, influencing the results you get.</p>
+</blockquote>
 
-<p>The paperback I&rsquo;m currently reading is <a href="https://www.amazon.co.uk/Grit-Vermilion-Essentials-Angela-Duckworth/dp/1785042661/ref=tmm_pap_swatch_0?_encoding=UTF8&amp;qid=&amp;sr=" target="_blank">Grit</a>. I bought it 3 weeks ago at a train station. I might publish what I think about the book later.</p>
+<ul>
+<li></li>
+</ul>
 
       </section>
     </article>
