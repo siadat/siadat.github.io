@@ -24,8 +24,8 @@
 	    window.history.replaceState({}, '', `${window.location.pathname}?${urlParams}`);
 	}
 
-	const urlPositiveSign = ' ';
-	const urlNegativeSign = '-';
+	const urlPositiveSignDecoded = ' ';
+	const urlNegativeSignDecoded = '-';
 	const dateFormat = 'YYYY-MM-DD';
 	const timeFormat = 'HH-mm-ss';
 	const datetimeSep = '-at-'
@@ -34,29 +34,29 @@
 		let m = moment(datetime);
 		m.utcOffset(tz_offset_hours);
 		const tzNoSign = m.format(tzFormat).slice(1);
-		const tzSign = tz_offset_hours < 0 ? urlNegativeSign : urlPositiveSign;
+		const tzSign = tz_offset_hours < 0 ? urlNegativeSignDecoded : urlPositiveSignDecoded;
 		return m.format(dateFormat) + datetimeSep + m.format(timeFormat) + tzSign + tzNoSign;
 	}
 	function parseQueryTime(datetime) {
-		return moment(datetime.replaceAll(' ', '+'), dateFormat + datetimeSep + timeFormat + tzFormat);
+		return moment(datetime.replaceAll(urlPositiveSignDecoded, '+'), dateFormat + datetimeSep + timeFormat + tzFormat);
 	}
 	{
 		// test parseQueryTime and formatQueryTime
 		const tests = [
-			{url: '2024-05-05-at-13-32-55 0123', standard: '2024-05-05T13:32:55+01:23'},
-			{url: '2024-05-05-at-13-32-55-0123', standard: '2024-05-05T13:32:55-01:23'},
+			{urlDecoded: '2024-05-05-at-13-32-55 0123', standard: '2024-05-05T13:32:55+01:23'},
+			{urlDecoded: '2024-05-05-at-13-32-55-0123', standard: '2024-05-05T13:32:55-01:23'},
 		];
 		for(const test of tests) {
-			const gotParsed = +parseQueryTime(test.url);
+			const gotParsed = +parseQueryTime(test.urlDecoded);
 			const actualParsed = +new Date(test.standard);
 			if(gotParsed !== actualParsed) {
-				console.error('parseQueryTime failed:', {input: test.url, want: test.standard, gotParsed: gotParsed});
+				console.error('parseQueryTime failed:', {input: test.urlDecoded, want: test.standard, gotParsed: gotParsed});
 			}
 			const m = moment(test.standard);
 			const tz_offset = m._tzm / 60.0;
 			const gotFormatted = formatQueryTime(m, tz_offset);
-			if(gotFormatted !== test.url) {
-				console.error('formatQueryTime failed:', {input: test.standard, want: test.url, gotFormatted: gotFormatted});
+			if(gotFormatted !== test.urlDecoded) {
+				console.error('formatQueryTime failed:', {input: test.standard, want: test.urlDecoded, gotFormatted: gotFormatted});
 			}
 		}
 	}
@@ -66,14 +66,14 @@
 	const browser_tz_offset_hours = -new Date().getTimezoneOffset() / 60.0;
 	const timeParamName = 't';
 
-	document.addEventListener('DOMContentLoaded', function(event) {
-		function setTimeState(moment_datetime, tz_offset_hours) {
-			const got = formatQueryTime(moment_datetime, tz_offset_hours)
-			setQueryParam(timeParamName, got);
-		}
+	function setTimeState(moment_datetime, tz_offset_hours) {
+		const got = formatQueryTime(moment_datetime, tz_offset_hours)
+		setQueryParam(timeParamName, got);
+	}
 
+	document.addEventListener('DOMContentLoaded', function(event) {
 		let url_datetime = getQueryParam(timeParamName);
-		if(url_datetime.length !== '2024-05-06-at-01-11-03+0100'.length) {
+		if(url_datetime && url_datetime.length !== '2024-05-06-at-01-11-03+0100'.length) {
 			document.getElementById('main').innerHTML = '<h1>' + 'invalid time' + '</h1>';
 			return;
 		}
