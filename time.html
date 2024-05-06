@@ -66,19 +66,23 @@
 	const browser_tz_offset_hours = -new Date().getTimezoneOffset() / 60.0;
 	const timeParamName = 't';
 
-	function setTimeState(moment_datetime, tz_offset_hours) {
-		const got = formatQueryTime(moment_datetime, tz_offset_hours)
-		setQueryParam(timeParamName, got);
-	}
-
-	let url_datetime = getQueryParam(timeParamName);
-	let moment_datetime = parseQueryTime(url_datetime || '');
-	if(!moment_datetime.isValid()) {
-		console.log('Invalid datetime:', url_datetime, 'using current time instead');
-		moment_datetime = moment();
-		setTimeState(moment_datetime, browser_tz_offset_hours);
-	}
 	document.addEventListener('DOMContentLoaded', function(event) {
+		function setTimeState(moment_datetime, tz_offset_hours) {
+			const got = formatQueryTime(moment_datetime, tz_offset_hours)
+			setQueryParam(timeParamName, got);
+		}
+
+		let url_datetime = getQueryParam(timeParamName);
+		if(url_datetime.length !== '2024-05-06-at-01-11-03+0100'.length) {
+			document.getElementById('main').innerHTML = '<h1>' + 'invalid time' + '</h1>';
+			return;
+		}
+		let moment_datetime = parseQueryTime(url_datetime || '');
+		if(!moment_datetime.isValid()) {
+			console.log('Invalid datetime:', url_datetime, 'using current time instead');
+			moment_datetime = moment();
+			setTimeState(moment_datetime, browser_tz_offset_hours);
+		}
 		const t = new Date(moment_datetime.valueOf()).toString();
 		document.getElementById('main').innerHTML = '<h1>' + t + '</h1>';
 	});
