@@ -1,11 +1,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>~/src/timezone-sharing/index.html.html</title>
-<meta name="Generator" content="Vim/8.1">
-<meta name="plugin-version" content="vim9.0_v1">
-<meta name="syntax" content="html">
-<meta name="colorscheme" content="nightfly">
+<title>Time</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.45/moment-timezone-with-data-10-year-range.js"></script>
 <style>
@@ -84,9 +80,9 @@
 			setTimeState(moment_datetime, browser_tz_offset_hours);
 		}
 		const t = new Date(moment_datetime.valueOf()).toString();
-		document.getElementById('main').innerHTML = '<h1>' + t + '</h1>';
+		document.getElementById('main').innerHTML = `<h1>${t}</h1>`;
+		document.title = `Time: ${t}`;
 	});
-
 </script>
 </head>
 <body>
