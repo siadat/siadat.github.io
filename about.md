@@ -1,7 +1,7 @@
 ### About me
 
-- I am a Software Engineer at the NoSQL Database Reliability Engineer team at [Yelp](https://www.yelp.co.uk/).
-  We manage Cassandra clusters on Kubernetes.
+- I am a Software Engineer in the Database Reliability Engineer NoSQL team at [Yelp](https://www.yelp.co.uk/).
+  We manage Cassandra clusters on top of Kubernetes.
   Before that I was a techlead at [Alibaba Travels](https://www.alibaba.ir/).
 - As a backend engineer, I have worked on highly concurrent messaging systems, financial and payment systems,
   lottery campaigns, authorization systems, highly responsive game servers, and other APIs.
